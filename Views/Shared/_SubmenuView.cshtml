@@ -1,0 +1,31 @@
+﻿@using sw_EnligateWeb.Models;
+@model List<schemaSubMenus>
+
+<div class="col-xs-12 mSpaceMt10" style="z-index:5;">
+    <ul class="btnsSubMenuAdminDiv">
+        @{
+            foreach (var submenu in Model)
+            {
+                <li data-submenuid="@submenu.smeId" class="">
+                    <button class="btn btn-link" onclick="javascript:document.location.replace('@Url.Action(submenu.smeAction, submenu.smeController)');">@submenu.smeNombre</button>
+                </li>
+            }
+        }
+
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('[data-submenuId]').each(function (index, element) {
+            var val = $(this).attr("data-submenuId");
+            var div = $("#" + val);
+            if (div.length > 0) {
+                $(this).addClass('current');
+                return false;
+            }
+        });
+    });
+
+</script>

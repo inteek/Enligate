@@ -1,0 +1,79 @@
+﻿@using sw_EnligateWeb.Models;
+@model List<PartidosViewModel>
+<style>
+    .text-center-thead thead tr th {
+        text-align: center;
+    }
+</style>
+<div class="col-xs-12">
+    <table class="table text-center-thead">
+        @{ 
+            if (Model.Count > 0)
+            {
+                <thead>
+                    <tr>
+                        <th>
+                            Fecha
+                        </th>
+                        <th colspan="2">
+                            Equipo 1
+                        </th>
+                        <th>
+
+                        </th>
+                        <th colspan="2">
+                            Equipo 2
+                        </th>
+                        <th>
+                            Canchas
+                        </th>
+                    </tr>
+                </thead>
+                foreach (var item in Model)
+                {
+                    string equImgUno = item.imgUno;
+                    string equImgDos = item.imgDos;
+                    if (equImgUno == null)
+                    {
+                        equImgUno = Url.Content("~/Content/Images/general/noPhoto.jpg");
+                    }
+                    if (equImgDos == null)
+                    {
+                        equImgDos = Url.Content("~/Content/Images/general/noPhoto.jpg");
+                    }
+                    <tr  style="background: white;">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.parFecha_Inicio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.equNombreEquipoUno)
+                        </td>
+                        <td>
+                            <img id="equImgUno" class="img-thumbnail center-block" width="50" height="50" src="@equImgUno" />
+                        </td>
+                        <td class="text-left">
+                            VS
+                        </td>
+                        <td>
+                            <img id="equImgUno" class="img-thumbnail center-block" width="50" height="50" src="@equImgDos" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.equNombreEquipoDos)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.canNombre)
+                        </td>
+                    </tr>
+                }
+            }else
+            {
+                <tr  style="background: white;">
+                    <td colspan="5"  class="text-center">
+                        <span>Sin Partidos</span>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
+</div>

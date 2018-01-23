@@ -1,0 +1,110 @@
+﻿@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+<style>
+    .yellowCard{
+        width:15px;
+        height: 20px;
+        display:block;
+        background-color: yellow;
+    }
+    .redCard{
+        width:15px;
+        height: 20px;
+        display:block;
+        background-color: red;
+    }
+</style>
+@{
+    var gvRequests = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvTorneoJugadorGrid";
+        //settings.CallbackRouteValues = new { Controller = "Home", Action = "EquipoEstadisticas" };
+        //settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "AdminTorneos", Action = "_PartidosGridEdit_UpdatePartial" };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+        //settings.SettingsBehavior.ConfirmDelete = true;
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+        //Styles
+        settings.Styles.GroupPanel.CssClass = "gvGroupPanel";
+        settings.Styles.Header.CssClass = "gvHeader";
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.AlternatingRow.CssClass = "gvRowAlternative";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        settings.KeyFieldName = "equId";
+
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "jugNombre";
+            col.Caption = "JUGADOR";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "equipo";
+            col.Caption = "EQUIPO";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "goles";
+            col.Caption = "GOLES";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "faltas";
+            col.Caption = "FALTAS";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.SetHeaderCaptionTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(string.Format("<div class=\"yellowCard\" style=\"margin:auto\">"));
+                c.Column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            });
+            //col.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+
+            col.FieldName = "amarillas";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.SetHeaderCaptionTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(string.Format("<div class=\"redCard\" style=\"margin:auto\">"));
+                c.Column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+
+            });
+            col.FieldName = "rojas";
+//            col.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+
+        });
+        //Paging
+        settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 5;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Auto;
+        settings.Settings.VerticalScrollableHeight = 200;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+
+        //Rows
+        // settings.SettingsBehavior.AllowSelectByRowClick = false;
+
+        //Callbacks
+//        settings.ClientSideEvents.BeginCallback = "fnEquipoDetalleEst_OnBeginCallback";
+    });
+
+    if (ViewData["EditError"] != null)
+    {
+        gvRequests.SetEditErrorText((string)ViewData["EditError"]);
+    }
+
+    gvRequests.Bind(Model).GetHtml();
+}

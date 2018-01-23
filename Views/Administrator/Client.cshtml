@@ -1,0 +1,104 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+
+@{
+    ViewBag.Title = "Clientes";
+}
+<script>
+    $(document).ready(function(){
+        fnCliGVPerformCallback();
+    });
+    function fnCliGVPerformCallback(s, e) {
+        if (typeof gvClients.InCallback === "function") {
+            //if (!gvRequests.InCallback())
+            gvClients.PerformCallback();
+        }
+    }
+    function fnCliGV_OnBeginCallback(s, e) {
+        var rol = $("input[name='rol']").val();
+        var date_ini = $("input[name='deReqIniDate']").val()
+        var date_end = $("input[name='deReqEndDate']").val()
+        var search= $("input[name='search']").val()
+        e.customArgs['rol'] = rol;
+        e.customArgs['date_start'] = date_ini;
+        e.customArgs['date_end'] = date_end;
+        e.customArgs['search_user'] = search;
+    }
+</script>
+<!-- Content -->
+<div id="ADMINISTRADOR_Clientes" class="row">
+    <div class="col-sm-11 mSpaceMlr35" >
+        <h1>Clientes</h1>
+        <div class="row">
+            <div class="col-md-12 filtros">
+                <!--
+                <div class="form-inline">
+                    <div class="form-group col-xs-12 col-sm-5 mSpaceMb10">
+                        <span class="mLabelGroup">Buscar:</span> <br class="visible-sm" />
+                        <div style="display:inline-block;vertical-align:text-bottom;">
+                            <input type="text" name="search" placeholder="Buscar usuario" onblur="fnCliGVPerformCallback();" />
+                        </div>
+                    </div>
+                </div>
+                    -->
+                <div class="form-inline">
+                    <div class="form-group col-xs-12 col-sm-5 mSpaceMb10">
+                        <span class="mLabelGroup">Rol:</span> <br class="visible-sm" />
+                        <div style="display:inline-block;vertical-align:text-bottom;">
+                            @Html.DevExpress().ComboBox(settings =>
+                                {
+                                    settings.Name = "rol";
+                                    settings.Width = 200;
+                                    settings.SelectedIndex = 0;
+                                    settings.Properties.Items.Add(constClass.rolPlayer.ToUpper(), constClass.rolPlayer);
+                                    settings.Properties.Items.Add(constClass.rolCoach.ToUpper(), constClass.rolCoach);
+                                    settings.Properties.Items.Add(constClass.rolReferee.ToUpper(), constClass.rolReferee);
+                                    settings.Properties.Items.Add(constClass.rolAdminTorneos.ToUpper(), constClass.rolAdminTorneos);
+                                    settings.Properties.Items.Add(constClass.rolOwners.ToUpper(), constClass.rolOwners);
+                                    settings.Properties.ClientSideEvents.SelectedIndexChanged = "fnCliGVPerformCallback";
+                                }).GetHtml()
+                        </div>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <div class="form-group col-xs-12 col-sm-7 mSpaceMb10">
+                        <span class="mLabelGroup">Fecha de Registro:</span> <br class="visible-sm" />
+                        <div style="display:inline-block;vertical-align:text-bottom;">
+                            @Html.DevExpress().DateEdit(settings =>
+                               {
+                                   settings.Name = "deReqEndDate";
+                                   settings.Properties.DisplayFormatString = "dd/MM/yyyy";
+                                   settings.Date = DateTime.Today.AddDays(-7);
+                                   settings.Properties.AllowNull = false;
+                                   settings.Properties.ClientSideEvents.DateChanged = "fnCliGVPerformCallback";
+                                   settings.Width = Unit.Pixel(100);
+                               }).GetHtml()
+                        </div>
+                        <span class="mLabelGroup">hasta</span>
+
+                        <div style="display:inline-block;vertical-align:text-bottom;">
+                            @Html.DevExpress().DateEdit(settings =>
+                                {
+                                    settings.Name = "deReqIniDate";
+                                    settings.Properties.DisplayFormatString = "dd/MM/yyyy";
+                                    settings.Date = DateTime.Today;
+                                    settings.Properties.AllowNull = false;
+                                    settings.Properties.ClientSideEvents.DateChanged = "fnCliGVPerformCallback";
+                                    settings.Width = Unit.Pixel(100);
+                                }).GetHtml()
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+        <div class="row grid">
+            <div class="col-md-12">
+                @Html.Action("ClientsGrid");
+            </div>
+        </div>
+    </div>    
+    
+</div>
+

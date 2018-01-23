@@ -1,0 +1,147 @@
+﻿@using sw_EnligateWeb.Models;
+@model ArbitrosViewModel
+
+<div class="modal fade" id="ArbitrosNuevo" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                
+                <div class="col-xs-9 col-xs-offset-1">
+                    <h2 id="titutloArbitroModal">Invitar Nuevo Arbitro</h2>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyArbitros">
+                <div class="container-fluid" style="min-height:150px;">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-11">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div id="FiltroLigasTorneos" class="col-xs-12">
+                                    @Html.Action("_Filtro_Liga_Torneo", "AdminTorneos")
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form id="formArbitro">
+                                        <input type="hidden" id="arbId" />
+                                        <div class="col-xs-6">
+                                            <div class="marginForm">
+                                                <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                                    <span class="input-group-addon m-lbl">Correo:</span>
+                                                    @Html.TextBoxFor(m => m.arbCorreo, "", new { @class = "width100", @placeholder = "Correo" })
+                                                    @Html.ValidationMessageFor(m => m.arbCorreo, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="marginForm">
+                                                <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                                    <span class="input-group-addon m-lbl">Nombre:</span>
+                                                    @Html.TextBoxFor(m => m.arbNombre, "", new { @class = "width100", @placeholder = "Nombre" })
+                                                    @Html.ValidationMessageFor(m => m.arbNombre, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-12 text-right">
+                                    <button id="btnNewArbitro" type="button" class="btn btn-default newArbitro" onclick="arbitrosNuevo_Submit(false)">Nuevo</button>
+
+                                    <button type="button" class="btn btn-default edit-delete" onclick="arbitrosNuevo_Submit(true)">Editar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".edit-delete").css('display', 'none');
+    });
+        
+    function arbitrosNuevo_Submit(edit) {
+        var ligId = $("#FiltroLigasTorneos #ligId").val();
+        var correo = $("#formArbitro #arbCorreo");
+        $("#formArbitro").find(".spanError").remove();
+        if (correo.val() != "") {
+            var dataForm = $("#formArbitro").serialize() + "&ligId=" + ligId;
+            var path = '/AdminTorneos/_ArbitrosGridEdit_AddNewPartial';
+
+            if (edit == true) {
+                var arbId = $("#arbId").val();
+                dataForm = dataForm + "&arbId=" + arbId + "&edit=true"
+            }
+            console.log(dataForm);
+            $.ajax({
+                url: path,
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    //var grid = $("#gridArbitros");
+                    //grid.empty();
+                    //grid.html('<div class="col-xs-12 text-nowrap">' + data + '</div>');
+                    $("#ArbitrosNuevo").modal('toggle');
+                    refreshFiltro();
+                    //location.reload();
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        } else {
+            var error = '<span class="bg-danger spanError">';
+            error += 'Campo Requerido';
+            error += '</span>';
+            if (correo.val() == "") {
+                correo.parent().append(error);
+                correo.focus();
+            }            
+        }
+        
+    };
+
+    function fnEquipoNuevo_Filtros_ChangeLiga(ligId) {
+        console.log(ligId.value);
+        $.ajax({
+            url: '/AdminTorneos/_Filtro_Liga_Torneo',
+            type: "POST",
+            data: "ligId=" + ligId.value,
+            success: function (data) {
+                $("#FiltroLigasTorneos").html(data);
+                $(".dropdownTorneo").empty();
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }, error: function () {
+                alert("Error Ajax")
+            }
+        });
+    };
+
+    function fnEquipoNuevo_Filtros_ChangeTorneo(torneo) {
+        var liga = $("#FiltroLigasTorneos #ligId").val();
+        $.ajax({
+            url: '/AdminTorneos/_Filtro_Liga_Torneo',
+            type: "POST",
+            data: "ligId=" + liga + "&torId="+torneo.value,
+            success: function (data) {
+                $("#FiltroLigasTorneos").html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }, error: function () {
+                alert("Error Ajax")
+            }
+        });
+    }
+</script>

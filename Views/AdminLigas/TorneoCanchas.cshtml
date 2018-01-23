@@ -1,0 +1,24 @@
+﻿@using sw_EnligateWeb.Models;
+
+@{
+    ViewBag.Title = "Canchas";
+}
+
+<!-- Content -->
+<div id="ADMINISTRADORDELIGAS_Torneos" class="row">
+    <div id="ADMINISTRADORDELIGAS_Torneos_Canchas" class="col-xs-12 mSpaceMb20">
+        <div class="col-xs-12">
+            <h1 class="mTitle1">Canchas</h1>
+        </div>
+
+        @Html.Partial("Torneos/_Canchas")
+        
+    </div>
+</div>
+
+@section scripts{
+    @{
+        string googleSrc = System.Web.Configuration.WebConfigurationManager.AppSettings["GoogleMapsScript"];
+    }
+    <script src="@googleSrc" async defer></script>
+}

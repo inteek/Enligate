@@ -1,0 +1,107 @@
+﻿@using sw_EnligateWeb.Models;
+@model LeaguesActiveDetailViewModel
+
+@{
+
+    string img = Model.ligLiga.ligImg;
+    if (img != null)
+    {
+        img = "/" + img.Replace(Server.MapPath("~"), "").Replace("\\", "/");
+    }
+}
+
+<!-- Content -->
+<div class="row">
+    <!-- Informacion de la liga -->
+    <div id="ldeMainData" class="col-xs-12 col-md-9 mSpaceMb20">
+        @Html.Partial("Ligas/_LeaguesDetail_MainData")
+    </div>
+
+    <!-- Mapa de la liga -->
+    <div class="col-xs-12 col-md-3 mSpaceMb20 ldeMap">
+        <div id="ldeMainMap" class="col-xs-12" style="height:200px;">
+            @{ViewBag.gMapId = "";}
+            @Html.Partial("Ligas/_LeaguesDetail_Map")
+        </div>
+        <div class="col-xs-12">
+            <a href="#" class="mLink5" onclick="fnMostrarMapa()">
+                VER MAPA
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<!-- Imagenes de la liga -->
+<div class="row mSpaceMb20">
+    <div class="hgRowTitle">
+        FOTOS DE LA LIGA
+    </div>
+    <div id="ldeImagenesLiga" class="col-xs-12">
+        @Html.Partial("Ligas/_LeaguesDetail_Multimedia")
+    </div>
+</div>
+
+<!-- ------------- Modal Mapa Liga -------------- -->
+<div class="modal fade" id="modalMapaLiga" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div id="modalMapaLigaPartialView" class="container-fluid text-center mSpaceMb30">
+                    @*@Html.Partial("Home/_LeaguesMap_Modal")*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>
+
+<script type="text/javascript">
+
+    function fnMostrarMapa() {
+        $("#modalMapaLiga").modal({ backdrop: false });
+        fnCargarMapa();
+    }
+
+    @{
+        string urlMostrarMapa = (Model.enableEdit == true) ? Url.Action("_LeaguesDetail_Map_Modal","AdminLigas") : Url.Action("_LeaguesMap_Modal", "Home");
+    }
+
+    var urlMostrarMapa = "@urlMostrarMapa";
+
+    function fnCargarMapa() {
+        console.log(urlMostrarMapa);
+        $.ajax({
+            url: urlMostrarMapa,
+            type: "POST",
+            cache: false,
+            data: "Id=" + @Model.ligLiga.ligId + "&code=@Model.ligLiga.ligCreator",
+            success: function (data) {
+                $("#modalMapaLigaPartialView").html(data);
+            }
+        });
+    }
+
+    function fnUpdate_MainMap() {
+        var dataForm = "Id=" + @Model.ligLiga.ligId + "&code=@Model.ligLiga.ligCreator";
+        $.ajax({
+            url: '/AdminLigas/_LeaguesDetail_Map_Refresh',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                $("#ldeMainMap").html(data);
+            }
+        });
+    }
+
+</script>
+

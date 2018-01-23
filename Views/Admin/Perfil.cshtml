@@ -1,0 +1,48 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using sw_EnligateWeb.Models;
+@model ProfileViewModel
+
+@{
+    ViewBag.Title = "Perfil";
+}
+
+<!-- Content -->
+<div id="JUGADOR_Dashboard" class="row">
+    <div id="JUGADOR_Dashboard_MiPerfil" class="col-sm-12">
+
+        @if (!(bool)ViewBag.afa_usrEmailConfirmed)
+        {
+            <div class="row mSpaceMt10">
+                <div class="col-xs-12">
+                    @using (Ajax.BeginForm("_ConfirmEmailForward", "Account", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "frmConfirmEmailForward", OnComplete = "showMessages();" }))
+                    {
+                        <fieldset id="frmConfirmEmailForward" class="text-center">
+                            @Html.Partial("Account/_ConfirmEmailForward")
+                        </fieldset>
+                    }
+                </div>
+            </div>
+            
+        }
+
+        <div class="row mSpaceMt10 mSpaceMb20 mSpacePLRAdminContent">
+            @Html.Partial("Admin/_Perfil", Model._profile)
+        </div>
+        <div id="divSubPerfilMaster" class="row mSpaceMt10 mSpaceMb20 mSpacePLRAdminContent">
+
+        </div>
+        @*<hr class="mSpaceMt30 mSpaceMb30" />
+
+        <h1 class="mSubTitle1 text-center mSpaceMb20">Contenido de los torneos</h1>*@
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var divSub = $("#divSubPerfilMaster");
+        divSub.show();
+
+        updatePerfilPartial();
+    });
+</script>
+    

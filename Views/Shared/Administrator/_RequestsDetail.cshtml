@@ -1,0 +1,199 @@
+﻿@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model RequestDetailViewModel
+
+@{
+    ViewBag.Title = "Enligate";
+}
+
+<!-- Content -->
+<div id="ADMINISTRADOR_Solicitudes" class="row">
+    <div class="col-xs-12">
+        <div class="col-xs-12 col-md-offset-1 col-md-10">
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="col-xs-12">
+
+                        @Html.Partial("Home/_InscribirLigaForm", @Model.league)
+                    </div>
+                </div>
+            </div>
+            <form id="frmAcceptReject" class="col-xs-12">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.league.lreId, new { @class = "rdeLigaId" })
+                @Html.HiddenFor(m => m.fee.tarId, new { @class = "rdeTarId" })
+            </form>
+            <!--
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="col-xs-12 well well-lg">
+                        <span class="mTitle1">RESUMEN COBRO:</span>
+                        <div class="mRequestDetailFee">
+                            <form id="frmAcceptReject" class="col-xs-12">
+
+                             
+
+                                <div class="mSpaceMt20 mRequestDeatilFeeForm ">
+                                    <span>
+                                        PRECIO MÁXIMO DE LIGA:
+                                        {
+                                            if (Model.fee == null)
+                                            {
+                                                <span id="rdePrecioLiga" class="text-danger">NO HAY UN COSTO ESPECIFICADO.</span>
+                                            }
+                                            else
+                                            {
+                                                if (Model.fee.tarEsPorcentaje)
+                                                {
+                                                    <span id="rdePrecioLiga">Model.fee.tarCosto.ToString() %</span>
+                                                }
+                                                else
+                                                {
+                                                    <span id="rdePrecioLiga">Model.fee.tarCosto.ToString("C")</span>
+                                                }
+                                            }
+                                        }
+                                    </span>
+                                    <span>
+                                        APLICAR DESCUENTO A INSCRIPCIÓN:
+                                        Html.TextBox("txtLrePorcentajeDescuento", Model.league.lrePorcentajeDescuento, new { class = "mFeeInput", style = "width:60px;" })
+                                        Html.HiddenFor(m => m.league.lrePorcentajeDescuento, new { class = "rdeInputDescuento", data_val_number = "El descuento debe ser un número." })
+                                        <button class="btn btn-default" type="button" onclick="rdeDescuento_Aplicar()">
+                                            APLICAR
+                                        </button>
+                                    </span>
+
+                                    Html.ValidationMessageFor(m => m.league.lrePorcentajeDescuento, "", new { class = "text-danger" })
+                                    <span>
+                                        MÁXIMO A PAGAR:
+                                        <span id="rdeTotal" class="text-danger">
+                                            {
+                                                if (Model.fee == null)
+                                                {
+                                                    <span>NO HAY UN COSTO ESPECIFICADO.</span>
+                                                }
+                                                else
+                                                {
+                                                    if (Model.fee.tarEsPorcentaje)
+                                                    {
+                                                    <span>Model.league.lreTotalPagar %</span>
+                                                    }
+                                                    else {
+                                                    <span>Model.league.lreTotalPagar.ToString("C")</span>
+                                                    }
+                                                }
+                                            }
+                                        </span>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                -->
+            <div class="row">
+                <div class="col-xs-12 text-right">
+                    <button type="button" class="btn btn-danger" onclick="submit_frmRejectRequest()">
+                        RECHAZAR SOLICITUD
+                    </button>
+
+
+                    <button type="button" class="btn btn-default" onclick="submit_frmAcceptRequest()">
+                        APROBAR SOLICITUD
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divRequestDetailMessages" class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>
+
+<script type="text/javascript">
+
+    function rdeDescuento_Aplicar() {
+        $(".rdeInputDescuento").val($("#txtLrePorcentajeDescuento").val());
+        var form = "ligId=" + $(".rdeLigaId").val() + "&tarId=" + $(".rdeTarId").val() + "&descuento=" + $(".rdeInputDescuento").val();
+
+        $.ajax({
+            url: '/Administrator/_RequestDetail_Descuento',
+            type: "POST",
+            cache: false,
+            data: form,
+            success: function (data) {
+                var spanTotal = $("#rdeTotal")
+                    spanTotal.html(data.lreTotalPagar);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+                checkResultMessage();
+            },
+            error: function (xhr, status, p3, p4) {
+                //alert("Hubo un error, intenta nuevamente");
+            }
+        });
+    }
+
+    function submit_frmAcceptRequest() {
+        var form = $("#frmAcceptReject").serialize();
+        console.log(form);
+
+        $.ajax({
+            url: '/Administrator/_RequestAccept',
+            type: "POST",
+            cache: false,
+            //contentType: false,
+            //processData: false,
+            data: form,
+            success: function (data) {
+                $("#divRequestDetailMessages").html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+                checkResultMessage();
+            },
+            error: function (xhr, status, p3, p4) {
+                //alert("Hubo un error, intenta nuevamente");
+            }
+        });
+    }
+
+    function submit_frmRejectRequest() {
+        var form = $("#frmAcceptReject").serialize();
+        $.ajax({
+            url: '/Administrator/_RequestReject',
+            type: "POST",
+            cache: false,
+            //contentType: false,
+            //processData: false,
+            data: form,
+            success: function (data) {
+                $("#divRequestDetailMessages").html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+                checkResultMessage();
+            },
+            error: function (xhr, status, p3, p4) {
+                //alert("Hubo un error, intenta nuevamente");
+            }
+        });
+    }
+
+    function checkResultMessage() {
+        var divMsg = $("#confirmEmailForm_ModalStateErrors");
+        //alert(divMsg.hasClass("alert-success"));
+        if (divMsg.hasClass("alert-success"))
+        {
+            fnReqGVPerformCallback();
+            fnRequestsCloseDetail();
+        }
+    }
+    
+
+</script>
+

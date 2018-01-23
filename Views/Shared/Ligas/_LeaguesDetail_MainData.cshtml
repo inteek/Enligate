@@ -1,0 +1,125 @@
+﻿@using sw_EnligateWeb.Models;
+@model LeaguesActiveDetailViewModel
+@{
+    string img = Model.ligLiga.ligImg;
+    if (img != null)
+    {
+        img = "/" + img.Replace(Server.MapPath("~"), "").Replace("\\", "/");
+    }
+    else
+    {
+        img = Url.Content("~/Content/Images/general/noPhoto.jpg");
+    }
+}
+
+@{if (Model.enableEdit)
+{
+    <script type="text/javascript">
+
+        function fnMostrarCoAdministradores() {
+            $("#modalCoadministradoresLiga").modal({ backdrop: false });
+            fnGVLeagueCoAdmins_PerformCallback();
+        }
+
+        function fnGVLeagueCoAdmins_PerformCallback(s, e) {
+            if (typeof gvLeaguesCoadministrators.InCallback === "function") {
+                if (!gvLeaguesCoadministrators.InCallback())
+                    gvLeaguesCoadministrators.PerformCallback();
+            }
+        }
+        
+        function fnGVLeaguesCoadministrators_OnBeginCallback(s, e) {
+            e.customArgs['ligId'] = @{<text>@Model.ligLiga.ligId</text>};
+            e.customArgs['key'] = @{<text>"@Model.ligLiga.ligCreator"</text>};
+        }
+
+    </script>
+}
+}
+    
+<div class='col-xs-12 col-sm-12 col-md-3 paddingLRZero'>
+    <div class='col-xs-12 col-sm-12 hgRowsImage'>
+        <img src='@img' alt='Image' />
+    </div>
+</div>
+<div class='col-xs-12 col-sm-12 col-md-9 paddingLRZero'>
+    <div class='col-xs-12 hgRowTitle'>
+        @Model.ligLiga.ligNombre
+    </div>
+    <div class='col-xs-12 hgRowZone mContent1 mLeaguesContactRow'>
+        <span>
+            @Model.ligLiga.ligDomicilio
+        </span>
+        <span>
+            @Model.ligLiga.ligContacto
+        </span>
+    </div>
+    <div class='col-xs-12 hgRowDescription'>
+        @Model.ligLiga.ligDescripcion
+    </div>
+    @{
+        if (Model.enableEdit)
+        {
+            <div class="col-xs-12 mSpaceMt10">
+                <a href="#" class="mLink5" onclick='fnMostrarCoAdministradores()'>
+                    VER COADMINISTRADORES
+                </a>
+            </div>
+        }
+   }
+</div>
+
+@{
+    if (Model.enableEdit)
+    {
+        <!-- ------------- Modal Agregar Co-administrador -------------- -->
+        <div class="modal fade" id="modalCoadministradoresLiga" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body modalBodyLogin">
+                        <div class="container-fluid text-center mSpaceMb30">
+                            <div class="mTitle1">Coadministradores de la liga</div>
+                            <fieldset id="fsLeagueCoAdministratorsViewModel" class="mSpaceMt20">
+                                @Html.Action("LeaguesDetail_CoadminsGrid", "AdminLigas")
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@{
+    if (Model.enableEdit)
+    {
+        <div class="divEditGlyphicon" onclick="fnOnEdit_ldeMainData(@Model.ligLiga.ligId, '@Model.ligLiga.ligCreator')">
+            <span class="glyphicon glyphicon-pencil"></span> Editar
+        </div>
+
+        <script type="text/javascript">
+            function fnOnEdit_ldeMainData(id, key) {
+                var dataForm = "Id=" + id + "&key=" + key;
+
+                $.ajax({
+                    url: '/AdminLigas/_LeaguesDetail_MainDataEdit',
+                    type: "POST",
+                    data: dataForm,
+                    success: function (data) {
+                        $("#ldeMainData").html(data);
+                    },
+                    complete: function (jqXHR, textStatus) {
+                        showMessages();
+                    },
+                    error: function (xhr, status, p3, p4) {
+                        alert("Hubo un error, intenta nuevamente");
+                    }
+                });
+            }
+        </script>
+    }
+}

@@ -1,0 +1,276 @@
+@using sw_EnligateWeb.Models;
+@using System.Web.UI.WebControls;
+
+@{
+    var gvRequestsTorneo = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvTorneos";
+        settings.CallbackRouteValues = new { Controller = "AdminTorneos", Action = @ViewBag.torneosGridAction };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+        //Styles
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.SelectedRow.CssClass = "gvRowSelected";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        settings.KeyFieldName = "torId";
+        settings.SetDataRowTemplateContent(c =>
+        {
+            int torId = (int)DataBinder.Eval(c.DataItem, "torId");
+            string ligNombre = DataBinder.Eval(c.DataItem, "ligNombre") as string;
+            string token = DataBinder.Eval(c.DataItem, "torCreador") as string;
+            bool torAdminTorneo = (bool)DataBinder.Eval(c.DataItem, "torAdminTorneo");
+            bool esCoaching = (bool)DataBinder.Eval(c.DataItem, "coaching");
+            string torCoaching = (esCoaching == true) ? "COACHING" : "INTERNO";
+
+            string img = DataBinder.Eval(c.DataItem, "torImg") as string;
+            if(img != null)
+                img = "/" + img.Replace(Server.MapPath("~"), "").Replace("\\", "/");
+            else
+                img = Url.Content("~/Content/Images/general/noPhoto.jpg");
+            string torNombre = DataBinder.Eval(c.DataItem, "torNombre") as string;
+            schemaLigaCategoriasTorneos tblCategoria = DataBinder.Eval(c.DataItem, "tblCategoria") as schemaLigaCategoriasTorneos;
+            var precioTor = DataBinder.Eval(c.DataItem, "torPrecioTorneo");
+            Decimal torPrecioTorneo = (precioTor != null) ? (decimal)precioTor : 0;
+            DateTime fechaInicio = (DateTime)DataBinder.Eval(c.DataItem, "torFechaInicio");
+
+            var fechalimite = DataBinder.Eval(c.DataItem, "torFechaLimiteInscripcion");
+            var torFechaLimiteInscripcion = (fechalimite!=null)?fechalimite:null;
+            bool torTorneoTerminado = (bool)DataBinder.Eval(c.DataItem, "torTorneoTerminado");
+            var nuEquipos = DataBinder.Eval(c.DataItem, "torNumeroEquipos");
+            int torNumeroEquipos = (nuEquipos!=null)?(int)nuEquipos:0;
+
+            int torNumeroEquiposInscritos = (int)DataBinder.Eval(c.DataItem, "torNumeroEquiposInscritos");
+            var numJugadores = DataBinder.Eval(c.DataItem, "torNumeroJugadores");
+            int torNumeroJugadores = (numJugadores != null) ? (int)numJugadores : 0;
+            var numJugIncritos = DataBinder.Eval(c.DataItem, "torNumeroJugadoresInscritos");
+            int torNumeroJugadoresInscritos = (numJugIncritos != null) ? (int)numJugIncritos : 0;
+            bool torEnEquipo = (bool)DataBinder.Eval(c.DataItem, "torEnEquipo");
+            var torFechaCreacion = (DateTime)DataBinder.Eval(c.DataItem, "torFechaCreacion");
+            decimal torCalificacion = (decimal)DataBinder.Eval(c.DataItem, "torCalificacion");
+            bool referee = (bool)DataBinder.Eval(c.DataItem, "referee");
+            int lugaresDisponibles = 0;
+            if(torEnEquipo)
+                lugaresDisponibles = torNumeroEquipos - torNumeroEquiposInscritos;
+            else
+                lugaresDisponibles = torNumeroJugadores - torNumeroJugadoresInscritos;
+            var urlLinkTorneo = "fnGVTorneos_Details(" + torId + ",&#39;" + token + "&#39;)";
+            if (lugaresDisponibles > 0 && torTorneoTerminado == false && referee == false)
+            {
+                if (torFechaLimiteInscripcion!=null)
+                {
+                    if ((DateTime)torFechaLimiteInscripcion > DateTime.Now.AddDays(-1))
+                    {
+                        urlLinkTorneo = "fnGVTorneos_Equipos(" + torId + ",&#39;" + token + "&#39;)";
+                    }
+                }else
+                {
+                    urlLinkTorneo = "fnGVTorneos_Equipos(" + torId + ",&#39;" + token + "&#39;)";
+                }
+            }
+            else if (torTorneoTerminado == false && referee == false)
+            {
+                if (torFechaLimiteInscripcion != null)
+                {
+                    if ((DateTime)torFechaLimiteInscripcion < DateTime.Now.AddDays(-1))
+                    {
+                        urlLinkTorneo = "fnGVTorneos_Details(" + torId + ",&#39;" + token + "&#39;)";
+                    }
+                }else
+                {
+                    urlLinkTorneo = "fnGVTorneos_Details(" + torId + ",&#39;" + token + "&#39;)";
+                }
+            }
+
+            string rowResult = (@"
+                <div class='well' style='position:relative;'>
+                    <div class='container-fluid'>
+                        <div class='row row-eq-height'>
+                            <div class='col-xs-12 col-sm-12 col-md-3 paddingLRZero'>
+                                <div class='col-xs-12 col-sm-12 hgRowsImage'>
+                                    <img src='" + img + "' alt='Torneo' />" +
+                               @"</div>" +
+
+                            (torAdminTorneo == true && torTorneoTerminado == true ?
+                               @"<div class='col-xs-12 mSpaceMt5'>
+                                    <div class='marginForm'>
+                                        <div class='input-group m-input-group hgTrophyComments width100' style='cursor:pointer;' onclick='fnGVTorneos_Comentarios(" + torId + ",&#39;" + torFechaCreacion.ToString("ddMMyyyyHHmmssfff") + @"&#39;)'>
+                                            <span class='input-group-addon m-lbl'>
+                                                <span title='Calificacion: " + torCalificacion.ToString() + @"' class='trophyRating' data-rating='" + torCalificacion.ToString() + @"'></span>
+                                            </span>
+                                            <div style='font-size:1.3em; padding-top:10px;'>COMENTARIOS</div>
+                                        </div>
+                                    </div>
+                                </div>" : "") +
+
+                          @"</div>
+                            <div class='col-xs-12 col-sm-12 col-md-9 paddingLRZero'>
+                                <div class='col-xs-12 hgRowTitle'>
+                                   
+                                    <button type='button' class='btn btn-link' style='text-align:left !important;' onclick="+urlLinkTorneo+@">
+                                        <span class='hgRowTitle'>" +
+                                            torNombre +
+                                        @"</span>
+
+                                  </button>
+
+                                </div>
+                                <div class='col-xs-12 col-sm-6 col-md-12 m-TorneoGridInfo2 mSpacePlr40 mSpaceMt5 mSpaceMb5'>
+                                    <span> Liga: " + ligNombre.ToUpper() + @"</span> <br />
+                                </div>
+                                <div class='col-xs-12 col-sm-6 col-md-12 m-TorneoGridInfo2 mSpacePlr40 mSpaceMt5 mSpaceMb5'>
+                                    <span> Deporte: " + tblCategoria.depNombre.ToUpper() + @"</span> <br />
+                                </div>
+                                <div class='col-xs-12 col-sm-6 col-md-12 m-TorneoGridInfo2 mSpacePlr40 mSpaceMb5'>        
+                                    <span> Tipo de Torneo: " + torCoaching.ToUpper() + @"</span> <br />
+                                </div>
+                                <div class='col-xs-12 col-sm-6 col-md-12 m-TorneoGridInfo2 mSpacePlr40 mSpaceMb5'>        
+                                    <span> Torneo: " + tblCategoria.tblTipoTorneo.ttoNombre.ToUpper() + @"</span> <br />
+                                </div>
+                                <div class='col-xs-12 col-sm-6 col-md-12 m-TorneoGridInfo2 mSpacePlr40 mSpaceMb5'>        
+                                    <span> Categoría: " + tblCategoria.lctNombre.ToUpper() + @"</span> <br />
+                                </div>
+                                <div class='col-xs-12 col-sm-6 col-md-12 m-TorneoGridInfo2 mSpacePlr40 mSpaceMb5'>
+                                    <span>Edades: " + tblCategoria.lctEdadMin.ToString()+ " - " + tblCategoria.lctEdadMax.ToString() + @"</span>  <br />
+                                </div>
+                                <div class='col-xs-12 col-sm-6 col-md-12 m-TorneoGridInfo2 mSpacePlr40 mSpaceMb5'>
+                                    <span> Fecha de inicio: " + fechaInicio.ToShortDateString() + @"</span>
+                                </div>
+                                <div class='col-xs-12 col-sm-6 col-md-12 m-TorneoGridInfo2 mSpacePlr40 mSpaceMb5'>
+                                    <span> Precio: " + torPrecioTorneo.ToString("C") + @"</span>
+                                </div>
+                                <div class='col-xs-12 mSpaceMb20'>
+                                    &nbsp;
+                                </div>
+                                <div style='position:absolute; right: 0; bottom: 0;'>
+                                    {0}
+                                </div>
+                            </div>
+                        </div>" +
+
+                        (torAdminTorneo == true ?
+                        @"<div class='divEditGlyphicon' style='font-size:1.18em; right: 10px; top:10px;' onclick='fnGVTorneos_Editar(" + torId + ",&#39;" + token + @"&#39;)'>
+                            <span class='glyphicon glyphicon-pencil'></span> Editar
+                        </div>" : "")
+
+                + @"</div>    
+                </div>
+            ");
+
+            string btnDisponiblesInsc = "";
+            if (torAdminTorneo != true && referee != true)
+            {
+                if (torFechaLimiteInscripcion != null)
+                {
+                    if (lugaresDisponibles > 0 && torTorneoTerminado == false && referee == false && (DateTime)torFechaLimiteInscripcion > DateTime.Now.AddDays(-1))
+                    {
+                        btnDisponiblesInsc = @"
+                                            <div class='col-xs-12 mSpaceMt5 text-right divTorneoNotify'>
+                                                <span class='mSpacePlr10' style='color:red; font-size: 1.4em;'> 
+                                                    Quedan " + lugaresDisponibles + @" lugares
+                                                </span>
+                                            </div>
+                                            <div class='col-xs-12 mSpaceMt5 text-right'>
+                                                <span class='mSpacePlr10'>" +
+                          @"<button type='button' class='btn btn-default btn-defaultNormalHover' onclick='fnGVTorneos_Equipos(" + torId + ",&#39;" + token + @"&#39;)'>
+                                                        Inscripción: " + torPrecioTorneo.ToString("C") + @"
+                                                    </button>
+                                                </span>
+                                            </div>
+                                            ";
+                    }
+                    else if(torTorneoTerminado == false && fechaInicio < DateTime.Now.AddDays(-1) && referee == false)
+                    {
+                        btnDisponiblesInsc = @"
+                                            <div class='col-xs-12 mSpaceMt5 text-right divTorneoNotify'>
+                                                <span class='mSpacePlr10' style='color:red; font-size: 1.4em;'> 
+                                                    Torneo en Curso ... 
+                                                </span>" +
+                                               @"<button type = 'button' class='btn btn-default btn-defaultNormalHover' onclick='fnGVTorneos_Details(" + torId + ",&#39;" + token + @"&#39;)'>
+                                                        Ver Detalles" + @"
+                                                    </button>
+                                            </div>
+                                            ";
+                    }
+                    else if(lugaresDisponibles <= 0)
+                    {
+                        btnDisponiblesInsc = @"
+                                            <div class='col-xs-12 mSpaceMt5 text-right divTorneoNotify'>
+                                                <span class='mSpacePlr10' style='color:red; font-size: 1.4em;'> 
+                                                    Sin Lugares Disponibles
+                                                </span>                                       
+                                            </div>
+                                            ";
+                    }
+                    else if ((DateTime)torFechaLimiteInscripcion < DateTime.Now.AddDays(-1))
+                    {
+                        btnDisponiblesInsc = @"
+                                        <div class='col-xs-12 mSpaceMt5 text-right divTorneoNotify  '>
+                                            <span class='mSpacePlr10' style='color:red; font-size: 1.4em;'> 
+                                                Fecha Limite de Incripcion: " + torFechaLimiteInscripcion + @"
+                                            </span>" +
+                                                                  @"<button type = 'button' class='btn btn-default btn-defaultNormalHover' onclick='fnGVTorneos_Details(" + torId + ",&#39;" + token + @"&#39;)'>
+                                                    Ver Detalles" + @"
+                                                </button>
+                                        </div>
+                                        ";
+                    }
+                }else
+                {
+                    btnDisponiblesInsc = @"
+                                        <div class='col-xs-12 mSpaceMt5 text-right divTorneoNotify  '>
+                                            <span class='mSpacePlr10' style='color:red; font-size: 1.4em;'> 
+                                                SIN LIMITE DE INSCRIPCION
+                                            </span>
+                                        </div>
+                                        ";
+                }
+            }
+            else if (torAdminTorneo)
+            {
+
+            }
+            rowResult = string.Format(rowResult, btnDisponiblesInsc);
+            ViewContext.Writer.Write(rowResult);
+
+        });
+
+        //Paging
+        //settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        //settings.SettingsPager.PageSize = 5;
+        //settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        //settings.Settings.VerticalScrollableHeight = 600;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+
+        //Rows
+        settings.Settings.ShowColumnHeaders = false;
+        settings.SettingsBehavior.AllowSelectByRowClick = false;
+
+        //Callbacks
+        settings.ClientSideEvents.BeginCallback = "fnGVTorneos_OnBeginCallback";
+        settings.ClientSideEvents.EndCallback = @"function (s, e) {
+                                                      initializeRating();
+                                                  }";
+        settings.CustomJSProperties = (s, e) =>
+        {
+            System.Threading.Thread.Sleep(1000);
+        };
+
+    });
+
+    if (ViewData["EditError"] != null){
+        gvRequestsTorneo.SetEditErrorText((string)ViewData["EditError"]);
+    }
+
+    gvRequestsTorneo.Bind(Model).GetHtml();
+}

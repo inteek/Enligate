@@ -1,0 +1,18 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    Layout = null;
+    ViewBag.Title = "Error";
+}
+
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">A ocurrido un error mientras se procesaba la peticion, redirigiendo a la pagina principal en 3 segundos.</h2>
+
+<script type="text/javascript">
+    setTimeout(function () { redirectHome() }, 3000);
+
+    function redirectHome() {
+        location = "/Home/Index";
+    }
+</script>
+

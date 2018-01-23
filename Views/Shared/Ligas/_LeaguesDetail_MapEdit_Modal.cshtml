@@ -1,0 +1,63 @@
+﻿@using sw_EnligateWeb.Models;
+@model LeaguesActiveDetailViewModel
+
+<div class="row">
+    <div class="col-xs-12">
+        Da clic en la posición en donde se localiza la liga y despues da clic en guardar.
+    </div>
+</div>
+
+<div class="row row-eq-height row-eq-height-alignBottom">
+
+    <div id="lmModal_MapSection" class="col-xs-12 col-sm-8">
+        <div class="col-xs-12 text-right mSpaceMt10" style="height:360px;">
+            @Html.Partial("Ligas/_LeaguesDetail_MapEdit")
+        </div>
+        <div class="col-xs-12 text-right mSpaceMt20">
+            <button type="button" class="btn btn-cancel" onclick="fnCargarMapa()">
+                Cancelar
+            </button>
+
+            <button type="button" class="btn btn-default" onclick="fnLeagueDetail_MapEdit_Save()">
+                Guardar
+            </button>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+        <div class='col-xs-12 hgRowTitle text-left'>
+            @Model.ligLiga.ligNombre
+        </div>
+        <div class='col-xs-12 hgRowZone mContent1 mLeaguesContactRow'>
+            <span class="text-left">
+                @Model.ligLiga.ligDomicilio
+            </span>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    function fnLeagueDetail_MapEdit_Save(){
+        var dataForm = $("#frmLeaguesDetail_MapEdit").serialize();
+        $.ajax({
+            url: '/AdminLigas/_LeaguesDetail_MapEdit_Save',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                if (data.booSuccess) {
+                    fnCargarMapa();
+                    fnUpdate_MainMap();
+                }
+                $(".m-messageHide").html(data.strErrMessagePartialViewString);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    }
+
+</script>
+

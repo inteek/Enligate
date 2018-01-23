@@ -1,0 +1,380 @@
+﻿@using sw_EnligateWeb.Models;
+@model EquiposJugadoresFiltrosViewModel
+@{
+    ViewBag.Title = "Equipo Nuevo";
+    var totalEquipos = (Model.totalEquipo == null) ? 0 : Model.totalEquipo;
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+    var escoaching = Model.coaching;
+     
+}
+
+<script type="text/javascript">
+
+    var datEquipo = @Model.mostrarDatosEquipo.ToString().ToLower();
+    var datSinTorneos = (@Model.ddlTorneos.Count > 0) ? false : true;
+
+    function fnEquipoNuevo_Filtros_ChangeLiga(ddlLiga) {
+        var dataForm = "ligId=" + ddlLiga.value + "&datEquipo=" + datEquipo + "&datSinTorneos=" + datSinTorneos;
+        $.ajax({
+            url: '/AdminLigas/_EquipoNuevoEdit_ChangeLiga',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                $("#_divTorneoNuevoFiltros").html(data.datosFiltros);
+                if (data.esCoaching == true) {
+                    if (data.numequipos > 0) {
+                        $("#btnNewTeamPanel").hide();
+                    }
+                }else{
+                    $("#btnNewTeamPanel").show();
+                }
+                /*if (data.datosAgregar == "False") {
+                    $("#_divEquipoNuevoEdit").empty();
+                    var gridString = "";
+                    //var totalEquipos = (ViewBag.numEquipos == null) ? 0 : ViewBag.numEquipos;
+                    if (data.numequipos==0) {
+                        gridString="<h3 class='text-center'>Torneo Sin Equipo regristrado";
+                        gridString+="<button class='btn btn-default pull-right' onclick='newTeamCoach( )'> Agregar Equipo </button></h3>"
+                    }else{
+                        gridString=data.datosEquipoCoach;
+                    }
+                    $("#equiposGrid").hide();
+
+                    $("#_divEquipoNuevoEdit").html(gridString);
+                    $("#_divEquipoNuevoEdit").show();
+                }else{
+                    $("#equiposGrid").show();
+                    $("#divEquipoCoaching").hide();
+                    fnEquipoNuevo_CargarVistas(data);
+                    gvEquiposGrid_PerformCallback();
+                }*/
+
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+                gvEquiposGrid_PerformCallback();
+            }
+        });
+    }
+
+    function fnEquipoNuevo_Filtros_ChangeTorneo(ddlTorneo) {
+        var dataForm = "torId=" + ddlTorneo.value + "&datEquipo=" + datEquipo;
+        $.ajax({
+            url: '/AdminLigas/_EquipoNuevoEdit_ChangeTorneo',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                $("#esCoaching").val(data.esCoaching);
+                if (data.esCoaching == true) {
+                    if (data.numequipos > 0) {
+                        $("#btnNewTeamPanel").hide();
+                    }else{
+                        $("#btnNewTeamPanel").show();
+                    }
+                }else{
+                    //console.log(data);
+                    $("#btnNewTeamPanel").show();
+                }
+                console.log(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+                gvEquiposGrid_PerformCallback();
+            }
+        });
+    };
+
+    function fnEquipoNuevo_CargarVistas(data)
+    {
+        datEquipo = data.mostrarDatosEquipo;
+        datSinTorneos = data.datSinTorneos;
+
+        if(data.recargarPartialCompleto)
+        {
+            $("#_divEquipoNuevoEdit").html(data.datosNuevoEquipo);
+        }
+        else
+        {
+            $("#_EquipoNuevoEdit_Datos").html(data.datosNuevoDatos);
+        }
+        $("#divAdministrarJugadores").show();
+    }
+
+    function gvEquiposGrid_PerformCallback(s, e) {
+        if (typeof gvEquiposGrid.InCallback === "function") {
+            if (!gvEquiposGrid.InCallback()) {
+                gvEquiposGrid.PerformCallback();
+            }
+        }
+    }
+    function auxfunction(){
+        
+        var coaching = $("#esCoaching").val();
+        console.log(coaching);
+        if (coaching=="true") {
+            $("#btnNewTeamPanel").hide();
+        };
+        fnshowTeamDetails();
+
+    };
+    function gvEquiposGrid_BeginCallback(s, e) {
+        e.customArgs['torId'] = $("#torId").val();
+        $('#equipoId').val(0);
+    }
+
+    function fnEquipoDetails_RowDblClick(s , e) {
+        var equId=0,torId=0;
+        s.GetRowValues(e.visibleIndex, 'equId', function (value) {
+            s.GetRowValues(e.visibleIndex, 'torId', function (value_tor) {
+                fnJugadoresShowDetail(value,value_tor);
+                $('#equipoId').val(value);
+            });
+        });
+    };
+
+
+    function fnEquipoCoachDetails_RowDblClick(equId, torId){
+        fnJugadoresCoachShowDetail(equId,torId);
+        $('#equipoId').val(equId);
+    }
+    function fnJugadoresCoachShowDetail(equId, torId){
+        var data={equId : equId, torId : torId, adminLigaTorneos : true, usuAgregarCoadmin : true}
+        $.ajax({
+            url: '/AdminEquipos/NuevoEdit',
+            type: "POST",
+            cache: false,
+            data: data,
+            success: function (data) {
+                $("#_divEquipoNuevoEdit").empty();
+                $("#_divEquipoNuevoEdit").html(data);
+                //gvEquiposGrid.PerformCallback();
+                $("#_divTorneoNuevoFiltros").hide();
+                $("#divEquipoCoaching").hide();
+                $("#btnGridEquipos").hide();
+                $("#btnEquipoCoaching").show();
+                $("#divEquipoNuevoEdit").show();
+                $("#btnNewTeam").hide();
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    }
+    function fnJugadoresShowDetail(equId, torId) {
+        var data={equId : equId, torId : torId, adminLigaTorneos : true, usuAgregarCoadmin : true}
+        $.ajax({
+            url: '/AdminEquipos/NuevoEdit',
+            type: "POST",
+            cache: false,
+            data: data,
+            success: function (data) {
+                $("#_divEquipoNuevoEdit").empty();
+                $("#_divEquipoNuevoEdit").html(data);
+                //gvEquiposGrid.PerformCallback();
+                $("#equiposGrid").hide();
+                $("#btnEquipoCoaching").hide();
+                $("#btnGridEquipos").show();
+                $("#divEquipoNuevoEdit").show();
+                $("#btnNewTeam").hide();
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    }
+    function fnshowCoachTeamDetails(){
+        var dataForm = "torId=" + $("#torId").val() + "&datEquipo=" + datEquipo;
+        $.ajax({
+            url: '/AdminLigas/_EquipoNuevoEdit_ChangeTorneo',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                if (data.datosAgregar == "False") {
+                    $("#equiposGrid").hide();
+                    if (data.datosEquipoCoach == null) {
+                        gridString="<h3 class='text-center'>Torneo Sin Equipo regristrado";
+                        gridString+="<button class='btn btn-default pull-right' onclick='newTeamCoach( )'> Agregar Equipo </button></h3>"
+                    }else{
+                        gridString=data.datosEquipoCoach;
+                    }
+                    $("#divEquipoCoaching").html(gridString);
+                    $("#divEquipoCoaching").show();
+                }else{
+                    $("#equiposGrid").show();
+                    $("#divEquipoCoaching").hide();
+                    fnEquipoNuevo_CargarVistas(data);
+                    gvEquiposGrid_PerformCallback();
+                }
+
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+        $("#_divTorneoNuevoFiltros").show();
+        $("#divEquipoNuevoEdit").hide();
+        $("#divEquipoCoaching").show();
+        $("#btnNewTeam").hide();
+    }
+    function fnshowTeamDetails(){
+        $("#divEquipoNuevoEdit").hide();
+        $("#equiposGrid").show();
+        $("#btnNewTeam").hide();
+        gvEquiposGrid_PerformCallback();
+    };
+    function newTeamCoach(){
+        var data={equId : 0, torId : $("#torId").val(), adminLigaTorneos : true, usuAgregarCoadmin : true}
+        $.ajax({
+            url: '/AdminEquipos/NuevoEdit',
+            type: "POST",
+            cache: false,
+            data: data,
+            success: function (data) {
+                $("#_divEquipoNuevoEdit").html(data);
+                $("#divAdministrarJugadores").show();
+                $("#divEquipoCoaching").hide();
+                $("#divEquipoNuevoEdit").show();
+                //gvEquiposGrid.PerformCallback();
+                $("#btnNewTeam").hide();
+                $("#btnGridEquipos").hide();
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    };
+    function newTeam() {
+        $.ajax({
+            url: '/AdminEquipos/_Validate_Register_TeamTournament',
+            type: "POST",
+            cache: false,
+            data: "torId=" + $("#torId").val(),
+            success: function (data) {
+                if (data.value) {
+                    submit_newTeam();
+                } else {
+                    $(".m-messageHide").html(data.msg.strPartialViewString)
+                }                
+            }, error: function (data) {
+                messengeInfo("Falta informacion De Liga o Torneo");
+                //alert("error");
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+       
+    };
+    function submit_newTeam() {
+        var data = { equId: 0, torId: $("#torId").val(), adminLigaTorneos: true, usuAgregarCoadmin: true }
+        $.ajax({
+            url: '/AdminEquipos/NuevoEdit',
+            type: "POST",
+            cache: false,
+            data: data,
+            success: function (data) {
+                $("#_divEquipoNuevoEdit").html(data);
+                $("#divAdministrarJugadores").show();
+                $("#equiposGrid").hide();
+                $("#divEquipoNuevoEdit").show();
+                gvEquiposGrid.PerformCallback();
+                $("#btnNewTeam").hide();
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    }
+    $(document).ready(function () {
+        $("#divEquipoNuevoEdit").hide();
+        $("#btnNewTeam").hide();
+        setTimeout(function(){
+            //alert("GO!");
+            gvEquiposGrid_PerformCallback();
+        },1000);
+        
+        
+        $("#esCoaching").val(@escoaching.ToString().ToLower());
+        $(".btnCrearEditarEquipo").on("click",function(){
+            $("#equiposGrid").show();
+            $("#divEquipoNuevoEdit").hide();
+            gvEquiposGrid.PerformCallback();
+        });
+
+    });
+    function _EquipoDelete(id) {
+        if (confirm("Seguro que desea eliminar el Equipo?")) {
+            $.ajax({
+                url: '/AdminEquipos/_Equipos_Delete',
+                type: "POST",
+                cache: false,
+                data: "equId=" + id,
+                success: function (data) {
+                    messengeSuccess("Equipo Eliminado.");
+                    console.log("success!");
+                    gvEquiposGrid_PerformCallback();
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+    }
+</script>
+
+<!-- Content -->
+<div id="ADMINISTRADORDELIGAS_Equipos" class="row">
+    <div id="ADMINISTRADORDELIGAS_Equipos_Equipos" class="col-sm-12">
+
+        <div class="col-xs-12 col-md-12 col-lg-12 mSpaceMt20 mSpaceMb20">
+            <div id="_divTorneoNuevoFiltros" class="col-xs-12 mSpaceMb20">
+                @{Html.RenderPartial("Ligas/_EquipoNuevo_Filtros", Model);}
+            </div>
+            <div id="equiposGrid" class="col-xs-12">
+                <input type="hidden" id="esCoaching"/>
+                <div class="col-xs-12 tituloEquiposGrid">
+                    <div class="col-xs-12 dashboardBadgeTitles">
+                        Equipos
+                        @if (totalEquipos > 0)
+                        {
+                            if (escoaching)
+                            {
+                                <button id="btnNewTeamPanel" class="btn btn-default pull-right" onclick="newTeam()" style="display: none;">Crear Nuevo Equipo</button>
+                            }
+                            else
+                            {
+                                <button id="btnNewTeamPanel" class="btn btn-default pull-right" onclick="newTeam()">Crear Nuevo Equipo</button>
+                            }
+                        }
+                        else
+                        {
+                            <button id="btnNewTeamPanel" class="btn btn-default pull-right" onclick="newTeam()">Crear Nuevo Equipo</button>
+                        }
+                    </div>
+                </div>
+
+                <div class="col-xs-12 equiposGrid">
+                    @Html.Action("_Equipos_Grid", "AdminEquipos")
+                </div>
+
+            </div>
+            <div id="divEquipoNuevoEdit" class="col-xs-12">
+                <div class="col-xs-12">
+                    <button id="btnGridEquipos" type="button" class="btn btn-link mLink2" onclick="fnshowTeamDetails()">
+                        Regresar a la lista de equipos
+                    </button>
+                    
+                </div>
+                <div id="_divEquipoNuevoEdit">
+                 
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

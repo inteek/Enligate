@@ -1,0 +1,75 @@
+﻿@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@using sw_EnligateWeb.Models.HelperClasses;
+
+@{
+    var gvRequests = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvJugadoresGrid";
+        settings.CallbackRouteValues = new { Controller = "AdminEquipos", Action = "_Jugadores_Grid_Callback" };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+
+        //Styles
+        settings.Styles.GroupPanel.CssClass = "gvGroupPanel";
+        settings.Styles.Header.CssClass = "gvHeader";
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.AlternatingRow.CssClass = "gvRowAlternative";
+        settings.Styles.SelectedRow.CssClass = "gvRowSelected";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        settings.KeyFieldName = "jugUserId";
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "jugNombre";
+            col.Caption = "NOMBRE";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "jugCorreo";
+            col.Caption = "CORREO";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "jugFechaCreacionUTC";
+            col.Caption = "FECHA CREACION";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "Editar";
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-edit\" onclick=\"modalJugadoresEdit(this)\"\"></span>"));
+            });
+        });
+        //Paging
+        settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 100;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 200;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+
+        //Rows
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        //Callbacks
+        settings.ClientSideEvents.BeginCallback = "gvJugadoresGrid_BeginCallback";
+    });
+
+    if (ViewData["EditError"] != null)
+    {
+        gvRequests.SetEditErrorText((string)ViewData["EditError"]);
+    }
+
+    gvRequests.Bind(Model).GetHtml();
+}

@@ -1,0 +1,98 @@
+﻿@using sw_EnligateWeb.Models;
+
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyLogin">
+                <div class="container-fluid">
+                    <div class="row row-eq-height">
+                        <div class="col-xs-12 col-sm-5 mlMember">
+                            @using (Ajax.BeginForm("_LoginForm", "Account", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "frmLogin", OnComplete = "showMessages();" }))
+                            {
+                                <fieldset id="frmLogin">
+                                    @Html.Partial("Account/_LoginForm", new LoginViewModel())
+                                </fieldset>
+                            }
+                        </div>
+                        <div class="col-xs-12 col-sm-7">
+                            @using (Ajax.BeginForm("_RegisterForm", "Account", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "frmRegister", OnComplete = "showMessages();" }))
+                            {
+                                <fieldset id="frmRegister">
+                                    @Html.Partial("Account/_RegisterForm", new RegisterViewModel())
+                                </fieldset>
+                            }
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mlSocialNetworks">
+                            <div class="col-md-12 text-center">
+                                @using (Html.BeginForm("_LoginFormSocialNetworks", "Account", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "frmSocialNetworks" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.Hidden("returnUrl", (ViewBag.ReturnUrl != null) ? (string)ViewBag.ReturnUrl : null, new { @class = "loginHidReturnUrl" })
+                                    <div class="col-xs-12 mlSocialNetworksLbl mlLabels">
+                                        También puedes registrarte por:
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 paddingLRZero-XS">
+                                        <button type="submit" class="btn m-btnLoginNetworks m-btnFacebook width100" name="provider" value="Facebook">
+                                            <img src="~/Content/Images/general/logoFacebook.png" alt="F" width="30" />
+                                            <span class="hidden-xs hidden-sm">Sign up with</span> Facebook
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 paddingLRZero-XS">
+                                        <button type="submit" class="btn m-btnLoginNetworks m-btnGoogle width100" name="provider" value="Google">
+                                            <img src="~/Content/Images/general/logoGmail.png" alt="G" width="30" />
+                                            <span class="hidden-xs hidden-sm">Sign up with</span> Google
+                                        </button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalPassRecovery" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyLogin">
+                <div class="container-fluid">
+                    <div class="row row-eq-height">
+                        <div class="col-xs-12 col-sm-12">
+                            @using (Ajax.BeginForm("_PasswordRecoveryForm", "Account", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "frmPasswordRecoveryForm", OnComplete = "showMessages();" }))
+                            {
+                                <fieldset id="frmPasswordRecoveryForm">
+                                    @Html.Partial("Account/_PasswordRecoveryForm", new ForgotPasswordViewModel())
+                                </fieldset>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.showLogin != null && (bool)ViewBag.showLogin == true)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#modalLogin").modal({
+                show: true,
+                backdrop: false
+            })
+            showMessages();
+        });
+    </script>
+}

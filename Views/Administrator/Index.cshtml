@@ -1,0 +1,257 @@
+﻿@using sw_EnligateWeb.Models;
+@model IndexAdministratorViewModel
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<!--DevExpress Functions -->
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        gvIndexGVRequestsPerformCallback();
+        gvIndexGVLastUsersTestingPerformCallback();
+        gvIndexGVLastPaymentsPerformCallback();
+        gvIndexGVLastNewsPerformCallback();
+    });
+
+    // ------Solicitudes de ligas------
+
+    function gvIndexGVRequestsPerformCallback(s, e) {
+        if (typeof gvIndexLastRequests.InCallback === "function") {
+            //if (!gvIndexLastRequests.InCallback())
+            gvIndexLastRequests.PerformCallback();
+        }
+    }
+
+    function fnIndexGVRequests_RowDblClick(s, e) {
+        s.GetRowValues(e.visibleIndex, 'ligId', function (value) {
+            $(".indexLeagueId").val(value);
+            $("form#frmIndexSolicitudDetail").submit();
+        });
+    }
+
+    function fnIndexGVRequests_RowClick(s, e) {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            fnIndexGVRequests_RowDblClick(s, e);
+        }
+    }
+    function fnDetailsPayment_RowDblClick(s, e) {
+        s.GetRowValues(e.visibleIndex, 'ligId', function (value) {
+           // alert("Detalles de Pago" + value);
+            detallesPago(value);
+
+        });
+    }
+    // ------Solicitudes de ligas END------
+
+
+    // ------Otros grids------
+
+    function fnIndexGVIndex_RowDblClick(s, e) {
+        alert("Cambiar de pantalla donde se muestren los detalles de la liga");
+        //s.GetRowValues(e.visibleIndex, 'ligId', function (value) {
+        //Hacer post a la pagina donde se muestra la solicitud.
+        //alert("Cambiar de pantalla donde se muestren los detalles de la liga");
+        //});
+    }
+
+    function fnIndexGVIndex_RowClick(s, e) {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            fnIndexGVIndex_RowDblClick(s, e);
+        }
+    }
+
+    function gvIndexGVLastUsersTestingPerformCallback(s, e) {
+        if (typeof gvIndexLastUsersTestingGrid.InCallback === "function") {
+            //if (!gvIndexLastUsersTestingGrid.InCallback())
+            gvIndexLastUsersTestingGrid.PerformCallback();
+        }
+    }
+
+    function gvIndexGVLastPaymentsPerformCallback(s, e) {
+        if (typeof gvIndexLastPayments.InCallback === "function") {
+            //if (!gvIndexLastPayments.InCallback())
+            gvIndexLastPayments.PerformCallback();
+        }
+    }
+
+    function gvIndexGVLastNewsPerformCallback(s, e) {
+        if (typeof gvIndexLastPayments.InCallback === "function") {
+            //if (!gvIndexLastNews.InCallback())
+            gvIndexLastNews.PerformCallback();
+        }
+    }
+
+    // ------Otros grids END------
+    
+</script>
+
+<!-- Content -->
+<div id="ADMINISTRADOR_Dashboard" class="row">
+    <div id="ADMINISTRADOR_Dashboard_Dashboard" class="col-xs-12 mSpaceMt10">
+        
+        <div class="col-xs-12 col-sm-6 col-lg-4 mSpaceMb20">
+            <div class="col-xs-12">
+                <div class="col-xs-12 dashboardBadgeTitles">
+                    SOLICITUDES NUEVAS <span class="badge">@Model.iadTotalNuevasSolicitudes.ToString()</span>
+                    <form id="frmIndexSolicitudDetail" action="@Url.Action("Requests", "Administrator")" method="post" style="display:none;">
+                        <input type="hidden" name="Id" class="indexLeagueId" />
+                    </form>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                @Html.Action("IndexLastRequestsGrid")
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-lg-4 mSpaceMb20">
+            <div class="col-xs-12">
+                <div class="col-xs-12 dashboardBadgeTitles">
+                    USUARIOS EN PRUEBA
+                </div>
+            </div>
+            <div class="col-xs-12">
+                @Html.Action("IndexLastUsersTestingGrid")
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-lg-4 mSpaceMb20">
+            <div class="col-xs-12">
+                <div class="col-xs-12 dashboardBadgeTitles">
+                    ULTIMOS PAGOS
+                </div>
+            </div>
+            <div class="col-xs-12">
+                @Html.Action("IndexLastPaymentsGrid")
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-12 col-lg-12 mSpaceMb20">
+            <div class="col-xs-12">
+                @Html.Action("IndexLastNewsGrid")
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--Modal Detalles-->
+<div class="modal fade" id="detallesPagosModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body ">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-9 pull-right">
+                            <div class="col-xs-12">
+                                <h2>Detalles de Pago</h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Liga:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="nameLiga"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Transaccion:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="transaccion"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Usuaio:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="usuario"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Referencia:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="referencia"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Concepto Pago:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="concepto"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Metodo de Pago:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="metodo"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Fecha de Pago:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="fecha"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Total:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="total"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden m-messageHide">
+        @Html.Partial("_ModalState_Errors")
+    </div>
+
+</div>
+
+@section scripts{
+    <script>
+        function detallesPago(id) {
+            $.ajax({
+                url: "/AdminLigas/_DetallesPago",
+                type: "POST",
+                cache: false,
+                data: "ligId=" + id,
+                success: function (data) {
+                    var item = data[0];
+                    console.log(data);
+                    $("#nameLiga").text(item.ligNombre);
+                    $("#usuario").text(item.userNombre);
+                    $("#transaccion").text(item.IdTransaccion);
+                    $("#concepto").text(item.conceptoPago != null ? item.conceptoPago : "Pago de " + item.ligNombre);
+                    $("#metodo").text(item.metodoPago);
+                    $("#referencia").text(item.referencia);
+                    $("#fecha").text(item.fechaPago);
+                    $("#total").text("$ " + item.total / 100 + " MXN");
+                    $("#detallesPagosModal").modal();
+
+                },
+            })
+        };
+    </script>
+}

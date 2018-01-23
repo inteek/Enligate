@@ -1,0 +1,41 @@
+﻿@using sw_EnligateWeb.Models;
+
+<!-- Logo and Balls-->
+<div class="hidden-xs homeLogoIcons">
+    @{
+        foreach (schemaDeportes deporte in (List<schemaDeportes>)ViewBag.afa_DeportesActive)
+        {
+            <a href='@Url.Action("Index", new { id = @deporte.depNombre })' title="@deporte.depNombre">
+                <img src="~/Content/Images/balls/@deporte.depIcono" alt="@deporte.depNombre" class="imgBalls" />
+            </a>
+        }
+
+        <div id="ballsMenuXS">
+            <ul class="nav navbar-nav navbar-right visible-xs">
+                <li class="hdMenuBallsXS">
+                    <ul>
+                        @{
+                            foreach (schemaDeportes deporte in (List<schemaDeportes>)ViewBag.afa_DeportesActive)
+                            {
+                                <li>
+                                    <a href='@Url.Action("Index", new { id = @deporte.depNombre })' title="@deporte.depNombre">
+                                        <img src="~/Content/Images/balls/@deporte.depIcono" alt="@deporte.depNombre" class="imgBalls" />
+                                    </a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("div.ballsMenuXS").first().html($("#ballsMenuXS").html());
+    });
+</script>
+
+
+

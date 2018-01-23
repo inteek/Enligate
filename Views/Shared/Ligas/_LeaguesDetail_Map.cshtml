@@ -1,0 +1,88 @@
+﻿@using sw_EnligateWeb.Models;
+@model LeaguesActiveDetailViewModel
+
+@{
+    string divMapId = "mapGoogle" + ViewBag.gMapId.ToString();
+    string fnInit = "initMap" + ViewBag.gMapId.ToString() + "()";
+}
+
+<div id="@divMapId" class="col-xs-12 googleMap" style="height:100%; width:100%;">
+</div>
+
+<script type="text/javascript">
+
+    function @fnInit {
+        var map;
+        var markers = [];
+
+        var mapDiv = document.getElementById('@divMapId');
+        map = new google.maps.Map(mapDiv, {
+            center: new google.maps.LatLng(19.425153718960143, -99.1351318359375), //Cd. de México
+            zoom: 7,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: false,
+            streetViewControl: false
+        });
+
+        @{
+            if(Model.ligLiga.ligLatitud != null && Model.ligLiga.ligLongitud != null)
+            {
+                <text>
+        var latLng = new google.maps.LatLng(@Model.ligLiga.ligLatitud , @Model.ligLiga.ligLongitud);
+        map.setCenter(latLng);
+        map.setZoom(15); //Estaba en 12
+        addMarker(latLng);
+        </text>
+            }
+            else
+            {
+                <text>
+        var geocoder = new google.maps.Geocoder();
+        var address = '@Model.ligLiga.ligDomicilio';
+        geocoder.geocode({
+            'address': address
+        },
+            function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    result = results[0].geometry.location;
+                    map.setCenter(result);
+                    map.setZoom(15);
+                    addMarker(result);
+                }
+            });
+        </text>
+            }
+        }
+
+        //map.addListener('click', function (event) {
+        //    addMarker(event.latLng);
+        //});
+
+        function addMarker(location) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+            clearMarkers();
+            markers.push(marker);
+        }
+
+        function setMarkers(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+
+        function clearMarkers() {
+            setMarkers(null);
+            markers = [];
+        }
+
+    }
+
+    $(document).ready(function(){
+        setTimeout(function () { @{<text>@fnInit</text>}; }, 1000);
+    });
+
+
+</script>

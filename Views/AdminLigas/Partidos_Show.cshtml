@@ -1,0 +1,47 @@
+﻿@model IEnumerable<sw_EnligateWeb.Models.schemaPartidos>
+
+<div id="ADMINISTRADORDELIGAS_Torneos" class="row">
+    <div id="ADMINISTRADORDELIGAS_Torneos_Partidos" class="col-sm-12">
+
+        <div class="col-xs-10 col-lg-offset-1">
+            <table class="table">
+                <tr>
+                    <td></td>
+                    <th>
+                        Equipo1
+                    </th>
+                    <th>
+
+                    </th>
+                    <th>
+                        Equipo 2
+                    </th>
+                    <th>
+                        Fecha y Hora
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td></td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.equNombreEquipoUno)
+                        </td>
+                        <td class="text-left">
+                            VS
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.equNombreEquipoDos)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.parFecha)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+    </div>
+</div>

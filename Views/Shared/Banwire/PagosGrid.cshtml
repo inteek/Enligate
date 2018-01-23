@@ -1,0 +1,106 @@
+﻿@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+
+@{
+    var gvRequests = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvPagos";
+        settings.CallbackRouteValues = new { Controller = "AdminLigas", Action = "_PagosGrid_Callback" };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+        //Styles
+        settings.Styles.GroupPanel.CssClass = "gvGroupPanel";
+        settings.Styles.Header.CssClass = "gvHeader";
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.AlternatingRow.CssClass = "gvRowAlternative";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        settings.KeyFieldName = "conceptoId";
+        /*        settings.Columns.Add(column =>
+        {
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(string.Format("<button type = \"button\" class=\"btn btn-large btn-default pull-left\" onclick=\"_PartidosEdit(" + c.KeyValue + ")\"\"><span class=\"glyphicon glyphicon-edit\" ></span>Editar</span></button>"));
+                ViewContext.Writer.Write(string.Format("<button type = \"button\" class=\"btn btn-large btn-danger pull-right\" onclick=\"_PartidosDelete(" + c.KeyValue + ")\"\"><span class=\"glyphicon glyphicon-remove\" ></span>Borrar</span></button>"));
+            });
+        });*/
+        settings.Columns.Add(col =>
+        {
+
+            col.FieldName = "conceptoNombre";
+            col.Caption = "LIGA";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "userName";
+            col.Caption = "USUARIO";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "total";
+            col.Caption = "TOTAL";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "estado";
+            col.Caption = "ESTADO";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "fechaPago";
+            col.Caption = "FECHA MOVIMIENTO";
+        });
+        settings.Columns.Add(column =>
+        {
+
+            column.SetDataItemTemplateContent(c =>
+            {
+               
+                string status = DataBinder.Eval(c.DataItem, "estado") as string;
+                string adminVIew = DataBinder.Eval(c.DataItem, "adminView") as string;
+
+                //     ViewContext.Writer.Write(string.Format("<button type = \"button\" class=\"btn btn-large btn-default pull-left\" onclick=\"_PartidosEdit(" + c.KeyValue + ")\"\"><span class=\"glyphicon glyphicon-edit\" ></span>Editar</span></button>"));
+                if (status=="Pagado")
+                {
+                    ViewContext.Writer.Write(string.Format("<button type = \"button\" class=\"btn btn-large btn-default\" onclick=\"detallesPago(" + c.KeyValue + ")\"\"><span class=\"glyphicon glyphicon-fees-payments\" ></span>Detalles</span></button>"));
+
+                }else if (status != "Pagado" && adminVIew != "true")
+                {
+                    ViewContext.Writer.Write(string.Format("<button type = \"button\" class=\"btn btn-large btn-default\" onclick=\"pagar(" + c.KeyValue + ")\"\"><span class=\"glyphicon glyphicon-fees-payments\" ></span>Pagar</span></button>"));
+                }
+            });
+        });
+
+        //Paging
+        settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 5;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 200;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+
+        //Rows
+        settings.SettingsBehavior.AllowSelectByRowClick = false;
+
+        //Callbacks
+        //settings.ClientSideEvents.BeginCallback = "fnGVPartidos_OnBeginCallback";
+    });
+
+    if (ViewData["EditError"] != null)
+    {
+        gvRequests.SetEditErrorText((string)ViewData["EditError"]);
+    }
+
+    gvRequests.Bind(Model).GetHtml();
+}

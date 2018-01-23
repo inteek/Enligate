@@ -1,0 +1,62 @@
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@using sw_EnligateWeb.Models.HelperClasses;
+
+@{
+    var gvRequests = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvIndexLastUsersTestingGrid";
+        settings.CallbackRouteValues = new { Controller = "Administrator", Action = "_IndexLastUsersTestingGrid" };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+        //Styles
+        settings.Styles.GroupPanel.CssClass = "gvGroupPanel";
+        settings.Styles.Header.CssClass = "gvHeader";
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.AlternatingRow.CssClass = "gvRowAlternative";
+        settings.Styles.SelectedRow.CssClass = "gvRowSelected";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        settings.KeyFieldName = "uteId";
+        settings.Columns.Add(col => {
+            col.FieldName = "uteNombre";
+            col.Caption = "NOMBRE";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "uteDiasRestantes";
+            col.Caption = "DIAS RESTANTES";
+        });
+        
+        
+        //Paging
+        settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 15;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 200;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        
+        //Rows
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+        
+        //Callbacks
+        settings.ClientSideEvents.RowDblClick = "fnIndexGVIndex_RowDblClick";
+        settings.ClientSideEvents.RowClick = "fnIndexGVIndex_RowClick";
+    });
+   
+    if (ViewData["EditError"] != null){
+        gvRequests.SetEditErrorText((string)ViewData["EditError"]);
+    }
+    
+    gvRequests.Bind(Model).GetHtml();
+}

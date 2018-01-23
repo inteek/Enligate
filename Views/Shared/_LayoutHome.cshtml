@@ -1,0 +1,227 @@
+﻿@using sw_EnligateWeb.Models;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title - Enligate</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Sonetworks" />
+    <meta name="description" content="" />
+
+    <link rel="icon" type="image/png" href="~/Content/Images/general/logo-xs.png">
+
+    @Styles.Render("~/Theme/Default")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("head", required: false)
+    @Html.DevExpress().GetStyleSheets(
+        new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.GridView }
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.PivotGrid },
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.Chart },
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.Report },
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler },
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.TreeList },
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit },
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.Spreadsheet },
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.SpellChecker }
+    )
+</head>
+<body class="wrapper">
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Html.DevExpress().GetScripts(
+        new Script { ExtensionSuite = ExtensionSuite.HtmlEditor },
+        new Script { ExtensionSuite = ExtensionSuite.GridView }
+    //new Script { ExtensionSuite = ExtensionSuite.Editors },
+    //new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+    //new Script { ExtensionSuite = ExtensionSuite.PivotGrid },
+    //new Script { ExtensionSuite = ExtensionSuite.Chart },
+    //new Script { ExtensionSuite = ExtensionSuite.Report },
+    //new Script { ExtensionSuite = ExtensionSuite.Scheduler },
+    //new Script { ExtensionSuite = ExtensionSuite.TreeList },
+    //new Script { ExtensionSuite = ExtensionSuite.RichEdit },
+    //new Script { ExtensionSuite = ExtensionSuite.Spreadsheet },
+    //new Script { ExtensionSuite = ExtensionSuite.SpellChecker }
+    )
+
+    <!-- --------------------- MESSAGE BOX ----------------------- -->
+    <div class="m-messageShow">
+        @*@Html.Partial("_ModalState_Errors")*@
+    </div>
+
+    @*<div class="hidden m-messageHide">
+        @Html.Partial("_ModalState_Errors")
+    </div>*@
+    <!-- --------------------- END MESSAGE BOX ----------------------- -->
+
+    <!-- ---------------------NAVIGATION MENU--------------------- -->
+    <nav class="navbar navbar-link  m-navbar-homeDashboard">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-Menu" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="visible-xs visible-sm" href='@Url.Action("Index", "Home", new { id = "" })'>
+                    <img src='~/Content/Images/general/logo-xs.png' logo-xs title="Enligate" class="hdLogoXS" />
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-Menu">
+
+                <div class="hdLogo">
+                    <a href='@Url.Action("Index", "Home", new { id = "" })' title="Logo" class="hidden-xs  hidden-sm">
+                        <img src="~/Content/Images/general/logoMd.png" alt="Enligate_Logo" class="imgLogo" />
+                    </a>
+                </div>
+
+                @if (!Request.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav m-navbar-LoginMenu lineRight">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#modalLogin">
+                                Inscribete
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#modalLogin">
+                                Ingresa
+                            </a>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="nav navbar-nav m-navbar-LoginMenu lineRight">
+                        <li>
+                            <a href='@Url.Action("Index", "Admin")'>
+                                @*<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>*@
+
+                                Hola @ViewBag.afa_usrName
+                            </a>
+                        </li>                        
+                    </ul>
+                }
+
+                <ul class="nav navbar-nav navbar-right">
+               
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-target="ddMenu-InscribeLigas" aria-haspopup="true" aria-expanded="false">
+                            +Inscribe tu liga
+                        </a>
+                        <ul class="dropdown-menu" id="ddMenu-InscribeLigas">
+                            @{
+                                foreach (var lcaTipoLiga in (List<schemaLigaCategorias>)ViewBag.afa_LigaCategorias)
+                                {
+                                    <li>
+                                        <form action="@Url.Action("Index", "Home")" method="GET">
+                                            <input type="hidden" name="id" value="@ViewBag.id">
+                                            <input type="hidden" name="ReturnUrl" value="@Url.Action("InscribirLigag", "Home", new { tipoLiga = lcaTipoLiga.lcaId })">
+                                            <button type="submit" class="btn btn-Link layoutBtnInscribeLiga">
+                                                @lcaTipoLiga.lcaCategoria
+                                            </button>
+                                        </form>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                                @if (Request.IsAuthenticated)
+                                {
+                                    
+                    @Html.Partial("_ChangeCurrentRol")
+
+                                }
+                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-target="ddMenu-Other" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-cog glyphiconWheel"></span>
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-right" id="ddMenu-Other">
+                            <li>@Html.ActionLink("Nosotros", "AboutUs", "Home")</li>
+                            <li>@Html.ActionLink("FAQ", "FAQs", "Home")</li>
+                            @if (Request.IsAuthenticated)
+                            {
+                                <li>@Html.ActionLink("Salir", "LogOut", "Account")</li>
+                            }                            
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="ballsMenuXS"></div>
+            </div>
+        </div>
+    </nav>
+    <!-- ---------------------END NAVIGATION MENU--------------------- -->
+
+    <div class="container-fluid mSpaceMb20">
+        @RenderBody()
+    </div>   
+
+    @if (!Request.IsAuthenticated)
+    {
+        @Html.Partial("Account/_Login")
+    }
+
+    
+    @Scripts.Render("~/bundles/bootstrap")
+    @*
+        @Scripts.Render("~/bundles/jqueryAjax")
+        @Scripts.Render("~/bundles/jqueryval")
+    *@
+    <script src="~/Scripts/sw_EnligateWeb.js?1.0"></script>
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+
+        function fnSubmitToLeagueRequest(league) {
+            $("#_Layout-ToLeagueRequestLeague").val(league)
+            $("#_Layout-ToLeagueRequest").submit();
+        }
+        function messengeError(getMsg) {
+
+            var msg = '<div id="modal_error" class="alert alert-danger alert-dismissible" role="alert">';
+            msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+            msg += '<span aria-hidden="true">&times;</span></button>' + getMsg + '</div>';
+
+            $(".m-messageHide").html(msg);
+
+            showMessages();
+        }
+
+        function messengeSuccess(getMsg) {
+
+            var msg = '<div id="confirmEmailForm_ModalStateErrors" class="alert alert-success alert-dismissible" role="alert">';
+            msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+            msg += getMsg + '</div>';
+
+            $(".m-messageHide").html(msg);
+
+            showMessages();
+        }
+        function messengeInfo(getMsg) {
+
+            var msg = '<div id="confirmEmailForm_ModalStateErrors" class="alert alert-info alert-dismissible" role="alert">';
+            msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+            msg += getMsg + '</div>';
+
+            $(".m-messageHide").html(msg);
+
+            showMessages();
+        }
+        $(document).ready(function () {
+            
+        });
+    </script>
+
+    @Html.Partial("_UpdateProgressPanel")
+    
+</body>
+</html>

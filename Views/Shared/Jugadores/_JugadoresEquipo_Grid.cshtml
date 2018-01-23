@@ -1,0 +1,289 @@
+@using sw_EnligateWeb.Models;
+@using System.Web.UI.WebControls;
+
+@{
+    var gvRequestsJugadores = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvJugadores";
+        settings.CallbackRouteValues = new { Controller = "AdminEquipos", Action = "_EquipoJugadoresGrid_Callback" };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+        //Styles
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.SelectedRow.CssClass = "gvRowSelected";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        settings.KeyFieldName = "rowId";
+        settings.SetDataRowTemplateContent(c =>
+        {
+            bool edit = (bool)DataBinder.Eval(c.DataItem, "edit");
+            var disabled = "";
+            if (!edit)
+                disabled = @"disabled";
+            string btnConfirmado = @"<div class='dropup'>
+                                      <span class='text-success'> Confirmado </span>
+                                      <button type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' class='btn btn-link mColorGrisObscuro mNoDecoration' title='Acepto invitacion'" + disabled + @">
+                                        <img src='../Content/Images/jugConfirmado.png' alt='Torneo' width='15'/>
+                                        <small class='glyphicon glyphicon-menu-up'></small>
+                                      </button>
+                                      <ul class='dropdown-menu dropdown-menu-right'>
+                                        <!--
+                                        <li class='text-center'>
+                                            <button type='button' class='btn btn-link paddingLRZero mColorNegro' onclick='fnGVJugadores_ManejarCuenta(&#39;{0}&#39;);'>
+                                                Manejar cuenta
+                                            </button>
+                                        </li>
+                                        -->
+                                        <li class='text-center'>
+                                            <button type='button' class='btn btn-link paddingLRZero mColorRojo' onclick='fnGVJugadores_EliminarJugador(&#39;{0}&#39;);'>
+                                                Eliminar jugador
+                                            </button>
+                                        </li>
+                                      </ul>
+                                    </div>";
+            string btnRechazo = @"<div class='dropup'>
+                                      <span class='text-danger'> Rechazado </span>
+                                      <button type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' class='btn btn-link mColorGrisObscuro mNoDecoration' title='Rechazo invitacion'" + disabled + @">
+                                        <img src='../Content/Images/jugRechazo.png' alt='Torneo' width='15'/>
+                                        <small class='glyphicon glyphicon-menu-up'></small>
+                                      </button>
+                                      <ul class='dropdown-menu dropdown-menu-right'>
+                                        <li class='text-center'>
+                                            <button type='button' class='btn btn-link paddingLRZero mColorNegro' onclick='fnGVJugadores_VolverInvitar(&#39;{0}&#39;);'>
+                                                Volver a invitar
+                                            </button>
+                                        </li>
+                                        <li class='text-center'>
+                                            <button type='button' class='btn btn-link paddingLRZero mColorRojo' onclick='fnGVJugadores_EliminarJugador(&#39;{0}&#39;);'>
+                                                Eliminar jugador
+                                            </button>
+                                        </li>
+                                      </ul>
+                                    </div>";
+            string btnPendiente = @"<div class='dropup'>
+                                      <span class='text-warning'> Pendiente </span>
+                                      <button type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' class='btn btn-link mColorGrisObscuro mNoDecoration' title='Pendiente'" + disabled + @">
+                                        <img src='../Content/Images/jugPendiente.png' alt='Torneo' width='15'/>
+                                        <small class='glyphicon glyphicon-menu-up'></small>
+                                      </button>
+                                      <ul class='dropdown-menu dropdown-menu-right'>
+                                        <li class='text-center'>
+                                            <button type='button' class='btn btn-link paddingLRZero mColorNegro' onclick='fnGVJugadores_VolverInvitar(&#39;{0}&#39;);'>
+                                                Volver a invitar
+                                            </button>
+                                        </li>
+                                        <li class='text-center'>
+                                            <button type='button' class='btn btn-link paddingLRZero mColorRojo' onclick='fnGVJugadores_EliminarJugador(&#39;{0}&#39;);'>
+                                                Eliminar jugador
+                                            </button>
+                                        </li>
+                                      </ul>
+                                    </div>";
+
+            string btnPendienteNuevo = @"<div class='dropup'>
+                                            <span class='text-warning'> Sin Confirmar </span>
+                                            <button type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' class='btn btn-link mColorGrisObscuro mNoDecoration' title='Pendiente'" + disabled + @">
+                                                <img src='../Content/Images/jugPendiente.png' alt='Torneo' width='15'/>
+                                                <small class='glyphicon glyphicon-menu-up'></small>
+                                            </button>
+                                            <ul class='dropdown-menu dropdown-menu-right'>
+                                                <li class='text-center'>
+                                                    <button type='button' class='btn btn-link paddingLRZero mColorRojo' onclick='fnGVJugadores_EliminarJugador(&#39;{0}&#39;);'>
+                                                        Eliminar jugador
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                         </div>";
+
+
+            var jug = (JugadorPerfilViewModel)DataBinder.Eval(c.DataItem, "jug1");
+            var imgNoPhoto = Url.Content("~/Content/Images/general/noPhoto.jpg");
+            var img1 = jug.jugImg;
+            img1 = (img1 == null) ? imgNoPhoto : "/" + img1.Replace(Server.MapPath("~"), "").Replace("\\", "/");
+            var nombre1 = jug.jugNombre;
+            if (nombre1 == null || nombre1 == "")
+                nombre1 = "Perfil sin nombre";
+            var genero1 = jug.jugGenero;
+            var fechaNac1 = jug.jugFechaNacimiento;
+            string fechaNac1Str = (fechaNac1 == null) ? "" : ((DateTime)fechaNac1).ToString("dd/MM/yyyy");
+            var ciudad1 = jug.jugCiudad;
+            var telefono1 = jug.jugTelefono;
+            var correo1 = jug.jugCorreo;
+            var nuevo1 =jug.jugNuevo;
+            var confirmado1 =jug.jugConfirmado;
+            var jugCodConfirmacion1 = jug.jugCodConfirmacion;
+            var estatus1 = jug.jugEstatus;
+            var icono1 = "";
+            if (nuevo1 && !confirmado1)
+            {
+                if (!jugCodConfirmacion1)
+                {
+                    icono1 = string.Format(btnPendienteNuevo, correo1);
+                }
+                else
+                {
+                    icono1 = string.Format(btnPendiente, correo1);
+                }
+            }
+            else if (!nuevo1 && confirmado1)
+                icono1 = string.Format(btnConfirmado, correo1);
+            else if (!nuevo1 && !confirmado1)
+                icono1 = string.Format(btnRechazo, correo1);
+
+
+            jug = (JugadorPerfilViewModel)DataBinder.Eval(c.DataItem, "jug2");
+            bool jug2Show = (jug.jugCorreo == null) ? false : true; ;
+            var img2 = jug.jugImg;
+            img2 = (img2 == null) ? imgNoPhoto : "/" + img2.Replace(Server.MapPath("~"), "").Replace("\\", "/");
+            var nombre2 = jug.jugNombre;
+            if (nombre2 == null || nombre2 == "")
+                nombre2 = "Perfil sin nombre";
+            var genero2 = jug.jugGenero;
+            var fechaNac2 = jug.jugFechaNacimiento;
+            string fechaNac2Str = (fechaNac2 == null) ? "" : ((DateTime)fechaNac2).ToString("dd/MM/yyyy");
+            var ciudad2 = jug.jugCiudad;
+            var telefono2 = jug.jugTelefono;
+            var correo2 = jug.jugCorreo;
+            var nuevo2 = jug.jugNuevo;
+            var confirmado2 = jug.jugConfirmado;
+            var jugCodConfirmacion2 = jug.jugCodConfirmacion;
+            var estatus2 = jug.jugEstatus;
+            var icono2 = "";
+            if (nuevo2 && !confirmado2)
+            {
+                if (!jugCodConfirmacion2)
+                {
+                    icono2 = string.Format(btnPendienteNuevo, correo2);
+                }
+                else
+                {
+                    icono2 = string.Format(btnPendiente, correo2);
+                }
+            }
+
+            else if (!nuevo2 && confirmado2)
+                icono2 = string.Format(btnConfirmado, correo2);
+            else if (!nuevo2 && !confirmado2)
+                icono2 = string.Format(btnRechazo, correo2);
+            
+
+            ViewContext.Writer.Write(@"
+                <div class='row row-eq-height mSpaceMt10'>");
+
+            ViewContext.Writer.Write(@"
+                    <div class='well col-sm-12 col-md-6'>
+                        <div class='col-xs-12'>
+                            <div class='col-xs-12 col-sm-12 col-md-4 paddingLRZero'>
+                                <div class='col-xs-12 col-sm-12 hgRowsImage'>
+                                    <img src='" + img1 + "' alt='Torneo' />" +
+                                @"</div>
+                            </div>
+                            <div class='col-xs-12 col-sm-12 col-md-8 paddingLRZero'>
+                                <div class='col-xs-12 mSpaceMt5 mSpaceMb5'>
+                                    <span class='hgRowTitle'>" + nombre1 + @"</span>
+                                </div>
+                                <div class='col-xs-12 mSpaceMt5 mSpaceMb5'>
+                                    <span> 
+                                        Genero:
+                                        <button class='mSwitchBtns mSwitchBtnsLeft' data-relclass='profileGenero" + correo1 + @"' data-val='F' type='button' disabled='disabled' title='Femenino'>F</button>
+                                        <button class='mSwitchBtns mSwitchBtnsRight' data-relclass='profileGenero" + correo1 + @"' data-val='M' type='button' disabled='disabled' title='Masculino'>M</button>
+                                        <input  type='hidden' value='" + genero1 + @"' data-relclass='profileGenero" + correo1 + @"' data-defaultval='" + genero1 + @"'>
+                                    </span>
+                                </div>
+                                <div class='col-xs-12 mSpaceMt5 mSpaceMb5'>
+                                    <span> Fecha de nacimiento: " + fechaNac1Str + @"</span>
+                                </div>
+                                <div class='col-xs-12 mSpaceMt5 mSpaceMb5'>
+                                    <span>Ciudad: " + ciudad1 + @"</span>
+                                </div>
+                                <div class='col-xs-12 mSpaceMt5 mSpaceMb5'>
+                                    <span> Telefono: " + telefono1 + @"</span>
+                                </div>
+                                <div class='col-xs-12 mSpaceMt5 mSpaceMb10'>
+                                    <span> Correo: " + correo1 + @"</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='btnActionPlayer' style='position:absolute; right: 0; bottom: 0;'>
+                            <span>" + icono1 + @"</span>
+                        </div>
+                    </div>");
+
+            if(jug2Show)
+            {
+                ViewContext.Writer.Write(@"
+                    <div class='well col-sm-12 col-md-6'>
+                        <div class='col-xs-12'>
+                            <div class='col-xs-12 col-sm-12 col-md-4 paddingLRZero'>
+                                <div class='col-xs-12 col-sm-12 hgRowsImage'>
+                                    <img src='" + img2 + "' alt='Torneo' />" +
+                                @"</div>
+                            </div>
+                            <div class='col-xs-12 col-sm-12 col-md-8 paddingLRZero'>
+                                <div class='col-xs-12 mSpaceMt5 mSpaceMb5'>
+                                    <span class='hgRowTitle'>" + nombre2 + @"</span>
+                                </div>
+                                <div class='col-xs-12 mSpaceMt5 mSpaceMb5'>
+                                    <span> 
+                                        Genero:
+                                        <button class='mSwitchBtns mSwitchBtnsLeft' data-relclass='profileGenero" + correo2 + @"' data-val='F' type='button' disabled='disabled' title='Femenino'>F</button>
+                                        <button class='mSwitchBtns mSwitchBtnsRight' data-relclass='profileGenero" + correo2 + @"' data-val='M' type='button' disabled='disabled' title='Masculino'>M</button>
+                                        <input  type='hidden' value='" + genero2 + @"' data-relclass='profileGenero" + correo2 + @"' data-defaultval='" + genero2 + @"'>
+                                    </span>
+                                </div>
+                                <div class='col-xs-12 mSpaceMt5 mSpaceMb5'>
+                                    <span> Fecha de nacimiento: " + fechaNac2Str + @"</span>
+                                </div>
+                                <div class='col-xs-12 mSpaceMt5 mSpaceMb5'>
+                                    <span>Ciudad: " + ciudad2 + @"</span>
+                                </div>
+                                <div class='col-xs-12 mSpaceMt5 mSpaceMb5'>
+                                    <span> Telefono: " + telefono2 + @"</span>
+                                </div>
+                                <div class='col-xs-12 mSpaceMt5 mSpaceMb10'>
+                                    <span> Correo: " + correo2 + @"</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='btnActionPlayer' style='position:absolute; right: 0; bottom: 0;'>
+                            <span>" + icono2 + @"</span>
+                        </div>
+                    </div>");
+            }
+            ViewContext.Writer.Write(@" 
+                </div>");
+        });
+
+        //Paging
+        settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 5;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 440;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+
+        //Rows
+        settings.Settings.ShowColumnHeaders = false;
+        settings.SettingsBehavior.AllowSelectByRowClick = false;
+
+        //Callbacks
+        settings.ClientSideEvents.BeginCallback = "fnGVJugadores_OnBeginCallback";
+        settings.ClientSideEvents.EndCallback = "fnGVJugadores_OnEndCallback";
+
+    });
+
+    if (ViewData["EditError"] != null){
+        gvRequestsJugadores.SetEditErrorText((string)ViewData["EditError"]);
+    }
+
+    gvRequestsJugadores.Bind(Model).GetHtml();
+}

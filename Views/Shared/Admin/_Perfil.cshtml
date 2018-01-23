@@ -1,0 +1,708 @@
+﻿@using sw_EnligateWeb.Models;
+@model UserProfileViewModel
+
+<style>
+    .large.tooltip-inner {
+        max-width: 250px;
+        width: 250px;
+    }
+</style>
+
+@{
+    var ddlDia = sw_EnligateWeb.Engine.Global_Functions.getEnumerableDaysNumber().Select(n => new SelectListItem { Value = n, Text = n }).ToList();
+    var ddlMes = sw_EnligateWeb.Engine.Global_Functions.getEnumerableMonthsNumbers().Select(n => new SelectListItem { Value = n, Text = n }).ToList();
+    var ddlYear = sw_EnligateWeb.Engine.Global_Functions.getEnumerableYearsNumbers().Select(n => new SelectListItem { Value = n, Text = n }).ToList();
+
+    ddlDia.Insert(0, new SelectListItem { Value = "", Text = "Día" });
+    ddlMes.Insert(0, new SelectListItem { Value = "", Text = "Mes" });
+    ddlYear.Insert(0, new SelectListItem { Value = "", Text = "Año" });
+
+    ViewBag.ddlDia = ddlDia;
+    ViewBag.ddlMes = ddlMes;
+    ViewBag.ddlYear = ddlYear;
+
+    ViewBag.imgURL = "/Content/Images/general/noPhoto.jpg";
+    if(Model.imgURL != null)
+    {
+        ViewBag.imgURL = "/" + Model.imgURL.Replace(Server.MapPath("~"),"").Replace("\\","/");
+    }
+}
+
+<!-- Content -->
+<div class="row mSpaceMb20" >
+    <div class="col-xs-12 paddingLRZero">
+        <div class="mProfileImageContainer">
+            <form id="formProfileImageUpload" enctype="multipart/form-data" method="post">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.usuUsername)
+                @Html.TextBoxFor(m => m.jsGetModelFunctionName, new { @class = "hidden", @Value = "_profileImageGetModel" })
+
+                <div class="mProfileUploadFileContainer">
+                    <img id="usuImgURL" class="mUploadFileImage" data-rel="profileImage" src="@ViewBag.imgURL" />
+
+                    <div class="mUploadFileIconContainer">
+                        <span class="mUploadFileIcon glyphicon glyphicon-camera" data-rel="profileImage"></span>
+                    </div>
+                </div>
+
+                <input name="usuFileImage" type='file' id="usuImgURLFile" accept=".jpg,.jpeg,.png" class="mUploadFile" data-rel="profileImage" data-loadimg="true" data-submitformfunction="submitProfileImage" />
+                <button type="submit" data-rel="profileImage" class="mUploadFile">Guardar</button>
+
+                <fieldset id="frmProfileImageUpdate"></fieldset>
+            </form>
+        </div>
+
+        <div class="mProfileInfoContainer">
+            <!--action="/Admin/_Profile" data-ajax="true" data-ajax-complete="showMessages();" data-ajax-method="Post" data-ajax-mode="replace" data-ajax-update="#frmProfileUpdate" -->
+            <form id="form_update_profile" method="post">
+              
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.usuUsername)
+                    @Html.HiddenFor(m => m.codeIdPais)
+                    @Html.HiddenFor(m => m.codeIdEstado)
+                    @Html.HiddenFor(m => m.codeIdCiudad)
+                    @Html.TextBoxFor(m => m.jsGetModelFunctionName, new { @class = "hidden", @Value = "_profileGetModel" })
+
+                    <div class="col-sm-12 mSpaceMb5 paddingLRZero">
+                        @Html.TextBoxFor(m => m.usuNombreCompleto, new { @class = "titlePlaceholder width100", placeholder = "Nombre y apellidos", onchange = "submitProfileOnchange(this);" })
+                    </div>
+
+                    <div class="col-sm-12 mSpaceMb5 paddingLRZero">
+                        Genero
+                        <button type="button" class="mSwitchBtns mSwitchBtnsLeft" data-val="F" data-relclass="profileGenero">F</button>
+                        <button type="button" class="mSwitchBtns mSwitchBtnsRight" data-val="M" data-relclass="profileGenero">M</button>
+                        @Html.HiddenFor(m => m.usuGenero, new { data_relClass = "profileGenero", data_defaultVal = "F", onchange = "submitProfileOnchange(this);" })
+                    </div>
+
+                    <div class="col-sm-12 mSpaceMb5 paddingLRZero">
+                        <div style="float:left;">
+                            Fecha de nacimiento
+                        </div>
+                        <div style="float:left;">
+                            <div style="float:left;" >
+                                @Html.DropDownList("ddlDia", (List<SelectListItem>)ViewBag.ddlDia, new { @class = "mSwitchDate", data_relClass = "profBirthday", data_type = "dd", style = "width:60px;" })                                
+                            </div>
+                            <div style="float:left;">
+                                @Html.DropDownList("ddlMes", (List<SelectListItem>)ViewBag.ddlMes, new { @class = "mSwitchDate", data_relClass = "profBirthday", data_type = "MM", style = "width:60px;" })
+                            </div>
+
+                            <div style="float:left;">
+                                @Html.DropDownList("ddlAño", (List<SelectListItem>)ViewBag.ddlYear, new { @class = "mSwitchDate", data_relClass = "profBirthday", data_type = "yyyy", style = "width:60px;" })
+                            </div>
+                            
+                            
+                            
+                            @Html.HiddenFor(m => m.usuFechaNacimiento, new { data_relClass = "profBirthday", onchange = "submitProfileOnchange(this);" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 mSpaceMb5">
+                            @Html.DropDownListFor(m => m.usuPais, (List<SelectListItem>)Model.dllContry, null, new { @class = "width100" })
+                            <!--Html.TextBoxFor(m => m.usuPais, new { class = "width100", placeholder = "Pais donde reside", onchange = "submitProfileOnchange(this);" })-->
+                        </div>
+                        <div class="col-xs-12 col-sm-4 mSpaceMb5">
+                            @Html.DropDownListFor(m => m.usuEstado, (List<SelectListItem>)Model.dllState, null, new { @class = "width100"})
+                            <!--Html.TextBoxFor(m => m.usuEstado, new { class = "width100", placeholder = "Estado donde reside", onchange = "submitProfileOnchange(this);" }) -->                            
+                        </div>
+                        <div class="col-xs-12 col-sm-4 mSpaceMb5">
+                            @Html.DropDownListFor(m => m.usuCiudad, (List<SelectListItem>)Model.dllCity, null, new { @class = "width100" })
+                            <!--Html.TextBoxFor(m => m.usuCiudad, new { class = "width100", placeholder = "Ciudad donde reside", onchange = "submitProfileOnchange(this);" })-->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-7 mSpaceMb5">
+                            @Html.TextBoxFor(m => m.usuCP, new { @class = "width100 cpValue", placeholder = "Codigo Postal", onchange = "submitProfileOnchange(this);", onkeypress = "return onlyNumbers(event,this);" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-7 mSpaceMb5">
+                            @Html.TextBoxFor(m => m.usuTelefono, new { @class = "width100", placeholder = "Celular", onchange = "submitProfileOnchange(this);", onkeypress = "return onlyNumbers(event,this);" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-7 mSpaceMb5">
+                            @Html.TextBoxFor(m => m.usuCorreo, new { @class = "width100", placeholder = "Correo de contacto", onchange = "submitProfileOnchange(this);", disabled = "true" })
+                        </div>
+                    </div>
+
+
+                    <button id="_profileBtnSubmit" type="submit" style="display:none;"></button>
+
+                    <script type="text/javascript">
+
+                        function submitProfileImage() {
+                            var inputLoadImage = $("#usuImgURLFile").attr("data-LoadImg");
+                            var formUpload = $('#formProfileImageUpload');
+                         //   alert("in")
+                            if (window.FormData !== undefined) {
+                                var form = formUpload[0];
+                                var data = new FormData(form);
+                           //     alert("in windiow")
+                                $.ajax({
+                                    url: '/Admin/_ProfileImage',
+                                    type: "POST",
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    data: data,
+                                    success: function (data) {
+                                        $("#frmProfileImageUpdate ").html(data);
+                                    },
+                                    complete: function (jqXHR, textStatus) {
+                                        showMessages();
+                                    },
+                                    error: function (xhr, status, p3, p4) {
+                                        var err = "Error " + " " + status + " " + p3 + " " + p4;
+                                        if (xhr.responseText && xhr.responseText[0] == "{")
+                                            err = JSON.parse(xhr.responseText).Message;
+                                        console.log(err);
+                                    }
+                                });
+                            } else {
+                                alert("This browser doesn't support HTML5 file uploads!");
+                            }
+                        }
+
+                        function _profileImageGetModel(strJson) {
+                            var model = jQuery.parseJSON(strJson);
+
+                            try {
+                                jQuery.each(model["modelStateErrors"], function (key, val) {
+                                    if (val.length > 0) {
+                                        if (key.toString() == '@sw_EnligateWeb.Models.HelperClasses.constClass.error') {
+                                            $("#usuImgURL").attr("src", model["imgURL"]);
+                                        }
+                                    }
+                                });
+
+                                if (errorMsg != "") {
+                                    var spanMsg = $("span.field-validation-error").first();
+                                    spanMsg.html(errorMsg);
+                                }
+                            }
+                            catch (err) {
+                                //document.getElementById("demo").innerHTML = err.message;
+                            }
+                        }
+
+                        function submitProfileOnchange(name) {
+                            //SE EJECUTA SOLO LA PRIMERA VEZ PARA CREAR EL PERFIL SI NO ESTÁ CREADO.
+                            //action="/Admin/_Profile" data-ajax="true" data-ajax-complete="showMessages();" data-ajax-method="Post" data-ajax-mode="replace" data-ajax-update="#frmProfileUpdate"
+
+
+                            var dataForm = $(name).closest('form').serialize();
+
+                            //$("#_profileBtnSubmit").click();
+                            var url = "/Admin/_Profile";
+                            $.ajax({
+                                url: url,
+                                type: "POST",
+                                data : dataForm,
+                                success: function (data) {
+                                    $("#frmProfileUpdate").html(data);
+                                },
+                                complete: function (jqXHR, textStatus) {
+                                    //showMessages();
+                                    resetCp();
+                                }, error: function () {
+                                    messengeError("Conflictos para guardar!");
+                                }
+                            });
+                        }
+
+                        function _profileGetModel(strJson) {
+                            var model = jQuery.parseJSON(strJson);
+
+                            try {
+                                var errorMsg = "";
+                                jQuery.each(model["modelStateErrors"], function (key, val) {
+                                    if (val.length > 0) {
+                                        if (key.toString() != '@sw_EnligateWeb.Models.HelperClasses.constClass.error' &&
+                                           key.toString() != '@sw_EnligateWeb.Models.HelperClasses.constClass.info' &&
+                                           key.toString() != '@sw_EnligateWeb.Models.HelperClasses.constClass.success') {
+                                            errorMsg += " " + val.join(". ");
+                                            var keyId = "#" + key + "";
+                                            var inputElement = $(keyId);
+                                            if (inputElement != undefined && inputElement != null) {
+                                                inputElement.val(model[key]);
+                                            }
+                                        }
+                                    }
+                                });
+
+                                if (errorMsg != "") {
+                                    var spanMsg = $("span.field-validation-error").first();
+                                    spanMsg.html(errorMsg);
+                                }
+                            }
+                            catch (err) {
+                                //document.getElementById("demo").innerHTML = err.message;
+                            }
+                        }
+                    </script>
+
+                    <fieldset id="frmProfileUpdate"></fieldset>
+                </form>
+        </div>
+
+        <div class="row divButtonsPerfil">
+            <div class="col-md-7 col-md-offset-2">
+                <button class="btn btn-default mSpaceMlr35" data-toggle="modal" data-target="#modalChangePassword">Cambiar Contraseña</button>
+                <a id="divSubperfil" style="margin-left:20px;" href="#" data-toggle="modal" data-target="#modalAddPerfil">Agregar Otro Perfil</a>                
+            </div>
+        </div>
+    </div>     
+</div>
+
+
+<div class="modal fade" id="modalChangePassword" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyChangePassword">
+                <div class="container-fluid" style="min-height:150px;">
+                    
+                    <div class="col-md-11 pull-right">
+                        <h2 class="mTitle2 mSpacePlr20">Cambiar Contraseña</h2>
+                        <form class="form-horizontal" id="formChangePassword">
+                            <fieldset>
+                                <!-- Form Name -->                                
+                                <!-- Password input-->
+                                <div class="form-group">
+                                    <label class="col-sm-12 col-md-5  control-label" for="passNew">Nueva Contraseña</label>
+                                    <div class="col-sm-12 col-md-6">
+                                        <input id="passNew" name="passNew" type="password" placeholder="" class="form-control input-md" required="">
+
+                                    </div>
+                                </div>
+                                <!-- Password input-->
+                                <div class="form-group">
+                                    <label class="col-sm-12 col-md-5  control-label" for="passRepeat">Repetir Contraseña</label>
+                                    <div class="col-sm-12 col-md-6">
+                                        <input id="passRepeat" name="passRepeat" type="password" placeholder="" class="form-control input-md" required="">
+
+                                    </div>
+                                </div>
+                                <!-- Button (Double) -->
+                                <div class="form-group">
+                                    <label class="col-sm-12 col-md-5  control-label" for="cambiar"></label>
+                                    <div class="col-sm-12 col-md-6">
+                                        <button  type="submit" id="cambiar" name="cambiar" class="btn btn-default">Cambiar</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalAddPerfil" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom:0">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyAddPerfil" style="padding-top:0">
+                <div class="container-fluid" style="min-height:150px;">
+                    <div class="col-md-11 pull-right">
+                        <h2 class="mTitle2 mSpacePlr20">Agregar Otro Perfil</h2>
+                        <form class="form-horizontal" id="formAddPerfil" method="post" action="#">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label class="col-sm-12 col-md-5  control-label" for="Nombre">Nombre:</label>
+                                    <div class="col-sm-12 col-md-6">
+                                        <input id="nombre" name="nombre" type="text" placeholder="Agregar Nombre" class="form-control input-md" required="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-12 col-md-5  control-label" for="correo">Correo:</label>
+                                    <div class="col-sm-12 col-md-6 ">
+                                        <input id="correo" name="correo" type="text" placeholder="Agregar un correo valido" class="form-control input-md tt_large" required="" onblur="validate();" rel="tooltip" data-placement="right" title="El Correo es opcional, en caso de no contar con uno ,ENLIGATE le proporcionará un usuario para que pueda ingresar al Sistema">
+                                        <span id='result'></span>                                                                             
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="col-sm-12 col-md-5  control-label" for=""></label>
+                                    <div class="col-sm-12 col-md-6">
+                                        <button id="agregar" name="agregar" class="btn btn-default" onclick="_AddPerfil();">Agregar</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+           resetCp();
+        //   $("#agregar").prop("disabled", true);
+        },500);
+        
+        $('.tt_reg').tooltip();
+
+        $('.tt_large').tooltip({
+            template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner large"></div></div>'
+        });
+        $("#divSubperfil").click(function() {
+            $("#formAddPerfil #nombre").val("");
+            $("#formAddPerfil #correo").val("");
+        });
+       
+        //http://api.geonames.org/countryInfoJSON?country=MX&formatted=true&username=jcortes072
+
+        var code_pais = $("#codeIdPais").val();
+        var code_estado = $("#codeIdEstado").val();
+        var code_ciudad = $("#codeIdCiudad").val();
+
+        if (code_pais != "") {
+            getStates(code_pais);
+        }
+        if (code_estado != "") {
+            setTimeout(function() {
+                $('#form_update_profile #usuEstado option[data-code="' + code_estado + '"]').attr("selected", "selected");
+
+                getCities(code_estado);
+            },1000)
+            
+        }
+        if (code_ciudad != "") {
+            setTimeout(function () {
+                $('#form_update_profile #usuCiudad option[data-code="' + code_ciudad + '"]').attr("selected", "selected");
+            },2000)            
+        }
+
+        $("#form_update_profile #usuPais").on('change', function () {
+            var url_gename = "http://api.geonames.org/countryInfoJSON?country=" + this.value + "&formatted=true&username=jcortes072"
+            $.ajax({
+                url: url_gename,
+                type: "GET",
+                withCredentials: false,
+                dataType: "jsonp",
+                success: function (data) {
+                    console.log(data.geonames[0].geonameId);
+                    $("#codeIdPais").val(data.geonames[0].geonameId);
+                    getStates(data.geonames[0].geonameId);
+                },
+                complete: function (jqXHR, textStatus) {
+
+                }, error: function () {
+                    alert("error");
+                }
+            });
+            submitProfileOnchange(this);
+        });
+
+        $("#form_update_profile #usuEstado").on('change', function () {
+            var code = $(this).find(':selected').data('code');
+            getCities(code);            
+            //alert(code);
+            $("#codeIdEstado").val(code);
+            submitProfileOnchange(this);
+        });
+
+        $("#form_update_profile #usuCiudad").on('change', function () {
+            var code = $(this).find(':selected').data('code');
+            $("#codeIdCiudad").val(code)
+            submitProfileOnchange(this);
+        });
+    });
+
+    function resetCp() {
+        $(".cpValue").each(function (k, v) {
+            var cp = $(v).val();
+            if (cp == 0) {
+                console.log($(v).val());
+                $(v).val("");
+            }
+        });
+    }
+    function getStates(geonameId) {
+        var url_gename = "http://api.geonames.org/childrenJSON?geonameId=" + geonameId + "&username=jcortes072&formatted=true";
+        $.ajax({
+            url: url_gename,
+            type: "GET",
+            withCredentials: false,
+            dataType: "jsonp",
+            success: function (data) {
+                console.log(data);
+                console.log(data.geonames.length)
+                
+                $("#usuEstado").empty();
+                $("#usuEstado").append('<option selected="selected" value="0">SELECCIONE ESTADO</option>');
+                for (var i = 0; i < data.geonames.length; i++) {
+                    $("#usuEstado").append('<option value="' + data.geonames[i].name + '" data-code="' + data.geonames[i].geonameId+'" >' + data.geonames[i].name.toUpperCase() +'</option>')
+                    console.log(data.geonames[i].name)
+                }
+                getCities(data.geonames[0].geonameId);
+            },
+            complete: function (jqXHR, textStatus) {
+
+            }, error: function () {
+                alert("error");
+            }
+        });
+    }
+
+    function getCities(geonameId) {
+        var url_gename = "http://api.geonames.org/childrenJSON?geonameId=" + geonameId + "&username=jcortes072&formatted=true";
+        $.ajax({
+            url: url_gename,
+            type: "GET",
+            withCredentials: false,
+            dataType: "jsonp",
+            success: function (data) {
+                console.log(data);
+                                
+                console.log(data.geonames.length)
+                $("#usuCiudad").empty();
+                $("#usuCiudad").append('<option selected="selected" value="0"  >SELECCIONE CIUDAD</option>');
+                for (var i = 0; i < data.geonames.length; i++) {
+                    $("#usuCiudad").append('<option value="' + data.geonames[i].name + '" data-code="' + data.geonames[i].geonameId+'" >' + data.geonames[i].name.toUpperCase() + '</option>')
+                    console.log(data.geonames[i].name)
+                }
+                //countryName
+            },
+            complete: function (jqXHR, textStatus) {
+
+            }, error: function () {
+                alert("error");
+            }
+        });
+    }
+
+    function _AddPerfil() {
+
+        var form = $("#formAddPerfil").serialize();
+
+        var nombre = $("#formAddPerfil #nombre");
+        if (nombre != "") {
+            $.ajax({
+                url: '/AdminLigas/_AddPerfil',
+                type: "POST",
+                cache: false,
+                dataType: "json",
+                data: form,
+                success: function (data) {
+                    $(".m-messageHide").html(data.strPartialViewString)
+                    $("#modalAddPerfil").modal("toggle");
+                    setTimeout(function () { updatePerfilPartial(); }, 5000);
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }, error: function () {
+                    alert("error");
+                }
+            });
+        } else {
+            messengeInfo("Favor De ingresar el nombre");
+        }
+
+       
+    }
+    function setCorreoByName() {
+        var nombre = $("#formAddPerfil #nombre");
+        var correo = $("#formAddPerfil #correo");
+        console.log(nombre.val()+" correo:"+correo.val())
+        //var nombreVal = nombre.val();
+        console.log(nombre.val());
+        var nombreVal = getCleanedString(nombre.val());
+        console.log(nombreVal);
+        var correoN = "Enligate.com";
+        var res = String.fromCharCode(64);
+        if (nombreVal != "" && correo.val() == "") {
+            nombreVal = $.trim(nombreVal)
+            nombreVal = nombreVal.split(" ").join("")
+            correoN = nombreVal + res + correoN;
+            correo.val(correoN)
+        }
+    };
+    
+    function updatePerfilPartial() {
+        $.ajax({
+            url: '/Admin/_GetPerfilName',
+            type: "POST",
+            cache: false,
+            dataType: "json",
+            success: function (data) {
+                $("#divSubPerfilMaster").html("");
+                var max = data.length;
+                if (max>0) {
+                    $("#divSubPerfilMaster").append("<hr><h3>Otros Perfiles que Manejo</h3>")
+                    for (var i = 0; i < max; i++) {
+                        $("#divSubPerfilMaster").append(data[i]);
+                        switchButtons();
+                        switchDates();
+                    }
+                   // $("#divSubPerfilMaster").find(':input,:button,a').prop('disabled', true);
+                   // $("#divSubPerfilMaster .divButtonsPerfil #divSubperfil").hide();
+                   // $("#divSubPerfilMaster .mUploadFileIconContainer").hide();
+                }
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+                resetCp();
+            }, error: function () {
+                alert("error");
+            }
+        });
+    };
+
+    $("#formAddPerfil").submit(function (e) {
+        e.preventDefault();
+    });
+
+    function validate() {
+        $("#result").text("");
+        $("#result").removeClass();
+        var email = $("#correo").val();
+
+        $("#result").fadeIn('slow');
+        if (!validateEmail(email)) {
+            $("#result").text("Ingresar un Correo Electronico Valido");
+            $("#result").addClass("text text-danger")
+            $("#result").delay(5000).fadeOut('slow');
+            //$("#agregar").prop("disabled", true);
+        } else {
+            $.ajax({
+                url: '/Admin/ValidateEmailExistSubProfile',
+                type: "POST",
+                cache: false,
+                dataType: "json",
+                data: "email="+email,
+                success: function (data) {
+                    if (data.status=="success") {
+                        $("#result").text(data.msg);
+                        $("#result").addClass("text text-danger")
+                        $("#correo").val("");
+                        $("#result").delay(5000).fadeOut('slow');
+              //          $("#agregar").prop("disabled", true);
+                    } else {
+                //        $("#agregar").prop("disabled", false);
+                    }
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                },
+                error: function () {
+                    alert("error: validate email!")
+                }
+            });
+        }
+
+        return false;
+    }
+</script>
+
+<div class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>
+<script>
+    $(function () {
+        $("#formChangePassword").submit(function (event) {
+            var $form = $(this);
+
+            // Previene hacer submit más de una vez
+            //$form.find("button").prop("disabled", true);
+           
+            changePassword();
+
+            // Previene que la información de la forma sea enviada al servidor
+            return false;
+        });
+    });
+
+    function validatePassword(newPass,repPass) {       
+        if (newPass == repPass) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    function changePassword() {
+        var form = $("#formChangePassword");
+        var newPass = form.find("#passNew");
+        var repPass = form.find("#passRepeat");
+        if (newPass.val() != "") {
+            if (repPass.val != "") {
+                if (validatePassword(newPass.val(), repPass.val())) {
+                    var data = {passNew: newPass.val() };
+                    $.ajax({
+                        url: '/Admin/ChangePassword',
+                        type: "POST",
+                        cache: false,
+                        dataType: "json",
+                        data: data,
+                        success: function (data) {
+                            if (data == "success") {
+                                messengeSuccess("Contraseña Actualizada!");
+                                $("#modalChangePassword").modal("toggle");
+                            } else {
+                                messengeError(data);
+                            }
+                            form.find("button").prop("disabled", false);
+                        },
+                        complete: function (jqXHR, textStatus) {
+                            showMessages();
+                        }
+                    });
+
+                } else {
+                    messengeError("Las contraseñas no coinciden!");
+                };
+            } else {
+                messengeError("Falta llenar campo Repetir Contraseña");
+                repPass.focus();
+            }
+        } else {
+            messengeError("Falta llenar campo Contraseña Nueva");
+            newPass.focus();
+        }        
+    };
+    function messengeError(getMsg) {
+
+        var msg = '<div id="modal_error" class="alert alert-danger alert-dismissible" role="alert">';
+        msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+        msg += '<span aria-hidden="true">&times;</span></button>' + getMsg + '</div>';
+
+        $(".m-messageHide").html(msg);
+
+        showMessages();
+    }
+
+    function messengeSuccess(getMsg) {
+
+        var msg = '<div id="confirmEmailForm_ModalStateErrors" class="alert alert-success alert-dismissible" role="alert">';
+        msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+        msg += getMsg + '</div>';
+
+        $(".m-messageHide").html(msg);
+
+        showMessages();
+    }
+
+    $("#usuNombreComplet").bind("keyup", function (event) {
+        var inputValue = event.which;
+        // allow letters and whitespaces only.
+        if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+            event.preventDefault();
+        }
+    });
+</script>

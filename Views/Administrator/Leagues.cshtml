@@ -1,0 +1,187 @@
+﻿@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model RequestLeaguesFilterViewModel
+
+@{
+    ViewBag.Title = "Ligas Inscritas";
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        setTimeout(fnLeaGVPerformCallback(),700);
+    });
+
+    function fnLeaGVPerformCallback(s, e) {
+        if (typeof gvLeagues.InCallback === "function") {
+            //if (!gvLeagues.InCallback())
+            gvLeagues.PerformCallback();
+        }
+    }
+
+    function fnGvLeagues_OnBeginCallback(s, e) {        
+        var date = deLeaStartDate.GetDate();
+        var d = date.getDate();
+        var m = date.getMonth() + 1;
+        var y = date.getFullYear();
+        e.customArgs['leaFechaIni'] = d + "/" + m + "/" + y;
+        date = deLeaEndDate.GetDate();
+        d = date.getDate();
+        m = date.getMonth() + 1;
+        y = date.getFullYear();
+        e.customArgs['leaFechaFin'] = d + "/" + m + "/" + y;
+        e.customArgs['leaTipoLiga'] = cbxLeaTipoLiga.GetValue();
+    }
+
+    function fnGvLeagues_RowDblClick(s, e) {
+        s.GetRowValues(e.visibleIndex, 'ligId;ligCreadorId', function (value) {
+            fnLeaguesShowDetail(value[0], value[1]);
+        });
+    }
+
+    function fnGvLeagues_RowClick(s, e) {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            fnGvRequest_RowDblClick(s, e);
+        }
+    }
+
+    function fnLeaguesShowDetail(id, key) {
+        $.ajax({
+            url: '/AdminLigas/_LeaguesDetail',
+            type: "POST",
+            cache: false,
+            data: "Id=" + id + "&key=" + key,
+            success: function (data) {
+                var divFilters = $("#divLeaguesFilters");
+                var divGrid = $("#divLeaguesGrid");
+                var divDetail = $("#divLeaguesDetail");
+
+                divFilters.hide();
+                divGrid.hide();
+                divDetail.show();
+                $("#divLeaguesDetailPartial").html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    }
+
+    function fnLeaguesCloseDetail() {
+        var divFilters = $("#divLeaguesFilters");
+        var divGrid = $("#divLeaguesGrid");
+        var divDetail = $("#divLeaguesDetail");
+
+        $("#divLeaguesDetailPartial").html("");
+        divDetail.hide();
+        divFilters.show();
+        divGrid.show();
+        fnLeaGVPerformCallback();
+    }
+
+</script>
+
+<!-- Content -->
+<div id="ADMINISTRADOR_LigasInscritas" class="row mSpaceMt30 mSpaceMb20">
+
+    <div id="divLeaguesFilters" class="col-xs-12 mSpaceMt20">
+        <div class="col-xs-12 mFormFilterContainer">
+            <div class="form-inline">
+                <div class="form-group col-xs-6 col-sm-3 col-sm-offset-2 col-md-2 col-md-offset-3 col-lg-3 col-lg-offset-2 mSpaceMb10">
+                    <span class="mLabelGroup">Fecha Inicial:</span> <br class="visible-sm" />
+                    <div style="display:inline-block;vertical-align:text-bottom;">
+                        @Html.DevExpress().DateEdit(settings =>
+                        {
+                            settings.Name = "deLeaStartDate";
+                            settings.Properties.DisplayFormatString = "dd/MM/yyyy";
+                            settings.Properties.EditFormatString = "dd/MM/yyyy";
+                            settings.Date = Model.drpvmDates.StartDate;
+                            settings.Properties.AllowNull = false;
+                            settings.Properties.ClientSideEvents.DateChanged = "fnLeaGVPerformCallback";
+                            settings.Width = Unit.Pixel(100);
+                        }).GetHtml()
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-inline">
+                <div class="form-group col-xs-6 col-sm-3 col-md-2 col-lg-3 mSpaceMb10">
+                    <span class="mLabelGroup">Fecha Final:</span> <br class="visible-sm" />
+                    <div style="display:inline-block;vertical-align:text-bottom;">
+                        @Html.DevExpress().DateEdit(settings =>
+                        {
+                            settings.Name = "deLeaEndDate";
+                            settings.Properties.DisplayFormatString = "dd/MM/yyyy";
+                            settings.Date = Model.drpvmDates.EndDate;
+                            settings.Properties.AllowNull = false;
+                            settings.Properties.ClientSideEvents.DateChanged = "fnLeaGVPerformCallback";
+                            settings.Width = Unit.Pixel(100);
+                        }).GetHtml()
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-inline">
+                <div class="form-group col-xs-6 col-sm-3 col-md-2 col-lg-3 mSpaceMb10">
+                    <span class="mLabelGroup">Tipo Liga:</span> <br class="visible-sm" />
+                    <div style="display:inline-block;vertical-align:text-bottom;">
+                        @Html.DevExpress().ComboBox(settings =>
+                        {
+                            settings.Name = "cbxLeaTipoLiga";
+                            settings.Width = 100;
+                            settings.SelectedIndex = 0;
+                            settings.Properties.Items.Add("Todos", "");
+                            settings.Properties.Items.Add("Escuelas", "Escuela");
+                            settings.Properties.Items.Add("Empresas", "Empresa");
+                            settings.Properties.Items.Add("Clubs", "Club");
+                            settings.Properties.Items.Add("Eventos", "Evento");
+                            settings.Properties.ClientSideEvents.SelectedIndexChanged = "fnLeaGVPerformCallback";
+                        }).GetHtml()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 mSpaceMt20">
+        <div id="divLeaguesGrid" class="col-xs-12">
+            @Html.Action("LeaguesGrid")
+        </div>
+
+        <div id="divLeaguesDetail" class="col-xs-12" style="display:none;">
+            <div class="col-xs-12">
+                <button type="button" class="btn btn-link mLink2" onclick="fnLeaguesCloseDetail()">
+                    Regresar a la lista de ligas activas
+                </button>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="col-xs-12">
+                    <div id="divLeaguesDetailPartial" class="row mSpaceMt20">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>
+
+@section head{
+    <link href="~/Content/pgwslideshow.css" rel="stylesheet" />
+    <link href="~/Content/pgwslideshow_light.css" rel="stylesheet" />
+}
+
+@section scripts{
+
+    @{
+        string googleSrc = System.Web.Configuration.WebConfigurationManager.AppSettings["GoogleMapsScript"];
+    }
+
+    <script src="../Scripts/pgwslideshow.js"></script>
+    <script src="@googleSrc"></script>
+}

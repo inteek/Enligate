@@ -1,0 +1,117 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model PartidosViewModel
+
+@{
+    string divMapId = "mapGoogle" + ViewBag.gMapId.ToString();
+    string fnInit = "initMap" + ViewBag.gMapId.ToString() + "()";
+}
+
+<div id="@divMapId" class="col-xs-12 googleMap" style="height:100%; width:100%;">
+</div>
+
+<script type="text/javascript">
+
+    function @fnInit {
+        var map;
+        var markers = [];
+
+        var mapDiv = document.getElementById('@divMapId');
+        map = new google.maps.Map(mapDiv, {
+            center: new google.maps.LatLng(19.425153718960143, -99.1351318359375), //Cd. de México
+            zoom: 7,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: false,
+            streetViewControl: false
+        });
+
+
+        var geocoder = new google.maps.Geocoder();
+        var address = '@Model.canchaDireccion';
+        var myLatLng  = {};
+        var canId = @Model.canId;
+        if (canId == 0) {
+            map = new google.maps.Map(mapDiv, {
+                center: new google.maps.LatLng(19.425153718960143, -99.1351318359375), //Cd. de México
+                zoom: 7,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeControl: false,
+                streetViewControl: false
+            });
+
+        } else if (address != "") {
+            geocoder.geocode({
+                'address': address
+            },
+            function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    result = results[0].geometry.location;
+                    map.setCenter(result);
+                    map.setZoom(15);
+                    addMarker(result);
+                } else {
+                    map = new google.maps.Map(mapDiv, {
+                        center: new google.maps.LatLng(19.425153718960143, -99.1351318359375), //Cd. de México
+                        zoom: 7,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        mapTypeControl: false,
+                        streetViewControl: false
+                    });
+                }
+            });
+        }
+        else if (@Model.lat!=null || @Model.lat!= ""  && @Model.lng!=null || @Model.lng!="")
+        {
+           // var myLatlng = new google.maps.LatLng();
+
+            var latLng = new google.maps.LatLng(@Model.lat.ToString(),@Model.lng.ToString());
+            console.log(latLng);
+            map.setCenter(latLng);
+            map.setZoom(15);
+            addMarker(latLng);
+            alert(@Model.lat.ToString(),@Model.lng.ToString())
+        } else {
+
+            map = new google.maps.Map(mapDiv, {
+                center: new google.maps.LatLng(19.425153718960143, -99.1351318359375), //Cd. de México
+                zoom: 7,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeControl: false,
+                streetViewControl: false
+            });
+        }
+
+
+        //map.addListener('click', function (event) {
+        //    addMarker(event.latLng);
+        //});
+
+        function addMarker(location) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+            clearMarkers();
+            markers.push(marker);
+        }
+
+        function setMarkers(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+
+        function clearMarkers() {
+            setMarkers(null);
+            markers = [];
+        }
+
+    }
+
+    $(document).ready(function(){
+        setTimeout(function () { @{<text>@fnInit</text>}; }, 1000);
+    });
+
+
+</script>

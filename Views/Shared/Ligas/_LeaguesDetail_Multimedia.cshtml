@@ -1,0 +1,75 @@
+﻿@using sw_EnligateWeb.Models;
+@model LeaguesActiveDetailViewModel
+
+<div class="col-xs-11 col-sm-10 col-sm-offset-1">
+    <ul class="pgwSlideshow" style="padding-left:0 !important;">
+        @{
+            if (Model.ligFiles.Count() == 0)
+            {
+                string img = Url.Content("~/Content/Images/general/noPhoto.jpg");
+                <li>
+                    <img src="@img" alt="" />
+                </li>
+            }
+            else
+            {
+                foreach (var item in Model.ligFiles)
+                {
+                    item.fileUrl = "/" + item.fileUrl.Replace(Server.MapPath("~"), "").Replace("\\", "/");
+
+                    <li>
+                        <img src="@item.fileUrl" alt="" />
+                    </li>
+                }
+            }
+        }
+    </ul>
+
+
+
+</div>
+
+<div class="clearfix"></div>
+
+@{
+    if (Model.enableEdit)
+    {
+        <div class="divEditGlyphicon" onclick="fnOnEdit_ldeMultimedia(@Model.ligLiga.ligId, '@Model.ligLiga.ligCreator')">
+            <span class="glyphicon glyphicon-pencil"></span> Editar
+        </div>
+
+        <script type="text/javascript">
+            function fnOnEdit_ldeMultimedia(id, key) {
+                var dataForm = "Id=" + id + "&token=" + key;
+
+                $.ajax({
+                    url: '/AdminLigas/_LeaguesDetail_MultimediaEdit',
+                    type: "POST",
+                    data: dataForm,
+                    success: function (data) {
+                        $("#ldeImagenesLiga").empty();
+                        $("#ldeImagenesLiga").html(data);
+                    },
+                    error: function (xhr, status, p3, p4) {
+                        alert("Hubo un error, intenta nuevamente");
+                    }
+                });
+            }
+        </script>
+    }
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.pgwSlideshow').pgwSlideshow({
+            mainClassName: "pgwSlideshowLight",
+            transitionEffect: "fading",
+            maxHeight: 450,
+            displayList: true,
+            displayControls: true,
+            touchControls: true,
+            adaptiveDuration: 500
+        });
+    });
+</script>

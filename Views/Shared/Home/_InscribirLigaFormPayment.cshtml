@@ -1,0 +1,87 @@
+﻿@using sw_EnligateWeb.Models;
+@model LeagueRegisterViewModel
+
+
+
+<!-- ------------- Forma de pago -------------- -->
+<div class="clearfix mSpaceMb30">
+    <div class="row">
+        <span class="mTitle1">Forma de Pago:</span>
+        @{
+            int formaPagoCount = 0;
+            foreach (var itemFormaPago in Model.lreDdlFormasPago)
+            {
+                formaPagoCount++;
+                string btnCssSwFormaPago = "mSwitchBtnsLeft";
+                string btnCssSwActiveFormaPago = (itemFormaPago.tfpIdFormaPago == Model.lreFormaPago) ? "swActive" : "";
+                if (formaPagoCount > 1 && formaPagoCount < Model.lreDdlFormasPago.Count)
+                {
+                    btnCssSwFormaPago = "mSwitchBtnsMiddle";
+                }
+                else if (formaPagoCount == Model.lreDdlFormasPago.Count)
+                {
+                    btnCssSwFormaPago = "mSwitchBtnsRight";
+                }
+                <button type="button" class="mSwitchBtns @btnCssSwFormaPago @btnCssSwActiveFormaPago" data-relclass="lreFormaPago" data-val="@itemFormaPago.tfpIdFormaPago"
+                        onclick="fnFormaPagoOnChange('@itemFormaPago.tfpIdFormaPago')">
+                    @itemFormaPago.tfpIdFormaPago.Replace("_", " ")
+                </button>
+            }
+        }
+        @Html.HiddenFor(m => m.lreFormaPago, new { @Value = @Model.lreFormaPago })
+    </div>
+    <div class="row text-justify" id="divLreFormaPago">
+        @Model.lreDdlFormasPago.Where(c => c.tfpIdFormaPago == Model.lreFormaPago).FirstOrDefault().tfpDescripcion
+    </div>
+</div>
+
+<!-- ------------- Periodicidad de Pago -------------- -->
+<div class="">
+    <div class="clearfix mSpaceMb30">
+        <div class="row">
+            <span class="mTitle1">Periodicidad de Pago:</span>
+            @{
+                int periodicidadPagoCount = 0;
+                foreach (var itemPeriodicidad in Model.lreDdlPeriodicidadesPago)
+                {
+                    periodicidadPagoCount++;
+                    string btnCssSwPeriodicidad = "mSwitchBtnsLeft";
+                    string btnCssSwActivePeriodicidad = (itemPeriodicidad.tpeIdPeriodicidad == Model.lrePeriodicidadPago) ? "swActive" : "";
+                    if (periodicidadPagoCount > 1 && formaPagoCount < Model.lreDdlFormasPago.Count)
+                    {
+                        btnCssSwPeriodicidad = "mSwitchBtnsMiddle";
+                    }
+                    else if (periodicidadPagoCount == Model.lreDdlFormasPago.Count)
+                    {
+                        btnCssSwPeriodicidad = "mSwitchBtnsRight";
+                    }
+                    <button type="button" class="mSwitchBtns @btnCssSwPeriodicidad @btnCssSwActivePeriodicidad" data-relclass="lrePeriodicidad" data-val="@itemPeriodicidad.tpeIdPeriodicidad"
+                            onclick="fnPeriodicidadOnChange('@itemPeriodicidad.tpeIdPeriodicidad')">
+                        @itemPeriodicidad.tpeIdPeriodicidad
+                    </button>
+                }
+            }
+            @Html.HiddenFor(m => m.lrePeriodicidadPago, new { @Value = @Model.lrePeriodicidadPago })
+            @Html.HiddenFor(m => m.tcfppId, new { @class = "lreTarId" })
+
+        </div>
+        <div class="row" id="divLrePeriodicidadPago">
+            @{
+                string tarifaMenor = "";
+                var tarifa = @Model.lreListTarifas.OrderBy(m => m.tarCosto).First();
+                if (tarifa.tarEsPorcentaje)
+                    tarifaMenor = tarifa.tarCosto.ToString() + " % COMISIÓN";
+                else
+                    tarifaMenor = tarifa.tarCosto.ToString("C") + " PESOS";
+            }
+            @Model.lreDdlPeriodicidadesPago.Where(c => c.tpeIdPeriodicidad == Model.lrePeriodicidadPago).FirstOrDefault().tpeDescripcion
+            <span>(Desde @tarifaMenor)</span>
+        </div>
+    </div>
+</div>    
+
+
+
+
+
+     

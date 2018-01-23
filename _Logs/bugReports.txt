@@ -1,0 +1,28 @@
+****** 20/03/2017 09:40:58 a. m. damian.sergio@gmail.com ::1 reporte de prueba bugs 1
+****** 20/03/2017 09:41:09 a. m. damian.sergio@gmail.com ::1 reporte de prueba bugs 2
+****** 20/03/2017 12:09:49 p. m. damian.sergio@gmail.com ::1 repote de bug DB
+****** 29/03/2017 10:54:19 a. m. admin2@sone.mx ::1 hola
+****** 26/05/2017 05:36:25 p. m. jugador1@sone.mx ::1 nuevo bug con el navegador y version
+aqui en 
+enligate
+
+
+
+2. en caso de que un usuario aun no tenga torneos ni equipos, ponemos en la pantalla una liga que
+   le va allevar a la portada para mostrar las ligas y los torneos, "ve a buscar torneos"
+4. agrregar años los en el combo de años para que gente de mayor edad tmb se pueden escribir, hasta 1930
+6. cambiamos la leyenda "otros perfiles" a "otros perfiles que manejo"
+8. en el reporteador de bug, sacamos todos los datos que se puede, como navegador y version.
+9. cambiar el texto al registar tu equipo a "ingresar tus datos generales del equipo"
+
+
+1. cambiamos el campo de pais a un combo con los paises
+3. la retroalimentacion que le daos al usuario, deben de ser explicativasa, enmarcar en rojo el campo al y
+   decir al usuario que revise el  campo
+5. vamos a cambiar los btn's de eliminar a una liga y ponerlos atras del campo de correos. y que si le fue al borrar
+   le mostramos el color de la notificacion en verde.
+7. en los grids, quitamos los btn's para ver un nivel abajo y que al darle click en la linea entras.
+10. validar al agregar usuarios a un partido que no agreguen usuarios borrados y que no se pueden entrar.
+11. al borrar un usuario o sub usuario, quitamos la relacion del papa, y aplicar el punto 10, arriba!
+12. para el usuario dios, admin enligate, agregar una pestaña de clientes y ponerle un grid mostrandolos, con
+    filtros arriba para filtrar por rol, fecha de creación (rango) y por liga. con un buscador.

@@ -1,0 +1,117 @@
+﻿@using sw_EnligateWeb.Models;
+
+@{
+    ViewBag.Title = "Enligate";
+}
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            //alert("GO!");
+            gvEquiposGrid_PerformCallback();
+        }, 1000);
+        
+    });
+    function auxfunction() {
+        console.log("aux");
+        $("#editEquipoJugadores").modal("toggle");
+    };
+    function gvEquiposGrid_PerformCallback(s, e) {
+        if (typeof gvEquiposGrid.InCallback === "function") {
+            if (!gvEquiposGrid.InCallback()) {
+                gvEquiposGrid.PerformCallback();
+            }
+        }
+    }
+    function gvEquiposGrid_BeginCallback(s, e) {
+        e.customArgs['torId'] = "0";
+    }
+    function fnEquipoDetails_RowDblClick(s, e) {
+        var equId = 0, torId = 0;
+        s.GetRowValues(e.visibleIndex, 'equId', function (value) {
+            s.GetRowValues(e.visibleIndex, 'torId', function (value_tor) {
+                fnJugadoresShowDetail(value, value_tor);
+                $('#equipoId').val(value);
+            });
+        });
+    };
+    function fnJugadoresShowDetail(equId,torId,nombreEquipo) {
+        var data={equId : equId, torId : torId, adminLigaTorneos : true, usuAgregarCoadmin : true}
+        $.ajax({
+            url: '/AdminEquipos/NuevoEdit',
+            type: "POST",
+            cache: false,
+            data: data,
+            success: function (data) {
+                $("#editEquipoJugadores").modal();
+                $("#divEditEquipoJugadores").html(data);
+                var equName = $("#divEditEquipoJugadores #equNombre").val();
+                $("#titleManagerTeam").text("Administrar Jugadores: " + equName);
+                $(".btnCrearEditarEquipo").prop("disabled",false);
+                $("#datosPrincipalEquipo").hide();
+                gvEquiposGrid.PerformCallback();
+                fnGVJugadores_PerformCallback();
+                $(".btnCrearEditarEquipo").on("click",function(){
+
+                    gvEquiposGrid.PerformCallback();
+                });
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            },
+            error: function (xhr, status, p3, p4) {
+                alert("Hubo un error ...");
+                this.prop("disabled",true)
+            }
+        });
+    }
+    function _EquipoDelete(id) {
+        if (confirm("Seguro que desea eliminar el Equipo?")) {
+            $.ajax({
+                url: '/AdminEquipos/_Equipos_Delete',
+                type: "POST",
+                cache: false,
+                data: "equId=" + id,
+                success: function (data) {
+                    messengeSuccess("Equipo Eliminado.");
+                    console.log("success!");
+                    gvEquiposGrid_PerformCallback();
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+    }
+</script>
+<!-- Content -->
+<div id="ADMINISTRADORDEEQUIPO_Dashboard" class="row">
+    <div id="ADMINISTRADORDEEQUIPO_Dashboard_MisEquipos" class="col-sm-12">
+
+        <div class="m-hdc-Gallery">
+            <h1>Adminstrar equipo</h1>
+        </div>
+        <div class="col-xs-12 equiposGrid">
+            @Html.Action("_Equipos_Grid", "AdminEquipos")
+        </div>
+    </div>
+</div>
+<!--MODAL NEW PLAYER-->
+<div class="modal fade" id="editEquipoJugadores" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom:0px;">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyJugadores" style="padding-top:0px;">
+                <div class="container-fluid" style="min-height:150px;padding-top:0px;">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-11">
+                        <div id="divEditEquipoJugadores"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

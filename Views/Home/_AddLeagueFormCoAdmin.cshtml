@@ -1,0 +1,60 @@
+﻿@using sw_EnligateWeb.Models;
+@model LeagueRegisterViewModel 
+
+<div class="row mSpaceMt20">
+    <div class="col-xs-12 paddingLRZero text-center">
+        Favor de ingresar el correo del Co-Administrador.
+    </div>
+    <div class="col-xs-offset-1 col-xs-10 col-md-offset-3 col-md-6 paddingLRZero">
+        @Html.TextBoxFor(m => m.lreLeagueCoAdmins.lcaEmail.lcaEmail, "", new { @class = "width100", @placeholder = "Correo", onkeypress = "return event.keyCode!=13" })
+        @Html.ValidationMessageFor(m => m.lreLeagueCoAdmins.lcaEmail.lcaEmail, "", new { @class = "text-danger" })
+    </div>
+    <div class="col-xs-offset-3 col-xs-6 col-md-offset-4 col-md-4 paddingLRZero mSpaceMt10">
+        <button type="button" class="btn btn-default" onclick="submit_frmAddLeagueCoAdmin()">
+            Agregar
+        </button>
+    </div>
+</div>
+
+<div class="row mSpaceMt30">
+    <div class="col-xs-12 col-md-offset-1 col-md-10 tblOverflow">
+        <table>
+            <tr class="tblTitle">
+                <td colspan="2">
+                    Co-Administradores
+                </td>
+            </tr>
+            <tr class="tblHeader">
+                <td>
+                    Email
+                </td>
+                <td></td>
+            </tr>
+            @{
+                if (Model.lreLeagueCoAdmins.lcaEmailList.Count == 0)
+                    {
+                        <tr class="tblFooter">
+                            <td colspan="2"> Esta liga no tiene Co-Administradores </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        for (int i = 0; i < Model.lreLeagueCoAdmins.lcaEmailList.Count; i++)
+                        {
+                            <tr class="tblBody">
+                                <td>@Model.lreLeagueCoAdmins.lcaEmailList[i].lcaEmail</td>
+                                <td>
+                                    @Html.HiddenFor(m => m.lreLeagueCoAdmins.lcaEmailList[i].lcaEmail)
+                                    <button type="button" class="btn btn-danger" onclick="submit_frmAddLeagueCoAdminDel('@Model.lreLeagueCoAdmins.lcaEmailList[i].lcaEmail')">Eliminar</button>
+                                </td>
+                            </tr>
+                        }
+                    }
+            }
+        </table>
+    </div>
+</div>
+
+<div class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>

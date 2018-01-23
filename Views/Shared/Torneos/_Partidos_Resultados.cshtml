@@ -1,0 +1,177 @@
+﻿@using sw_EnligateWeb.Models;
+@model List<PartidosViewModel>
+<style>
+    .text-center-thead thead tr th{
+        text-align:center;
+    }
+</style>
+<div class="col-xs-12">
+    <table class="table text-center-thead">
+        @{ 
+            if (Model.Count > 0)
+            {
+                <thead>
+                    <tr>
+                        <th>
+                            Fecha / Hora
+                        </th>
+                        <th>
+                            Marcador
+                        </th>
+                        <th colspan="2">
+                            Equipo 1
+                        </th>
+                        <th>
+
+                        </th>
+                        <th colspan="2">
+                            Equipo 2
+                        </th>
+                        <th>
+                            Marcador
+                        </th>
+                        <th>
+                            Cancha
+                        </th>
+                    </tr>
+                </thead>
+
+                foreach (var item in Model)
+                {
+                    string equImgUno = item.imgUno;
+                    string equImgDos = item.imgDos;
+                    int parId = item.parId;
+
+                    if (equImgUno == null)
+                    {
+                        equImgUno = Url.Content("~/Content/Images/general/noPhoto.jpg");
+                    }
+                    if (equImgDos == null)
+                    {
+                        equImgDos = Url.Content("~/Content/Images/general/noPhoto.jpg");
+                    }
+                    <tr  style="background: white;cursor:pointer;" onclick="fnPartidoEst('@parId','@equImgUno','@equImgDos')">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.parFecha_Inicio)
+                        </td>
+                        <td>
+                            <span class="text-default">
+                                @Html.DisplayFor(modelItem => item.equResultadoUno)
+                            </span>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.equNombreEquipoUno)
+                        </td>
+                        <td>
+                            <img id="equImgUno" class="img-thumbnail center-block" width="50" height="50" src="@equImgUno" />
+                        </td>
+                        <td class="text-left">
+                            VS
+                        </td>
+                        <td>
+                            <img id="equImgUno" class="img-thumbnail center-block" width="50" height="50" src="@equImgDos" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.equNombreEquipoDos)
+                        </td>
+                        <td>
+                            <span class="text-default">
+                                @Html.DisplayFor(modelItem => item.equResultadoDos)
+                            </span>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.canNombre)
+                        </td>
+                    </tr>
+                }
+            }else
+            {
+                <tr  style="background: white;">
+                    <td colspan="5" class="text-center">
+                        <span >Sin Resultados</span>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+
+<!--MODAL PARTIDO ESTADISTICAS-->
+<div class="modal fade" id="modalEstadisticasPartido" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom:0">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyEventos" style="padding-top:0">
+                <div class="container-fluid" style="min-height:150px;">
+                    <div class="col-md-11 pull-right">
+                        <div id="detallesPartido" class="text text-center">
+
+                        </div>
+                        <div id="estadisticasPartido">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function fnPartidoEst(parId,imagen1,imagen2) {
+        var dataForm = { parId: parId };
+        $.ajax({
+            url: '/Home/_DetallePartido',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                var equipoDos = data.equNombreEquipoDos;
+                if (equipoDos == null) {
+                    equipoDos = "";
+                }
+                var html = "<h2>";
+                html += "<img style='margin-right:10px' width='50' height='50' src='" + imagen1 + "'/>"
+                html += " " + data.equNombreEquipoUno + " ";
+                html += " <strong>" + data.equResultadoUno + "</strong> ";
+                html += " VS ";
+                html += " <strong>" + data.equResultadoDos + "</strong> ";
+                html += " " + equipoDos + "  ";
+                html += "<img width='50' height='50' src='" + imagen2 + "'/>"
+                html += "</h2>"
+                html += "</br>"
+                $("#modalEstadisticasPartido #detallesPartido").empty();
+                $("#modalEstadisticasPartido #detallesPartido").html(html);
+                console.log(html)
+
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            },
+            error: function () {
+                alert("Error");
+            }
+        });
+        $.ajax({
+            url: '/Home/torEstPartido',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                $("#modalEstadisticasPartido #estadisticasPartido").empty();
+                $("#modalEstadisticasPartido").modal();
+                $("#modalEstadisticasPartido #estadisticasPartido").html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            },
+            error: function () {
+                alert("Error");
+            }
+        });
+    };
+</script>

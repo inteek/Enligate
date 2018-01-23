@@ -1,0 +1,9 @@
+C:\Enligate\sw_EnligateWeb\conekta-.net-master\conekta-.net-master\src\conekta\conekta\bin\Debug\conekta.dll
+C:\Enligate\sw_EnligateWeb\conekta-.net-master\conekta-.net-master\src\conekta\conekta\bin\Debug\conekta.pdb
+C:\Enligate\sw_EnligateWeb\conekta-.net-master\conekta-.net-master\src\conekta\conekta\bin\Debug\Newtonsoft.Json.dll
+C:\Enligate\sw_EnligateWeb\conekta-.net-master\conekta-.net-master\src\conekta\conekta\bin\Debug\nunit.framework.dll
+C:\Enligate\sw_EnligateWeb\conekta-.net-master\conekta-.net-master\src\conekta\conekta\bin\Debug\nunit.framework.xml
+C:\Enligate\sw_EnligateWeb\conekta-.net-master\conekta-.net-master\src\conekta\conekta\bin\Debug\Newtonsoft.Json.xml
+C:\Enligate\sw_EnligateWeb\conekta-.net-master\conekta-.net-master\src\conekta\conekta\obj\Debug\conekta.csprojResolveAssemblyReference.cache
+C:\Enligate\sw_EnligateWeb\conekta-.net-master\conekta-.net-master\src\conekta\conekta\obj\Debug\conekta.dll
+C:\Enligate\sw_EnligateWeb\conekta-.net-master\conekta-.net-master\src\conekta\conekta\obj\Debug\conekta.pdb

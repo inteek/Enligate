@@ -1,0 +1,29 @@
+﻿
+<div id="updateProgressLayout">
+    <img src="~/Content/Images/general/loading.gif" />
+</div>
+
+<script type="text/javascript">
+    function toggleUpdateProgress(show) {
+        var upl = $("#updateProgressLayout");
+        if (show) {
+            upl.show();
+        }
+        else {
+            upl.hide();
+        }
+    }
+
+    $(document).ajaxStart(function () {
+        toggleUpdateProgress(true);
+    });
+
+    $(document).ajaxStop(function () {
+        toggleUpdateProgress(false);
+        //masks();
+    });
+
+    $(document).ajaxComplete(function () {
+        toggleUpdateProgress(false);
+    });
+</script>

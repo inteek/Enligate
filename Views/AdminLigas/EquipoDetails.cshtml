@@ -1,0 +1,39 @@
+﻿@using sw_EnligateWeb.Models;
+@model int
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        gvJugadoresGrid_PerformCallback();
+    });
+
+    function gvJugadoresGrid_PerformCallback(s, e) {
+        if (typeof gvJugadoresGrid.InCallback === "function") {
+            if (!gvJugadoresGrid.InCallback()) {
+                gvJugadoresGrid.PerformCallback();
+            }
+        }
+    }
+
+    function gvPartidosGrid_BeginCallback(s, e) {
+        e.customArgs['equId'] = @Model;
+    }
+    /*function fnEquipoDetails_RowDblClick(s , e) {
+        s.GetRowValues(e.visibleIndex, 'equId', function (value) {
+            location.href("AdminLigas/EquipoDetails/"+value);
+        });
+    }*/
+</script>
+
+<!-- Content -->
+<div id="ADMINISTRADORDELIGAS_Torneos" class="row">
+    <div id="ADMINISTRADORDELIGAS_Torneos_Torneos" class="col-xs-12 col-sm-12 col-lg-12 mSpaceMb20">
+        <div class="col-xs-12">
+            <div class="col-xs-12 dashboardBadgeTitles">
+                Equipos
+            </div>
+        </div>
+        <div class="col-xs-12">
+            @Html.Action("_Jugadores_Grid", "AdminEquipos");
+        </div>
+    </div>
+</div>

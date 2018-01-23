@@ -1,0 +1,387 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model EquiposJugadoresViewModel
+
+@{
+    string equImg = Model.equImg;
+    if (equImg != null)
+    {
+        equImg = equImg.Replace("~", "");
+    }
+    else
+    {
+        equImg = Url.Content("~/Content/Images/general/noPhoto.jpg");
+    }
+}
+
+@{
+    if (Model.torId != null && Model.torId > 0)
+    {
+
+        <script type="text/javascript">
+
+        var equId = @Model.equId;
+        var token = "@Model.torKey";
+        var equToken = "@Model.equCreadorEquipoId";
+
+        $(document).ready(function () {
+            equipoNuevo_BeginForm();
+            fnGVEquipoCoadministradores_PerformCallback();
+
+        });
+
+        function equipoNuevo_BeginForm() {
+            mUploadFiles();
+        }
+
+        function equipoNuevo_Submit() {
+            var admin = $("#equCorreoAdministrador");
+            var Equipo = $("#equNombre");
+            var jugAdd = $("#gvJugadores_DXDataRow0").length;
+
+            if (Equipo.val() != "") {
+                if (valueEmailCoach(admin)){
+                    $.ajax({
+                        url: '/AdminTorneos/VerifyTeamNameTournament',
+                        type: "POST",
+                        cache: false,
+                        data: "torId=" + $("#torId").val() + "&equName=" + $("#equNombre").val() + "&equId=" + $("#equId").val(),
+                        success: function (data) {
+                            if (data.booSuccess) {
+                                if (admin.val() != "" && jugAdd != 0) {
+                                    submitNewEditTeam();
+                                }
+                                else if (admin.val() == "") {
+                                    var alerta = msgAlert("Favor de agregar el correo del Administrador");
+                                    $(".m-messageHide").empty();
+                                    $(".m-messageHide").html(alerta);
+                                    showMessages();
+                                    admin.focus();
+                                } else if (jugAdd == 0) {
+
+                                    var msg = msgAlert("Favor de Agregar al menos un Jugador");
+                                    $(".m-messageHide").html(msg);
+                                    showMessages();
+                                    $("#jugCorreo").focus()
+                                }
+                            }
+                            else {
+                                $(".m-messageHide").html(data.strPartialViewString);
+                            }
+                        },
+                        complete: function (jqXHR, textStatus) {
+                            showMessages();
+                        },
+                        error: function (xhr, status, p3, p4) {
+                            alert("Hubo un error ...");
+                        }
+                    });
+                } else {
+                    var msg = msgAlert("Favor de agregar un correo valido para Coach");
+                    $(".m-messageHide").html(msg);
+                    showMessages();
+                    admin.focus();
+                }
+            }else {
+                var msg = msgAlert("Favor de agregarle nombre al Equipo");
+                $(".m-messageHide").html(msg);
+                showMessages();
+                Equipo.focus();
+            }
+
+
+
+        }
+
+        function submit_equipo() {
+
+            $.ajax({
+                url: '/AdminTorneos/VerifyTeamNameTournament',
+                type: "POST",
+                cache: false,
+                data: "torId=" + $("#torId").val() + "&equName=" + $("#equNombre").val() + "&equId=" + $("#equId").val(),
+                success: function (data) {
+                    if (data.booSuccess) {
+                        submitNewEditTeam();
+                    } else if (!data.booSuccess) {
+                        $(".m-messageHide").html(data.strPartialViewString)
+                    } else if (!data.booHasErrMessagePartialView) {
+                        $(".m-messageHide").html(data.strPartialViewString)
+                    }
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                },
+                error: function (xhr, status, p3, p4) {
+                    alert("Hubo un error ...");
+                }
+            });
+        };
+
+            function submitNewEditTeam() {
+                var form = $("#frmEquipoNuevoEdit");
+                form.submit(function (event) {
+                    //disable the default form submission
+                    event.preventDefault();
+                    $(".btnCrearEditarEquipo").prop("disabled", true);
+                    //grab all form data
+                    var formData = new FormData($(this)[0]);
+
+                    $.ajax({
+                        url: "/AdminEquipos/_EquipoJugadoresNuevoEdit_GuardarNuevo",
+                        type: 'POST',
+                        data: formData,
+                        async: false,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function (data) {
+                            // $("#_divEquipoNuevoEdit").html(data);
+
+                            $(".btnCrearEditarEquipo").prop("disabled", false);
+
+                            var msg = '<div id="modal_error" class="alert alert-success alert-dismissible" role="alert">';
+                            msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+                            msg += '<span aria-hidden="true">&times;</span></button> Cambios Realizados  </div>';
+
+                            console.log(data)
+
+                            $(".m-messageHide").html(data.strPartialViewString)
+
+                            //$(".m-messageHide").html(msg);
+                            if ($(".btnCrearEditarEquipo").find("span").first().text() == "Crear equipo") {
+                                auxfunction();
+                            }
+                            //
+                            showMessages();
+                        },
+                        complete: function (jqXHR, textStatus) {
+                            showMessages();
+
+                        },
+                        error: function (xhr, status, p3, p4) {
+                        //    alert("Hubo un error, intenta nuevamente");
+                            $(".btnCrearEditarEquipo").prop("disabled", false);
+                        }
+                    });
+                    return false;
+                });
+                form.submit();
+            }
+        function msgAlert(mensaje){
+            var msg = '';
+                msg += '<div id="modal_error" class="alert alert-danger alert-dismissible" role="alert">';
+                msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+                msg += '<span aria-hidden="true">&times;</span></button>'+mensaje+'</div>';
+            return msg;
+        };
+        function equipoMostrarCoAdministradores() {
+            $("#modalEquipoCoadministradores").modal({ backdrop: false });
+            fnGVEquipoCoadministradores_PerformCallback();
+        }
+
+        function fnGVEquipoCoadministradores_PerformCallback(s, e) {
+            if (typeof gvEquipoCoadministradores.InCallback === "function"){
+                if (!gvEquipoCoadministradores.InCallback())
+                    gvEquipoCoadministradores.PerformCallback();
+            }
+        }
+
+        function fnGVEquipoCoadministradores_OnBeginCallback(s, e) {
+            //alert("EquId: " + equId + "    Token: " + equToken);
+            e.customArgs['equId'] = equId;
+            e.customArgs['token'] = equToken;
+        }
+
+        function fnGVEquipoCoadministradores_OnEndCallback(s, e) {
+            if (s.cpPerformCallback) {
+                fnGVEquipoCoadministradores_PerformCallback();
+                delete s.cpPerformCallback;
+            }
+            }
+
+            function valueEmailCoach(el) {
+                var email = $(el).val();
+                console.log(email + " / " + validateEmail(email));
+                
+                if (validateEmail(email)) {
+                    console.log("OK");
+                    return true;
+                } else {
+                    console.log("Wrong");
+                    $("#result").text("");
+                    $("#result").text("Ingresar un Correo Electronico Valido");
+                    $("#result").addClass("text text-danger")
+                    $("#result").delay(5000).fadeOut('slow');                    
+                    return false;
+                }                
+            }
+        </script>
+
+        <form id="frmEquipoNuevoEdit">
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.equId)
+            @Html.HiddenFor(m => m.equImg)
+            @Html.HiddenFor(m => m.equAdminLigaTorneos)
+            @Html.HiddenFor(m => m.equEstatus)
+            @Html.HiddenFor(m => m.usuAgregarCoadmin)
+
+            <!-- Datos principales del equipo  -->
+            <div id="datosPrincipalEquipo" class="row">                
+                <div class="">
+                    
+                        <div class="col-xs-12 mTitle1 mSpaceMb5">
+                            Datos generales del Equipo:
+
+                            <button type="button" class="btn btn-default pull-right btnCrearEditarEquipo" onclick="equipoNuevo_Submit();" style="margin-top: 5px;">
+                                @{
+                                    if (Model.equId > 0)
+                                    {
+                                        // Actualizacion del torneo
+                                        <span>Guardar</span>
+                                    }
+                                    else
+                                    {
+                                        if (Model.mostrarDatosEquipo)
+                                        {
+                                            <span>Crear equipo</span>
+                                        }
+                                        else
+                                        {
+                                            <span>Guardar participanes</span>
+                                        }
+                                    }
+                                }
+                            </button>
+                        </div>
+
+                </div>
+                <div class="clearfix"></div>
+
+                @{
+                    if (Model.mostrarDatosEquipo)
+                    {
+                <!-- Imagen / Comentarios / Coadmins -->
+                        <div class='col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center mSpaceMb10'>
+                            <div class='col-xs-12 paddingLRZero'>
+                                <div class="mProfileUploadFileContainer">
+                                    <img id="equImgURL" class="mUploadFileImage" data-rel="profileImage" src="@equImg" />
+
+                                    <div class="mUploadFileIconContainer">
+                                        <span class="mUploadFileIcon glyphicon glyphicon-camera" data-rel="profileImage"></span>
+                                    </div>
+                                </div>
+
+                                <br class="hidden-md hidden-lg" />
+
+                                <input id="usuFileImage" name="usuFileImage" class="mUploadFile" type='file' accept=".jpg,.jpeg,.png" data-rel="profileImage" data-loadimg="true" />
+                                <button type="submit" data-rel="profileImage" class="mUploadFile">Guardar</button>
+                            </div>
+                        </div>
+                    }
+                <!-- Datos -->
+                    <div id="_EquipoNuevoEdit_Datos" class='col-xs-12 col-sm-12 col-md-8 col-lg-9'>
+                        @{Html.RenderPartial("Equipos/_NuevoEdit_Datos", Model);}
+                    </div>
+                }
+            </div>
+            <!-- Datos jugadores -->
+            <div id="divAdministrarJugadores" class="row mSpaceMt20" style="margin-top:0px;">
+                @*id="_EquipoNuevoEdit_Jugadores"*@
+
+                <div class="col-xs-12 mTitle1">
+                    @{
+                        if (Model.mostrarDatosEquipo)
+                        {
+                <span id="titleManagerTeam">Administrar jugadores:</span>
+            }
+            else
+            {
+                <span>Los participantes:</span>
+            }
+                    }
+                </div>
+                <div class="clearfix"></div>
+
+                <div id="divNuevoEdit_JugadoresAgregar" class="col-xs-12 mSpaceMt10">
+                    @{Html.RenderPartial("Jugadores/_JugadoresEquipo_Agregar", Model);}
+                </div>
+
+            </div>
+
+            <!-- Botones  -->
+            <div class="row">
+
+                <div class="col-xs-12 mSpaceMt20 mSpaceMb20 text-right">
+                    <button type="button" class="btn btn-default btnCrearEditarEquipo" onclick="equipoNuevo_Submit();">
+                        @{
+                            if (Model.equId > 0)
+                            {
+                                // Actualizacion del torneo
+                                <span>Guardar</span>
+                            }
+                            else
+                            {
+                                if (Model.mostrarDatosEquipo)
+                                {
+                                    <span>Crear equipo</span>
+                                }
+                                else
+                                {
+                                    <span>Guardar participanes</span>
+                                }
+                            }
+                        }
+                    </button>
+
+                </div>
+
+            </div>
+        </form>
+
+                            if (Model.torId > 0 && Model.usuAgregarCoadmin == true)
+                            {
+    <!-- ------------- Modal Agregar Co-administrador -------------- -->
+                                <div class="modal fade" id="modalEquipoCoadministradores" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            </div>
+                                            <div class="modal-body modalBodyLogin">
+                                                <div class="container-fluid text-center mSpaceMb30">
+                                                    <div class="mTitle1">Coadministradores del equipo</div>
+                                                    <fieldset id="fsTorneoCoadministradoresViewModel" class="mSpaceMt20">
+                                                        @Html.Action("Equipos_CoadminsGridEdit", "AdminEquipos")
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            <div class="hidden m-messageHide">
+                                @Html.Partial("_ModalState_Errors")
+                            </div>
+
+                            }
+                            else
+                            {
+                                <span>Debes seleccionar un torneo</span>
+                            }
+}
+<script>
+    $(document).ready(function () {
+        setTimeout(function(){
+
+            fnGVJugadores_PerformCallback();
+        }, 1000);
+
+
+
+    });
+    
+</script>

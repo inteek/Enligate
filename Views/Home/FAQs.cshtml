@@ -1,0 +1,138 @@
+﻿@using sw_EnligateWeb.Models;
+
+@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    ViewBag.Title = "Enligate";
+}
+
+<!-- Logo and Balls-->
+@Html.Partial("_LogoBalls")
+
+<!-- Content -->
+<div class="row">
+    <div class="col-xs-12 col-sm-offset-2 col-sm-9 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-7 mSpaceMt40">
+        <div class="mTitle5 mSpaceMb20">
+            Preguntas Frecuentes
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 paddingLRZero">
+                <div id="faqAccordion" class="faqAccordion">
+                    <h3>1. ¿Cómo puedo hacer para inscribir a mi equipo a un torneo?</h3>
+                    <div>
+                        <p>
+                            INSCRIBIR UN EQUIPO ES MUY SENCILLO, BUSCA LA LIGA QUE TENGA TORNEOS QUE SE ACOMODEN
+                            A TUS NECESIDADES EN EL BUSCADOR, REVISA LOS TORNEOS DISPONIBLES EN LAS LIGAS, INGRESA
+                            LOS CORREOS DE LOS PARTICIPANTES Y REALIZA EL PAGO DE LA FORMA EN QUE SE TE PIDE Y LISTO.
+                            TE LLEGARA UN CORREO DE CONFIRMACION Y TENDRAS ACCESO AL TORNEO DESDE TU PERFIL.
+                        </p>
+                    </div>
+                    <h3>2. ¿Cómo puedo apartar mi lugar en un torneo?</h3>
+                    <div>
+                        <p>
+                            EN MUCHOS DE LOS CASOS LA LIGA DEFINIRA UN PRECIO PARA PODERTE SEPARARTE EL LUGAR EN UN TORNEO.
+                            AL MOMENTO DE HACER EL PAGO DE LA TOTALIDAD DE SU PRECIO, SE TE DESCONTARA ESE ANTICIPO QUE DISTE.
+                            ES 100% CONFIABLE QUE TU LUGAR ESTA APARTADO SI REALIZASTE EL PAGO EN EL TIEMPO ESTABLECIDO.
+                        </p>
+                    </div>
+                    <h3>3. ¿Qué pasa si realizo un pago de anticipo y al final no puedo participar en el torneo o evento seleccionado?</h3>
+                    <div>
+                        <p>
+                            EN ESTE CASO EL DINERO DE APARTADO NO ES REEMBOLSABLE YA QUE SE TIENE UN COSTO POR GESTION. UNA DE LAS
+                            OPCIONES ES TRASPASAR TU LUGAR A OTRA PERSONA O SI LA LIGA LO APRUEBA, SE TE PUEDE TOMAR EN CUENTA
+                            ESE APARTADO PARA SEPARAR OTRO TORNEO.
+                        </p>
+                    </div>
+                    <h3>4. ¿Qué pasa si pago un anticipo para separar un lugar para mi equipo y no pago la totalidad del precio en el tiempo establecido?</h3>
+                    <div>
+                        <p>
+                            EN ESTE CASO EL DINERO DE APARTADO NO ES REEMBOLSABLE YA QUE SE TIENE UN COSTO POR GESTION. LO QUE SE PUEDE
+                            HACER ES HABLAR DIRECTAMENTE CON LA LIGA PARA VER SI TODAVIA TIENEN LUGARES EN EL TORNEO Y DEPENDE DE ELLOS
+                            SI TE TOMAN EN CUENTA EL PAGO QUE HICISTE O NO. ENLIGATE NO ES RESPONSABLE DE LA DECISION DE LA LIGA.
+                        </p>
+                    </div>
+                    <h3>5. ¿Cómo puedo registrar una Liga, Empresa, Escuela o Evento?</h3>
+                    <div>
+                        <p>
+                            REGISTRAR UNA LIGA, EMPRESA, ESCUELA O EVENTO ES MUY FACIL, MANDA TU SOLICITUD A ENLIGATE, LLENANDO LOS DATOS QUE SE TE PIDEN Y
+                            ESCOGIENDO LA FORMA QUE QUIERES TRABAJAR CON ENLIGATE, NOSOTROS TE DAREMOS ACCESO PARA QUE COMIENCES A USAR TU PORTAL.
+                        </p>
+                    </div>
+                    <h3>6. ¿Cuál es la diferencia de pagar una renta mensual o trabajar por comisiones?</h3>
+                    <div>
+                        <p>
+                            EN EL CASO DE TRABAJAR POR COMISIONES NO SE PAGA UN PRECIO FIJO POR MES, ES DECIR, EL USO DE LA PLATAFORMA
+                            ES GRATIS Y SE PAGA UNA COMISION POR CADA PERSONA O EQUIPO INSCRITO DESDE NUESTRA PAGINA, SI NO SE INSCRIBE
+                            NADIE POR NUESTRA PAGINA, NO SE TE COBRARIA NADA. EN EL CASO DE UNA RENTA MENSUAL, SE PAGA UN PRECIO FIJO,
+                            PUEDES TENER ACCESO COMPLETO A LA PLATAFORMA Y ADMINISTRAR TODOS TUS TORNEOS, LO UNICO ES QUE NO SE PODRAN
+                            INSCRIBIR PERSONAS EN GENERAL DESDE NUESTRA PAGINA, ES DECIR, SI TIENES UNA ESCUELA SE PUEDEN INSCRIBIR TUS
+                            ALUMNOS DE LA ESCUELA PERO NO PERSONAS EXTERNAS A TU BASE DE DATOS.
+                        </p>
+                        <p>
+                            EL TRABAJAR POR COMISIONES ES MUY RECOMENDABLE PARA LAS LIGAS, YA QUE ATRAEMOS GENTE NUEVA PARA QUE SE
+                            INSCRIBA CON ELLOS.  EN EL CASO DE LA RENTA MENSUAL, ES MAS RECOMENDABLE QUE LO CONTRATEN LAS EMPRESAS O
+                            ESCUELAS QUE YA TIENEN DEFINIDOS QUIENES SON SUS JUGADORES Y SOLAMENTE QUIEREN TENER UNA ADMINISTRACION
+                            DE SUS TORNEOS.
+                        </p>
+                    </div>
+                    <h3>7. ¿Qué pasa si pagué la totalidad de un torneo y luego me doy cuenta que seleccione un torneo que no era?</h3>
+                    <div>
+                        <p>
+                            SI TE DAS CUENTA QUE COMETISTE UN ERROR AL SELECCIONAR EL TORNEO, HABLA DE INMEDIATO DIRECTAMENTE A LA LIGA,
+                            MUY PROBABLEMENTE TE PODRAN CAMBIAR SI TIENEN LUGARES ACCESIBLES PARA EL TORNEO DONDE QUERIAS PARTICIPAR.
+                            ENLIGATE NO ES RESPONSABLE DE ESTOS CAMBIOS Y NO ES OBLIGACION DE LA LIGA EL CAMBIARTE DE TORNEO.
+                        </p>
+                    </div>
+                    <h3>8. ¿Qué pasa si ya no quiero ser administrador de un equipo?</h3>
+                    <div>
+                        <p>
+                            EN TU PERFIL TENDRAS ACCESO A NOMBRAR UN CO-ADMINISTRADOR DEL EQUIPO, ESTO LE DARA PERMISO A REALIZAR
+                            TODO LO QUE TU PUEDAS REALIZAR. DALE ACCESO A ESTE PERMISO Y DEJA QUE EL SE ENCARGUE DEL EQUIPO.
+                        </p>
+                    </div>
+                    <h3>9. ¿De que sirve ligar otras cuentas a la mía?</h3>
+                    <div>
+                        <p>
+                            EL LIGAR CUENTAS SIGNIFICA QUE PODRAS TENER ACCESO AL PERFIL DE LA CUENTA QUE QUIERAS LIGAR, ESTO SI LA OTRA
+                            PERSONA TE DA PERMISO. ESTO ES MUY UTIL PARA LOS PADRES DE FAMILIA, YA QUE TENDRIAN ACCESO A TODA LA
+                            INFORMACION DE SU HIJO.
+                        </p>
+                    </div>
+                    <h3>10. ¿Que pása si se rechaza un correo de invitación a un Torneo o Evento y se cambia de parecer para si participar?</h3>
+                    <div>
+                        <p>
+                            ES MUY FACIL, SOLAMENTE PONTE EN CONTACTO CON EL COACH, PIDELE QUE TE REENVIE UNA INVITACION Y
+                            LISTO. EN EL PERFIL DEL COACH VIENE LA OPCION PARA VOLVER A MANDAR UNA INVITACION,
+                            TE VOLVERA A LLEGAR UN CORREO Y ACEPTA PARTICIPAR.
+                        </p>
+                    </div>
+                    <h3>11. ¿Puedo tener varios correos (nombres de usuario) para la misma cuenta?</h3>
+                    <div>
+                        <p>
+                            SI SE PUEDE, PUEDES AGREGAR LOS CORREOS QUE DESEES, PUEDEN SER PRIVADOS O DE EMPRESA, TODOS ESTOS
+                            TE LLEVARAN A TU CUENTA Y TE DEJARAN ACCEDER A LA MISMA INFORMACION.
+                        </p>
+                    </div>
+                    <h3>12. ¿Puedo cambiar la forma de pago que había escogido previamente?</h3>
+                    <div>
+                        <p>
+                            SI SE PUEDE, EL COACH TIENE LA OPCION DE CAMBIAR ESA FORMA DE PAGO DESDE SU PERFIL,  PUEDE CAMBIAR DE PAGAR
+                            UN ANTICIPO A PAGAR LA TOTALIDAD O VICEVERSA Y TAMBIEN PUEDE CAMBIAR EL MEDIO POR EL QUE SE REALICE EL PAGO.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery-ui-accordion.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#faqAccordion").accordion({
+                heightStyle: "content"
+            });
+        });
+    </script>
+}

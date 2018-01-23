@@ -1,0 +1,247 @@
+﻿@using sw_EnligateWeb.Models;
+@model PartidosViewModel
+@{
+    ViewBag.Title = "Enligate";
+
+    var numPartidos = Model.numPartidos;
+}
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+@{
+    var noPhoto = Url.Content("~/Content/Images/general/noPhoto.jpg");
+    var server = Server.MapPath("~");
+}
+
+    <script>
+    
+        $(document).ready(function() {
+            calendar("/AdminLigas/GetEvents/");
+        });
+        function calendar(Controller) {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                firstDay: 1,
+                //defaultDate: '2016-08-22',
+                editable: true,
+                allDaySlot: false,
+                selectable: true,
+                eventLimit: true,
+                slotMinutes: 15,
+                events: function (start, end, timezone, callback) { // Defining the event source as a function
+
+                    console.log($("#Filter-Calendar #ligId").val() + " / " + $("#Filter-Calendar #torId").val());
+                    $.ajax({ // This is called every time the FC needs new events
+                        url: Controller,
+                        type: 'POST',
+                        data: {
+                            ligId: $("#Filter-Calendar #ligId").val(),
+                            torId: $("#Filter-Calendar #torId").val()
+                        },
+                        success: function (doc) {
+                            $('#calendar').fullCalendar('removeEvents');
+                            var events = [];
+                            console.log(doc);
+                            $.each(doc, function () {
+                                events.push({
+                                    title: $(this).attr('title'),
+                                    start: $(this).attr('start'), // will be parsed
+                                    color: $(this).attr('color'),
+                                    id: $(this).attr('id')
+                                });
+                            });
+                            console.log("Eventos..");
+                            console.log(events);
+                            callback(events);
+                        }
+                    });
+                },
+                eventClick: function (calEvent, jsEvent, view) {
+                    $('#divEventos').empty();
+                    $('#parId').val(calEvent.id);
+                    UpdateEvent(calEvent.id);
+                },
+                eventMouseover: function (data, event, view) {
+
+                    tooltip = '<div class="tooltiptopicevent" style="width:auto;height:auto;background:#337ab7;position:absolute;z-index:10001;padding:10px 10px 10px 10px ;  line-height: 200%;color:white;">' + 'Evento ' + ': ' + data.title + '</br>' + 'Incio ' + ': ' + data.start.format("YYYY-MM-DD HH:MM") + '</div>';
+
+                    $("body").append(tooltip);
+                    $(this).mouseover(function (e) {
+                        $(this).css('z-index', 10000);
+                        $('.tooltiptopicevent').fadeIn('500');
+                        $('.tooltiptopicevent').fadeTo('10', 1.9);
+                    }).mousemove(function (e) {
+                        $('.tooltiptopicevent').css('top', e.pageY + 10);
+                        $('.tooltiptopicevent').css('left', e.pageX + 20);
+                    });
+
+
+                },
+                eventMouseout: function (data, event, view) {
+                    $(this).css('z-index', 8);
+
+                    $('.tooltiptopicevent').remove();
+                }
+            });
+
+        }
+
+        function UpdateEvent(id) {
+            $.ajax({
+                url: '/AdminEquipos/_Partidos_Equipos',
+                type: "POST",
+                cache: false,
+                data: "parId=" + id + "&dep=false",
+                success: function (data) {
+                    $('#divEventos').empty();
+                    $('#divEventos').html(data);
+                    $('#titleMatch').text('Partidos:');
+                    $('#eventosCalendario').modal();
+
+                    $("#eventosCalendario input").attr("disabled", "true");
+                    $("#eventosCalendario select").attr("disabled", "true");
+                    $("#eventosCalendario textarea").attr("disabled", "true");
+                    $("#eventosCalendario .dxeButton ").each(function () {
+                        $(this).css("display", "none")
+                    });
+
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+
+        function fnPartidos_Filtros_ChangeLiga(liga) {
+            var ligId = $(liga).val();
+            var dataForm = $("#frmNuevoPartido").serialize()+"&dep=false";
+            $.ajax({
+                url: '/AdminLigas/_Change_Liga_Option',
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    console.log("success!");
+                    $("#divEventos").empty();
+                    $('#divEventos').html(data);
+                    $('#titleMatch').text('Partido:');
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+        function fnPartidos_Filtros_ChangeTorneo(torneo) {
+         var dataForm = $("#frmNuevoPartido").serialize() + "&dep=false";
+            $.ajax({
+                url: '/AdminLigas/_Change_Torneo_Option',
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    console.log("success!");
+                    $("#divEventos").empty();
+                    $('#divEventos').html(data);
+                    $('#titleMatch').text('Partido:');
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+
+        function fnCalendario_Filtros_ChangeTorneo(el) {
+            var ligId = $('.Filter-Calendar #ligId').val();
+            var torId = $(el).val();
+
+        }
+        function fnCalendar_ChangeLiga(ddlLiga) {
+
+           var dataForm = "ligId=" + ddlLiga.value +"&datEquipo=" + false + "&datSinTorneos=" + false;
+            $.ajax({
+                url: '/AdminEquipos/Calendario_ChangeLiga',
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    console.log(data)
+                    $("#Filter-Calendar").html(data);
+                    var torId = $("#torId").val();
+                    $('#calendar').fullCalendar('refetchEvents');
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+
+        function fnCalendar_ChangeTorneo(ddlTorneo) {
+            $('#calendar').fullCalendar('refetchEvents');
+        }
+    </script>
+
+
+<!-- Content -->
+<div id="ADMINISTRADORDEEQUIPO_Calendario" class="row">
+    <!--Search Dropdown Ligas/Torneo -->
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div id="Filter-Calendar">
+                @{
+                    if (numPartidos <= 0)
+                    {
+                        <text>
+                            <h2>No tiene registro de partidos</h2>
+                        </text>
+                    }
+                    else
+                    {
+                        <div id="Filter-Calendar">
+                            @{Html.RenderPartial("Ligas/_CalendarioNuevo_Filtros", Model);}
+                        </div>
+                     }
+                }
+            </div>
+        </div>
+    </div>
+    <hr />
+    <!--Calendar-->
+    <div class="col-sm-10 col-sm-offset-1">
+        <div id='calendar'></div>
+    </div>
+    <br />
+</div>
+
+
+<!--MODAL EVENTS-->
+<div class="modal fade" id="eventosCalendario" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyEventos">
+                <div class="container-fluid" style="min-height:150px;">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-11">
+                        <div id="divEventos"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @{
+        string googleSrc = System.Web.Configuration.WebConfigurationManager.AppSettings["GoogleMapsScript"];
+    }
+    <script src="@googleSrc" async defer></script>
+}

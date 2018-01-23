@@ -1,0 +1,56 @@
+﻿@using sw_EnligateWeb.Models;
+
+<li class="text-center">
+    <a href="" data-toggle="modal" data-target="#modalChangeCurrentRole">
+        Cambiar Rol
+    </a>
+</li>
+
+<div class="modal fade" id="modalChangeCurrentRole" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyLogin">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12">
+
+
+                            @using (Html.BeginForm("ChangeCurrentRole", "Admin", FormMethod.Post))
+                            { 
+
+                            <div class="mTitle1 text-left">Cambiar Rol</div>
+
+                            <div class="col-md-11">
+                                <br />
+                                <p class="text-center">
+                                    El cambiar de rol te permitirá realizar diferentes acciones en el portal. Solo da clic en el campo de selección y elige
+                                    el rol que quieres utilizar.
+                                </p>
+                                <p class="text-center">
+                                    Rol actual: <b>@ViewBag.afa_UserRolesNameCurrent</b>
+                                </p>
+                                <p>
+                                    <div class="hidden-xs col-sm-offset-2 col-sm-2 col-md-offset-3 col-md-1 text-right paddingLRZero">
+                                        Roles:
+                                    </div>
+                                    <div class="col-xs-12 visible-xs text-center">
+                                        Roles:
+                                    </div>
+                                    <div class="col-xs-12 col-sm-7 col-md-7 mChangeRoleDdl">
+                                        @Html.DropDownList("ddlCurrentRole", (SelectList)ViewBag.afa_UserRoles, new { @class = "ddlRoleActual", onchange = "this.form.submit();" })
+                                    </div>
+                                </p>
+                            </div>
+                                
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

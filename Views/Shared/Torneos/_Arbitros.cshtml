@@ -1,0 +1,139 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        fnGVTorneosArbitros_PerformCallback();
+    });
+
+    function fnGVTorneosArbitros_PerformCallback(s, e) {
+        if (typeof gvTorneosArbitros.InCallback === "function") {
+            if (!gvTorneosArbitros.InCallback())
+                gvTorneosArbitros.PerformCallback();
+        }
+    }
+    function fnGVArbitroTorneo_OnBeginCallback(s, e) {
+        e.customArgs['ligId'] = $("#FiltroLigasTorneosGrid #ligId").val();
+        //e.customArgs['torId'] = $("#FiltroLigasTorneosGrid #torId").val();
+    }
+    function fnEditDeleteArbitro_RowDblClick(arbCorreo, arbId, arbNombre) {
+        $.ajax({
+            url: '/AdminTorneos/_ArbitrosEdit',
+            type: "POST",
+            cache: false,
+            data: "&arbId=" + arbId,
+            success: function (data) {
+                console.log(data)
+               // $("#FiltroLigasTorneos").html(data);
+                $("#arbId").val(arbId);
+                $("#arbCorreo").val(arbCorreo);
+                $("#arbNombre").val(arbNombre);
+                $(".newArbitro").css('display', 'none');
+                $(".edit-delete").css('display', '');
+                $("#titutloArbitroModal").text("Editar Arbitro");
+                $("#ArbitrosNuevo #arbCorreo").val("");
+                $("#ArbitrosNuevo #arbNombre").val("");
+                $("#ArbitrosNuevo").modal();
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });        
+    }
+    function fn_EliminarArbitro(correo,arbId) {
+        if (confirm("¿Estas seguro que deseas eliminar a '" + correo + "'?")) {
+            $.ajax({
+                url: '/AdminTorneos/_ArbitrosDelete',
+                type: "POST",
+                cache: false,
+                data: "&arbId=" + arbId,
+                success: function (data) {
+                    /* Delete Referee */
+                    alert(data);
+                    console.log(data);
+                },
+                complete: function (jqXHR, textStatus) {
+                    fnGVTorneosArbitros_PerformCallback();
+                    showMessages();
+                }, error: function (jqXHR, textStatus) {
+                    aux("Error function");
+                }
+            });
+        }
+        
+    };
+    function fnArbitro_VolverInvitar(correo, arbId, ligId) {
+        $.ajax({
+            url: '/AdminTorneos/_ArbitrosInvite',
+            type: "POST",
+            cache: false,
+            data: "arbId=" + arbId + "&ligId="+ligId,
+            success: function (data) {
+                /* Invite Referee */
+                alert(data);
+                console.log(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }, error: function (jqXHR, textStatus) {
+                aux("Error function");
+            }
+        });
+    }
+</script>
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+<div class="col-xs-12 col-md-8 text-nowrap">
+    <div class="row">
+        <div id="FiltroLigasTorneosGrid" class="col-xs-12">
+            @Html.Action("_FiltroLigaTorneoGrid", "AdminTorneos")
+        </div>
+    </div>
+</div>
+<div class="col-xs-12">
+    <div id="badgeTitleArbitro" class="col-xs-12 dashboardBadgeTitles">
+        ARBITROS
+        <button type="button" class="btn btn-default pull-right" onclick="nuevoArbitro();">Nuevo</button>
+    </div>
+</div>
+<div class="col-xs-12 text-nowrap">
+    @Html.Action("ArbitrosGridEdit", "AdminTorneos")
+</div>
+
+<script>
+    function fnChangeLigaOption(liga) {
+        $.ajax({
+            url: '/AdminTorneos/_FiltroLigaTorneoGrid',
+            type: "POST",
+            data: "ligId=" + liga.value,
+            success: function (data) {
+                $("#FiltroLigasTorneosGrid").html(data);
+                fnGVTorneosArbitros_PerformCallback();
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }, error: function () {
+                alert("Error Ajax")
+            }
+        });
+        
+    }
+    function fnChangeTorneoGrid(torneo) {
+        var liga = $("#FiltroLigasTorneosGrid #ligId").val();
+        $.ajax({
+            url: '/AdminTorneos/_FiltroLigaTorneoGrid',
+            type: "POST",
+            data: "ligId=" + liga + "&torId="+torneo.value,
+            success: function (data) {
+                $("#FiltroLigasTorneosGrid").html(data);
+                fnGVTorneosArbitros_PerformCallback();
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }, error: function () {
+                alert("Error Ajax")
+            }
+        });
+
+    }
+</script>

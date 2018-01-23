@@ -1,0 +1,81 @@
+﻿@using sw_EnligateWeb.Models;
+<div id="ADMINISTRADORDELIGAS_Torneos" class="row">
+    <div id="ADMINISTRADORDELIGAS_Torneos_Estadisticas" class="col-xs-12 col-sm-12 col-lg-12 mSpaceMb20">
+        <div class="col-xs-8" id="FiltroLigaTorneo">
+            @Html.Action("_Filtro_Liga_Torneo", "AdminTorneos")
+        </div>
+        <div id="divTorneosDetail" class="col-xs-12" style="display:none;">
+            <div class="col-xs-12">
+                <div id="divTorneoEstadisticas" class="row mSpaceMt20">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var torneo = $("#FiltroLigaTorneo #torId").val();
+        fnGVTorneos_Details(torneo);
+    });
+    function fnEquipoNuevo_Filtros_ChangeLiga(liga) {
+        var ligId = $(liga).val();
+        $.ajax({
+            url: '/AdminTorneos/_Filtro_Liga_Torneo',
+            type: "POST",
+            cache: false,
+            data: "ligId=" + ligId,
+            success: function (data) {
+                $("#FiltroLigaTorneo").empty();
+                $('#FiltroLigaTorneo').html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+                var torId = $("#FiltroLigaTorneo #torId").val();
+                fnGVTorneos_Details(torId);
+            }
+        });
+    }
+    function fnEquipoNuevo_Filtros_ChangeTorneo(torneo) {
+        var torId = $(torneo).val();
+        var ligId = $("#FiltroLigaTorneo #ligId").val();
+        $.ajax({
+            url: '/AdminTorneos/_Filtro_Liga_Torneo',
+            type: "POST",
+            cache: false,
+            data: "torId=" + torId,
+            success: function (data) {
+                $("#FiltroLigaTorneo").empty();
+                $('#FiltroLigaTorneo').html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+                fnGVTorneos_Details(torId);
+            }
+        });
+    }
+    function fnGVTorneos_Details(torId) {
+        //alert("Estadisticas: "+torId);
+        $("#TorneoId").val(torId);
+        //$("#frmTorneoEst").submit();
+        $.ajax({
+            url: '/Admin/TorneoEstadisticas',
+            type: "POST",
+            cache: false,
+            data: "Id=" + torId,
+            success: function (data) {
+                $("#divTorneoContainerGrid").hide();
+                $("#divTorneoEstadisticas").empty();
+                $("#divTorneoEstadisticas").append(data);
+                $("#divTorneosDetail").show();
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+                disableAllForm();
+            },
+            error: function () {
+                alert("Error");
+            }
+        });
+    }
+</script>

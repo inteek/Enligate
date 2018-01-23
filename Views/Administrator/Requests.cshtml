@@ -1,0 +1,178 @@
+﻿@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model RequestLeaguesFilterViewModel
+
+@{
+    ViewBag.Title = "Enligate";
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        fnReqGVPerformCallback();
+        fnRequestsShowDetail(@Model.ligId);
+    });
+
+    //Muestra el detalle de una solicitud
+    function fnRequestsShowDetail(id) {
+        if (id > 0) {
+            $.ajax({
+                url: '/Administrator/_RequestsDetail',
+                type: "POST",
+                cache: false,
+                data: "Id=" + id,
+                success: function (data) {
+                    var divDetail = $("#divRequestsDetail");
+                    var divGrid = $("#divRequestsGrid");
+
+                    divGrid.hide();
+                    divDetail.show();
+                    $("#divRequestsDetailPartial").html(data);
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                },
+                error: function (xhr, status, p3, p4) {
+                    //alert("Hubo un error, intenta nuevamente");
+                }
+            });
+        }
+    }
+
+    //Cierra el detalle de la solicitud y muestra la tabla
+    function fnRequestsCloseDetail() {
+        var divDetail = $("#divRequestsDetail");
+        var divGrid = $("#divRequestsGrid");
+
+        $("#divRequestsDetailPartial").html("");
+        divDetail.hide();
+        divGrid.show();
+    }
+
+    function fnReqGVPerformCallback(s, e) {
+        if (typeof gvRequests.InCallback === "function") {
+            //if (!gvRequests.InCallback())
+            gvRequests.PerformCallback();
+        }
+    }
+
+    function fnGvRequest_OnBeginCallback(s, e) {
+        var date = deReqStartDate.GetDate();
+        var d = date.getDate();
+        var m = date.getMonth() + 1;
+        var y = date.getFullYear();
+        e.customArgs['reqFechaIni'] = d + "/" + m + "/" + y;
+        date = deReqEndDate.GetDate();
+        d = date.getDate();
+        m = date.getMonth() + 1;
+        y = date.getFullYear();        
+        e.customArgs['reqFechaFin'] = d + "/" + m + "/" + y;
+        e.customArgs['reqSolicitudTipoFiltro'] = cbxReqEstatus.GetValue();
+    }
+
+    function fnGvRequest_RowDblClick(s, e) {
+        s.GetRowValues(e.visibleIndex, 'ligId', function (value) {
+            fnRequestsShowDetail(value);
+        });
+    }
+
+    function fnGvRequest_RowClick(s, e) {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            fnGvRequest_RowDblClick(s, e);
+        }
+    }
+
+</script>
+
+<!-- Content -->
+<div id="ADMINISTRADOR_Solicitudes" class="row mSpaceMt30 mSpaceMb20">
+    <div class="col-xs-12">
+
+        <div id="divRequestsGrid" class="row">
+            <div class="col-xs-12">
+                <div class="col-xs-12 mFormFilterContainer">
+                    <div class="form-inline">
+                        <div class="form-group col-xs-6 col-sm-3 col-sm-offset-2 col-md-2 col-md-offset-3 col-lg-3 col-lg-offset-2 mSpaceMb10">
+                            <span class="mLabelGroup">Fecha Inicial:</span> <br class="visible-sm" />
+                            <div style="display:inline-block;vertical-align:text-bottom;">
+                                @Html.DevExpress().DateEdit(settings =>
+                                {
+                                    settings.Name = "deReqStartDate";
+                                    settings.Properties.DisplayFormatString = "dd/MM/yyyy";
+                                    settings.Properties.EditFormatString = "dd/MM/yyyy";
+                                    settings.Date = Model.drpvmDates.StartDate;
+                                    settings.Properties.AllowNull = false;
+                                    settings.Properties.ClientSideEvents.DateChanged = "fnReqGVPerformCallback";
+                                    settings.Width = Unit.Pixel(100);
+                                }).GetHtml()
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-inline">
+                        <div class="form-group col-xs-6 col-sm-3 col-md-2 col-lg-3 mSpaceMb10">
+                            <span class="mLabelGroup">Fecha Final:</span> <br class="visible-sm" />
+                            <div style="display:inline-block;vertical-align:text-bottom;">
+                                @Html.DevExpress().DateEdit(settings =>
+                                {
+                                    settings.Name = "deReqEndDate";
+                                    settings.Properties.DisplayFormatString = "dd/MM/yyyy";
+                                    settings.Date = Model.drpvmDates.EndDate;
+                                    settings.Properties.AllowNull = false;
+                                    settings.Properties.ClientSideEvents.DateChanged = "fnReqGVPerformCallback";
+                                    settings.Width = Unit.Pixel(100);
+                                }).GetHtml()
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-inline">
+                        <div class="form-group col-xs-6 col-sm-3 col-md-2 col-lg-3 mSpaceMb10">
+                            <span class="mLabelGroup">Estatus:</span> <br class="visible-sm" />
+                            <div style="display:inline-block;vertical-align:text-bottom;">
+                                @Html.DevExpress().ComboBox(settings =>
+                                {
+                                    settings.Name = "cbxReqEstatus";
+                                    settings.Width = 100;
+                                    settings.SelectedIndex = 0;
+                                    settings.Properties.Items.Add("Nuevas", "N");
+                                    settings.Properties.Items.Add("Aceptadas", "A");
+                                    settings.Properties.Items.Add("Rechazadas", "R");
+                                    settings.Properties.Items.Add("Todas", "T");
+                                    settings.Properties.ClientSideEvents.SelectedIndexChanged = "fnReqGVPerformCallback";
+                                }).GetHtml()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="row mSpaceMt20 mSpaceMb30">
+                    <div class="col-xs-12 col-md-offset-1 col-md-10">
+                        @Html.Action("RequestsGrid")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="divRequestsDetail" class="row" style="display:none;">
+            <div class="col-xs-12">
+                <div class="col-xs-12 col-md-offset-1 col-md-10">
+                    <button type="button" class="btn btn-link mLink2" onclick="fnRequestsCloseDetail()">
+                        Regresar a la lista de ligas
+                    </button>
+                </div>
+
+                <div class="col-xs-12">
+                    <div id="divRequestsDetailPartial" class="row">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

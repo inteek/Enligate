@@ -1,0 +1,9 @@
+﻿@using sw_EnligateWeb.Models;
+@model PartidosViewModel
+
+<table>
+    @foreach (var item in Model.ddlEquipoUno)
+    {
+        <text>codeAddress('@item.Value');</text>
+    }    
+</table>

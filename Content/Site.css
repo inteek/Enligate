@@ -1,0 +1,1917 @@
+﻿body {
+    font-size: 16px;
+}
+
+.gvRow{
+    cursor:pointer;
+}
+
+/*-------Check the screen size col-lg,md,sm,xs----*/
+/*
+@media (min-width: 1200px) {
+    body {
+        padding:50px 0;
+        background-color:green !important;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    body {
+        padding:50px 0;
+        background-color:yellow !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    body {
+        padding:50px 0;
+        background-color:orange !important;
+    }
+}
+@media (max-width: 767px) {
+    body {
+        padding:50px 0;
+        background-color:red !important;
+    }
+}
+*/
+
+
+/*------Begin CSS Styles-----*/
+a img{
+    border:none;
+    text-decoration:none;
+}
+
+.homeDashboard{
+    padding: 0 30px;
+}
+
+.hdLogo{
+    position:absolute;
+    z-index:1;
+    margin-top:-1px;
+}
+
+.hdLogoXS{
+    width:50px;
+    padding-top:5px;
+    margin-left:15px;
+}
+
+.m-navbar-homeDashboard{
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.homeLogoIcons{
+    position:absolute; 
+    z-index:1;
+}
+
+.imgBalls {
+    width: 100%;
+}
+
+.homeDashboardContent a{
+    text-decoration:none;
+    padding: 0 5px;
+}
+
+.navbar-nav.lineRight > li > a {
+    border-right: 1px solid;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 15px;
+}
+
+.navbar-nav.lineRight > li:last-child > a {
+    border-right: none;
+}
+
+.navbar-nav li .btnLink{
+    margin-top: 15px;
+    padding-bottom: 0;
+    padding-top: 0;
+    height:20px;
+    display:block;
+    cursor: pointer;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    margin-top: -15px;
+}
+
+.navbar-nav a{
+    text-transform:uppercase;
+}
+
+.homeDashboard_imgAllSports {
+        width: 650px;
+    }
+
+.homeDashboardH1{
+    font-size: 2.7em;
+    font-weight: bold;
+}
+
+.homeDashboardH4 {
+    font-size: 1em;
+    margin-top: -.9em;
+}
+
+.homeDashboardH3 {
+    font-size: 1.25em;
+    margin-top: -.5em;
+}
+
+.homeDashboardBtnDescubre {
+    font-size: 1em;
+    font-weight: bold;  
+    box-shadow: none;
+    border: none;
+    border-radius:0;
+    padding: 5px 10px;
+}
+
+.homeDashboardControls{
+    padding-bottom:30px;
+}
+
+.glyphiconWheel{
+    font-size:1.5em;
+}
+
+.width100{
+    width:100%;
+}
+.width80 {
+    width:85%;
+}
+
+.width75 {
+    width: 75%;
+}
+
+textarea,
+input[type=text],
+input[type=password],
+select{
+    font-size:.8em;
+}
+
+textarea {
+    resize: none;
+}
+
+select{
+    height:1.8em;
+}
+
+.homeGrid{
+    padding-top:20px;
+}
+
+.homeGridBox{
+    padding: 15px;
+}
+
+.hgSearchTitle{
+    text-align:center;
+    text-transform:uppercase;
+    font-size:.9em;
+    margin-bottom:10px;
+}
+
+.hgSearchLbl{
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.hgSearchLbl select{
+    font-weight:normal;
+}
+
+.hgRowFilterTitle{
+    text-transform:uppercase;
+    border-right: 1px solid;
+    padding-right:8px;
+    line-height: 1.6 !important;
+}
+
+.hgRowFilter,
+.hgRowFilter a{
+    text-transform:uppercase;
+    padding: 0 7px;
+}
+
+.hgRowFilter.active,
+.hgRowFilter a.active {
+    font-weight:bold;
+}
+
+.hgRowsTournaments{
+    margin-bottom:25px;
+}
+
+/* ---Rating with images---- */
+.trophyRating, 
+.trophyRating span {
+    display: block;
+    margin-top:10px;
+    background: url(../Content/Images/general/stars.png) left bottom repeat-x;
+    width: 90px;
+    height: 16px;
+}
+
+.trophyRating span {
+    background-position: left top;
+}
+/* ---End Rating with images---- */
+
+.hgRowsTrophies{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.hgTrophyComments,
+.hgTrophyComments button{
+    padding-left: 0;
+    padding-right: 0;
+    margin-top:5px;
+    font-size: .8em;
+    text-align:right;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+.paddingLRZero {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.paddingLZero {
+    padding-left: 0;
+}
+
+.paddingRZero {
+    padding-right: 0;
+}
+
+.paddingLR5 {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+
+.paddingLR10 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.hgRowTitle{
+    font-size:1.8em;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+.hgRowZone{
+    font-size:1.55em;
+    text-transform:uppercase;
+}
+
+.hgRowLocation{
+    font-size:1.1em;
+    text-transform:uppercase;
+    text-align:right;
+    padding-right:10px;
+}
+
+.hgRowsImage{
+        text-align:center;
+    }
+
+    .hgRowsImage img{
+        width: 100%;
+        max-width:300px;
+    }
+
+.hgRowDescription{
+    font-size:1.1em;
+    text-align:justify;
+    margin-top:15px;
+}
+
+.hgRowDescriptionSpace{
+    margin-top:15px;
+}
+
+.hgRowInscription{
+    font-size:1.35em;
+    text-transform:uppercase;
+}
+
+.hgRowInscriptionMD{
+    position:absolute;
+    bottom:0;
+    right:0; 
+    padding: 0 25px 15px 0;
+}
+
+.hgRowInscriptionPrice{
+    font-weight:bold;
+}
+
+.hgRowSeeMore{
+    font-size:.82em !important;
+}
+
+.marginTB15{
+    margin: 15px 0;
+}
+
+.mlMember{
+    border-right: 1px solid;
+}
+
+.mlRegister{
+    border-left: 1px solid;
+}
+
+/* ------------ Login Styles ------------ */
+.mlImgLogin{
+    position: absolute; 
+    left:0; 
+    top:0; 
+    margin-left:30px; 
+    width:80px;
+}
+
+.mlLabels{
+    text-transform:uppercase;
+    padding-right:8px;
+    line-height: 1.6 !important;
+}
+
+.m-btnLoginNetworks {
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: bold;
+    border-radius: 1px;
+    padding-top:15px;
+}
+
+    .m-btnLoginNetworks img {
+        float: left;
+        margin-top:-8px;
+    }
+
+.mlSocialNetworks{
+    margin-top:15px;
+    padding-top:15px;
+    border-top: 1px solid;
+}
+
+.modal-header{
+    border-bottom:none;
+}
+
+.modalBodyLogin{
+    margin-left: 150px;
+}
+
+.mlSocialNetworksLbl{
+    text-transform: lowercase;
+    padding-bottom:15px;
+}
+
+.m-hdc-Gallery{
+    text-align:center;
+    padding-bottom:30px;
+}
+
+.m-hdc-Gallery-Default{
+    background-image: url(../Content/Images/home/00_AllSports.png);
+}
+
+.m-hdc-Gallery-Futbol{
+    background-image: url(../Content/Images/home/01_soccer.png);
+}
+
+.m-hdc-Gallery-Voleibol{
+    background-image: url(../Content/Images/home/05_Volleyball.png);
+}
+
+.m-hdc-Gallery-Beisbol{
+    background-image: url(../Content/Images/home/04_Baseball.png);
+}
+
+.m-hdc-Gallery-FutbolAmericano{
+    background-image: url(../Content/Images/home/02_Football.png);
+}
+
+.m-hdc-Gallery-Basquetbol{
+    background-image: url(../Content/Images/home/03_Basquetball.png);
+}
+
+.m-hdc-Gallery-Corredores{
+    background-image: url(../Content/Images/home/06_Running.png);
+}
+
+.m-hdc-Gallery-Sports{
+    background-position: top center;
+    background-repeat: no-repeat;
+    -webkit-background-size:contain;
+    -moz-background-size:contain;
+    -o-background-size: contain;
+    background-size:contain;
+}
+
+.m-hdc-DescubreModalTitle1{
+    font-size:1.5em;
+    font-weight:normal;
+    padding: 10px 0;
+}
+
+.m-hdc-DescubreModalTitle2{
+    font-size:1.7em;
+    font-weight:bold;
+    padding: 20px 0 10px 0;
+}
+
+.m-hdc-DescubreModalFooter{ 
+    padding:30px 0 15px 0;  
+}
+
+.mTitle1 {
+    font-size: 1.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.mTitle2 {
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+.mTitle3 {
+    font-size: 1.5em;
+    font-weight: normal;
+}
+
+.mTitle4 {
+    font-size: 1.6em;
+    font-weight: normal;
+}
+
+.mTitle5 {
+    font-size: 3em;
+    font-weight: normal !important;
+    text-transform: uppercase;
+}
+
+.mSubTitle1{
+    font-size: 1.55em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.mSubTitle2{
+    font-size: 1.55em;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.mSubTitle3{
+    font-size: .8em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.mLink1{
+    font-size: 1.1em;
+    font-weight:bold;
+    text-transform: uppercase;
+}
+
+.mLink2{
+    font-size: 1.1em;
+    font-weight:normal;
+    text-transform: uppercase;
+}
+
+.mLink3{
+    font-size: .8em;
+    font-weight:bold;
+    text-transform: uppercase;
+}
+
+.mLink4{
+    font-size: .8em;
+    font-weight:normal;
+    text-transform: uppercase;
+}
+
+.mLink5{
+    font-size: .8em;
+    font-weight:normal;
+    text-transform: uppercase;
+}
+
+.mLink6{
+    font-size: 1em;
+    font-weight:normal;
+    text-transform: uppercase;
+}
+
+.mContent1{
+    font-size: 1.1em;
+    font-weight:bold;
+}
+
+.mContent2{
+    font-size: 1.1em;
+}
+
+.mContent3{
+    font-size: 1em;
+    font-weight:bold;
+}
+
+.mContent4{
+    font-size: 1em;
+}
+
+.text-normal{
+    text-transform: none !important;
+}
+
+.btn{
+    line-height: 1;
+    border: 1px solid transparent;
+    border-radius: 0;
+    white-space: normal;
+}
+
+.btn-default, .btn-danger{
+    text-transform:uppercase;
+}
+
+.btn-default:hover{
+    font-weight:bold;
+}
+
+.btn-defaultNormalHover:hover{
+    font-weight:normal !important;
+}
+
+.btn-cancel:hover{
+    font-weight:bold;
+}
+
+.btn-info{
+    text-transform:uppercase;
+}
+
+.btn-link{
+    padding-left: 0;
+}
+
+.btn-link:hover{
+    text-decoration:underline;
+}
+
+.forgotPass{
+    margin-top:-10px;
+    text-align: left;
+}
+
+.btn-transparent {
+    border: medium none;
+    border-radius: 5px;
+    box-shadow: none;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.mSpacePt0{
+    padding-top:0;
+}
+
+.mSpacePt5{
+    padding-top:5px;
+}
+
+.mSpacePt10{
+    padding-top:10px;
+}
+
+.mSpacePt20{
+    padding-top:20px;
+}
+
+.mSpacePt30{
+    padding-top:30px;
+}
+
+.mSpacePt40{
+    padding-top:40px;
+}
+
+.mSpacePb0{
+    padding-bottom:0;
+}
+
+.mSpacePb5{
+    padding-bottom:5px;
+}
+
+.mSpacePb10{
+    padding-bottom:10px;
+}
+
+.mSpacePb20{
+    padding-bottom:20px;
+}
+
+.mSpacePb30{
+    padding-bottom:30px;
+}
+
+.mSpacePb40{
+    padding-bottom:40px;
+}
+
+.mSpacePlr5{
+    padding-left:5px;
+    padding-right:5px;
+}
+
+.mSpacePlr10{
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.mSpacePlr20{
+    padding-left:20px;
+    padding-right:20px;
+}
+
+.mSpacePlr30{
+    padding-left:30px;
+    padding-right:30px;
+}
+
+.mSpacePlr40{
+    padding-left:40px;
+    padding-right:40px;
+}
+
+.mSpacePLRAdminContent{
+    padding-left:50px;
+    padding-right:50px;
+}
+
+.mSpaceMt0{
+    margin-top:0;
+}
+
+.mSpaceMt10{
+    margin-top:10px;
+}
+
+.mSpaceMt20{
+    margin-top:20px;
+}
+
+.mSpaceMt30{
+    margin-top:30px;
+}
+
+.mSpaceMt40{
+    margin-top:40px;
+}
+
+.mSpaceMb0{
+    margin-bottom:0 !important;
+}
+
+.mSpaceMb5{
+    margin-bottom:5px;
+}
+
+.mSpaceMb10{
+    margin-bottom:10px;
+}
+
+.mSpaceMb20{
+    margin-bottom:20px;
+}
+
+.mSpaceMb30{
+    margin-bottom:30px;
+}
+
+.mSpaceMb40{
+    margin-bottom:40px;
+}
+
+.mSpaceMlr5{
+    margin-left:5px;
+    margin-right:5px;
+}
+
+.mSpaceMtb5{
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.mSpaceMlr20{
+    margin-left:20px;
+    margin-right:20px;
+}
+
+.mSpaceMlr35{
+    margin-left:35px;
+    margin-right:35px;
+}
+
+.mSpaceMr0{
+    margin-right: 0 !important;
+}
+
+.mSpaceMr-10{
+    margin-right: -10px !important;
+}
+
+.mSimpleContent{
+    padding:30px 50px;
+}
+
+.m-messageShow
+{
+    position:fixed; 
+    top:25px; 
+    width:100%; 
+    text-align:center; 
+    z-index:10000;
+}
+
+.mAdminWrapper{
+}
+
+.row-eq-height-alignBottom {
+    align-items: flex-end;
+}
+
+.row-eq-height-alignCenter {
+    align-items: center;
+}
+
+.layoutBtnInscribeLiga{
+    clear: both;
+    color: #333;
+    display: block;
+    font-weight: normal;
+    line-height: 1.42857;
+    padding: 2px 20px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    background-color: transparent;
+    width:100%;
+    text-align:left !important;
+}
+
+.btnsMenuAdminDiv {
+    position: relative;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+    .btnsMenuAdminDiv button,
+    .btnsMenuAdminDiv a {
+        padding: 10px 5px !important;
+    }
+
+    .btnsMenuAdminDiv div.glyphicon {
+        position: absolute;
+        width: 100%;
+        top: 90%;
+        text-align: center;
+        font-size: 1.5em;
+        display: none;
+    }
+
+    .btnsMenuAdminDiv.current div.glyphicon {
+        position: absolute;
+        width: 100%;
+        top: 90%;
+        text-align: center;
+        font-size: 1.5em;
+        display: block !important;
+    }
+
+    .btnsMenuAdminDiv:first-child {
+        padding-left: 0;
+    }
+
+.btnsSubMenuAdminDiv li {
+    display: inline;
+    padding: 0 10px;
+    border-right: 1px solid;
+}
+
+    .btnsSubMenuAdminDiv li button,
+    .btnsSubMenuAdminDiv li a {
+        padding: 0 !important;
+    }
+
+    .btnsSubMenuAdminDiv li.current button,
+    .btnsSubMenuAdminDiv li.current a {
+        font-weight: bold !important;
+    }
+
+    .btnsSubMenuAdminDiv li:last-child {
+        border-right: none;
+    }
+
+.btnsSubMenuAdminDiv button,
+.btnsSubMenuAdminDiv a {
+    text-transform: uppercase;
+}
+
+*::-webkit-input-placeholder{
+    font-size:1.2em;
+}
+*:-moz-placeholder{
+    font-size:1.2em;
+}
+*::-moz-placeholder{
+    font-size:1.2em;
+}
+*:-ms-input-placeholder
+{
+    font-size:1.2em;
+}
+
+.titlePlaceholder::-webkit-input-placeholder {
+    text-transform:uppercase;
+}
+.titlePlaceholder:-moz-placeholder {
+    text-transform:uppercase;
+}
+.titlePlaceholder::-moz-placeholder {
+    text-transform:uppercase;
+}
+.titlePlaceholder:-ms-input-placeholder{
+    text-transform:uppercase;
+}
+
+input.titlePlaceholder2{
+    font-size: 1.5em;
+}
+
+.mSwitchBtns{
+    font-size:0.9em;
+    min-width:30px;
+    text-align:center;
+    border: 1px solid;
+    padding: 0 15px;
+}
+
+.mSwitchBtns.swActive{
+    font-weight:bold;
+}
+
+.mSwitchBtnsLeft{
+    border-right: none;
+    margin-right: 0;
+}
+
+.mSwitchBtnsMiddle{
+    border-right: none;
+    border-left: none;
+    margin-right: 0;
+    margin-left: -5px;
+}
+
+.mSwitchBtnsRight{
+    border-left: none;
+    margin-left: -5px;
+}
+
+.mSwitchBtnsUnique{
+}
+
+.mProfileUploadFileContainer{
+    position:relative; 
+    width:100%!important; 
+    max-width:200px!important;
+    margin:0 auto;
+    border: 1px solid;
+}
+
+.mUploadFileImage{
+    width:100%;
+}
+
+.mUploadFileIconContainer
+{
+    position:absolute; 
+    bottom:5px; 
+    right:20px; 
+    font-size:1.5em;
+    cursor:pointer;
+    z-index:100; 
+}
+
+.mUploadFile
+{
+    display:none !important;
+}
+
+.form-inline .form-group
+{
+    margin-bottom: 15px !important;
+}
+
+.mProfileImageContainer{
+    display:inline-block;
+    text-align:center;
+    margin-left:15px;
+    width: 200px;
+}
+
+.mProfileInfoContainer{
+    display:inline-block;
+    margin-left:5px;
+    width: 450px;
+    vertical-align:middle;
+}
+
+.mLeagueInfoContainer{
+    display:inline-block;
+    margin-left:5px;
+    vertical-align:middle;
+}
+
+.mDisplayInlineBlock{
+    display:inline-block;
+}
+
+.form-inline .form-group.mSpaceMb0{
+    margin-bottom:0 !important;
+}
+
+.mLreTelefonoContacto{
+    padding-right: 0 !important;
+}
+
+.alert {
+    position: relative;
+    margin-bottom: 0 !important;
+    width: 100%;
+}
+
+.mAboutUsImgLeft{
+    padding-left: 0;
+    padding-right: 0;
+    font-size:3em !important;
+    text-transform:none;
+    font-weight: normal;
+    text-align:center;
+}
+
+.mAboutUsImgLeft img{
+    max-width:430px;
+}
+
+.mAboutUsImgLeft span{
+    font-size:1.4em !important;
+    line-height: 1em !important;
+}
+
+.mAboutUsImgRight{
+    text-align:left;
+}
+
+.mAboutUsImgRight img{
+    max-width:400px;
+}
+
+.mAboutUsSpan{
+    font-size:1.3em !important;
+    text-transform:none;
+    font-weight: normal;
+}
+
+.mAboutUsContent{
+    font-size:1.2em;
+    line-height:1.5em;
+}
+
+/*table{
+    width:100%;
+    border: 1px solid;
+}
+
+    table tr.tblTitle td {
+        font-size: 1.4em;
+        text-align: left;
+        padding-left: 15px !important;
+    }
+
+table tr.tblHeader td{
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.93em;
+    padding: 5px 0;
+    border: 1px solid;
+}
+
+table tr.tblBody td{
+    font-weight: normal;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 5px 0;
+    border: 1px solid;
+}
+
+table tr.tblFooter td{
+    font-weight: normal;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 5px 0;
+    border: 1px solid;
+}*/
+
+.tblOverflow{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.ddlRoleActual{
+    min-width:200px;
+}
+
+.mContacto{
+    border:none;
+}
+
+.mContactoLeft{
+    padding: 60px 0;
+}
+
+.mContactoRight{
+    vertical-align:middle;
+    padding-left:40px;
+    font-size:0.85em;
+}
+
+.mContactoRight div p span{
+    font-size:1.1em;
+}
+
+.mImageLink{
+    margin-left:5px;
+}
+
+.mImageLink:hover{
+    text-decoration:none;
+}
+
+/*--- DevExpress GridView Control ---*/
+.dxgvControl{
+    border: none;
+}
+
+.dxgvHeader table, 
+.dxgvHeader table tr, 
+.dxgvHeader table td{
+    border:none;
+}
+
+.gvGroupPanel{
+    border: 1px dashed !important;
+}
+
+.gvDetailRow td table{
+    border: none;
+    cursor: pointer!important;
+}
+
+.gvHeader {
+    text-align: center;
+    font-weight: normal;
+}
+
+/*--- End DevExpress GridView Control ---*/
+
+.mFormFilterContainer{
+    border: 1px solid;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    padding-top:20px;
+}
+
+.badge{
+    position:absolute;
+    right:5px;
+    vertical-align:text-top;
+    font-size: 1em;
+    border-radius: 0;
+}
+
+.dashboardBadgeTitles{
+    border: 1px solid;
+    padding:5px 10px;
+}
+
+.newsTblTemplateImage
+{
+    text-align:center;
+}
+
+.newsTblTemplateImage img{
+    width:100%;
+    max-width:80px;
+}
+
+.newsTblTemplateLink{
+    text-align:center;
+}
+
+.mFeesForm,
+.mFeesForm > .form-group{
+    vertical-align:top !important;
+}
+
+.mFeesForm > .form-group > span.text-danger{
+    text-align:right;
+    display:block;
+}
+
+.mFeeInput{
+    width:130px;
+}
+
+.mRequestDeatilFeeForm > span
+{
+    display:block !important;
+    margin-top:5px;
+}
+
+.mLeaguesContactRow span{
+    display:block;
+}
+
+.faqAccordion > div > p{
+    text-transform: lowercase;
+}
+
+.faqAccordion > div > p:first-letter{
+    text-transform:uppercase;
+}
+
+.mRequestDetailFee{
+    display: inline-block;
+    margin-top: -10px;
+    vertical-align: top;
+}
+
+.divEditGlyphicon{
+    position:absolute; 
+    right:0; 
+    top:0;
+    cursor:pointer;
+    font-size:0.8em;
+}
+
+.divEditGlyphicon:hover{
+    font-size:0.7em;
+    font-weight:bold;
+}
+
+.divEditMainLeague{
+    position:absolute; 
+    left:5px; 
+    top:5px;
+    cursor:pointer;
+    background: url('Images/star_favorito.png');
+    width: 33px;
+    height: 37px;
+    background-repeat: no-repeat;
+}
+
+.divEditMainLeagueMain{
+    background-position: top left;
+}
+
+.divEditMainLeagueMainNo{
+    background-position: top -37px left;
+}
+
+.m-TorneosComentariosOnOff{
+    margin: 10px auto;
+}
+
+.input-group-addon.m-lbl{
+    background-color: unset !important;
+    border: none !important;
+    border-radius: unset !important;
+    color: unset !important;
+    font-size: unset !important;
+    font-weight: unset !important;
+    line-height: 0.8;
+    padding: 0 5px;
+}
+
+.m-text-capitalize{
+    text-transform:lowercase;
+}
+
+    .m-text-capitalize::first-letter {
+        text-transform: uppercase;
+    }
+
+.m-TorneoGridInfo2 {
+    font-size: 1.2em;
+    /*text-transform: uppercase;*/
+}
+
+.m-TorneoGridInscripcion{
+    cursor:default;
+}
+
+    .m-TorneoGridInscripcion:hover{
+        text-decoration: none !important;
+        cursor:default !important;
+    }
+
+.mNoDecoration,
+.mNoDecoration:hover,
+.mNoDecoration:focus,
+.mNoDecoration:active{
+    text-decoration:none !important;
+}
+
+@media (min-width: 1961px) {
+    .wrapper{
+        width:1900px;
+    }
+}
+
+/*------col-lg bootstrap size only  ------*/
+@media (min-width: 1200px) {
+    .imgLogo {
+        width: 110px;
+    }
+
+    .homeLogoIcons{
+        width:50px;
+        margin: 180px 0 0 45px;
+    }
+
+    .imgBalls {
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    .m-hdc-Gallery-Default{
+        padding-top:260px;
+    }
+
+    .m-hdc-GallerySpace-Sport{
+        padding-top:230px;
+        padding-bottom:120px;
+    }
+
+    .homeDashboard_imgAllSports {
+        width: 1025px;
+    }
+
+    .homeDashboardH1 {
+        font-size: 4em;
+        font-weight: bold;
+    }
+
+    .homeDashboardH4 {
+        font-size: 1.2em;
+        margin-top: -.9em;
+    }
+
+    .homeDashboardH3 {
+        font-size: 1.6em;
+        margin-top: -.5em;
+    }
+
+    .m-navbar-LoginMenu{
+        margin-left:105px;
+    }
+
+    .well{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .row-eq-height {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+    }
+
+    .mAdminWrapper{
+        margin-left:150px; 
+        margin-right:40px;
+    }
+
+    .paddingLRZero-LG {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .text-left-LG{
+        text-align: left !important;
+    }
+
+    .text-right-LG{
+        text-align: right !important;
+    }
+
+    .divTorneoNuevoFecha{
+        width: 100px; 
+        display: inline-flex;
+    }
+
+    .m-input-groupLbl-LG{
+        display: unset;
+    }
+
+    .m-input-groupLbl-LG .m-lbl{
+        text-align: left;
+        padding-left: 0 !important;
+        white-space: unset !important;
+    }
+}
+
+/*------col-md bootstrap size only  ------*/
+@media (min-width: 992px) and (max-width: 1199px) {
+    .imgLogo {
+        width: 80px;
+    }
+
+    .homeLogoIcons{
+        width:50px;
+        margin: 120px 0 0 30px;
+    }
+
+    .imgBalls {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .m-hdc-Gallery-Default{
+        padding-top:210px;
+    }
+
+    .m-hdc-GallerySpace-Sport{
+        padding-top:200px;
+        padding-bottom:100px;
+    }
+
+    .homeDashboard_imgAllSports {
+        width: 750px;
+    }
+
+    .homeDashboardH1 {
+        font-size: 3em;
+        font-weight: bold;
+    }
+
+    .homeDashboardH4 {
+        font-size: 1.05em;
+        margin-top: -.9em;
+    }
+
+    .homeDashboardH3 {
+        font-size: 1.4em;
+        margin-top: -.5em;
+    }
+
+    .homeDashboardBtnDescubre {
+        font-size: 1.05em;
+        font-weight: bold;
+        box-shadow: none;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+
+    .hgRowsTrophies div{
+        margin: 0 auto; 
+        width:90px;
+    }
+
+    .hgTrophyComments {
+        text-align: center;
+    }
+
+        .hgTrophyComments:hover {
+            cursor: pointer !important;
+        }
+
+    .m-navbar-LoginMenu{
+        margin-left:80px;
+    }
+
+    .row-eq-height {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+    }
+    
+    .mAdminWrapper{
+        margin-left:120px; 
+        margin-right:40px;
+    }
+
+    .mProfileInfoContainer {
+        display: inline-block;
+        margin-left: 5px;
+        width: 386px;
+        vertical-align: middle;
+    }
+
+    .mAboutUsImgLeft{
+        font-size:2.5em !important;
+    }
+
+    .mAboutUsImgLeft span{
+        font-size:1.4em !important;
+    }
+
+    .paddingLRZero-MD {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .text-left-MD{
+        text-align: left !important;
+    }
+
+    .text-right-MD{
+        text-align: right !important;
+    }
+
+    .divTorneoNuevoFecha{
+        width: 100px; 
+        display: inline-flex;
+    }
+
+    .m-input-groupLbl-MD{
+        display: unset;
+    }
+
+    .m-input-groupLbl-MD .m-lbl{
+        text-align: left;
+        padding-left: 0 !important;
+        white-space: unset !important;
+    }
+}
+
+/*------col-sm bootstrap size only  ------*/
+@media (min-width: 768px) and (max-width: 991px) {
+    .imgLogo {
+        width:70px;
+    }
+
+    .homeLogoIcons{
+        width:45px;
+        margin: 95px 0 0 27px;
+    }
+
+    .imgBalls {
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    .m-hdc-Gallery-Default{
+        padding-top:125px;
+    }
+
+    .m-hdc-GallerySpace-Sport{
+        padding-top:150px;
+        padding-bottom:60px;
+    }
+
+    .navbar-nav > li > a {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .hgRowFilterTitle {
+        text-align:left !important;
+        border-right: none;
+        border-bottom:1px solid;
+    }
+
+    .hgRowFilter {
+        text-align:center;
+    }
+
+    .hgRowLocation{
+        text-align:center;
+        padding-left:0;
+        padding-right:0;
+        padding-top:15px;
+    }
+
+    .hgRowTitle{
+        padding-top:10px;
+        padding-left:0;
+        padding-right:0;
+    }
+
+    .hgRowZone{
+        padding-left:0;
+        padding-right:0;
+    }
+
+    .hgRowDescription{
+        padding-left:0;
+        padding-right:0;
+    }
+
+    .hgRowsImage{
+        text-align:center;
+    }
+
+    .hgRowsImage img{
+        width: 100%;
+        max-width:200px;
+    }
+
+    .m-navbar-LoginMenu{
+        margin-left:0 !important;
+    }
+
+    .mlImgLogin{
+        margin-left:20px; 
+        width:60px;
+    }
+
+    .modalBodyLogin{
+        margin-left: 55px;
+    }
+
+    .row-eq-height {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+    }
+
+    .mAdminWrapper{
+        margin-left:5px; 
+        margin-right:5px;
+    }
+
+    .mInputGroup{
+        width:100% !important;
+    }
+
+    .mProfileImageContainer {
+        margin-left: 8px;
+    }
+
+    .mProfileInfoContainer {
+        margin-left: 5px;
+        width: 370px;
+    }
+
+    .mAboutUsImgLeft{
+        font-size:2.5em !important;
+    }
+
+    .mAboutUsImgLeft span{
+        font-size:1.4em !important;
+    }
+
+    .newsTblTemplateLink{
+        text-align:right;
+    }
+
+    .mRequestDetailFee{
+        display: block;
+    }
+
+    .paddingLRZero-SM {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .text-left-SM{
+        text-align: left !important;
+    }
+
+    .text-right-SM{
+        text-align: right !important;
+    }
+
+    .divTorneoNuevoFecha{
+        width: 100px; 
+        display: inline-flex;
+    }
+
+    .m-TorneosComentariosOnOff{
+        margin: 0 auto;
+    }
+
+    .m-TorneosAdministradores{
+        margin-top:0;
+    }
+
+    .m-input-groupLbl-SM{
+        display: unset;
+    }
+
+    .m-input-groupLbl-SM .m-lbl{
+        text-align: left;
+        padding-left: 0 !important;
+        white-space: unset !important;
+    }
+}
+
+/*------col-xs bootstrap size only  ------*/
+@media (max-width: 767px) {
+
+    .navbar-brand{
+        padding-top:10px !important;
+    }
+
+    .hdControlsBtnXS{
+        width:100%;
+    }
+
+    .navbar-nav.lineRight > li > a {
+        border-right: none !important;
+    }
+
+    .navbar-nav li .btnLink{
+        margin-top: 0;
+    }
+
+    .navbar-nav li{
+        text-align:center;
+    }
+
+    .hdMenuBallsXS ul{
+        padding: 0;
+    }
+
+    .hdMenuBallsXS li{
+        display:inline-block;
+        width: 75px !important;
+    }
+
+    .homeDashboard_imgAllSports {
+        width: 300px;
+    }
+
+    .imgBalls{
+        width: 35px;
+    }
+
+    .m-hdc-Gallery-Default{
+        padding-top:95px;
+    }
+
+    .m-hdc-GallerySpace-Sport{
+        padding-top:100px;
+        padding-bottom:40px;
+    }
+    
+    .hgRowFilterTitle {
+        text-align:left !important;
+        border-right: none;
+        border-bottom:1px solid;
+    }
+
+    .hgRowFilter {
+        text-align:center;
+    }
+    
+    .hgRowsTrophies {
+        display: table-cell;
+        height:50%;
+        clear:both;
+    }
+
+    .hgRowsImage{
+        text-align:center;
+    }
+
+    .hgRowsImage img{
+        width: 100%;
+        max-width:200px;
+    }
+
+    .hgRowLocation{
+        text-align:center;
+        padding-left:0;
+        padding-right:0;
+        padding-top:15px;
+    }
+
+    .hgRowTitle{
+        padding-top:10px;
+        padding-left:0;
+        padding-right:0;
+    }
+
+    .hgRowZone{
+        padding-left:0;
+        padding-right:0;
+    }
+
+    .hgRowDescription{
+        padding-left:0;
+        padding-right:0;
+    }
+
+    .mlImgLogin{
+        margin-left:20px; 
+        width:60px;
+    }
+
+    .modalBodyLogin{
+        margin-left: 55px;
+    }
+
+    .mlMember{
+        padding-bottom:10px;
+        border-right: 0;
+        border-bottom: 1px solid;
+    }
+
+    .m-btnLoginNetworks{
+        margin-bottom: 10px;
+    }
+
+    .paddingLRZero-XS{
+        padding-left:0;
+        padding-right:0;
+    }
+
+    .mAdminWrapper{
+        margin-left:5px; 
+        margin-right:5px;
+    }
+
+    .btnsMenuAdminDiv:first-child{
+        padding-left: 5px;
+    }
+
+    .mInputGroup{
+        width:100% !important;
+    }
+
+    .mProfileImageContainer {
+        width:100%;
+        margin-left:0;
+        margin-bottom:20px;
+    }
+
+    .mProfileInfoContainer {
+        width:100%;
+    }
+
+    .mProfileInfoContainer > div div.mCoAdmin {
+        text-align:center !important;
+    }
+
+    .mProfileInfoContainer > div.row{
+        margin-right: -10px !important;
+    }
+
+    .mLeagueInfoContainer {
+        width:100% !important;
+    }
+
+    .mLreTelefonoContacto{
+        padding-left: 0 !important;
+
+    }
+
+    .mAboutUsImgLeft{
+        font-size: 2em !important;
+        padding: 10px;
+    }
+
+    .mAboutUsImgLeft span{
+        font-size:1.5em !important;
+    }
+
+    .mAboutUsContent{
+        padding: 0 10px !important;
+    }
+
+    .mChangeRoleDdl{
+        text-align:center;
+    }
+
+    .mContacto{
+        margin: 0;
+    }
+
+    .mContactoRight{
+        padding:20px 0 10px 0;
+        text-align:center;
+    }
+
+    .mContactoLeft{
+        padding: 30px 0;
+    }
+
+    .newsTblTemplateContent{
+        text-align:center;
+        padding:15px 0;
+    }
+
+    .newsTblTemplateLink{
+        text-align:right;
+    }
+
+    .mFeesForm,
+    .mFeesForm > .form-group > span.text-danger{
+        text-align:center;
+    }
+
+    .mFeeInput {
+        width: 100%;
+    }
+
+    .mRequestDetailFee{
+        display: block;
+    }
+
+    .text-left-XS{
+        text-align: left !important;
+    }
+
+    .text-right-XS{
+        text-align: right !important;
+    }
+
+    .divTorneoNuevoFecha {
+        width: 100%;
+    }
+
+    .m-TorneosComentariosOnOff{
+        margin: 0 auto;
+    }
+
+    .m-TorneosAdministradores{
+        margin-top:10px;
+    }
+
+    .m-input-groupLbl-XS{
+        display: unset;
+    }
+
+    .m-input-groupLbl-XS .m-lbl{
+        text-align: left;
+        padding-left: 0 !important;
+        white-space: unset !important;
+    }
+}
+
+
+/*
+------------------------------------------------------
+    Loading GIF
+------------------------------------------------------
+*/
+#updateProgressLayout{
+    position:fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index:1000;
+    display:none;
+}
+
+    #updateProgressLayout img {
+        width:50px;
+    }
+/*
+------------------------------------------------------
+    Loading GIF - END
+------------------------------------------------------
+*/
+
+/*
+-----------------------------------------------
+    TOOLTIPS
+------------------------------
+*/
+

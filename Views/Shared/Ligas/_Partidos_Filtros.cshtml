@@ -1,0 +1,370 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@using sw_EnligateWeb.Models;
+
+@model PartidosViewModel
+
+
+@{
+    string equImgUno = Model.imgUno;
+    string equImgDos = Model.imgDos;
+    if (equImgUno == null)
+    {
+        equImgUno = Url.Content("~/Content/Images/general/noPhoto.jpg");
+    }
+    if (equImgDos == null)
+    {
+        equImgDos = Url.Content("~/Content/Images/general/noPhoto.jpg");
+    }
+    var esCoachingP = (Model.tblTorneo!=null)? Model.tblTorneo.torEsCoaching:false;
+    if (esCoachingP)
+    {
+        Model.equIdDos = 0;
+        <script>
+            $(document).ready(function () {
+                $("#equIdDos").val(0);
+            });
+        </script>
+    }
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+<div id="titleMatch" class="col-xs-12 mTitle1 mSpaceMb5"></div>
+<div id="newMatchForm" class="col-xs-12 col-md-12 col-lg-12 mSpaceMt20 mSpaceMb20">
+    <form id="frmNuevoPartido" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        @Html.Hidden("parId",Model.parId)
+        <input type="hidden" value="@ViewBag.dateSelect" name="dateSelect" />
+        <div class="form-horizontal">
+            
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div id="_divTorneoNuevoFiltros" class="col-xs-12 col-xs-offset-0 mSpaceMb20">
+                <br />
+                <div class="row">
+                    @{
+                        if (Model.dep != false)
+                        {
+                            <div class="col-xs-12 col-sm-4 col-md-4 mSpaceMb5">
+                                <div class="marginForm">
+                                    <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                        <span class="input-group-addon m-lbl">Liga:</span>
+                                        @Html.DropDownListFor(m => m.depNombre, (List<SelectListItem>)Model.ddlDeportes, null, new { @class = "width100", onchange = "fnPartidos_filtros_ChangeDeportes()" })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.ligId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        }
+                    }
+                    <div class="col-xs-12 col-sm-6 col-md-6 mSpaceMb5">
+                        <div class="marginForm">
+                            <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                <span class="input-group-addon m-lbl">Liga:</span>
+                                @Html.DropDownListFor(m => m.ligId, (List<SelectListItem>)Model.ddlLigas, null, new { @class = "width100", onchange = "fnPartidos_Filtros_ChangeLiga(this);" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.ligId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-6 mSpaceMb5">
+                        <div class="marginForm">
+                            <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                <span class="input-group-addon m-lbl">Torneo:</span>
+                                @Html.DropDownListFor(m => m.torId, (List<SelectListItem>)Model.ddlTorneos, null, new { @class = "width100", onchange = "fnPartidos_Filtros_ChangeTorneo(this);" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.torId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+               <div id="dataFormPartido" >
+                    @if (Model.tblTorneo != null)
+                    {
+                        if (ViewBag.dateSelect < ViewBag.TorneoInit)
+                        {
+                            <br />
+                            <br />
+                            <div class="input-group m-input-groupLbl-XS width100 text-danger text-center">
+
+                                <h1>
+                                    AVISO: la fecha de inicio del torneo es :
+                                </h1>
+                                <br />
+                                <h1>
+                                    @ViewBag.torneoInit
+                                </h1>
+                                
+                                <br />
+                            </div>
+                            <br />
+
+                        }
+                        else
+                        {
+                            if (Model.result == true)
+                            {
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-5 mSpaceMb5">
+                                        <div class="marginForm">
+                                            <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                                <span class="input-group-addon m-lbl">Resultado:</span>
+                                                @Html.TextBoxFor(m => m.equResultadoUno, "", new { @class = "width100", @placeholder = "Resultado" })
+
+                                            </div>
+                                            @Html.ValidationMessageFor(m => m.equResultadoUno, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-2 text-center">
+                                        <span>
+
+                                        </span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-5 mSpaceMb5">
+                                        <div class="marginForm">
+                                            <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                                <span class="input-group-addon m-lbl">Resultado:</span>
+                                                @Html.TextBoxFor(m => m.equResultadoDos, "", new { @class = "width100", @placeholder = "Resultado" })
+
+                                            </div>
+                                            @Html.ValidationMessageFor(m => m.equResultadoDos, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+                            }
+                            <br />
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-5 mSpaceMb5">
+                                    <div class="marginForm">
+                                        <div class="col-xs-12 col-sm-12 col-md-5">
+                                            <span class="input-group-addon m-lbl">Equipo 1:</span>
+                                            <img id="equImgUno" class="img-thumbnail center-block" width="80" height="80" src="@equImgUno" />
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                            <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                                @Html.DropDownListFor(m => m.equIdUno, (List<SelectListItem>)Model.ddlEquipoUno, null, new { @class = "width100", onchange = "fnPartidos_Filtros_ChangeEquipoUno(this);" })
+                                            </div>
+                                        </div>
+                                        @Html.ValidationMessageFor(m => m.equIdUno, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-2 text-center">
+                                    <span>
+                                        VS
+                                    </span>
+                                </div>
+                                @{
+                                    if (Model.torTipo == "INTERNO")
+                                    {
+                                        <div class="col-xs-12 col-sm-5 mSpaceMb5">
+                                            <div class="marginForm">
+                                                <div class="col-xs-12 col-sm-12 col-md-5">
+                                                    <span class="input-group-addon m-lbl">Equipo 2:</span>
+                                                    <img id="equImgUno" class="img-thumbnail center-block" width="80" height="80" src="@equImgDos" />
+
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-7">
+                                                    <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                                        @Html.DropDownListFor(m => m.equIdDos, (List<SelectListItem>)Model.ddlEquipoDos, null, new { @class = "width100", onchange = "fnPartidos_Filtros_ChangeEquipoDos(this);" })
+                                                    </div>
+                                                    @Html.ValidationMessageFor(m => m.equIdDos, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @Html.Hidden("equImgDos", Model.imgDos)
+                                        <div class="col-xs-12 col-sm-5 mSpaceMb5">
+                                            <div class="marginForm">
+
+                                                <div class="col-xs-12 col-sm-12 col-md-5">
+                                                    <span class="input-group-addon m-lbl">Equipo 2:</span>
+
+                                                    <div class="mProfileUploadFileContainer" style="width:80px!important;height:80px!important">
+                                                        <img id="equImgDos" class="img-thumbnail" data-rel="equImage" src="@equImgDos" />
+
+                                                        <div class="mUploadFileIconContainer">
+                                                            <span class="mUploadFileIcon glyphicon glyphicon-camera" data-rel="equImage"></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <br class="hidden-md hidden-lg" />
+
+                                                    <input id="equImgURLFile" name="equImgURLFile" class="mUploadFile" type='file' accept=".jpg,.jpeg,.png" data-rel="equImage" data-loadimg="true" />
+                                                    <button type="submit" data-rel="equImage" class="mUploadFile">Guardar</button>
+                                                </div>
+
+
+                                                <div class="col-xs-12 col-sm-12 col-md-7">
+                                                    <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                                        @Html.TextBoxFor(m => m.equNombreEquipoDos, "", new { @class = "width100", @placeholder = "Equipo2" })
+                                                    </div>
+                                                    @Html.ValidationMessageFor(m => m.equNombreEquipoDos, "", new { @class = "text-danger" })
+                                                    @Html.Hidden("equIdDos", Model.equIdDos)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                    //alert("yes");
+                                        </script>
+                                    }
+                                }
+
+                            </div>
+                            <br />
+                                    if (Model.result == true)
+                                    {
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6 col-md-6 mSpaceMb5">
+                                                <div class="marginForm">
+                                                    <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                                        <span class="input-group-addon m-lbl">Nota:</span>
+                                                        @Html.TextBoxFor(m => m.parEstado, "", new { @class = "width100", @placeholder = "Notas" })
+                                                    </div>
+
+                                                    @Html.ValidationMessageFor(m => m.parEstado, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                    }
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 mSpaceMb5">
+                                            <div class="marginForm">
+                                                <div id="canchaSelect" class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                                    @Html.Partial("Ligas/_CanchasSelect")
+                                                </div>
+                                                @Html.ValidationMessageFor(m => m.canId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        @{
+                                            if (Model.torTipo == "INTERNO")
+                                            {
+                                                <div id="arbitroFiltro" class="col-xs-12 col-sm-6 col-md-6 mSpaceMb5">
+                                                    @Html.Partial("Ligas/_ArbitroFiltro")
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div id="arbitroFiltro" class="col-xs-12 col-sm-6 col-md-6 mSpaceMb5">
+                                                    <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                                        <span class="input-group-addon m-lbl">Arbitro:</span>
+
+                                                        @Html.TextBoxFor(m => m.arbNombre, "", new { @class = "width100", @placeholder = "Correo Arbitro" })
+                                                        <span id='result'></span>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 col-lg-6 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+                                            <div class="marginForm">
+                                                <div class="input-group m-input-groupLbl-XS width100">
+                                                    <span class="input-group-addon m-lbl">Fecha de inicio:</span>
+                                                    @Html.DevExpress().DateEditFor(m => m.parFecha_Inicio, settings =>
+                                        {
+                                            settings.Properties.UseMaskBehavior = true;
+                                            settings.Properties.EditFormat = EditFormat.Custom;
+                                            settings.Properties.EditFormatString = "dd/MM/yyyy hh:mm tt";
+                                            settings.Properties.TimeSectionProperties.Visible = true;
+                                            settings.Properties.TimeSectionProperties.TimeEditProperties.EditFormat = EditFormat.Custom;
+                                            settings.Properties.TimeSectionProperties.TimeEditProperties.EditFormatString = "hh:mm tt";
+                                            settings.Properties.MinDate = (ViewBag.TorneoInit != null) ? (ViewBag.TorneoInit > ViewBag.dateTimeMx) ? ViewBag.TorneoInit : ViewBag.dateTimeMx : ViewBag.dateTimeMx;
+                                            settings.Properties.MaxDate = (ViewBag.TorneoEnd != null) ? (ViewBag.TorneoEnd > ViewBag.dateTimeMx) ? ViewBag.TorneoEnd : ViewBag.dateTimeMx : ViewBag.dateTimeMx;
+                                            settings.Properties.CalendarProperties.FirstDayOfWeek = System.Web.UI.WebControls.FirstDayOfWeek.Monday;
+                                            settings.Width = Unit.Percentage(100);
+                                        }
+                                        ).GetHtml()
+
+                                                </div>
+
+
+                                                @Html.ValidationMessageFor(m => m.parFecha_Inicio, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+                                                <div class='pull-right switchHabilitar'>
+                                                    <div class='col-xs-12 col-sm-12 paddingLRZero'>
+                                                        <button type="button" class="mSwitchBtns mSwitchBtnsLeft" data-val="True" data-relclass="parEstatus" style="padding: 2px;">NO</button>
+                                                        <button type="button" class="mSwitchBtns mSwitchBtnsRight" data-val="False" data-relclass="parEstatus" style="padding: 2px;">SI</button>
+                                                        @Html.HiddenFor(m => m.parEstatus, new { data_relclass = "parEstatus", data_defaultVal = Model.parEstatus.ToString() })
+                                                        Cancelar
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-6 col-lg-6 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+                                                <div class="marginForm">
+                                                    <div class="input-group m-input-groupLbl-XS width100">
+                                                        <span class="input-group-addon m-lbl">Duracion:</span>
+                                                        <input type="number" min="0" max="12" name="parHour" id="parHour" placeholder="HORAS" />
+
+                                                        <span class="input-group-addon m-lbl">:</span>
+                                                        <input type="number" min="0" max="60" name="parMinutes" id="parMinute" placeholder="MINUTOS" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-xs-12 text-right">
+                                                @{
+                                                    if (Model.parId != 0)
+                                                    {
+                                                        <button type="button" class="btn btn-default" onclick="partidoEditar_Submit(@Model.parId)">Guardar</button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <button type="button" class="btn btn-default" onclick="partidoNuevo_Submit()">Nuevo</button>
+                                                    }
+                                                }
+                                                <button type="button" class="btn btn-cancel" data-dismiss="modal" id="btnCancelMatch">Cancelar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                }
+            }
+            else
+            {
+                <h2 class="text-capitalize text-danger text-center" >Lo sentimos, esta liga no tiene Torneos Disponibles.</h2>
+            }
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        switchButtons();
+        mUploadFiles();
+        $("#parHour").val(@Model.parHour);
+        $("#parMinute").val(@Model.parMinutes);
+        console.log("@ViewBag.dateTimeMx");
+
+    });
+
+    function validate() {
+        $("#result").text("");
+        $("#result").removeClass();
+        var email = $("#arbNombre").val();
+        $("#result").fadeIn('slow');
+        if (validateEmail(email)) {
+            $("#result").text("Correo Electronico Valido");
+            $("#result").addClass("text text-success")
+            $("#result").delay(5000).fadeOut('slow');
+        } else {
+            $("#result").text("Ingresar un Correo Electronico Valido");
+            $("#result").addClass("text text-danger")
+            $("#result").delay(5000).fadeOut('slow');
+        }
+        return false;
+    }
+    
+</script>

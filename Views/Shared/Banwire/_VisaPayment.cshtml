@@ -1,0 +1,159 @@
+﻿<div class="modal fade" id="modalVisaPayment" aria-hidden="false">
+    <div class="modal-dialog" style="margin-bottom: 50px">
+        <div class="modal-content" id="main_dialog_content" style="display: block;">           
+            <style>
+                .control-label {
+                    display: none;
+                    _display: block;
+                }
+
+                .has-feedback .form-control-feedback {
+                    top: 0!important;
+                    left: 0;
+                }
+
+                .has-feedback .form-control {
+                    padding-left: 32px;
+                    padding-right: 14px;
+                }
+            </style>
+            <div class="modal-header">
+                <button type="button" onclick="methodReturn();" class="close go-back" data-back-to="payment_method" style="font-size: 14px" aria-hidden="true"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                 <div class="container-fluid">
+                     <div class="row">
+                         <div class="col-md-6 col-md-offset-1">
+                             <h4 class="modal-title" id="myModalLabel"><i class=" glyphicon glyphicon-credit-card" style="margin-right: 5px"></i> Datos de tarjeta</h4>
+                             <p class="text-muted">Ingresa tus datos de tarjeta</p>
+                         </div>
+                         <div class="col-md-4 pull-right">
+                             <img class="list-img" src="~/Content/Images/payments/visa_mastercard.png" style="width: 50px; max-width: 50px; max-height: none; top: 12px">   
+                         </div>
+                     </div>
+                 </div>   
+            </div>
+            <div class="modal-body" style="padding-top:0px;">
+
+                <form action="@Url.Action("Pago_Result", "AdminLigas")" method="post" id="frm_pago">
+                   
+                    <div class="row">
+                        <div class="col-sm-6" style="padding-right: 0">                            
+                            <div class="form-group has-feedback">
+                                <label class="control-label" for="email">E-mail:</label>
+                                <input class="form-control" placeholder="E-mail" id="email" data-conekta="card[email]" name="email" value="prueba@banwire.com" type="text">
+                                <span class="glyphicon glyphicon-envelope form-control-feedback text-info"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group has-feedback">
+                                <label class="control-label" for="email">Teléfono:</label>
+                                <input class="form-control only-numbers" placeholder="Celular" data-conekta="card[tel]" id="telefono" name="tel" value="+52" data-original-title="" title="" type="text">
+                                <span class="glyphicon glyphicon-phone form-control-feedback text-info"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="card_info">
+                        <div class="row">
+                            <div class="col-sm-6" style="padding-right: 0">
+                                <div class="form-group has-feedback">
+                                    <label class="control-label" for="numero">Número de tarjeta:</label>
+                                    <input maxlength="16" class="form-control only-numbers" name="numero" placeholder="Número de tarjeta" id="numero" value="" type="text" data-conekta="card[number]" required="">
+                                    <span class="glyphicon glyphicon-credit-card form-control-feedback text-info"></span>
+                                    <img style="position: absolute; right: 7px; top: 7px; display: none; width: 32px" id="img_card_type">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group has-feedback">
+                                    <label class="control-label" for="nombre">Nombre que aparece en la tarjeta:</label>
+                                    <input class="form-control" data-conekta="card[name]" id="nombre_tarjeta" name="nombre" value="" placeholder="Nombre tarjetahabiente" type="text">
+                                    <span class="glyphicon glyphicon-user form-control-feedback text-info"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6" style="padding-right: 0">
+                                <div class="form-group has-feedback">
+                                    <label class="control-label" for="vence_mes">Fecha de vencimiento:</label>
+                                    <div class="row">
+                                        <div class="col-xs-4" style="padding-right: 0">
+                                            <input data-conekta="card[exp_month]" placeholder="Mes" maxlength="2" class="form-control only-numbers" id="vence_mes" name="vence_mes" value="" style="border-radius: 4px 0 0 4px; padding-left: 14px; text-align: right; border-right: none" data-original-title="" title="" type="text">
+                                            <span class="glyphicon glyphicon-calendar form-control-feedback text-info" style="left: 15px"></span>
+                                        </div>
+                                        <div class="col-xs-4" style="padding-left: 0; padding-right: 0">
+                                            <span style="position: absolute; left: -2px; color: #bbbbbb; top: 8px">/</span>
+                                            <input placeholder="Año"  data-conekta="card[exp_year]" class="form-control only-numbers" id="vence_ano" name="vence_ano" value="" style="border-radius: 0 ; border-left: none; border-right: none; padding-left: 14px; text-align: left" maxlength="4" type="text">
+                                        </div>
+                                        <div class="col-xs-4" style="padding-left: 0">
+                                            <div class="form-group has-feedback" style="margin-bottom: 0">
+                                                <label class="control-label" for="cvv">
+                                                    Código de seguridad:                                    <!--<a href="#" class="btn btn-link btn-xs" data-container="body" data-toggle="popover" data-placement="right" data-content="Son los 3 dígitos que aparecen en la parte trasera de tu tarjeta">¿Qué es esto?</a>-->
+                                                </label>
+                                                <input value="" data-conekta="card[cvc]" class="form-control only-numbers" name="cvv" id="cvv" maxlength="4" placeholder="CVV" style="border-radius: 0 4px 4px 0" data-original-title="" title="" type="password">
+                                                <span class="glyphicon glyphicon-lock form-control-feedback text-info"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group has-feedback">
+                                    <label class="control-label" for="codigo_postal">Código postal:</label>
+                                    <input class="form-control only-numbers"  data-conekta="card[address][zip]" maxlength="10" placeholder="Código postal" id="codigo_postal" name="cp" value="" type="text">
+                                    <span class="glyphicon glyphicon-inbox form-control-feedback text-info"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group has-feedback">
+                                    <label class="control-label" for="direccion">Calle y número del tarjetahabiente:</label>
+                                    <input maxlength="60" data-conekta="card[address][street1]" class="form-control" id="direccion" value="" name="street" placeholder="Calle y número del tarjetahabiente" type="text">
+                                    <span class="glyphicon glyphicon-home form-control-feedback text-info"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                       
+                 
+
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-12" style="padding-right: 0">
+                            <div class="form-group">
+                                <label class="control-label" for="pais">Pais:</label>
+                                <input class="form-control" name="pais" data-conekta="card[address][country]" type="text" placeholder="Pais">
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12" >
+                            <div class="form-group">
+                                <label class="control-label" for="estado">Estado:</label>
+                                <input class="form-control" name="estado" data-conekta="card[address][state]" placeholder="Estado" type="text">
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label" for="email">Ciudad:</label>
+                                <input maxlength="30" class="form-control" data-conekta="card[address][city]" placeholder="Ciudad" id="cust_ciudad" name="ciudad" value="" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button id="btn_vm_pay" type="submit" class="btn btn-lg btn-default btn-pay" style="width: 100%" data-loading-text="Procesando..." data-mode-normal="Pagar">
+                                    Pagar: <strong><span id="spanTotal"></span></strong>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="total" />
+                    <input type="hidden" name="conceptoId" />
+                    <input type="hidden" name="userId" />
+                    <input type="hidden" name="concepto" />
+                    <input type="hidden" name="item" />
+                </form>
+             
+                <script language="javascript" src="https://mpsnare.iesnare.com/snare.js"></script>
+            </div>
+                        
+        </div>
+    </div>
+</div>

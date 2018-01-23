@@ -1,0 +1,205 @@
+﻿@using sw_EnligateWeb.Models;
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<script>
+    $(document).ready(function () {
+        gvNotificationsPerformCallback();
+    });
+    
+    function gvNotificationsPerformCallback(s, e) {
+        if (typeof gvNotifications.InCallback === "function") {
+            //if (!gvIndexLastRequests.InCallback())
+            gvNotifications.PerformCallback();
+        }
+    }
+    
+    function fnGvNotification_RowDblClick(s,e) {
+        s.GetRowValues(e.visibleIndex, 'ligId', function (liga) {
+            s.GetRowValues(e.visibleIndex, 'viewStatus', function (status) {
+                setNotification(liga,status);
+            });
+        });
+    };
+    function setNotification(ligId, status) {
+        if (status == "EN PROCESO") {
+            console.log(ligId + " : " + status);
+        }
+        else {
+            $.ajax({
+                url: '/AdminLigas/_SetNotificationLiga',
+                type: "POST",
+                cache: false,
+                data: "ligId="+ligId,
+                success: function (data) {
+                    console.log(data);
+                    if (data == "success") {
+                        messengeSuccess("Notificado !");
+                        gvNotificationsPerformCallback();
+                        
+                    } else {
+                        messengeError("Error en la operacion")
+                    }
+                },
+                error: function (data) {
+                    messengeError("Error en la operacion")
+                },
+                complete: function () {
+                    var total = gvNotifications.GetVisibleRowsOnPage();
+                    $("#numNotification").empty();
+                    $("#numNotification").append(total);
+                    console.log(total + "total");
+                }
+            });
+            console.log(status + " " + "cambiar notification");
+        }
+    };
+
+    function fnGvNotification_RowClick() {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            fnGvNotification_RowDblClick(s, e);
+        }
+    };
+       
+        function messengeError(getMsg) {
+
+            var msg = '<div id="modal_error" class="alert alert-danger alert-dismissible" role="alert">';
+            msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+            msg += '<span aria-hidden="true">&times;</span></button>' + getMsg + '</div>';
+
+            $(".m-messageHide").html(msg);
+
+            showMessages();
+        }
+
+        function messengeSuccess(getMsg) {
+
+            var msg = '<div id="confirmEmailForm_ModalStateErrors" class="alert alert-success alert-dismissible" role="alert">';
+            msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+            msg += getMsg + '</div>';
+
+            $(".m-messageHide").html(msg);
+
+            showMessages();
+        }
+</script>
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+<!-- Content -->
+<div id="ADMINISTRADORDELIGAS_Dashboard" class="row">
+    <div id="ADMINISTRADORDELIGAS_Dashboard_Dashboard" class="col-sm-12">
+        <div class="m-hdc-Gallery">
+            <!--<h1>Dashboard</h1>-->
+            <div class="col-xs-12 col-sm-6 col-lg-6 mSpaceMb20">
+                <div class="col-xs-12">
+                    <div class="col-xs-12 dashboardBadgeTitles">
+                        NOTIFICACION DE LIGAS <span class="badge" id="numNotification">@ViewBag.numNotifications</span>
+                        <form id="frmIndexSolicitudDetail" action="@Url.Action("Requests", "Administrator")" method="post" style="display:none;">
+                            <input type="hidden" name="Id" class="indexLeagueId" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    @Html.Partial("Ligas/_NotificationGrid")
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-6 mSpaceMb20">
+                <span id="spanNomLiga"></span>
+                @Html.Partial("Chart/_ChartPieIndex")
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-xs-12 ">
+                            PARTIDOS
+                        </div>
+                        <hr />
+                        @Html.Action("PartidosViewCallback", "AdminLigas")
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-xs-12 ">
+                            RESULTADOS
+                        </div>
+                        <hr />
+                        @Html.Action("PartidosResultCallback", "AdminLigas")
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalNuevoEditPartido" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyEventos">
+                <div class="container-fluid" style="min-height:150px;">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-11">
+                        <div class="_PartialNuevoEditPartido">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>
+@Html.Action("_Arbitro_ShowModal", "AdminLigas")
+
+<script>
+    $(".edit-delete").hide();
+    function nuevoArbitro() {
+        var ligId = $("#_divTorneoNuevoFiltros #ligId").val();
+        var torId = $("#_divTorneoNuevoFiltros #torId").val();
+        $.ajax({
+            url: '/AdminLigas/_Arbitro_AgregarModal',
+            type: "POST",
+            cache: false,
+            data: "ligId=" + ligId + "&torId=" + torId,
+            success: function (data) {
+                $("#FiltroLigasTorneos").html(data);
+                $("#ArbitrosNuevo").modal();
+                $("#btnNewArbitro").on("click", function () {
+
+                });
+
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    };
+    function refreshFiltro() {
+        var torneo = $("#FiltroLigasTorneos #torId").val();
+        var email = $("#formArbitro #arbCorreo").val();
+        $.ajax({
+            url: '/AdminLigas/_Arbitro_RefreshFiltro',
+            type: "POST",
+            cache: false,
+            data: "torId=" + torneo+"&arbCorreo="+email,
+            success: function (data) {
+                $("#arbitroFiltro").html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    }
+</script>

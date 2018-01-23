@@ -1,0 +1,107 @@
+@using System.Web.UI.WebControls;
+
+@{
+    var gvRequests = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvFeesGrid";
+        settings.CallbackRouteValues = new { Controller = "Administrator", Action = "_FeesGrid" };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+        //Styles
+        settings.Styles.GroupPanel.CssClass = "gvGroupPanel";
+        settings.Styles.Header.CssClass = "gvHeader";
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.AlternatingRow.CssClass = "gvRowAlternative";
+        settings.Styles.SelectedRow.CssClass = "gvRowSelected";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        settings.KeyFieldName = "tarId";
+        settings.Columns.Add(col => {
+            col.FieldName = "tarConcepto";
+            col.Caption = "CONCEPTO";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "tarFormaPago";
+            col.Caption = "FORMA PAGO";
+            col.AdaptivePriority = 1;
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "tarPeriodicidad";
+            col.Caption = "PERIODICIDAD PAGO";
+            col.AdaptivePriority = 1;
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "tarTipoPago";
+            col.Caption = "TIPO DE PAGO";
+            col.AdaptivePriority = 2;
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "tarMetodoPago";
+            col.Caption = "MÉTODO DE PAGO";
+            col.AdaptivePriority = 2;
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Unbound";
+            col.Caption = "COSTO";
+            col.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
+            col.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+
+            col.SetDataItemTemplateContent((c) =>
+            {
+                Boolean esPorcentaje = (Boolean)DataBinder.Eval(c.DataItem, "tarEsPorcentaje");
+                decimal tarCosto = (decimal)DataBinder.Eval(c.DataItem, "tarCosto");
+                Html.DevExpress().Label(l =>
+                {
+                    l.Name = "lblCosto_" + c.KeyValue;
+                    if (esPorcentaje)
+                        l.Text = tarCosto.ToString() + " %";
+                    else
+                        l.Text = tarCosto.ToString("C");
+                }).GetHtml();
+            });
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "tarFechaRegistroUTC";
+            col.Caption = "FECHA DE REGISTRO";
+            col.AdaptivePriority = 3;
+            
+            col.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            col.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy";      
+        });
+        
+        //Paging
+        settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 15;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 300;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        
+        //Rows
+        settings.SettingsBehavior.AllowSelectByRowClick = false;
+        
+        //Callbacks
+        //settings.ClientSideEvents.cell = "fnIndexGVRequests_RowDblClick";
+    });
+   
+    if (ViewData["EditError"] != null){
+        gvRequests.SetEditErrorText((string)ViewData["EditError"]);
+    }
+    
+    gvRequests.Bind(Model).GetHtml();
+}

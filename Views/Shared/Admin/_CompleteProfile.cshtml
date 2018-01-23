@@ -1,0 +1,64 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using sw_EnligateWeb.Models;
+@model ProfileViewModel
+
+@Html.Partial("Admin/_Perfil", Model._profile)
+
+<script>
+    $(document).ready(function () {
+        $(".divButtonsPerfil").html("");
+        $(".divButtonsPerfil").html("<button class='btn btn-default pull-right' onclick='saveProfile();' >Cerrar</button>")
+    });
+
+    function saveProfile() {
+        var genero = $("#usuGenero");
+        var pais = $("#usuPais");
+        var estado = $("#usuEstado");
+        var ciudad = $("#usuCiudad");
+        var ddlDia = $("#ddlDia")
+        var ddlMes = $("#ddlMes")
+        var ddlA_o= $("#ddlA_o")
+        var cp = $("#usuCP");
+        $(".spanError").remove();
+        if (genero.val() != "" && pais.val() != "0" && estado.val() != "0" && ciudad.val() != "0" && cp.val() != "" && ddlDia.val() != "" && ddlMes.val() !="" && ddlA_o.val() != "" ) {
+
+            $('#modalProfile').modal("toggle");
+
+        } else {
+            var error = '<span class="bg-danger spanError">';
+            error += 'Campo Requerido';
+            error += '</span>';
+
+            messengeInfo("Faltan Registros por Llenar.");
+             
+            if (ddlDia.val() == "") {
+                ddlDia.parent().append(error);
+            }
+            if (ddlMes.val() == "") {
+                ddlMes.parent().append(error);
+            }
+            if (ddlA_o.val() == "") {
+                ddlA_o.parent().append(error);
+            }
+            if (genero.val()=="") {
+                genero.parent().append(error);
+            }
+            if (pais.val() == "0") {
+                pais.parent().append(error);
+            }
+            if (estado.val() == "0") {
+                estado.parent().append(error);
+            }
+            if (ciudad.val() == "0") {
+                ciudad.parent().append(error);
+            }
+            if (cp.val() == "") {
+                cp.parent().append(error);
+            }
+
+            $(".spanError").delay(5000).fadeOut('slow');
+
+            console.log(genero.val() + pais.val() + estado.val() + ciudad.val() + cp);
+        };
+    };
+</script>

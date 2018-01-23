@@ -1,0 +1,1731 @@
+C:\Enligate\sw_EnligateWeb\bin\sw_EnligateWeb.dll.config
+C:\Enligate\sw_EnligateWeb\bin\sw_EnligateWeb.dll
+C:\Enligate\sw_EnligateWeb\bin\sw_EnligateWeb.pdb
+C:\Enligate\sw_EnligateWeb\bin\Antlr3.Runtime.dll
+C:\Enligate\sw_EnligateWeb\bin\conekta.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Charts.v16.1.Core.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.CodeParser.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Dashboard.v16.1.Core.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Dashboard.v16.1.Web.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Dashboard.v16.1.Web.Mvc5.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Data.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.DataAccess.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Office.v16.1.Core.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.PivotGrid.v16.1.Core.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Printing.v16.1.Core.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.RichEdit.v16.1.Core.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Sparkline.v16.1.Core.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.SpellChecker.v16.1.Core.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Spreadsheet.v16.1.Core.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Utils.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxGauges.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxHtmlEditor.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxPivotGrid.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxRichEdit.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxScheduler.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxSpellChecker.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxSpreadsheet.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxThemes.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxTreeList.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.Mvc5.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.Resources.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Xpo.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraCharts.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraCharts.v16.1.Web.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraEditors.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraGauges.v16.1.Core.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraGauges.v16.1.Presets.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraPivotGrid.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraPrinting.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraReports.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraReports.v16.1.Web.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraScheduler.v16.1.Core.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraScheduler.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraScheduler.v16.1.Reporting.dll
+C:\Enligate\sw_EnligateWeb\bin\EntityFramework.dll
+C:\Enligate\sw_EnligateWeb\bin\EntityFramework.SqlServer.dll
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.CSharp.dll
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.dll
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.dll
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Google.dll
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.VisualBasic.dll
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Web.Infrastructure.dll
+C:\Enligate\sw_EnligateWeb\bin\Newtonsoft.Json.dll
+C:\Enligate\sw_EnligateWeb\bin\nunit.framework.dll
+C:\Enligate\sw_EnligateWeb\bin\Owin.dll
+C:\Enligate\sw_EnligateWeb\bin\RestSharp.dll
+C:\Enligate\sw_EnligateWeb\bin\System.ComponentModel.DataAnnotations.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Configuration.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Data.DataSetExtensions.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Data.dll
+C:\Enligate\sw_EnligateWeb\bin\System.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Drawing.dll
+C:\Enligate\sw_EnligateWeb\bin\System.EnterpriseServices.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Net.Http.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Net.Http.WebRequest.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Web.Abstractions.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Web.ApplicationServices.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Web.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Web.DynamicData.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Web.Entity.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Web.Extensions.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Web.Helpers.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Web.Mvc.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Web.Optimization.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Web.Razor.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Web.Routing.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Web.Services.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Web.WebPages.Deployment.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Web.WebPages.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Web.WebPages.Razor.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Xml.dll
+C:\Enligate\sw_EnligateWeb\bin\System.Xml.Linq.dll
+C:\Enligate\sw_EnligateWeb\bin\WebGrease.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Map.v16.1.Core.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraMap.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraGauges.v16.1.Win.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Pdf.v16.1.Core.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Pdf.v16.1.Drawing.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraLayout.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraBars.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraTreeList.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraGrid.v16.1.dll
+C:\Enligate\sw_EnligateWeb\bin\conekta.pdb
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Data.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.DataAccess.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Office.v16.1.Core.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.PivotGrid.v16.1.Core.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Printing.v16.1.Core.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.RichEdit.v16.1.Core.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Spreadsheet.v16.1.Core.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Utils.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxGauges.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxHtmlEditor.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxPivotGrid.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxRichEdit.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxScheduler.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxSpellChecker.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxSpreadsheet.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxTreeList.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Xpo.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraCharts.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraCharts.v16.1.Web.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraEditors.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraGauges.v16.1.Core.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraGauges.v16.1.Presets.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraPivotGrid.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Sparkline.v16.1.Core.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraPrinting.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraReports.v16.1.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraReports.v16.1.Web.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraScheduler.v16.1.Core.xml
+C:\Enligate\sw_EnligateWeb\bin\Newtonsoft.Json.xml
+C:\Enligate\sw_EnligateWeb\bin\nunit.framework.xml
+C:\Enligate\sw_EnligateWeb\bin\RestSharp.xml
+C:\Enligate\sw_EnligateWeb\bin\System.Web.Helpers.xml
+C:\Enligate\sw_EnligateWeb\bin\System.Web.Mvc.xml
+C:\Enligate\sw_EnligateWeb\bin\System.Web.Optimization.xml
+C:\Enligate\sw_EnligateWeb\bin\System.Web.Razor.xml
+C:\Enligate\sw_EnligateWeb\bin\System.Web.WebPages.xml
+C:\Enligate\sw_EnligateWeb\bin\System.Web.WebPages.Deployment.xml
+C:\Enligate\sw_EnligateWeb\bin\System.Web.WebPages.Razor.xml
+C:\Enligate\sw_EnligateWeb\bin\Antlr3.Runtime.pdb
+C:\Enligate\sw_EnligateWeb\bin\EntityFramework.xml
+C:\Enligate\sw_EnligateWeb\bin\EntityFramework.SqlServer.xml
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.xml
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.xml
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Google.xml
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Map.v16.1.Core.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraGauges.v16.1.Win.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Pdf.v16.1.Core.xml
+C:\Enligate\sw_EnligateWeb\bin\DevExpress.Pdf.v16.1.Drawing.xml
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Dashboard.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Dashboard.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Dashboard.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Dashboard.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Dashboard.v16.1.Web.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Dashboard.v16.1.Web.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Dashboard.v16.1.Web.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Dashboard.v16.1.Web.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Data.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Data.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Data.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Data.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.DataAccess.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.DataAccess.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.DataAccess.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.DataAccess.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Office.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Office.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Office.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Office.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.PivotGrid.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.PivotGrid.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.PivotGrid.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.PivotGrid.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Printing.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Printing.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Printing.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Printing.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.RichEdit.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.RichEdit.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.RichEdit.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.RichEdit.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Utils.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Utils.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Utils.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Utils.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Web.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Web.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Web.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Web.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Xpo.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Xpo.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Xpo.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Xpo.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraCharts.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraCharts.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraCharts.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraCharts.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraEditors.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraEditors.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraEditors.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraEditors.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraGauges.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraGauges.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraGauges.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraGauges.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraPivotGrid.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraPivotGrid.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraPivotGrid.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraPivotGrid.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Sparkline.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Sparkline.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Sparkline.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Sparkline.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraPrinting.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraPrinting.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraPrinting.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraPrinting.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraReports.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraReports.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraReports.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraReports.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraReports.v16.1.Web.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraReports.v16.1.Web.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraReports.v16.1.Web.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraReports.v16.1.Web.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraScheduler.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraScheduler.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraScheduler.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraScheduler.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\System.Web.Helpers.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\System.Web.Mvc.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\System.Web.Razor.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\System.Web.WebPages.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Map.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Map.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Map.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Map.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Pdf.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Pdf.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Pdf.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Pdf.v16.1.Core.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraLayout.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraLayout.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraLayout.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraLayout.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraBars.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraBars.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraBars.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraBars.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraTreeList.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraTreeList.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraTreeList.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraTreeList.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraGrid.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraGrid.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraGrid.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraGrid.v16.1.resources.dll
+C:\Enligate\sw_EnligateWeb\obj\Debug\sw_EnligateWeb.csprojResolveAssemblyReference.cache
+C:\Enligate\sw_EnligateWeb\obj\Debug\sw_EnligateWeb.Migrations.schemaPartido.resources
+C:\Enligate\sw_EnligateWeb\obj\Debug\sw_EnligateWeb.csproj.GenerateResource.Cache
+C:\Enligate\sw_EnligateWeb\obj\Debug\sw_EnligateWeb.dll
+C:\Enligate\sw_EnligateWeb\obj\Debug\sw_EnligateWeb.pdb
+D:\Enligate\sw_EnligateWeb\bin\sw_EnligateWeb.dll.config
+D:\Enligate\sw_EnligateWeb\bin\sw_EnligateWeb.dll
+D:\Enligate\sw_EnligateWeb\bin\sw_EnligateWeb.pdb
+D:\Enligate\sw_EnligateWeb\bin\Antlr3.Runtime.dll
+D:\Enligate\sw_EnligateWeb\bin\conekta.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Charts.v16.1.Core.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.CodeParser.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Dashboard.v16.1.Core.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Dashboard.v16.1.Web.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Dashboard.v16.1.Web.Mvc5.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Data.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.DataAccess.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Office.v16.1.Core.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.PivotGrid.v16.1.Core.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Printing.v16.1.Core.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.RichEdit.v16.1.Core.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Sparkline.v16.1.Core.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.SpellChecker.v16.1.Core.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Spreadsheet.v16.1.Core.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Utils.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxGauges.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxHtmlEditor.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxPivotGrid.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxRichEdit.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxScheduler.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxSpellChecker.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxSpreadsheet.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxThemes.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxTreeList.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.Mvc5.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.Resources.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Xpo.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraCharts.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraCharts.v16.1.Web.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraEditors.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraGauges.v16.1.Core.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraGauges.v16.1.Presets.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraPivotGrid.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraPrinting.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraReports.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraReports.v16.1.Web.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraScheduler.v16.1.Core.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraScheduler.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraScheduler.v16.1.Reporting.dll
+D:\Enligate\sw_EnligateWeb\bin\EntityFramework.dll
+D:\Enligate\sw_EnligateWeb\bin\EntityFramework.SqlServer.dll
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.CSharp.dll
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.dll
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.dll
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Google.dll
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.VisualBasic.dll
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Web.Infrastructure.dll
+D:\Enligate\sw_EnligateWeb\bin\Newtonsoft.Json.dll
+D:\Enligate\sw_EnligateWeb\bin\nunit.framework.dll
+D:\Enligate\sw_EnligateWeb\bin\Owin.dll
+D:\Enligate\sw_EnligateWeb\bin\RestSharp.dll
+D:\Enligate\sw_EnligateWeb\bin\System.ComponentModel.DataAnnotations.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Configuration.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Data.DataSetExtensions.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Data.dll
+D:\Enligate\sw_EnligateWeb\bin\System.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Drawing.dll
+D:\Enligate\sw_EnligateWeb\bin\System.EnterpriseServices.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Net.Http.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Net.Http.WebRequest.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Web.Abstractions.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Web.ApplicationServices.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Web.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Web.DynamicData.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Web.Entity.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Web.Extensions.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Web.Helpers.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Web.Mvc.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Web.Optimization.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Web.Razor.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Web.Routing.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Web.Services.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Web.WebPages.Deployment.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Web.WebPages.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Web.WebPages.Razor.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Xml.dll
+D:\Enligate\sw_EnligateWeb\bin\System.Xml.Linq.dll
+D:\Enligate\sw_EnligateWeb\bin\WebGrease.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Map.v16.1.Core.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraMap.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraGauges.v16.1.Win.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Pdf.v16.1.Core.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Pdf.v16.1.Drawing.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraLayout.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraBars.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraTreeList.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraGrid.v16.1.dll
+D:\Enligate\sw_EnligateWeb\bin\conekta.pdb
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Data.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.DataAccess.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Office.v16.1.Core.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.PivotGrid.v16.1.Core.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Printing.v16.1.Core.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.RichEdit.v16.1.Core.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Spreadsheet.v16.1.Core.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Utils.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxGauges.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxHtmlEditor.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxPivotGrid.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxRichEdit.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxScheduler.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxSpellChecker.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxSpreadsheet.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.ASPxTreeList.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Web.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Xpo.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraCharts.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraCharts.v16.1.Web.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraEditors.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraGauges.v16.1.Core.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraGauges.v16.1.Presets.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraPivotGrid.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Sparkline.v16.1.Core.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraPrinting.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraReports.v16.1.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraReports.v16.1.Web.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraScheduler.v16.1.Core.xml
+D:\Enligate\sw_EnligateWeb\bin\Newtonsoft.Json.xml
+D:\Enligate\sw_EnligateWeb\bin\nunit.framework.xml
+D:\Enligate\sw_EnligateWeb\bin\RestSharp.xml
+D:\Enligate\sw_EnligateWeb\bin\System.Web.Helpers.xml
+D:\Enligate\sw_EnligateWeb\bin\System.Web.Mvc.xml
+D:\Enligate\sw_EnligateWeb\bin\System.Web.Optimization.xml
+D:\Enligate\sw_EnligateWeb\bin\System.Web.Razor.xml
+D:\Enligate\sw_EnligateWeb\bin\System.Web.WebPages.xml
+D:\Enligate\sw_EnligateWeb\bin\System.Web.WebPages.Deployment.xml
+D:\Enligate\sw_EnligateWeb\bin\System.Web.WebPages.Razor.xml
+D:\Enligate\sw_EnligateWeb\bin\Antlr3.Runtime.pdb
+D:\Enligate\sw_EnligateWeb\bin\EntityFramework.xml
+D:\Enligate\sw_EnligateWeb\bin\EntityFramework.SqlServer.xml
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.xml
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.xml
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Google.xml
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Enligate\sw_EnligateWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Map.v16.1.Core.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.XtraGauges.v16.1.Win.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Pdf.v16.1.Core.xml
+D:\Enligate\sw_EnligateWeb\bin\DevExpress.Pdf.v16.1.Drawing.xml
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Dashboard.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Dashboard.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Dashboard.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Dashboard.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Dashboard.v16.1.Web.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Dashboard.v16.1.Web.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Dashboard.v16.1.Web.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Dashboard.v16.1.Web.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Data.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Data.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Data.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Data.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.DataAccess.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.DataAccess.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.DataAccess.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.DataAccess.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Office.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Office.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Office.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Office.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.PivotGrid.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.PivotGrid.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.PivotGrid.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.PivotGrid.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Printing.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Printing.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Printing.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Printing.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.RichEdit.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.RichEdit.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.RichEdit.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.RichEdit.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Utils.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Utils.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Utils.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Utils.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Web.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Web.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Web.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Web.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Xpo.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Xpo.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Xpo.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Xpo.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraCharts.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraCharts.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraCharts.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraCharts.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraEditors.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraEditors.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraEditors.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraEditors.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraGauges.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraGauges.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraGauges.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraGauges.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraPivotGrid.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraPivotGrid.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraPivotGrid.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraPivotGrid.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Sparkline.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Sparkline.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Sparkline.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Sparkline.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraPrinting.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraPrinting.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraPrinting.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraPrinting.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraReports.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraReports.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraReports.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraReports.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraReports.v16.1.Web.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraReports.v16.1.Web.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraReports.v16.1.Web.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraReports.v16.1.Web.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraScheduler.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraScheduler.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraScheduler.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraScheduler.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\System.Web.Helpers.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\System.Web.Mvc.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\System.Web.Razor.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\System.Web.WebPages.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\System.Web.WebPages.Deployment.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\System.Web.WebPages.Razor.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Map.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Map.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Map.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Map.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.Pdf.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.Pdf.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.Pdf.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.Pdf.v16.1.Core.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraLayout.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraLayout.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraLayout.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraLayout.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraBars.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraBars.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraBars.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraBars.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraTreeList.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraTreeList.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraTreeList.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraTreeList.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\de\DevExpress.XtraGrid.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\es\DevExpress.XtraGrid.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ja\DevExpress.XtraGrid.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\bin\ru\DevExpress.XtraGrid.v16.1.resources.dll
+D:\Enligate\sw_EnligateWeb\obj\Debug\sw_EnligateWeb.csprojResolveAssemblyReference.cache
+D:\Enligate\sw_EnligateWeb\obj\Debug\sw_EnligateWeb.Migrations.rebuildJugadorEquipo.resources
+D:\Enligate\sw_EnligateWeb\obj\Debug\sw_EnligateWeb.csproj.GenerateResource.Cache
+D:\Enligate\sw_EnligateWeb\obj\Debug\sw_EnligateWeb.dll
+D:\Enligate\sw_EnligateWeb\obj\Debug\sw_EnligateWeb.pdb
+D:\Enligate_2\bin\sw_EnligateWeb.dll.config
+D:\Enligate_2\bin\sw_EnligateWeb.dll
+D:\Enligate_2\bin\sw_EnligateWeb.pdb
+D:\Enligate_2\bin\conekta.dll
+D:\Enligate_2\bin\DevExpress.Charts.v16.1.Core.dll
+D:\Enligate_2\bin\DevExpress.CodeParser.v16.1.dll
+D:\Enligate_2\bin\DevExpress.Dashboard.v16.1.Core.dll
+D:\Enligate_2\bin\DevExpress.Dashboard.v16.1.Web.dll
+D:\Enligate_2\bin\DevExpress.Dashboard.v16.1.Web.Mvc5.dll
+D:\Enligate_2\bin\DevExpress.Data.v16.1.dll
+D:\Enligate_2\bin\DevExpress.DataAccess.v16.1.dll
+D:\Enligate_2\bin\DevExpress.Office.v16.1.Core.dll
+D:\Enligate_2\bin\DevExpress.PivotGrid.v16.1.Core.dll
+D:\Enligate_2\bin\DevExpress.Printing.v16.1.Core.dll
+D:\Enligate_2\bin\DevExpress.RichEdit.v16.1.Core.dll
+D:\Enligate_2\bin\DevExpress.Sparkline.v16.1.Core.dll
+D:\Enligate_2\bin\DevExpress.SpellChecker.v16.1.Core.dll
+D:\Enligate_2\bin\DevExpress.Spreadsheet.v16.1.Core.dll
+D:\Enligate_2\bin\DevExpress.Utils.v16.1.dll
+D:\Enligate_2\bin\DevExpress.Web.ASPxGauges.v16.1.dll
+D:\Enligate_2\bin\DevExpress.Web.ASPxHtmlEditor.v16.1.dll
+D:\Enligate_2\bin\DevExpress.Web.ASPxPivotGrid.v16.1.dll
+D:\Enligate_2\bin\DevExpress.Web.ASPxRichEdit.v16.1.dll
+D:\Enligate_2\bin\DevExpress.Web.ASPxScheduler.v16.1.dll
+D:\Enligate_2\bin\DevExpress.Web.ASPxSpellChecker.v16.1.dll
+D:\Enligate_2\bin\DevExpress.Web.ASPxSpreadsheet.v16.1.dll
+D:\Enligate_2\bin\DevExpress.Web.ASPxThemes.v16.1.dll
+D:\Enligate_2\bin\DevExpress.Web.ASPxTreeList.v16.1.dll
+D:\Enligate_2\bin\DevExpress.Web.Mvc5.v16.1.dll
+D:\Enligate_2\bin\DevExpress.Web.Resources.v16.1.dll
+D:\Enligate_2\bin\DevExpress.Web.v16.1.dll
+D:\Enligate_2\bin\DevExpress.Xpo.v16.1.dll
+D:\Enligate_2\bin\DevExpress.XtraCharts.v16.1.dll
+D:\Enligate_2\bin\DevExpress.XtraCharts.v16.1.Web.dll
+D:\Enligate_2\bin\DevExpress.XtraEditors.v16.1.dll
+D:\Enligate_2\bin\DevExpress.XtraGauges.v16.1.Core.dll
+D:\Enligate_2\bin\DevExpress.XtraGauges.v16.1.Presets.dll
+D:\Enligate_2\bin\DevExpress.XtraPivotGrid.v16.1.dll
+D:\Enligate_2\bin\DevExpress.XtraPrinting.v16.1.dll
+D:\Enligate_2\bin\DevExpress.XtraReports.v16.1.dll
+D:\Enligate_2\bin\DevExpress.XtraReports.v16.1.Web.dll
+D:\Enligate_2\bin\DevExpress.XtraScheduler.v16.1.Core.dll
+D:\Enligate_2\bin\DevExpress.XtraScheduler.v16.1.dll
+D:\Enligate_2\bin\DevExpress.XtraScheduler.v16.1.Reporting.dll
+D:\Enligate_2\bin\Microsoft.CSharp.dll
+D:\Enligate_2\bin\Microsoft.VisualBasic.dll
+D:\Enligate_2\bin\System.ComponentModel.DataAnnotations.dll
+D:\Enligate_2\bin\System.Configuration.dll
+D:\Enligate_2\bin\System.Data.DataSetExtensions.dll
+D:\Enligate_2\bin\System.Data.dll
+D:\Enligate_2\bin\System.dll
+D:\Enligate_2\bin\System.Drawing.dll
+D:\Enligate_2\bin\System.EnterpriseServices.dll
+D:\Enligate_2\bin\System.Net.Http.dll
+D:\Enligate_2\bin\System.Net.Http.WebRequest.dll
+D:\Enligate_2\bin\System.Web.Abstractions.dll
+D:\Enligate_2\bin\System.Web.ApplicationServices.dll
+D:\Enligate_2\bin\System.Web.dll
+D:\Enligate_2\bin\System.Web.DynamicData.dll
+D:\Enligate_2\bin\System.Web.Entity.dll
+D:\Enligate_2\bin\System.Web.Extensions.dll
+D:\Enligate_2\bin\System.Web.Routing.dll
+D:\Enligate_2\bin\System.Web.Services.dll
+D:\Enligate_2\bin\System.Xml.dll
+D:\Enligate_2\bin\System.Xml.Linq.dll
+D:\Enligate_2\bin\DevExpress.Map.v16.1.Core.dll
+D:\Enligate_2\bin\DevExpress.XtraMap.v16.1.dll
+D:\Enligate_2\bin\DevExpress.XtraGauges.v16.1.Win.dll
+D:\Enligate_2\bin\DevExpress.Pdf.v16.1.Core.dll
+D:\Enligate_2\bin\DevExpress.Pdf.v16.1.Drawing.dll
+D:\Enligate_2\bin\DevExpress.XtraLayout.v16.1.dll
+D:\Enligate_2\bin\DevExpress.XtraBars.v16.1.dll
+D:\Enligate_2\bin\DevExpress.XtraTreeList.v16.1.dll
+D:\Enligate_2\bin\DevExpress.XtraGrid.v16.1.dll
+D:\Enligate_2\bin\conekta.pdb
+D:\Enligate_2\bin\DevExpress.Data.v16.1.xml
+D:\Enligate_2\bin\DevExpress.DataAccess.v16.1.xml
+D:\Enligate_2\bin\DevExpress.Office.v16.1.Core.xml
+D:\Enligate_2\bin\DevExpress.PivotGrid.v16.1.Core.xml
+D:\Enligate_2\bin\DevExpress.Printing.v16.1.Core.xml
+D:\Enligate_2\bin\DevExpress.RichEdit.v16.1.Core.xml
+D:\Enligate_2\bin\DevExpress.Spreadsheet.v16.1.Core.xml
+D:\Enligate_2\bin\DevExpress.Utils.v16.1.xml
+D:\Enligate_2\bin\DevExpress.Web.ASPxGauges.v16.1.xml
+D:\Enligate_2\bin\DevExpress.Web.ASPxHtmlEditor.v16.1.xml
+D:\Enligate_2\bin\DevExpress.Web.ASPxPivotGrid.v16.1.xml
+D:\Enligate_2\bin\DevExpress.Web.ASPxRichEdit.v16.1.xml
+D:\Enligate_2\bin\DevExpress.Web.ASPxScheduler.v16.1.xml
+D:\Enligate_2\bin\DevExpress.Web.ASPxSpellChecker.v16.1.xml
+D:\Enligate_2\bin\DevExpress.Web.ASPxSpreadsheet.v16.1.xml
+D:\Enligate_2\bin\DevExpress.Web.ASPxTreeList.v16.1.xml
+D:\Enligate_2\bin\DevExpress.Web.v16.1.xml
+D:\Enligate_2\bin\DevExpress.Xpo.v16.1.xml
+D:\Enligate_2\bin\DevExpress.XtraCharts.v16.1.xml
+D:\Enligate_2\bin\DevExpress.XtraCharts.v16.1.Web.xml
+D:\Enligate_2\bin\DevExpress.XtraEditors.v16.1.xml
+D:\Enligate_2\bin\DevExpress.XtraGauges.v16.1.Core.xml
+D:\Enligate_2\bin\DevExpress.XtraGauges.v16.1.Presets.xml
+D:\Enligate_2\bin\DevExpress.XtraPivotGrid.v16.1.xml
+D:\Enligate_2\bin\DevExpress.Sparkline.v16.1.Core.xml
+D:\Enligate_2\bin\DevExpress.XtraPrinting.v16.1.xml
+D:\Enligate_2\bin\DevExpress.XtraReports.v16.1.xml
+D:\Enligate_2\bin\DevExpress.XtraReports.v16.1.Web.xml
+D:\Enligate_2\bin\DevExpress.XtraScheduler.v16.1.Core.xml
+D:\Enligate_2\bin\DevExpress.Map.v16.1.Core.xml
+D:\Enligate_2\bin\DevExpress.XtraGauges.v16.1.Win.xml
+D:\Enligate_2\bin\DevExpress.Pdf.v16.1.Core.xml
+D:\Enligate_2\bin\DevExpress.Pdf.v16.1.Drawing.xml
+D:\Enligate_2\bin\de\DevExpress.Dashboard.v16.1.Core.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Dashboard.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Dashboard.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Dashboard.v16.1.Core.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Dashboard.v16.1.Web.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Dashboard.v16.1.Web.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Dashboard.v16.1.Web.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Dashboard.v16.1.Web.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Data.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Data.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Data.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Data.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.DataAccess.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.DataAccess.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.DataAccess.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.DataAccess.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Office.v16.1.Core.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Office.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Office.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Office.v16.1.Core.resources.dll
+D:\Enligate_2\bin\de\DevExpress.PivotGrid.v16.1.Core.resources.dll
+D:\Enligate_2\bin\es\DevExpress.PivotGrid.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.PivotGrid.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.PivotGrid.v16.1.Core.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Printing.v16.1.Core.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Printing.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Printing.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Printing.v16.1.Core.resources.dll
+D:\Enligate_2\bin\de\DevExpress.RichEdit.v16.1.Core.resources.dll
+D:\Enligate_2\bin\es\DevExpress.RichEdit.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.RichEdit.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.RichEdit.v16.1.Core.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Utils.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Utils.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Utils.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Utils.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Web.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Web.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Web.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Web.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Xpo.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Xpo.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Xpo.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Xpo.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.XtraCharts.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.XtraCharts.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.XtraCharts.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.XtraCharts.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.XtraEditors.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.XtraEditors.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.XtraEditors.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.XtraEditors.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.XtraGauges.v16.1.Core.resources.dll
+D:\Enligate_2\bin\es\DevExpress.XtraGauges.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.XtraGauges.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.XtraGauges.v16.1.Core.resources.dll
+D:\Enligate_2\bin\de\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+D:\Enligate_2\bin\es\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+D:\Enligate_2\bin\de\DevExpress.XtraPivotGrid.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.XtraPivotGrid.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.XtraPivotGrid.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.XtraPivotGrid.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Sparkline.v16.1.Core.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Sparkline.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Sparkline.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Sparkline.v16.1.Core.resources.dll
+D:\Enligate_2\bin\de\DevExpress.XtraPrinting.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.XtraPrinting.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.XtraPrinting.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.XtraPrinting.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.XtraReports.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.XtraReports.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.XtraReports.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.XtraReports.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.XtraReports.v16.1.Web.resources.dll
+D:\Enligate_2\bin\es\DevExpress.XtraReports.v16.1.Web.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.XtraReports.v16.1.Web.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.XtraReports.v16.1.Web.resources.dll
+D:\Enligate_2\bin\de\DevExpress.XtraScheduler.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.XtraScheduler.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.XtraScheduler.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.XtraScheduler.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+D:\Enligate_2\bin\es\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+D:\Enligate_2\bin\de\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+D:\Enligate_2\bin\es\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Map.v16.1.Core.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Map.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Map.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Map.v16.1.Core.resources.dll
+D:\Enligate_2\bin\de\DevExpress.Pdf.v16.1.Core.resources.dll
+D:\Enligate_2\bin\es\DevExpress.Pdf.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.Pdf.v16.1.Core.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.Pdf.v16.1.Core.resources.dll
+D:\Enligate_2\bin\de\DevExpress.XtraLayout.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.XtraLayout.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.XtraLayout.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.XtraLayout.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.XtraBars.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.XtraBars.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.XtraBars.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.XtraBars.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.XtraTreeList.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.XtraTreeList.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.XtraTreeList.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.XtraTreeList.v16.1.resources.dll
+D:\Enligate_2\bin\de\DevExpress.XtraGrid.v16.1.resources.dll
+D:\Enligate_2\bin\es\DevExpress.XtraGrid.v16.1.resources.dll
+D:\Enligate_2\bin\ja\DevExpress.XtraGrid.v16.1.resources.dll
+D:\Enligate_2\bin\ru\DevExpress.XtraGrid.v16.1.resources.dll
+D:\Enligate_2\obj\Debug\sw_EnligateWeb.csprojResolveAssemblyReference.cache
+D:\Enligate_2\obj\Debug\sw_EnligateWeb.Migrations.rebuildJugadorEquipo.resources
+D:\Enligate_2\obj\Debug\sw_EnligateWeb.csproj.GenerateResource.Cache
+D:\Enligate_2\obj\Debug\sw_EnligateWeb.dll
+D:\Enligate_2\obj\Debug\sw_EnligateWeb.pdb
+D:\enligate_com\bin\sw_EnligateWeb.dll.config
+D:\enligate_com\bin\sw_EnligateWeb.dll
+D:\enligate_com\bin\sw_EnligateWeb.pdb
+D:\enligate_com\bin\Antlr3.Runtime.dll
+D:\enligate_com\bin\conekta.dll
+D:\enligate_com\bin\Microsoft.CSharp.dll
+D:\enligate_com\bin\Microsoft.Owin.dll
+D:\enligate_com\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\enligate_com\bin\Microsoft.Owin.Security.Cookies.dll
+D:\enligate_com\bin\Microsoft.Owin.Security.dll
+D:\enligate_com\bin\Microsoft.Owin.Security.Facebook.dll
+D:\enligate_com\bin\Microsoft.Owin.Security.Google.dll
+D:\enligate_com\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\enligate_com\bin\Microsoft.Owin.Security.OAuth.dll
+D:\enligate_com\bin\Microsoft.Owin.Security.Twitter.dll
+D:\enligate_com\bin\Microsoft.VisualBasic.dll
+D:\enligate_com\bin\Newtonsoft.Json.dll
+D:\enligate_com\bin\nunit.framework.dll
+D:\enligate_com\bin\System.ComponentModel.DataAnnotations.dll
+D:\enligate_com\bin\System.Configuration.dll
+D:\enligate_com\bin\System.Data.DataSetExtensions.dll
+D:\enligate_com\bin\System.Data.dll
+D:\enligate_com\bin\System.dll
+D:\enligate_com\bin\System.Drawing.dll
+D:\enligate_com\bin\System.EnterpriseServices.dll
+D:\enligate_com\bin\System.Net.Http.dll
+D:\enligate_com\bin\System.Net.Http.WebRequest.dll
+D:\enligate_com\bin\System.Web.Abstractions.dll
+D:\enligate_com\bin\System.Web.ApplicationServices.dll
+D:\enligate_com\bin\System.Web.dll
+D:\enligate_com\bin\System.Web.DynamicData.dll
+D:\enligate_com\bin\System.Web.Entity.dll
+D:\enligate_com\bin\System.Web.Extensions.dll
+D:\enligate_com\bin\System.Web.Routing.dll
+D:\enligate_com\bin\System.Web.Services.dll
+D:\enligate_com\bin\System.Xml.dll
+D:\enligate_com\bin\System.Xml.Linq.dll
+D:\enligate_com\bin\WebGrease.dll
+D:\enligate_com\bin\Antlr3.Runtime.pdb
+D:\enligate_com\bin\conekta.pdb
+D:\enligate_com\bin\Microsoft.Owin.xml
+D:\enligate_com\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\enligate_com\bin\Microsoft.Owin.Security.xml
+D:\enligate_com\bin\Microsoft.Owin.Security.Cookies.xml
+D:\enligate_com\bin\Microsoft.Owin.Security.Facebook.xml
+D:\enligate_com\bin\Microsoft.Owin.Security.Google.xml
+D:\enligate_com\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\enligate_com\bin\Microsoft.Owin.Security.OAuth.xml
+D:\enligate_com\bin\Microsoft.Owin.Security.Twitter.xml
+D:\enligate_com\bin\Newtonsoft.Json.xml
+D:\enligate_com\bin\nunit.framework.xml
+D:\enligate_com\obj\Debug\sw_EnligateWeb.csprojResolveAssemblyReference.cache
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.rebuildJugadorEquipo.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.addcolumactivemiscuentas.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.addbrowserreportbug.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.addcreated_atuser.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.upcountry.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.rebuildcountry.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.adddatetimearbleague.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.addcolumncheckresult.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.rebuildschemaequipos.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.addcorreocolumninequiposchema.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.addcolumcorreojugEquipo.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.canIdnulleable.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.rebuild.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.addprivatetorneo.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.quitartarifasdeschemaligas.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.wherever.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.code_Id_Pais_Estado_Ciudad.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.add_key_lcaint.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.add_id_table_equCoAdmin.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.fixschema_jugador_equipo.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.rebuild1.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.Migrations.addequdeletecolumboolean.resources
+D:\enligate_com\obj\Debug\sw_EnligateWeb.csproj.GenerateResource.Cache
+D:\enligate_com\obj\Debug\sw_EnligateWeb.csproj.CoreCompileInputs.cache
+D:\enligate_com\obj\Debug\sw_EnligateWeb.dll
+D:\enligate_com\obj\Debug\sw_EnligateWeb.pdb
+C:\SVN\Enligate\bin\sw_EnligateWeb.dll.config
+C:\SVN\Enligate\bin\sw_EnligateWeb.dll
+C:\SVN\Enligate\bin\sw_EnligateWeb.pdb
+C:\SVN\Enligate\bin\Antlr3.Runtime.dll
+C:\SVN\Enligate\bin\conekta.dll
+C:\SVN\Enligate\bin\Microsoft.CSharp.dll
+C:\SVN\Enligate\bin\Microsoft.Owin.dll
+C:\SVN\Enligate\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\SVN\Enligate\bin\Microsoft.Owin.Security.Cookies.dll
+C:\SVN\Enligate\bin\Microsoft.Owin.Security.dll
+C:\SVN\Enligate\bin\Microsoft.Owin.Security.Facebook.dll
+C:\SVN\Enligate\bin\Microsoft.Owin.Security.Google.dll
+C:\SVN\Enligate\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\SVN\Enligate\bin\Microsoft.Owin.Security.OAuth.dll
+C:\SVN\Enligate\bin\Microsoft.Owin.Security.Twitter.dll
+C:\SVN\Enligate\bin\Microsoft.VisualBasic.dll
+C:\SVN\Enligate\bin\Newtonsoft.Json.dll
+C:\SVN\Enligate\bin\nunit.framework.dll
+C:\SVN\Enligate\bin\System.ComponentModel.DataAnnotations.dll
+C:\SVN\Enligate\bin\System.Configuration.dll
+C:\SVN\Enligate\bin\System.Data.DataSetExtensions.dll
+C:\SVN\Enligate\bin\System.Data.dll
+C:\SVN\Enligate\bin\System.dll
+C:\SVN\Enligate\bin\System.Drawing.dll
+C:\SVN\Enligate\bin\System.EnterpriseServices.dll
+C:\SVN\Enligate\bin\System.Net.Http.dll
+C:\SVN\Enligate\bin\System.Net.Http.WebRequest.dll
+C:\SVN\Enligate\bin\System.Web.Abstractions.dll
+C:\SVN\Enligate\bin\System.Web.ApplicationServices.dll
+C:\SVN\Enligate\bin\System.Web.dll
+C:\SVN\Enligate\bin\System.Web.DynamicData.dll
+C:\SVN\Enligate\bin\System.Web.Entity.dll
+C:\SVN\Enligate\bin\System.Web.Extensions.dll
+C:\SVN\Enligate\bin\System.Web.Routing.dll
+C:\SVN\Enligate\bin\System.Web.Services.dll
+C:\SVN\Enligate\bin\System.Xml.dll
+C:\SVN\Enligate\bin\System.Xml.Linq.dll
+C:\SVN\Enligate\bin\WebGrease.dll
+C:\SVN\Enligate\bin\Antlr3.Runtime.pdb
+C:\SVN\Enligate\bin\conekta.pdb
+C:\SVN\Enligate\bin\Microsoft.Owin.xml
+C:\SVN\Enligate\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\SVN\Enligate\bin\Microsoft.Owin.Security.xml
+C:\SVN\Enligate\bin\Microsoft.Owin.Security.Cookies.xml
+C:\SVN\Enligate\bin\Microsoft.Owin.Security.Facebook.xml
+C:\SVN\Enligate\bin\Microsoft.Owin.Security.Google.xml
+C:\SVN\Enligate\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\SVN\Enligate\bin\Microsoft.Owin.Security.OAuth.xml
+C:\SVN\Enligate\bin\Microsoft.Owin.Security.Twitter.xml
+C:\SVN\Enligate\bin\Newtonsoft.Json.xml
+C:\SVN\Enligate\bin\nunit.framework.xml
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.rebuildJugadorEquipo.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addcolumactivemiscuentas.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addbrowserreportbug.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addcreated_atuser.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.upcountry.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.rebuildcountry.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.adddatetimearbleague.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addcolumncheckresult.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.rebuildschemaequipos.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addcorreocolumninequiposchema.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addcolumcorreojugEquipo.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.canIdnulleable.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.rebuild.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addprivatetorneo.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.quitartarifasdeschemaligas.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.wherever.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.code_Id_Pais_Estado_Ciudad.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.add_key_lcaint.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.add_id_table_equCoAdmin.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.fixschema_jugador_equipo.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.rebuild1.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addequdeletecolumboolean.resources
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.csproj.GenerateResource.Cache
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.csproj.CoreCompileInputs.cache
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.dll
+C:\SVN\Enligate\obj\Debug\sw_EnligateWeb.pdb
+F:\Enligate\bin\sw_EnligateWeb.dll.config
+F:\Enligate\bin\sw_EnligateWeb.dll
+F:\Enligate\bin\sw_EnligateWeb.pdb
+F:\Enligate\bin\Antlr3.Runtime.dll
+F:\Enligate\bin\conekta.dll
+F:\Enligate\bin\Microsoft.CSharp.dll
+F:\Enligate\bin\Microsoft.Owin.dll
+F:\Enligate\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Enligate\bin\Microsoft.Owin.Security.Cookies.dll
+F:\Enligate\bin\Microsoft.Owin.Security.dll
+F:\Enligate\bin\Microsoft.Owin.Security.Facebook.dll
+F:\Enligate\bin\Microsoft.Owin.Security.Google.dll
+F:\Enligate\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+F:\Enligate\bin\Microsoft.Owin.Security.OAuth.dll
+F:\Enligate\bin\Microsoft.Owin.Security.Twitter.dll
+F:\Enligate\bin\Microsoft.VisualBasic.dll
+F:\Enligate\bin\Microsoft.Web.Infrastructure.dll
+F:\Enligate\bin\Newtonsoft.Json.dll
+F:\Enligate\bin\nunit.framework.dll
+F:\Enligate\bin\System.ComponentModel.DataAnnotations.dll
+F:\Enligate\bin\System.Configuration.dll
+F:\Enligate\bin\System.Data.DataSetExtensions.dll
+F:\Enligate\bin\System.Data.dll
+F:\Enligate\bin\System.dll
+F:\Enligate\bin\System.Drawing.dll
+F:\Enligate\bin\System.EnterpriseServices.dll
+F:\Enligate\bin\System.Net.Http.dll
+F:\Enligate\bin\System.Net.Http.WebRequest.dll
+F:\Enligate\bin\System.Web.Abstractions.dll
+F:\Enligate\bin\System.Web.ApplicationServices.dll
+F:\Enligate\bin\System.Web.dll
+F:\Enligate\bin\System.Web.DynamicData.dll
+F:\Enligate\bin\System.Web.Entity.dll
+F:\Enligate\bin\System.Web.Extensions.dll
+F:\Enligate\bin\System.Web.Routing.dll
+F:\Enligate\bin\System.Web.Services.dll
+F:\Enligate\bin\System.Xml.dll
+F:\Enligate\bin\System.Xml.Linq.dll
+F:\Enligate\bin\WebGrease.dll
+F:\Enligate\bin\Antlr3.Runtime.pdb
+F:\Enligate\bin\conekta.pdb
+F:\Enligate\bin\Microsoft.Owin.xml
+F:\Enligate\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Enligate\bin\Microsoft.Owin.Security.xml
+F:\Enligate\bin\Microsoft.Owin.Security.Cookies.xml
+F:\Enligate\bin\Microsoft.Owin.Security.Facebook.xml
+F:\Enligate\bin\Microsoft.Owin.Security.Google.xml
+F:\Enligate\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+F:\Enligate\bin\Microsoft.Owin.Security.OAuth.xml
+F:\Enligate\bin\Microsoft.Owin.Security.Twitter.xml
+F:\Enligate\bin\Newtonsoft.Json.xml
+F:\Enligate\bin\nunit.framework.xml
+F:\Enligate\bin\Microsoft.Web.Infrastructure.xml
+F:\Enligate\obj\Debug\sw_EnligateWeb.csprojResolveAssemblyReference.cache
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.rebuildJugadorEquipo.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addcolumactivemiscuentas.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addbrowserreportbug.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addcreated_atuser.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.upcountry.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.rebuildcountry.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.adddatetimearbleague.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addcolumncheckresult.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.rebuildschemaequipos.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addcorreocolumninequiposchema.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addcolumcorreojugEquipo.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.canIdnulleable.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.rebuild.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addprivatetorneo.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.quitartarifasdeschemaligas.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.wherever.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.code_Id_Pais_Estado_Ciudad.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.add_key_lcaint.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.add_id_table_equCoAdmin.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.fixschema_jugador_equipo.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.rebuild1.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addequdeletecolumboolean.resources
+F:\Enligate\obj\Debug\sw_EnligateWeb.csproj.GenerateResource.Cache
+F:\Enligate\obj\Debug\sw_EnligateWeb.dll
+F:\Enligate\obj\Debug\sw_EnligateWeb.pdb
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\sw_EnligateWeb.dll.config
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\sw_EnligateWeb.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\sw_EnligateWeb.pdb
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Antlr3.Runtime.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\conekta.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Charts.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.CodeParser.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Dashboard.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Dashboard.v16.1.Web.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Dashboard.v16.1.Web.Mvc5.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Data.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.DataAccess.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Office.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.PivotGrid.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Printing.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.RichEdit.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Sparkline.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.SpellChecker.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Spreadsheet.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Utils.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxGauges.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxHtmlEditor.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxPivotGrid.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxRichEdit.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxScheduler.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxSpellChecker.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxSpreadsheet.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxThemes.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxTreeList.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.Mvc5.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.Resources.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Xpo.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraCharts.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraCharts.v16.1.Web.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraEditors.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraGauges.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraGauges.v16.1.Presets.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraPivotGrid.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraPrinting.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraReports.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraReports.v16.1.Web.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraScheduler.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraScheduler.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraScheduler.v16.1.Reporting.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.CSharp.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Security.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.VisualBasic.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Newtonsoft.Json.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\nunit.framework.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.ComponentModel.DataAnnotations.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Configuration.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Data.DataSetExtensions.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Data.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Drawing.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.EnterpriseServices.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Net.Http.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Net.Http.WebRequest.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Web.Abstractions.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Web.ApplicationServices.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Web.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Web.DynamicData.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Web.Entity.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Web.Extensions.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Web.Routing.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Web.Services.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Xml.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\System.Xml.Linq.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\WebGrease.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Map.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraMap.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraGauges.v16.1.Win.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Pdf.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Pdf.v16.1.Drawing.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraLayout.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraBars.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraTreeList.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraGrid.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Antlr3.Runtime.pdb
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\conekta.pdb
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Data.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.DataAccess.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Office.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.PivotGrid.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Printing.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.RichEdit.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Spreadsheet.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Utils.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxGauges.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxHtmlEditor.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxPivotGrid.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxRichEdit.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxScheduler.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxSpellChecker.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxSpreadsheet.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.ASPxTreeList.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Web.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Xpo.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraCharts.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraCharts.v16.1.Web.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraEditors.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraGauges.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraGauges.v16.1.Presets.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraPivotGrid.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Sparkline.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraPrinting.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraReports.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraReports.v16.1.Web.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraScheduler.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Security.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Newtonsoft.Json.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\nunit.framework.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\Microsoft.Web.Infrastructure.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Map.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.XtraGauges.v16.1.Win.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Pdf.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\DevExpress.Pdf.v16.1.Drawing.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Dashboard.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Dashboard.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Dashboard.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Dashboard.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Dashboard.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Dashboard.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Dashboard.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Dashboard.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Data.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Data.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Data.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Data.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.DataAccess.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.DataAccess.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.DataAccess.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.DataAccess.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Office.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Office.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Office.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Office.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.PivotGrid.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.PivotGrid.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.PivotGrid.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.PivotGrid.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Printing.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Printing.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Printing.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Printing.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.RichEdit.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.RichEdit.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.RichEdit.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.RichEdit.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Utils.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Utils.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Utils.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Utils.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Web.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Web.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Web.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Web.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Xpo.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Xpo.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Xpo.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Xpo.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.XtraCharts.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.XtraCharts.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.XtraCharts.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.XtraCharts.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.XtraEditors.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.XtraEditors.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.XtraEditors.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.XtraEditors.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.XtraGauges.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.XtraGauges.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.XtraGauges.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.XtraGauges.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.XtraPivotGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.XtraPivotGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.XtraPivotGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.XtraPivotGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Sparkline.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Sparkline.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Sparkline.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Sparkline.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.XtraPrinting.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.XtraPrinting.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.XtraPrinting.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.XtraPrinting.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.XtraReports.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.XtraReports.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.XtraReports.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.XtraReports.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.XtraReports.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.XtraReports.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.XtraReports.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.XtraReports.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.XtraScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.XtraScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.XtraScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.XtraScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Map.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Map.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Map.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Map.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.Pdf.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.Pdf.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.Pdf.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.Pdf.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.XtraLayout.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.XtraLayout.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.XtraLayout.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.XtraLayout.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.XtraBars.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.XtraBars.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.XtraBars.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.XtraBars.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.XtraTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.XtraTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.XtraTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.XtraTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\de\DevExpress.XtraGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\es\DevExpress.XtraGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ja\DevExpress.XtraGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\bin\ru\DevExpress.XtraGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.csprojResolveAssemblyReference.cache
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.rebuildJugadorEquipo.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addcolumactivemiscuentas.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addbrowserreportbug.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addcreated_atuser.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.upcountry.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.rebuildcountry.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.adddatetimearbleague.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addcolumncheckresult.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.rebuildschemaequipos.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addcorreocolumninequiposchema.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addcolumcorreojugEquipo.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.canIdnulleable.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.rebuild.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addprivatetorneo.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.quitartarifasdeschemaligas.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.wherever.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.code_Id_Pais_Estado_Ciudad.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.add_key_lcaint.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.add_id_table_equCoAdmin.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.fixschema_jugador_equipo.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.rebuild1.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrations.addequdeletecolumboolean.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.csproj.GenerateResource.Cache
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.pdb
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\sw_EnligateWeb.dll.config
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\sw_EnligateWeb.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\sw_EnligateWeb.pdb
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Antlr3.Runtime.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\conekta.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Charts.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.CodeParser.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Dashboard.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Dashboard.v16.1.Web.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Dashboard.v16.1.Web.Mvc5.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Data.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.DataAccess.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Office.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.PivotGrid.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Printing.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.RichEdit.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Sparkline.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.SpellChecker.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Spreadsheet.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Utils.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxGauges.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxHtmlEditor.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxPivotGrid.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxRichEdit.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxScheduler.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxSpellChecker.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxSpreadsheet.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxThemes.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxTreeList.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.Mvc5.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.Resources.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Xpo.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraCharts.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraCharts.v16.1.Web.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraEditors.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraGauges.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraGauges.v16.1.Presets.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraPivotGrid.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraPrinting.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraReports.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraReports.v16.1.Web.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraScheduler.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraScheduler.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraScheduler.v16.1.Reporting.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.CSharp.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Security.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.VisualBasic.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Newtonsoft.Json.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\nunit.framework.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.ComponentModel.DataAnnotations.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Configuration.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Data.DataSetExtensions.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Data.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Drawing.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.EnterpriseServices.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Net.Http.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Net.Http.WebRequest.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Web.Abstractions.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Web.ApplicationServices.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Web.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Web.DynamicData.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Web.Entity.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Web.Extensions.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Web.Routing.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Web.Services.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Xml.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\System.Xml.Linq.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\WebGrease.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Map.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraMap.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraGauges.v16.1.Win.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Pdf.v16.1.Core.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Pdf.v16.1.Drawing.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraLayout.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraBars.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraTreeList.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraGrid.v16.1.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Antlr3.Runtime.pdb
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\conekta.pdb
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Data.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.DataAccess.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Office.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.PivotGrid.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Printing.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.RichEdit.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Spreadsheet.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Utils.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxGauges.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxHtmlEditor.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxPivotGrid.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxRichEdit.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxScheduler.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxSpellChecker.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxSpreadsheet.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.ASPxTreeList.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Web.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Xpo.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraCharts.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraCharts.v16.1.Web.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraEditors.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraGauges.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraGauges.v16.1.Presets.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraPivotGrid.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Sparkline.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraPrinting.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraReports.v16.1.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraReports.v16.1.Web.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraScheduler.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Security.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Newtonsoft.Json.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\nunit.framework.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Microsoft.Web.Infrastructure.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Map.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.XtraGauges.v16.1.Win.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Pdf.v16.1.Core.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\DevExpress.Pdf.v16.1.Drawing.xml
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Dashboard.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Dashboard.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Dashboard.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Dashboard.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Dashboard.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Dashboard.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Dashboard.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Dashboard.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Data.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Data.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Data.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Data.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.DataAccess.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.DataAccess.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.DataAccess.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.DataAccess.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Office.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Office.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Office.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Office.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.PivotGrid.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.PivotGrid.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.PivotGrid.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.PivotGrid.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Printing.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Printing.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Printing.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Printing.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.RichEdit.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.RichEdit.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.RichEdit.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.RichEdit.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Spreadsheet.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Utils.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Utils.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Utils.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Utils.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Web.ASPxRichEdit.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Web.ASPxScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Web.ASPxTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Web.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Web.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Web.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Web.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Xpo.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Xpo.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Xpo.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Xpo.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.XtraCharts.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.XtraCharts.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.XtraCharts.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.XtraCharts.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.XtraEditors.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.XtraEditors.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.XtraEditors.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.XtraEditors.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.XtraGauges.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.XtraGauges.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.XtraGauges.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.XtraGauges.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.XtraGauges.v16.1.Presets.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.XtraPivotGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.XtraPivotGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.XtraPivotGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.XtraPivotGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Sparkline.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Sparkline.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Sparkline.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Sparkline.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.XtraPrinting.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.XtraPrinting.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.XtraPrinting.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.XtraPrinting.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.XtraReports.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.XtraReports.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.XtraReports.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.XtraReports.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.XtraReports.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.XtraReports.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.XtraReports.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.XtraReports.v16.1.Web.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.XtraScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.XtraScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.XtraScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.XtraScheduler.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.XtraScheduler.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.XtraScheduler.v16.1.Reporting.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Map.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Map.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Map.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Map.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.Pdf.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.Pdf.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.Pdf.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.Pdf.v16.1.Core.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.XtraLayout.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.XtraLayout.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.XtraLayout.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.XtraLayout.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.XtraBars.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.XtraBars.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.XtraBars.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.XtraBars.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.XtraTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.XtraTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.XtraTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.XtraTreeList.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\de\DevExpress.XtraGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\es\DevExpress.XtraGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ja\DevExpress.XtraGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\ru\DevExpress.XtraGrid.v16.1.resources.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.csprojResolveAssemblyReference.cache
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.rebuildJugadorEquipo.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.addcolumactivemiscuentas.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.addbrowserreportbug.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.addcreated_atuser.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.upcountry.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.rebuildcountry.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.adddatetimearbleague.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.addcolumncheckresult.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.rebuildschemaequipos.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.addcorreocolumninequiposchema.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.addcolumcorreojugEquipo.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.canIdnulleable.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.rebuild.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.addprivatetorneo.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.quitartarifasdeschemaligas.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.wherever.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.code_Id_Pais_Estado_Ciudad.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.add_key_lcaint.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.add_id_table_equCoAdmin.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.fixschema_jugador_equipo.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.rebuild1.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.Migrations.addequdeletecolumboolean.resources
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.csproj.GenerateResource.Cache
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.pdb

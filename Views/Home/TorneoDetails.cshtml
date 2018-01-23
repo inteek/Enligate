@@ -1,0 +1,160 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    ViewBag.Title = "Torneo";
+}   
+
+<script>
+        $(document).ready(function () {
+          //  gvPartidosGrid_PerformCallback();
+            //gvPartidosResultGrid_PerformCallback();
+            disableAllForm();
+        });
+
+        function gvPartidosGrid_PerformCallback(s, e) {
+            if (typeof gvPartidosGrid.InCallback === "function") {
+                if (!gvPartidosGrid.InCallback()) {
+                    gvPartidosGrid.PerformCallback();
+                }
+            }
+        };
+        function gvPartidosResultGrid_PerformCallback(s, e) {
+            if (typeof gvPartidosResultGrid.InCallback === "function") {
+                if (!gvPartidosResultGrid.InCallback()) {
+                    gvPartidosResultGrid.PerformCallback();
+                }
+            }
+        };
+        function fnGVPartidosView_OnBeginCallback(s,e) {
+            e.customArgs['torId'] = @ViewBag.torId;
+        };
+        function fnGVPartidosResult_OnBeginCallback(s, e) {
+            e.customArgs['torId'] = @ViewBag.torId;
+        };
+    function toggleChevron(e) {
+        $(e.target)
+            .prev('.panel-data')
+            .find('.indicator')
+            .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+    }
+
+    function fnEquipoEstadisticas(torId, equId){
+        
+        var dataForm = {torId : torId, equId:equId};
+        $.ajax({
+            url: '/Home/DetallesEstadisticas',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                
+                $("#modalEstadisticasEquipo").modal();
+                $("#modalEstadisticasEquipo #estadisticas").html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            },
+            error: function (){
+                alert("Error");
+            }
+        });
+    };
+
+    $('#accordion').on('hidden.bs.collapse', toggleChevron);
+    $('#accordion').on('shown.bs.collapse', toggleChevron);
+</script>     
+<!-- Content -->
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12 mSpaceMt20 mSpaceMb20">
+        <div class="col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10">
+            <div>
+                <fieldset id="frmAddLeagueRequest">
+                    <div class="container-fluid">
+                        
+                        <div class="col-xs-12 mSpaceMt20 mSpaceMb20" style="margin-top:0">                                                            
+                            <a  style="text-decoration:none;" aria-label="Left center" data-toggle="collapse" href="#torneoDetails">
+                                <h3>Datos del Torneo</h3>
+                            </a> 
+                            <div id="torneoDetails" class="row mSpaceMt20 mSpaceMb20">
+                                <div class="col-xs-12">
+                                    @Html.Action("showTorneo", "Home", new { id = ViewBag.torId })
+                                </div>
+                            </div>                           
+                        </div>
+                        
+                        <div class="col-xs-12 mSpaceMt20 mSpaceMb20" style="margin-top:0">                            
+                            <a style="text-decoration:none;" aria-label="Left center" data-toggle="collapse" href="#torneoEstadistics">
+                                    <h3>Estadisticas del Torneo </h3>
+                            </a>
+                            <div id="torneoEstadistics" class="row mSpaceMt20 mSpaceMb20">
+                                <div class="col-xs-12  col-md-6">
+                                    <div class="col-xs-12" style="margin-bottom:0">
+                                        <div class="col-xs-12 dashboardBadgeTitles">
+                                            LIDERES DE GOLEO
+                                        </div>
+
+                                    </div>
+                                    <div class="col-xs-12">
+                                        @Html.Action("torEstGoleador", "Home", new { torId = ViewBag.torId })
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 mSpaceMb20" style="margin-bottom:0">
+                                    <div class="col-xs-12 dashboardBadgeTitles">
+                                        TABLA GENERAL
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-xs-12 mSpaceMt20 " style="margin-top:0">
+                                    @Html.Action("torEstadisticas", "Home", new { torId = ViewBag.torId })
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3>Partidos</h3>
+                                <hr />
+                                @Html.Action("PartidosViewCallback", "AdminLigas", new { torId = ViewBag.torId })
+                            </div>                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3>Resultados</h3>
+                                <hr />
+                                @Html.Action("PartidosResultCallback","AdminLigas", new { torId = ViewBag.torId })
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+<!--MODAL EQUIPO-->
+<div class="modal fade" id="modalEstadisticasEquipo" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom:0">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyEventos" style="padding-top:0">
+                <div class="container-fluid" style="min-height:150px;">                    
+                    <div class="col-md-11 pull-right">
+                        
+                        <div id="estadisticas">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

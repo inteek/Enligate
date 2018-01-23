@@ -1,0 +1,100 @@
+﻿@using sw_EnligateWeb.Models;
+@model LeaguesActiveDetailViewModel
+
+@{
+    string divMapId = "mapGoogle" + ViewBag.gMapId.ToString();
+    string fnInit = "initMap" + ViewBag.gMapId.ToString() + "()";
+}
+
+<div id="@divMapId" class="col-xs-12 googleMap" style="height:100%; width:100%;" >
+</div>
+
+<form id="frmLeaguesDetail_MapEdit">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m=>m.ligLiga.ligId)
+    @Html.HiddenFor(m => m.ligLiga.ligCreator)
+    @Html.HiddenFor(m => m.ligLiga.ligLatitud, new { @class = "ligLatitud" })
+    @Html.HiddenFor(m => m.ligLiga.ligLongitud, new { @class = "ligLongitud" })
+</form>
+
+<script type="text/javascript">
+
+    function @fnInit {
+        var map;
+        var markers = [];
+
+        var mapDiv = document.getElementById('@divMapId');
+        map = new google.maps.Map(mapDiv, {
+            center: new google.maps.LatLng(19.425153718960143, -99.1351318359375), //Cd. de México
+            zoom: 7,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: false,
+            streetViewControl: false
+        });
+
+        @{
+            if(Model.ligLiga.ligLatitud != null && Model.ligLiga.ligLongitud != null)
+            {
+                <text>
+                var latLng = new google.maps.LatLng(@Model.ligLiga.ligLatitud , @Model.ligLiga.ligLongitud);
+                map.setCenter(latLng);
+                map.setZoom(15);
+                addMarker(latLng);
+                </text>
+            }
+            else
+            {
+                <text>
+                var geocoder = new google.maps.Geocoder();
+                var address = '@Model.ligLiga.ligDomicilio';
+                console.log(address);
+                geocoder.geocode({
+                    'address': address
+                },
+                    function (results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            result = results[0].geometry.location;
+                            map.setCenter(result);
+                            map.setZoom(15);
+                            addMarker(result);
+
+                            $(".ligLatitud").val(result.lat());
+                            $(".ligLongitud").val(result.lng());
+                        }
+                    });
+                </text>
+            }
+        }
+
+        map.addListener('click', function (event) {
+            addMarker(event.latLng);
+
+            $(".ligLatitud").val(event.latLng.lat());
+            $(".ligLongitud").val(event.latLng.lng());
+        });
+
+        function addMarker(location) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+            clearMarkers();
+            markers.push(marker);
+        }
+
+        function setMarkers(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+
+        function clearMarkers() {
+            setMarkers(null);
+            markers = [];
+        }
+
+    }
+
+    @fnInit ;
+
+</script>

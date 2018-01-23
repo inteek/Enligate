@@ -1,0 +1,91 @@
+﻿@using System.Web.UI.WebControls;
+
+@{
+    var gvRequests = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvLeagues";
+        settings.CallbackRouteValues = new { Controller = "AdminLigas", Action = "_LeaguesGridView" };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+        //Styles
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.SelectedRow.CssClass = "gvRowSelected";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        settings.KeyFieldName = "ligId";
+        settings.SetDataRowTemplateContent(c =>
+        {
+            string token = DataBinder.Eval(c.DataItem, "ligCreator") as string;
+
+            string img = DataBinder.Eval(c.DataItem, "ligImg") as string;
+            if (img != null)
+                img = "/" + img.Replace(Server.MapPath("~"), "").Replace("\\", "/");
+            else
+                img = Url.Content("~/Content/Images/general/noPhoto.jpg");
+            ViewContext.Writer.Write(@"
+                <div class='well' style='position:relative;'>
+                    <div class='container-fluid'>
+                        <div class='col-xs-12'>
+                            <div class='col-xs-12 col-sm-12 col-md-3 paddingLRZero'>
+                                <div class='col-xs-12 col-sm-12 hgRowsImage'>
+                                    <img src='" + img + "' alt='Image' />" +
+                               @"</div>
+                            </div>
+                            <div class='col-xs-12 col-sm-12 col-md-9 paddingLRZero'>
+                                <div class='col-xs-12 right hgRowLocation text-right'>
+                                    <button type='button' class='btn btn-link mLink2' style='font-size:1.5em;' onclick=fnLeaguesShowDetail(" + DataBinder.Eval(c.DataItem, "ligId") + ",&#39;" + token + @"&#39;)>
+                                        Ver Liga
+                                    </button>
+                                </div>
+                                <div class='col-xs-12 hgRowTitle'>" +
+                                    DataBinder.Eval(c.DataItem, "ligNombre") +
+                              @"</div>
+                                <div class='col-xs-12 hgRowZone mContent1 mLeaguesContactRow'>
+                                    <span>" +
+                                        DataBinder.Eval(c.DataItem, "ligDomicilio") +
+                                  @"</span>
+                                    <span>" +
+                                        DataBinder.Eval(c.DataItem, "ligContacto") +
+                                  @"</span>
+                                </div>
+                                <div class='col-xs-12 hgRowDescription'>" +
+                                        DataBinder.Eval(c.DataItem, "ligDescripcion") +
+                              @"</div>
+                            </div>
+                        </div>
+                    </div>                   
+
+                </div>
+            ");
+        });
+
+        //Paging
+        //  settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        // settings.SettingsPager.PageSize = 5;
+        // settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        // settings.Settings.VerticalScrollableHeight = 600;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+
+        //Rows
+        settings.Settings.ShowColumnHeaders = false;
+        settings.SettingsBehavior.AllowSelectByRowClick = false;
+
+    });
+
+    if (ViewData["EditError"] != null)
+    {
+        gvRequests.SetEditErrorText((string)ViewData["EditError"]);
+    }
+
+    gvRequests.Bind(Model).GetHtml();
+}

@@ -1,0 +1,158 @@
+﻿@using sw_EnligateWeb.Models;
+@model TarifasViewModel
+
+<!-- Content -->
+<div class="col-xs-12 col-sm-offset-1 col-sm-10 mSpaceMt20 mSpaceMb20">
+    @using (Ajax.BeginForm("_FeesForm", "Administrator", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "feesFormMessages", OnComplete = "fnFeesFormAjaxComplete();" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.tarId)
+
+        <div class="form-inline mFeesForm text-center">
+            <div class="form-group">
+                DEFINIR FORMA DE COBRO PARA:
+                @Html.DropDownList("ddlConcepto", (List<SelectListItem>)ViewBag.ddlConcepto, new { @class = "mFeeInput tcoIdConcepto", style = "min-width:130px;", onchange = "fnFeesDdlChange(this,'concepto');" })
+            </div>
+
+            <div class="form-group">
+                EN:
+                @Html.DropDownList("ddlFormaPago", (List<SelectListItem>)ViewBag.ddlFormaPago, new { @class = "mFeeInput tcfpId", style = "min-width:130px;", onchange = "fnFeesDdlChange(this,'formaPago');" })
+            </div>
+        </div>
+
+        <div class="form-inline mFeesForm text-center">
+            <div class="form-group">
+                CON PERIODICIDAD DE PAGO:
+                @Html.DropDownList("ddlPeriodicidad", (List<SelectListItem>)ViewBag.ddlPeriodicidad, new { @class = "mFeeInput tcfppId", style = "min-width:130px;", onchange = "fnFeesDdlChange(this,'periodicidad');" })
+            </div>
+
+            <div class="form-group">
+                CON PAGO:
+                @Html.DropDownList("ddlTipoPago", (List<SelectListItem>)ViewBag.ddlTipoPago, new { @class = "mFeeInput tcfpptpId", style = "min-width:130px;", onchange = "fnFeesDdlChange(this,'tipoPago');" })
+            </div>
+        </div>
+
+        <div class="form-inline mFeesForm  text-center">
+            <div class="form-group">
+                REALIZANDO EL PAGO CON:
+                @Html.DropDownListFor(m => m.tarMetodoPago, (List<SelectListItem>)ViewBag.ddlMetodoPago, new { @class = "mFeeInput tcfpptpmpId", style = "min-width:130px;" })
+                @Html.ValidationMessageFor(m => m.tarMetodoPago, "", new { @class = "text-danger errMsgPrecio" })
+            </div>
+
+            <div class="form-group">
+                CON COSTO DE:
+                @Html.TextBoxFor(m => m.tarPrecio, "", new { autocomplete="off",  @class = "mFeeInput inputTarPrecio", style = "min-width:130px;", data_val_number = "El precio debe ser un número." })
+                @Html.TextBoxFor(m => m.tarPorcentajeComision, "", new { autocomplete = "off", @class = "mFeeInput inputTarComision", style = "min-width:130px; display:none;", data_val_number = "El porcentaje debe ser un número.", @Value = "0" })
+                <span id="feeSpanTipoPrecio">PESOS</span>
+
+                @Html.ValidationMessageFor(m => m.tarPrecio, "", new { @class = "text-danger errMsgPrecio" })
+                @Html.ValidationMessageFor(m => m.tarPorcentajeComision, "", new { @class = "text-danger errMsgPorc" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-11 text-right">
+                <button type="submit" class="btn btn-default">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    }
+</div>
+
+<div id="feesFormMessages" class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>
+
+<script type="text/javascript">
+
+    function fnFeesDdlChange(ddl, ddlCampoNombre) {
+        var data = "ddlCampoNombre=" + ddlCampoNombre + "&ddlValor=" + ddl.value;
+        $.ajax({
+            url: '/Administrator/_FeesFormOnChangeDdl',
+            type: "POST",
+            cache: false,
+            data: data,
+            success: function (data) {
+                var ddlFormaPago = $(".tcfpId");
+                var ddlPeriodicidad = $(".tcfppId");
+                var ddlTipoPago = $(".tcfpptpId");
+                var ddlMetodoPago = $(".tcfpptpmpId");
+
+                var inputPrecio = $(".inputTarPrecio");
+                var errMsgPrecio = $(".errMsgPrecio");
+                var inputPorc = $(".inputTarComision");
+                var errMsgPorc = $(".errMsgPorc");
+                var span = $("#feeSpanTipoPrecio");
+
+                var formaPagoData, periodicidadData, tipoPagoData, metodoPagoData;
+
+                if(ddlCampoNombre == "concepto")
+                {
+                    formaPagoData = $.map(data.formaPago, function (item, a) {
+                        return "<option value=" + item.Value + ">" + item.Text + "</option>";
+                    });
+                    ddlFormaPago.html(formaPagoData.join(""));
+                }
+                if(ddlCampoNombre == "concepto" || ddlCampoNombre == "formaPago")
+                {    
+                    periodicidadData = $.map(data.periodicidad, function (item, a) {
+                        return "<option value=" + item.Value + ">" + item.Text + "</option>";
+                    });
+                    ddlPeriodicidad.html(periodicidadData.join(""));
+                }
+                if(ddlCampoNombre == "concepto" || ddlCampoNombre == "formaPago" || ddlCampoNombre == "periodicidad")
+                {
+                    tipoPagoData = $.map(data.tipoPago, function (item, a) {
+                        return "<option value=" + item.Value + ">" + item.Text + "</option>";
+                    });
+                    ddlTipoPago.html(tipoPagoData.join(""));
+                }
+                if(ddlCampoNombre == "concepto" || ddlCampoNombre == "formaPago" || ddlCampoNombre == "periodicidad" || ddlCampoNombre == "tipoPago")
+                {
+                    metodoPagoData = $.map(data.metodoPago, function (item, a) {
+                        return "<option value=" + item.Value + ">" + item.Text + "</option>";
+                    });
+                    ddlMetodoPago.html(metodoPagoData.join(""));
+                }
+
+                if (ddlFormaPago.find('option:selected').text() == "COMISION") {
+                    span.html("PORCIENTO");
+                    inputPrecio.hide();
+                    inputPrecio.val("0");
+                    errMsgPrecio.text("");
+                    inputPorc.val("");
+                    inputPorc.show();
+                }
+                else {
+                    span.html("PESOS");
+                    inputPrecio.val("");
+                    inputPrecio.show();
+                    inputPorc.hide();
+                    inputPorc.val("0");
+                    errMsgPorc.text("");
+                }
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            },
+            error: function (xhr, status, p3, p4) {
+                //alert("Hubo un error, intenta nuevamente");
+            }
+        });
+    }
+
+    function fnFeesFormAjaxComplete() {
+        var inputPrecio = $(".inputTarPrecio");
+        var inputPorc = $(".inputTarComision");
+
+        if (inputPrecio.is(":visible"))
+            inputPrecio.val("");
+        else
+            inputPorc.val("");
+
+        showMessages();
+        fnFeesGVPerformCallback();
+    }
+
+</script>

@@ -1,0 +1,9 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model PartidosViewModel
+
+<span class="input-group-addon m-lbl">Canchas:</span>
+@Html.DropDownListFor(m => m.canId, (List<SelectListItem>)Model.ddlCanchas, null, new { @class = "width100 width80", onchange = "fnEquipoNuevo_Filtros_ChangeTorneo(this);" })
+<button type="button" class="btn btn-link pull-right" onclick="nuevoCancha();"><span class="glyphicon glyphicon-plus"></span></button>
+

@@ -1,0 +1,29 @@
+﻿<script type="text/javascript">
+
+    $(document).ready(function () {
+        fnGVTorneosCategorias_PerformCallback();
+    });
+
+    function fnGVTorneosCategorias_PerformCallback(s, e) {
+        if (typeof gvTorneosCategorias.InCallback === "function") {
+            if (!gvTorneosCategorias.InCallback())
+                gvTorneosCategorias.PerformCallback();
+        }
+    }
+
+    //function fnGVTorneosCategorias_OnEndCallback(s, e) {
+    //    if (s.cpPerformCallback) {
+    //        fnGVTorneosCategorias_PerformCallback();
+    //        delete s.cpPerformCallback;
+    //    }
+    //}
+
+</script>
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+<div class="col-xs-12 text-nowrap">
+    @Html.Action("CategoriasGridEdit","AdminTorneos")
+</div>

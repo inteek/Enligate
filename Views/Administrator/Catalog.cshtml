@@ -1,0 +1,41 @@
+﻿@using sw_EnligateWeb.Models;
+
+@{
+    ViewBag.Title = "Tipo Torneo";
+}
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        fnGVTorneoTipos_PerformCallback();
+    });
+
+    function fnGVTorneoTipos_PerformCallback(s, e) {
+        if (typeof gvTorneoTipos.InCallback === "function") {
+            if (!gvTorneoTipos.InCallback())
+                gvTorneoTipos.PerformCallback();
+        }
+    }
+
+    //function fnGVTorneosCategorias_OnEndCallback(s, e) {
+    //    if (s.cpPerformCallback) {
+    //        fnGVTorneosCategorias_PerformCallback();
+    //        delete s.cpPerformCallback;
+    //    }
+    //}
+
+</script>
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+<!-- Content -->
+<div id="ADMINISTRADOR_Dashboard" class="row">
+    <div id="ADMINISTRADOR_Dashboard_TipodeTorneo" class="col-xs-12 mSpaceMb20">
+        <div class="col-xs-12 mSpaceMb20">
+            <h1 class="mTitle1">Tipos de Torneo</h1>
+        </div>
+        <div class="col-xs-12 mSpaceMb20">            
+            @Html.Partial("Torneos/_TorneoTipoGrid")
+        </div>
+    </div>
+</div>

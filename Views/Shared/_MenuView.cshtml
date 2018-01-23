@@ -1,0 +1,43 @@
+﻿@using sw_EnligateWeb.Models;
+@model List<MenusViewModel>
+
+<div class="row-eq-height row-eq-height-alignBottom">
+    @{
+        foreach (var menu in Model)
+        {
+            <div class="col-sm-2 btnsMenuAdminDiv" data-menuId="@menu.menu.menId"> @*current*@
+                <div class="glyphicon glyphicon-triangle-bottom hidden-xs"></div>
+                <button class="btn btn-default width100" onclick="javascript:document.location.replace('@Url.Action(menu.menu.menAction, menu.menu.menController)');">@menu.menu.menNombre</button>
+            </div>
+        }
+    }
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('[data-menuId]').each(function (index, element) {
+            var val = $(this).attr("data-menuId");
+            var div = $("#" + val);
+            if (div.length > 0) {
+                $(this).addClass('current');
+                submitGetSubmenus(val)
+                return false;
+            }
+        });
+    });
+
+    function submitGetSubmenus(menId) {
+        $.ajax({
+            url: '/Admin/_GetSubmenuByCurrentMenu',
+            type: "POST",
+            data: "menuId=" + menId,
+            success: function (data) {
+                $("#swEnligate_Submenu").html(data);
+            },
+            error: function (xhr, status, p3, p4) {
+                //alert("Hubo un error cargando el submenu.");
+            }
+        });
+    }
+</script>

@@ -1,0 +1,17 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model TorneosViewModel
+<div class="marginForm">
+    <div class="input-group m-input-groupLbl-XS width100">
+        <span class="input-group-addon m-lbl">Categoria:</span>
+        @Html.DropDownListFor(m => m.lctId, (List<SelectListItem>)Model.ddlCategorias, new { @class = "width95", onchange = "torneoNuevo_LigaCategoriaOnChange();" })
+        <!--
+            <a class="btnCategoriaFiltros" data-toggle="modal" href="#">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </a>
+        -->    
+        <button type="button" class="btn btn-link btnCategoriaFiltros" onclick="nuevoCategoria();"><span class="glyphicon glyphicon-plus"></span></button>    
+    </div>
+    @Html.ValidationMessageFor(m => m.lctId, "", new { @class = "text-danger" })
+</div>

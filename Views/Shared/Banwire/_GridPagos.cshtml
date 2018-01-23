@@ -1,0 +1,22 @@
+﻿<script type="text/javascript">
+
+    $(document).ready(function () {
+        fnGVPagos_PerformCallback();
+    });
+
+    function fnGVPagos_PerformCallback(s, e) {
+        if (typeof gvPagos.InCallback === "function") {
+            if (!gvPagos.InCallback())
+                gvPagos.PerformCallback();
+        }
+    }
+
+</script>
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+<div class="col-xs-12 text-nowrap">
+    @Html.Action("_PagosGrid", "AdminLigas")
+</div>
