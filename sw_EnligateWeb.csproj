@@ -1,0 +1,985 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B1599725-64A5-4E13-9A9A-78B2DFB936F8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>sw_EnligateWeb</RootNamespace>
+    <AssemblyName>sw_EnligateWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44333</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="conekta, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>conekta-.net-master\conekta-.net-master\src\conekta\conekta\bin\Debug\conekta.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.Resources.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v16.1.Web, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v16.1.Web.Mvc5, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Office.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.SpellChecker.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Spreadsheet.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxGauges.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxPivotGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxRichEdit.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxSpellChecker.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxSpreadsheet.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxThemes.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxTreeList.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.Mvc5.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v16.1.Web, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v16.1.Presets, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.CodeParser.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v16.1.Web, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v16.1.Reporting, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.Cookies.3.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.Facebook.3.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.Google.3.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.MicrosoftAccount.3.1.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.Twitter.3.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net451\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\UserProfile_BasicInfo.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminLigasController.cs" />
+    <Compile Include="Controllers\AdministratorController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminEquiposController.cs" />
+    <Compile Include="Controllers\AdminTorneosController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MyBaseController.cs" />
+    <Compile Include="Controllers\RefereeController.cs" />
+    <Compile Include="Microsoft\AspNet\Identity\UserManager.cs" />
+    <Compile Include="Migrations\201703202211530_rebuild-JugadorEquipo.cs" />
+    <Compile Include="Migrations\201703202211530_rebuild-JugadorEquipo.Designer.cs">
+      <DependentUpon>201703202211530_rebuild-JugadorEquipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705232242247_add colum active mis cuentas.cs" />
+    <Compile Include="Migrations\201705232242247_add colum active mis cuentas.Designer.cs">
+      <DependentUpon>201705232242247_add colum active mis cuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705262232026_add browser report bug.cs" />
+    <Compile Include="Migrations\201705262232026_add browser report bug.Designer.cs">
+      <DependentUpon>201705262232026_add browser report bug.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705301641236_add created_at user.cs" />
+    <Compile Include="Migrations\201705301641236_add created_at user.Designer.cs">
+      <DependentUpon>201705301641236_add created_at user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706052334492_up country.cs" />
+    <Compile Include="Migrations\201706052334492_up country.Designer.cs">
+      <DependentUpon>201706052334492_up country.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706052338396_rebuild country.cs" />
+    <Compile Include="Migrations\201706052338396_rebuild country.Designer.cs">
+      <DependentUpon>201706052338396_rebuild country.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706190840155_add datetime arb-league.cs" />
+    <Compile Include="Migrations\201706190840155_add datetime arb-league.Designer.cs">
+      <DependentUpon>201706190840155_add datetime arb-league.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706192113132_add column check result.cs" />
+    <Compile Include="Migrations\201706192113132_add column check result.Designer.cs">
+      <DependentUpon>201706192113132_add column check result.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706282158322_rebuild schema equipos.cs" />
+    <Compile Include="Migrations\201706282158322_rebuild schema equipos.Designer.cs">
+      <DependentUpon>201706282158322_rebuild schema equipos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706290424227_add correo column in equipo schema.cs" />
+    <Compile Include="Migrations\201706290424227_add correo column in equipo schema.Designer.cs">
+      <DependentUpon>201706290424227_add correo column in equipo schema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707122129221_add colum correo jugEquipo.cs" />
+    <Compile Include="Migrations\201707122129221_add colum correo jugEquipo.Designer.cs">
+      <DependentUpon>201707122129221_add colum correo jugEquipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707190421223_canId nulleable.cs" />
+    <Compile Include="Migrations\201707190421223_canId nulleable.Designer.cs">
+      <DependentUpon>201707190421223_canId nulleable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707211631493_rebuild.cs" />
+    <Compile Include="Migrations\201707211631493_rebuild.Designer.cs">
+      <DependentUpon>201707211631493_rebuild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707241706497_add private torneo.cs" />
+    <Compile Include="Migrations\201707241706497_add private torneo.Designer.cs">
+      <DependentUpon>201707241706497_add private torneo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707250621027_quitar tarifas de schema ligas.cs" />
+    <Compile Include="Migrations\201707250621027_quitar tarifas de schema ligas.Designer.cs">
+      <DependentUpon>201707250621027_quitar tarifas de schema ligas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707291918593_wherever.cs" />
+    <Compile Include="Migrations\201707291918593_wherever.Designer.cs">
+      <DependentUpon>201707291918593_wherever.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707311907326_code_Id_Pais_Estado_Ciudad.cs" />
+    <Compile Include="Migrations\201707311907326_code_Id_Pais_Estado_Ciudad.Designer.cs">
+      <DependentUpon>201707311907326_code_Id_Pais_Estado_Ciudad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708010628042_add_key_lcaint.cs" />
+    <Compile Include="Migrations\201708010628042_add_key_lcaint.Designer.cs">
+      <DependentUpon>201708010628042_add_key_lcaint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708011532429_add_id_table_equCoAdmin.cs" />
+    <Compile Include="Migrations\201708011532429_add_id_table_equCoAdmin.Designer.cs">
+      <DependentUpon>201708011532429_add_id_table_equCoAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708020433440_fix schema_jugador_equipo.cs" />
+    <Compile Include="Migrations\201708020433440_fix schema_jugador_equipo.Designer.cs">
+      <DependentUpon>201708020433440_fix schema_jugador_equipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708111628270_rebuild1.cs" />
+    <Compile Include="Migrations\201708111628270_rebuild1.Designer.cs">
+      <DependentUpon>201708111628270_rebuild1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710132155109_add equdelete colum boolean.cs" />
+    <Compile Include="Migrations\201710132155109_add equdelete colum boolean.Designer.cs">
+      <DependentUpon>201710132155109_add equdelete colum boolean.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HelperClasses\constClass.cs" />
+    <Compile Include="Engine\DatabaseFunctions.cs" />
+    <Compile Include="Engine\Global_Functions.cs" />
+    <Compile Include="Engine\Global_Helpers.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\HelperClasses\ThemeManagement.cs" />
+    <Compile Include="Models\HelperModels.cs" />
+    <Compile Include="Models\SchemaModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\c3.css" />
+    <Content Include="Content\fullcalendar.print.css" />
+    <Content Include="Content\Images\balls\06zapato_color.png" />
+    <Content Include="Content\Images\balls\06zapato_blanco.png" />
+    <Content Include="Content\Images\balls\06zapato_negro.png" />
+    <Content Include="Content\Images\general\buzon.png" />
+    <Content Include="Content\Images\general\emailHeader.png" />
+    <Content Include="Content\Images\general\Facebook-logo.png" />
+    <Content Include="Content\Images\general\Instagram-logo.png" />
+    <Content Include="Content\Images\general\loading.gif" />
+    <Content Include="Content\Images\general\logo-xs.png" />
+    <Content Include="Content\Images\general\logoFacebook.png" />
+    <Content Include="Content\Images\general\logoGmail.png" />
+    <Content Include="Content\Images\general\logoMd.png" />
+    <Content Include="Content\Images\general\noPhoto.jpg" />
+    <Content Include="Content\Images\general\Pinterest-logo.png" />
+    <Content Include="Content\Images\general\Twitter-logo.png" />
+    <Content Include="Content\Images\home\01_soccer.png" />
+    <Content Include="Content\Images\home\02_Football.png" />
+    <Content Include="Content\Images\home\03_Basquetball.png" />
+    <Content Include="Content\Images\home\04_Baseball.png" />
+    <Content Include="Content\Images\home\05_Volleyball.png" />
+    <Content Include="Content\Images\balls1.png" />
+    <Content Include="Content\Images\balls2.png" />
+    <Content Include="Content\Images\balls\04baseball_blanco.png" />
+    <Content Include="Content\Images\balls\04baseball_color.png" />
+    <Content Include="Content\Images\balls\04baseball_negro.png" />
+    <Content Include="Content\Images\balls\03basketball_blanco.png" />
+    <Content Include="Content\Images\balls\03basketball_color.png" />
+    <Content Include="Content\Images\balls\03basketball_negro.png" />
+    <Content Include="Content\Images\balls\02football_blanco.png" />
+    <Content Include="Content\Images\balls\02football_color.png" />
+    <Content Include="Content\Images\balls\02football_negro.png" />
+    <Content Include="Content\Images\balls\01soccer_blanco.png" />
+    <Content Include="Content\Images\balls\01soccer_color.png" />
+    <Content Include="Content\Images\balls\01soccer_negro.png" />
+    <Content Include="Content\Images\balls\05volleyball_blanco.png" />
+    <Content Include="Content\Images\balls\05volleyball_color.png" />
+    <Content Include="Content\Images\balls\05volleyball_negro.png" />
+    <Content Include="Content\Images\home\00_AllSports.png" />
+    <Content Include="Content\Images\deportsblank.png" />
+    <Content Include="Content\Images\home\06_Running.png" />
+    <Content Include="Content\Images\home\Nosotros01.jpg" />
+    <Content Include="Content\Images\home\Nosotros02.jpg" />
+    <Content Include="Content\Images\home\Nosotros03.jpg" />
+    <Content Include="Content\Images\individualStatistics.png" />
+    <Content Include="Content\Images\jqueryUI\ui-icons_555555_256x240.png" />
+    <Content Include="Content\Images\jqueryUI\ui-icons_777777_256x240.png" />
+    <Content Include="Content\Images\jqueryUI\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\Images\jugConfirmado.png" />
+    <Content Include="Content\Images\jugPendiente.png" />
+    <Content Include="Content\Images\jugRechazo.png" />
+    <Content Include="Content\Images\payments\oxxo2.png" />
+    <Content Include="Content\Images\payments\speifast.png" />
+    <Content Include="Content\Images\payments\visa_mastercard.png" />
+    <Content Include="Content\Images\redcard.png" />
+    <Content Include="Content\Images\general\stars.png" />
+    <Content Include="Content\Images\star_favorito.png" />
+    <Content Include="Content\Images\statistics.png" />
+    <Content Include="Content\Images\tournaments\example.jpg" />
+    <Content Include="Content\Images\tournaments\example2.jpg" />
+    <Content Include="Content\Images\vs.png" />
+    <Content Include="Content\Images\yellowcard.png" />
+    <Content Include="Content\pgwslideshow.css" />
+    <Content Include="Content\pgwslideshow.min.css" />
+    <Content Include="Content\pgwslideshow_light.css" />
+    <Content Include="Content\pgwslideshow_light.min.css" />
+    <Content Include="Content\Themes\Default\Style.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\jquery-ui-accordion.css" />
+    <Content Include="Emails\AdminEquipoAvisoConfirmacion.html" />
+    <Content Include="Emails\AdministradorTorneoEquipoDelete.html" />
+    <Content Include="Emails\AdministradorTorneoEquipoInvitacion.html" />
+    <Content Include="Emails\ArbitroAvisoRechazarAdm.html" />
+    <Content Include="Emails\ArbitroAvisoConfirmacionAdm.html" />
+    <Content Include="Emails\ArbitroAvisoConfirmacion.html" />
+    <Content Include="Emails\ArbitroInvitacion.html" />
+    <Content Include="Emails\ArbitroPartidoEliminado.html" />
+    <Content Include="Emails\ArbitroPartidoInvitacion.html" />
+    <Content Include="Emails\ArbitroTorneoEquipoAvisoRechazo.html" />
+    <Content Include="Emails\CoadminLigaAceptacionCount.html" />
+    <Content Include="Emails\EmailCoachPerfilAviso.html" />
+    <Content Include="Emails\NotificacionSolicitudLiga.html" />
+    <Content Include="Emails\AvisoMarcadorPartido.html" />
+    <Content Include="Emails\EquipoCoadminAceptacion.html" />
+    <Content Include="Emails\CoadminLigaAceptacion.html" />
+    <Content Include="Emails\EquipoCoadminConfirmacion.html" />
+    <Content Include="Emails\EquipoCoadminRechazo.html" />
+    <Content Include="Emails\EquipoConfirmCoAdmin.html" />
+    <Content Include="Emails\AgregarSubPerfil.html" />
+    <Content Include="Emails\NuevoSubPerfil.html" />
+    <Content Include="Emails\AvisoEliminarJugador.html" />
+    <Content Include="Emails\NuevoSubPerfilEnligate.html" />
+    <Content Include="Emails\ParticipanteAvisoConfirmacion.html" />
+    <Content Include="Emails\ParticipanteTorneoAvisoConfirmacionPerfil.html" />
+    <Content Include="Emails\ParticipanteTorneoAvisoConfirmacion.html" />
+    <Content Include="Emails\ParticipanteTorneoAvisoRechazo.html" />
+    <Content Include="Emails\ParticipanteTorneoEquipoAvisoConfirmacion.html" />
+    <Content Include="Emails\ParticipanteTorneoEquipoAvisoRechazo.html" />
+    <Content Include="Emails\ParticipanteTorneoInvitacion.html" />
+    <Content Include="Emails\ParticipanteTorneoEquipoInvitacion.html" />
+    <Content Include="Emails\TorneoCoadminAceptacion.html" />
+    <Content Include="Emails\TorneoCoadminRechazo.html" />
+    <Content Include="Emails\TorneoConfirmCoAdmin.html" />
+    <Content Include="Emails\SolicitudLigaRechazo.html" />
+    <Content Include="Emails\SolicitudLigaAceptacion.html" />
+    <Content Include="Emails\CoadminLigaRechazo.html" />
+    <Content Include="Emails\contactPage.html" />
+    <Content Include="Emails\confirmEmailAccount.html" />
+    <Content Include="Emails\ConfirmCoAdmin.html" />
+    <Content Include="Emails\PasswordRecovery.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="ClassDiagram1.cd" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Content\fullcalendar.min.css" />
+    <Content Include="Scripts\c3.min.js" />
+    <Content Include="Scripts\Chat.js" />
+    <Content Include="Scripts\cldr.js" />
+    <Content Include="Scripts\cldr\event.js" />
+    <Content Include="Scripts\cldr\supplemental.js" />
+    <Content Include="Scripts\cldr\unresolved.js" />
+    <Content Include="Scripts\d3.v3.min.js" />
+    <Content Include="Scripts\emailValidator.js" />
+    <Content Include="Scripts\fullcalendar.min.js" />
+    <Content Include="Scripts\globalize.js" />
+    <Content Include="Scripts\globalize\currency.js" />
+    <Content Include="Scripts\globalize\date.js" />
+    <Content Include="Scripts\globalize\message.js" />
+    <Content Include="Scripts\globalize\number.js" />
+    <Content Include="Scripts\globalize\plural.js" />
+    <Content Include="Scripts\globalize\relative-time.js" />
+    <Content Include="Scripts\globalize\unit.js" />
+    <Content Include="Scripts\jquery-2.2.0.js" />
+    <Content Include="Scripts\jquery-2.2.0.min.js" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery-ui-accordion.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\pgwslideshow.js" />
+    <Content Include="Scripts\pgwslideshow.min.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="_Logs\errors.txt" />
+    <None Include="Properties\PublishProfiles\sw_EnligateWebPublish.pubxml" />
+    <Content Include="Scripts\bootstrap.min.js.map">
+      <DependentUpon>bootstrap.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-2.2.0.min.map" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\sw_EnligateWeb.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutHome.cshtml" />
+    <Content Include="Views\Home\InscribirLiga.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\FAQs.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Shared\_ModalState_Errors.cshtml" />
+    <Content Include="Views\Shared\Account\_Login.cshtml" />
+    <Content Include="Views\Shared\Account\_LoginForm.cshtml" />
+    <Content Include="Views\Shared\Account\_RegisterForm.cshtml" />
+    <Content Include="Views\Account\Admin\Index.cshtml" />
+    <Content Include="Views\Home\Liga.cshtml" />
+    <Content Include="Views\Account\Admin\Calendario.cshtml" />
+    <Content Include="Views\Account\Admin\Perfil.cshtml" />
+    <Content Include="Views\Account\Admin\Historial.cshtml" />
+    <Content Include="Views\Account\Admin\MisPagos.cshtml" />
+    <Content Include="Views\Account\Admin\MisPerfiles.cshtml" />
+    <Content Include="Views\Account\Admin\MisEquipos.cshtml" />
+    <Content Include="Views\Shared\Account\_PasswordRecoveryForm.cshtml" />
+    <Content Include="Views\Account\ResetPasswordCode.cshtml" />
+    <Content Include="Views\Shared\Account\_ResetPasswordCodeForm.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Account\_ConfirmEmailForward.cshtml" />
+    <Content Include="Views\Shared\Admin\_Perfil.cshtml" />
+    <Content Include="Views\Shared\_JsonReturn_Errors.cshtml" />
+    <Content Include="Views\Shared\_LogoBalls.cshtml" />
+    <Content Include="Views\Shared\_ChangeCurrentRol.cshtml" />
+    <Content Include="Views\Shared\_MenuView.cshtml" />
+    <Content Include="Views\Shared\_SubmenuView.cshtml" />
+    <Content Include="Views\Administrator\Index.cshtml" />
+    <Content Include="Views\Administrator\Leagues.cshtml" />
+    <Content Include="Views\Administrator\Advertising.cshtml" />
+    <Content Include="Views\Administrator\Requests.cshtml" />
+    <Content Include="Views\Administrator\Fees.cshtml" />
+    <Content Include="Views\Administrator\FeesPayments.cshtml" />
+    <Content Include="Views\Administrator\FeesAdvertising.cshtml" />
+    <Content Include="Views\Shared\Home\_ContactForm.cshtml" />
+    <Content Include="Views\Shared\Home\_ContactSocialNetworking.cshtml" />
+    <Content Include="Views\Shared\Administrator\_RequestsGrid.cshtml" />
+    <Content Include="Views\Shared\Administrator\_LeaguesGrid.cshtml" />
+    <Content Include="Views\Shared\Administrator\_IndexLastRequestsGrid.cshtml" />
+    <Content Include="Views\Shared\Administrator\_IndexLastPaymentsGrid.cshtml" />
+    <Content Include="Views\Shared\Administrator\_IndexLastUsersTestingGrid.cshtml" />
+    <Content Include="Views\Shared\Administrator\_IndexLastNewsGrid.cshtml" />
+    <Content Include="Views\Shared\Administrator\_RequestsDetail.cshtml" />
+    <Content Include="Views\Shared\Administrator\_FeesForm.cshtml" />
+    <Content Include="Views\Shared\Administrator\_FeesGrid.cshtml" />
+    <Content Include="Views\AdminLigas\Index.cshtml" />
+    <Content Include="Views\AdminLigas\Leagues.cshtml" />
+    <Content Include="Views\AdminLigas\Calendario.cshtml" />
+    <Content Include="Views\AdminLigas\Arbitros.cshtml" />
+    <Content Include="Views\AdminLigas\MainLeague.cshtml" />
+    <Content Include="Views\AdminLigas\Status.cshtml" />
+    <Content Include="Views\AdminLigas\Pagos.cshtml" />
+    <Content Include="Views\AdminLigas\Torneos.cshtml" />
+    <Content Include="Views\Shared\Ligas\_LeaguesGrid.cshtml" />
+    <Content Include="Views\Shared\Ligas\_LeaguesDetail.cshtml" />
+    <Content Include="Views\Shared\Home\_InscribirLigaForm.cshtml" />
+    <Content Include="Views\Shared\Home\_InscribirLigaFormPayment.cshtml" />
+    <Content Include="Views\AdminLigas\AddLeague.cshtml" />
+    <Content Include="Views\Shared\Ligas\_LeaguesDetail_MainData.cshtml" />
+    <Content Include="Views\Shared\Ligas\_LeaguesDetail_MainDataEdit.cshtml" />
+    <Content Include="Views\Shared\Ligas\_LeaguesDetail_CoadminsGridEdit.cshtml" />
+    <Content Include="Views\Shared\Ligas\_LeaguesDetail_CoadminsGrid.cshtml" />
+    <Content Include="Views\AdminLigas\CoadministrationConfirm.cshtml" />
+    <Content Include="Views\AdminLigas\CoadministrationReject.cshtml" />
+    <Content Include="Views\Shared\Ligas\_LeaguesDetail_Map.cshtml" />
+    <Content Include="Views\Shared\Home\_LeaguesMap_Modal.cshtml" />
+    <Content Include="Views\Shared\Ligas\_LeaguesDetail_MapEdit.cshtml" />
+    <Content Include="Views\Shared\Ligas\_LeaguesDetail_MapEdit_Modal.cshtml" />
+    <Content Include="Views\Shared\Ligas\_LeaguesDetail_Multimedia.cshtml" />
+    <Content Include="Scripts\pgwslideshow.min.js.map">
+      <DependentUpon>pgwslideshow.min.js</DependentUpon>
+    </Content>
+    <Content Include="Views\Shared\Ligas\_LeaguesDetail_MultimediaEdit.cshtml" />
+    <Content Include="Views\Shared\Ligas\_LeaguesDetail_MultimediaEditFileManager.cshtml" />
+    <Content Include="Views\AdminLigas\TorneoNuevo.cshtml" />
+    <Content Include="Views\AdminLigas\TorneoCategorias.cshtml" />
+    <Content Include="Views\Shared\Torneos\_CategoriasGridEdit.cshtml" />
+    <Content Include="Views\Shared\Torneos\_Categorias.cshtml" />
+    <Content Include="Views\Shared\Torneos\_Canchas.cshtml" />
+    <Content Include="Views\Shared\Torneos\_CanchasGridEdit.cshtml" />
+    <Content Include="Views\AdminLigas\TorneoCanchas.cshtml" />
+    <Content Include="Views\Shared\Torneos\_NuevoEdit.cshtml" />
+    <Content Include="Views\Shared\Torneos\_NuevoEdit_Datos.cshtml" />
+    <Content Include="Views\Shared\Torneos\_NuevoEdit_Contacto.cshtml" />
+    <Content Include="Views\Shared\Torneos\_NuevoEdit_Pagos.cshtml" />
+    <Content Include="Views\Shared\Torneos\_NuevoEdit_Estructura.cshtml" />
+    <Content Include="Views\AdminTorneos\TorneoCanchas.cshtml" />
+    <Content Include="Views\AdminTorneos\TorneoCategorias.cshtml" />
+    <Content Include="Views\AdminTorneos\Torneos.cshtml" />
+    <Content Include="Views\AdminTorneos\Pagos.cshtml" />
+    <Content Include="Views\AdminTorneos\Arbitros.cshtml" />
+    <Content Include="Views\AdminTorneos\Calendario.cshtml" />
+    <Content Include="Views\AdminTorneos\CoadminConfirmacion.cshtml" />
+    <Content Include="Views\AdminTorneos\CoadminRechazo.cshtml" />
+    <Content Include="Views\Shared\Torneos\_CoadminsGridEdit.cshtml" />
+    <Content Include="Views\Shared\Torneos\_TorneosGrid.cshtml" />
+    <Content Include="Views\AdminLigas\MainLeagueError.cshtml" />
+    <Content Include="Views\Shared\Equipos\_NuevoEdit.cshtml" />
+    <Content Include="Views\AdminLigas\EquipoNuevo.cshtml" />
+    <Content Include="Views\Shared\Ligas\_EquipoNuevo_Filtros.cshtml" />
+    <Content Include="Views\Shared\Equipos\_NuevoEdit_Datos.cshtml" />
+    <Content Include="Views\Shared\Jugadores\_JugadoresEquipo_Grid.cshtml" />
+    <Content Include="Views\Shared\Equipos\_NuevoEdit_Jugadores.cshtml" />
+    <Content Include="Views\Shared\Jugadores\_JugadoresEquipo_Agregar.cshtml" />
+    <Content Include="Views\Shared\AccionesCorreos\_ParticipanteConfirmar.cshtml" />
+    <Content Include="Views\Shared\AccionesCorreos\_ParticipanteRechazar.cshtml" />
+    <Content Include="Views\Shared\Equipos\_CoadminsGridEdit.cshtml" />
+    <Content Include="Views\AdminEquipos\CoadminConfirmacion.cshtml" />
+    <Content Include="Views\AdminEquipos\CoadminRechazo.cshtml" />
+    <Content Include="Views\Shared\Ligas\_LigasBusquedasGrid.cshtml" />
+    <Content Include="Views\Shared\Torneos\_TorneoComentariosGrid.cshtml" />
+    <Content Include="Views\Home\InscripcionTorneo.cshtml" />
+    <Content Include="Views\Administrator\Perfil.cshtml" />
+    <Content Include="Views\AdminTorneos\Index.cshtml" />
+    <Content Include="Views\AdminLigas\Perfil.cshtml" />
+    <Content Include="Views\AdminTorneos\Perfil.cshtml" />
+    <Content Include="Views\AdminEquipos\Perfil.cshtml" />
+    <Content Include="Views\AdminEquipos\Calendario.cshtml" />
+    <Content Include="Views\AdminEquipos\Historial.cshtml" />
+    <Content Include="Views\AdminEquipos\Index.cshtml" />
+    <Content Include="Views\AdminEquipos\MisEquipos.cshtml" />
+    <Content Include="Views\AdminEquipos\MisPagos.cshtml" />
+    <Content Include="Views\AdminEquipos\MisPerfiles.cshtml" />
+    <Content Include="Views\Shared\_UpdateProgressPanel.cshtml" />
+    <Content Include="Views\AdminLigas\TorneoDetails.cshtml" />
+    <Content Include="Views\Shared\Equipos\_equiposGrid.cshtml" />
+    <Content Include="Views\AdminLigas\EquipoDetails.cshtml" />
+    <Content Include="Views\Shared\Jugadores\_jugadoresGrid.cshtml" />
+    <Content Include="Views\Shared\Jugadores\_JugadoresGridCallback.cshtml" />
+    <Content Include="Views\AdminLigas\Partidos.cshtml" />
+    <Content Include="Views\Shared\Ligas\_Partidos_Filtros.cshtml" />
+    <Content Include="Views\Shared\Torneos\_Partidos_Show.cshtml" />
+    <Content Include="Views\Shared\Torneos\_PartidosGrid.cshtml" />
+    <Content Include="Views\Shared\Torneos\_Arbitros.cshtml" />
+    <Content Include="Views\Shared\Torneos\_ArbitrosGridEdit.cshtml" />
+    <Content Include="Views\Shared\Ligas\_FlitrosLigaTorneo.cshtml" />
+    <Content Include="Views\Shared\Banwire\_GridPagos.cshtml" />
+    <Content Include="Views\Shared\Banwire\PagosGrid.cshtml" />
+    <Content Include="Views\AdminLigas\Pago_Result.cshtml" />
+    <Content Include="Views\Shared\Torneos\_PartidosView.cshtml" />
+    <Content Include="Views\Shared\Torneos\_PartidosResult.cshtml" />
+    <Content Include="Views\Shared\Ligas\_CalendarioNuevo_Filtros.cshtml" />
+    <Content Include="Views\Shared\Ligas\_TorneoCanchaEdit.cshtml" />
+    <Content Include="Views\Shared\Torneos\_Canchas_Map.cshtml" />
+    <Content Include="Views\Shared\Ligas\_ArbitroFiltro.cshtml" />
+    <Content Include="Views\Shared\Ligas\_ArbitrosModal.cshtml" />
+    <Content Include="Views\Shared\Torneos\_CategoriaFiltro.cshtml" />
+    <Content Include="Views\AdminLigas\TorneoEquipos.cshtml" />
+    <Content Include="Views\Shared\Home\_TorneoDetails.cshtml" />
+    <Content Include="Views\Home\showTorneo.cshtml" />
+    <Content Include="Views\Shared\Home\_InscribirEquipoForm.cshtml" />
+    <Content Include="Views\Shared\Ligas\_FiltroPartidos.cshtml" />
+    <Content Include="Views\Home\TorneoDetails.cshtml" />
+    <Content Include="Views\Referee\Perfil.cshtml" />
+    <Content Include="Views\Referee\Index.cshtml" />
+    <Content Include="Views\Referee\Calendario.cshtml" />
+    <Content Include="Views\Shared\Torneos\_TorneoEstadisticas.cshtml" />
+    <Content Include="Views\Shared\Torneos\_TorneoEstGoleador.cshtml" />
+    <Content Include="Views\Administrator\Catalog.cshtml" />
+    <Content Include="Views\Shared\Torneos\_TorneoTipoGrid.cshtml" />
+    <Content Include="Views\Shared\Admin\_Partidos_Player.cshtml" />
+    <Content Include="Views\Shared\Referee\_JugadorSelect.cshtml" />
+    <Content Include="Views\Shared\Referee\_EquipoJugadorSelect.cshtml" />
+    <Content Include="Views\Shared\Banwire\_GridPagosEquipo.cshtml" />
+    <Content Include="Views\Shared\Ligas\_LeaguesGridView.cshtml" />
+    <Content Include="Views\Referee\Ligas.cshtml" />
+    <Content Include="Views\Referee\Torneos.cshtml" />
+    <Content Include="Views\Shared\Referee\_GridViewArbitrosRejected.cshtml" />
+    <Content Include="Views\Shared\Torneos\_ResultadosFutbol.cshtml" />
+    <Content Include="Views\Shared\Torneos\_Partidos_Resultados.cshtml" />
+    <Content Include="Views\Referee\Historial.cshtml" />
+    <Content Include="Views\Shared\Ligas\_Partidos_Refeere.cshtml" />
+    <Content Include="Views\Shared\Equipos\_EquipoCoach.cshtml" />
+    <Content Include="Views\Shared\Torneos\_EquipoEstadisticas.cshtml" />
+    <Content Include="Views\Shared\Torneos\_TorneoJugadorEst.cshtml" />
+    <Content Include="Views\Shared\Banwire\_MethodPayment.cshtml" />
+    <Content Include="Views\Shared\Banwire\_VisaPayment.cshtml" />
+    <Content Include="Views\Shared\Banwire\_GridPagosTorneo.cshtml" />
+    <Content Include="Views\AdminTorneos\TorneoNuevo.cshtml" />
+    <Content Include="Views\Shared\Referee\_arbitroFiltroGrid.cshtml" />
+    <Content Include="Views\Shared\Torneos\_FormNewCategory.cshtml" />
+    <Content Include="Views\Account\Admin\Lobby.cshtml" />
+    <Content Include="Views\Account\Admin\ChatHistory.cshtml" />
+    <Content Include="Views\Account\Admin\ChatEnligate.cshtml" />
+    <Content Include="Views\Shared\Admin\_Chat.cshtml" />
+    <Content Include="Views\Shared\Ligas\_CanchasSelect.cshtml" />
+    <Content Include="Views\AdminTorneos\TorneoEquipos.cshtml" />
+    <Content Include="Views\Shared\Ligas\_NotificationGrid.cshtml" />
+    <Content Include="Views\Shared\Chart\_ChartPieIndex.cshtml" />
+    <Content Include="Views\Shared\Home\_InscribirTorneoInt.cshtml" />
+    <Content Include="Views\Shared\Home\_InscribirTorneoCoa.cshtml" />
+    <Content Include="Views\Account\Admin\Torneo.cshtml" />
+    <Content Include="Views\AdminTorneos\TorneoEstadisticas.cshtml" />
+    <Content Include="Views\Shared\Torneos\_TorneoEstadisticasPartial.cshtml" />
+    <Content Include="Views\Shared\Chart\_ChartPieTorneoEstadisticas.cshtml" />
+    <Content Include="Views\AdminEquipos\MisTorneos.cshtml" />
+    <Content Include="Views\Shared\Ligas\_CalendarioCanchaMaps.cshtml" />
+    <Content Include="Views\Shared\Torneos\_TorneoEstPartido.cshtml" />
+    <Content Include="Views\AdminLigas\Estadisticas.cshtml" />
+    <Content Include="Views\Shared\Admin\_Avisos.cshtml" />
+    <Content Include="Views\Shared\Home\_ErrorCode.cshtml" />
+    <Content Include="Views\Shared\Admin\_CompleteProfile.cshtml" />
+    <Content Include="Views\Shared\Admin\_PerfilOtros.cshtml" />
+    <Content Include="Views\Shared\Referee\_rowDetailResult.cshtml" />
+    <Content Include="Views\Admin\Calendario.cshtml" />
+    <Content Include="Views\Admin\ChatEnligate.cshtml" />
+    <Content Include="Views\Admin\ChatHistory.cshtml" />
+    <Content Include="Views\Admin\Historial.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Lobby.cshtml" />
+    <Content Include="Views\Admin\MisEquipos.cshtml" />
+    <Content Include="Views\Admin\MisPagos.cshtml" />
+    <Content Include="Views\Admin\MisPerfiles.cshtml" />
+    <Content Include="Views\Admin\Perfil.cshtml" />
+    <Content Include="Views\Admin\Torneo.cshtml" />
+    <Content Include="Views\Administrator\Client.cshtml" />
+    <Content Include="Views\Shared\Administrator\_ClientsGrid.cshtml" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Shared\Referee\_GridViewArbitrosAcepted.cshtml" />
+    <Content Include="Views\Account\SubPerfilConfirmar.cshtml" />
+    <Content Include="Views\AdminTorneos\CoadminError.cshtml" />
+    <Content Include="Views\Shared\Equipos\_equiposGrid_player.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Images\Leagues\" />
+    <Folder Include="Images\Profiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703202211530_rebuild-JugadorEquipo.resx">
+      <DependentUpon>201703202211530_rebuild-JugadorEquipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705232242247_add colum active mis cuentas.resx">
+      <DependentUpon>201705232242247_add colum active mis cuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705262232026_add browser report bug.resx">
+      <DependentUpon>201705262232026_add browser report bug.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705301641236_add created_at user.resx">
+      <DependentUpon>201705301641236_add created_at user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706052334492_up country.resx">
+      <DependentUpon>201706052334492_up country.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706052338396_rebuild country.resx">
+      <DependentUpon>201706052338396_rebuild country.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706190840155_add datetime arb-league.resx">
+      <DependentUpon>201706190840155_add datetime arb-league.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706192113132_add column check result.resx">
+      <DependentUpon>201706192113132_add column check result.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706282158322_rebuild schema equipos.resx">
+      <DependentUpon>201706282158322_rebuild schema equipos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706290424227_add correo column in equipo schema.resx">
+      <DependentUpon>201706290424227_add correo column in equipo schema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707122129221_add colum correo jugEquipo.resx">
+      <DependentUpon>201707122129221_add colum correo jugEquipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707190421223_canId nulleable.resx">
+      <DependentUpon>201707190421223_canId nulleable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707211631493_rebuild.resx">
+      <DependentUpon>201707211631493_rebuild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707241706497_add private torneo.resx">
+      <DependentUpon>201707241706497_add private torneo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707250621027_quitar tarifas de schema ligas.resx">
+      <DependentUpon>201707250621027_quitar tarifas de schema ligas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707291918593_wherever.resx">
+      <DependentUpon>201707291918593_wherever.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707311907326_code_Id_Pais_Estado_Ciudad.resx">
+      <DependentUpon>201707311907326_code_Id_Pais_Estado_Ciudad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708010628042_add_key_lcaint.resx">
+      <DependentUpon>201708010628042_add_key_lcaint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708011532429_add_id_table_equCoAdmin.resx">
+      <DependentUpon>201708011532429_add_id_table_equCoAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708020433440_fix schema_jugador_equipo.resx">
+      <DependentUpon>201708020433440_fix schema_jugador_equipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708111628270_rebuild1.resx">
+      <DependentUpon>201708111628270_rebuild1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710132155109_add equdelete colum boolean.resx">
+      <DependentUpon>201710132155109_add equdelete colum boolean.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>32384</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:32384/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
