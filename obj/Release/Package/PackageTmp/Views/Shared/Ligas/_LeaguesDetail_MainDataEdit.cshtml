@@ -1,0 +1,404 @@
+﻿@using sw_EnligateWeb.Models;
+@model LeagueDetail_MainData
+
+@{
+    string img = Model.lreImgUrl;
+    if (img != null)
+    {
+        img = "/" + img.Replace(Server.MapPath("~"), "").Replace("\\", "/");
+    }
+    else
+    {
+        img = Url.Content("~/Content/Images/general/noPhoto.jpg");
+    }
+    
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+@{
+    string divMapId = "mapGoogle" ;
+}
+
+<form id="frmLeaguesDetail_MapEditAuto">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.ligId)
+    <input type="hidden" name="ligLatitud" value="" id="ligLatitud" />
+    <input type="hidden" name="ligLongitud" value="" id="ligLongitud" />    
+</form>
+
+<form id="frmLdeMainDataEdit">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.ligId)
+    @Html.HiddenFor(m => m.lreImgUrl)
+
+    <div class='col-xs-12 col-sm-12 col-md-4 paddingLRZero'>
+        <div class="mProfileUploadFileContainer">
+            <img id="lreImgUrl" class="mUploadFileImage" data-rel="leagueImage" src="@img" />
+
+            <div class="mUploadFileIconContainer">
+                <span class="mUploadFileIcon glyphicon glyphicon-camera" data-rel="leagueImage"></span>
+            </div>
+        </div>
+
+        <input id="lreImgUrlFile" name="lreImgUrlFile" type='file' accept=".jpg,.jpeg,.png" class="mUploadFile" data-rel="leagueImage" data-loadimg="true" />
+        <button type="submit" data-rel="leagueImage" class="mUploadFile">Guardar</button>
+        <br />
+        <div class="col-xs-12">            
+            <button type="button" class="mSwitchBtns mSwitchBtnsLeft" data-val="True" data-relclass="lreStatus">
+                Habilitar
+            </button>
+            <button type="button" class="mSwitchBtns mSwitchBtnsRight" data-val="False" data-relclass="lreStatus">
+                Deshabilitar
+            </button>
+            @Html.HiddenFor(m => m.lreStatus, new
+                   {
+                       data_relclass = "lreStatus",
+                       data_defaultVal = Model.lreStatus.ToString()
+                   })
+        </div>
+    </div>
+
+    <div class='col-xs-12 col-sm-12 col-md-8'>
+        <div class="col-xs-12 mSpaceMb5 paddingLRZero">
+            @Html.TextBoxFor(m => m.lreNombreLiga, new { @class = "titlePlaceholder titlePlaceholder2 width100", placeholder = "Nombre Liga" })
+            @Html.ValidationMessageFor(m => m.lreNombreLiga, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-xs-12 mSpaceMb5 paddingLRZero">
+            <b>Domicilio comercial</b>
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group col-xs-12 col-sm-8 mSpaceMb0">
+                <span class="mLabelGroup">Domicilio:</span> <br class="hidden-xs hidden-lg" />
+                @Html.TextBoxFor(m => m.lreBusinessAddress.badDomicilio, new { @class = "mInputGroup" })
+                @Html.ValidationMessageFor(m => m.lreBusinessAddress.badDomicilio, "", new { @class = "text-danger", onblur = "relocationMapMark();" })
+            </div>
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group col-xs-12 col-sm-4 mSpaceMb0">
+                <span class="mLabelGroup">No.:</span> <br class="hidden-xs hidden-lg" />
+                @Html.TextBoxFor(m => m.lreBusinessAddress.badNumeroExtInt, new { @class = "mInputGroup" })
+                @Html.ValidationMessageFor(m => m.lreBusinessAddress.badNumeroExtInt, "", new { @class = "text-danger" , onblur = "relocationMapMark();" })
+            </div>
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group col-xs-12 col-sm-7 col-lg-6 mSpaceMb0">
+                <span class="mLabelGroup">Colonia:</span> <br class="hidden-xs hidden-lg" />
+                @Html.TextBoxFor(m => m.lreBusinessAddress.badColonia, new { @class = "mInputGroup" })
+                @Html.ValidationMessageFor(m => m.lreBusinessAddress.badColonia, "", new { @class = "text-danger" , onblur = "relocationMapMark();" })
+            </div>
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group col-xs-12 col-sm-5 col-lg-6 mSpaceMb0">
+                <span class="mLabelGroup">Municipio:</span> <br class="hidden-xs hidden-lg" />
+                @Html.TextBoxFor(m => m.lreBusinessAddress.badMunicipio, new { @class = "mInputGroup" })
+                @Html.ValidationMessageFor(m => m.lreBusinessAddress.badMunicipio, "", new { @class = "text-danger", onblur = "relocationMapMark();" })
+            </div>
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group col-xs-12 col-sm-7 mSpaceMb0">
+                <span class="mLabelGroup">Estado:</span> <br class="hidden-xs hidden-lg" />
+                @Html.TextBoxFor(m => m.lreBusinessAddress.badEstado, new { @class = "mInputGroup" })
+                @Html.ValidationMessageFor(m => m.lreBusinessAddress.badEstado, "", new { @class = "text-danger", onblur = "relocationMapMark();" })
+            </div>
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group col-xs-12 col-sm-5 mSpaceMb0">
+                <span class="mLabelGroup">C.P.:</span> <br class="hidden-xs hidden-lg" />
+                @Html.TextBoxFor(m => m.lreBusinessAddress.badCodigoPostal, new { @class = "mInputGroup" })
+                @Html.ValidationMessageFor(m => m.lreBusinessAddress.badCodigoPostal, "", new { @class = "text-danger", onkeypress = "return onlyNumbers(event,this);" , onblur = "relocationMapMark();" })
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-7 col-lg-8 mSpaceMt10 mSpaceMb5 paddingLRZero">
+            @Html.TextBoxFor(m => m.lreCorreoContacto, new { @class = "width100", placeholder = "E-mail" })
+            @Html.ValidationMessageFor(m => m.lreCorreoContacto, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-xs-12 col-sm-5 col-lg-4 mSpaceMt10 mSpaceMb10 mLreTelefonoContacto">
+            @Html.TextBoxFor(m => m.lreTelefonoContacto, new { @class = "width100", placeholder = "Teléfono" })
+            @Html.ValidationMessageFor(m => m.lreTelefonoContacto, "", new { @class = "text-danger", onkeypress = "return onlyNumbers(event,this);" })
+        </div>
+
+        <div class="col-xs-12 col-sm-12 mSpaceMb5 paddingLRZero">
+            @Html.TextAreaFor(m => m.lreDescripcion, new { @class = "width100", placeholder = "Descripción" })
+            @Html.ValidationMessageFor(m => m.lreDescripcion, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-xs-12 mSpaceMb5 paddingLRZero">
+            <a href="#" class="mLink5" onclick='fnMostrarCoAdministradores()'>
+                EDITAR COADMINISTRADORES
+            </a>
+        </div>
+    </div>
+
+    <div class="col-xs-12 text-right">
+        <button type="button" class="btn btn-cancel" onclick="fnOnEdit_ldeMainData_Cancel(@Model.ligId, '@Model.lreKey')">
+            Cancelar
+        </button>
+
+        <button type="button" class="btn btn-default" onclick="fnOnEdit_ldeMainData_Save(@Model.ligId, '@Model.lreKey')">
+            Guardar
+        </button>
+    </div>
+
+    <!-- ------------- Modal Agregar Co-administrador -------------- -->
+    <div class="modal fade" id="modalCoadministradoresLiga" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modalBodyLogin">
+                    <div class="container-fluid text-center mSpaceMb30">
+                        <div class="mTitle1">Coadministradores de la liga</div>
+                        <fieldset id="fsLeagueCoAdministratorsViewModel" class="mSpaceMt20">
+                            @Html.Action("LeaguesDetail_CoadminsGridEdit")
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden m-messageHide">
+        @Html.Partial("_ModalState_Errors")
+    </div>
+
+</form>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        Enligate_onPageLoad();
+        switchButtons();
+        var maxWidthResize = 975;
+        formInlineResize(maxWidthResize);
+        $(window).on('resize', function () {
+            formInlineResize(maxWidthResize);
+        });
+
+        $("#lreBusinessAddress_badDomicilio").blur(function(){
+            relocationMapMark();
+        });
+        $("#lreBusinessAddress_badNumeroExtInt").blur(function(){
+            relocationMapMark()
+        });
+        $("#lreBusinessAddress_badColonia").blur(function(){
+            relocationMapMark()
+        });
+        $("#lreBusinessAddress_badMunicipio").blur(function(){
+            relocationMapMark()
+        }); 
+        $("#lreBusinessAddress_badEstado").blur(function(){
+            relocationMapMark()
+        });
+        $("#lreBusinessAddress_badCodigoPostal").blur(function(){
+            relocationMapMark()
+        });
+        setTimeout(function () {
+            relocationMapMark()
+        }, 1000)
+    });
+    function fnLeagueDetail_MapEdit_AutoSave() {
+        relocationMapMark()
+            var dataForm = $("#frmLeaguesDetail_MapEditAuto").serialize();
+            dataForm = dataForm
+            console.log(dataForm)
+            $.ajax({
+                url: '/AdminLigas/_LeaguesDetail_MapEdit_SaveAuto',
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    if (data.booSuccess) {
+                        // fnCargarMapa();
+                        // fnUpdate_MainMap();
+                    }
+                    $(".m-messageHide").html(data.strErrMessagePartialViewString);
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+            
+    }
+    function getAddress(){
+        var dom = $("#lreBusinessAddress_badDomicilio").val();
+        var no = $("#lreBusinessAddress_badNumeroExtInt").val();
+        var col = $("#lreBusinessAddress_badColonia").val();
+        var mun = $("#lreBusinessAddress_badMunicipio").val();
+        var est = $("#lreBusinessAddress_badEstado").val();
+        var cp = $("#lreBusinessAddress_badCodigoPostal").val();
+        
+        var address = dom+" "+no+",Col."+col+" "+mun+","+est+",C.P "+cp;
+        
+        return address;
+    }
+
+    function fnOnEdit_ldeMainData_Save(id, key) {
+        if ($("#lreNombreLiga").val()) {
+            $.ajax({
+                url: '/AdminLigas/VerifySuscribeLeague',
+                type: "POST",
+                cache: false,
+                data: "ligId=" + $("#ligId").val() + "&ligName=" + $("#lreNombreLiga").val(),
+                success: function (data) {
+                    if (data.booSuccess) {
+                        var form = $("#frmLdeMainDataEdit");
+                        form.submit(function (event) {
+                            //disable the default form submission
+                            event.preventDefault();
+                            //grab all form data
+                            var formData = new FormData($(this)[0]);
+                            $.ajax({
+                                url: '/AdminLigas/_LeaguesDetail_MainDataEdit_Save',
+                                type: 'POST',
+                                data: formData,
+                                async: false,
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                success: function (data) {
+                                    if (data.booSuccess) {
+                                        fnLeagueDetail_MapEdit_AutoSave();
+                                        setTimeout(function () {
+                                            fnOnEdit_ldeMainData_Cancel(id, key);
+                                            $(".m-messageHide").html(data.strPartialViewString)
+                                        }, 1000)
+                                    }
+                                    else {
+                                        $("#ldeMainData").html(data.strPartialViewString);
+                                    }
+                                },
+                                complete: function (jqXHR, textStatus) {
+                                    showMessages();
+                                },
+                                error: function (xhr, status, p3, p4) {
+                                    alert("Hubo un error, intenta nuevamente");
+                                }
+                            });
+                            return false;
+                        });
+                        formFilled = false;
+                        form.submit();
+                    } else if (!data.booSuccess) {
+                        $(".m-messageHide").html(data.strPartialViewString)
+                    } else if (!data.booHasErrMessagePartialView) {
+                        $(".m-messageHide").html(data.strPartialViewString)
+                    }
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                },
+                error: function (xhr, status, p3, p4) {
+                    alert("Hubo un error ...");
+                }
+            });
+        }
+       
+    }
+   
+    function relocationMapMark(){
+        var map;
+        var markers = [];
+
+        var mapDiv = document.getElementById('@divMapId');
+        map = new google.maps.Map(mapDiv, {
+            center: new google.maps.LatLng(19.425153718960143, -99.1351318359375), //Cd. de México
+            zoom: 7,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: false,
+            streetViewControl: false
+        });
+
+        var geocoder = new google.maps.Geocoder();
+        var address = getAddress();
+        geocoder.geocode({
+            'address': address
+        },
+        function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                result = results[0].geometry.location;
+                map.setCenter(result);
+                map.setZoom(15);
+                addMarker(result);
+
+                $("input[name='ligLatitud']").val(result.lat());
+                $("input[name='ligLongitud']").val(result.lng());
+                console.log(result.lat() + " - " + result.lng())
+
+            } else {
+                $("input[name='ligLatitud']").val(19.425153718960143);
+                $("input[name='ligLongitud']").val(-99.1351318359375);
+            }
+        });
+
+        function addMarker(location) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+            clearMarkers();
+            markers.push(marker);
+        }
+
+        function setMarkers(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+
+        function clearMarkers() {
+            setMarkers(null);
+            markers = [];
+        }
+    }
+
+    function fnOnEdit_ldeMainData_Cancel(id,key) {
+        var dataForm = "Id=" + id + "&key=" + key;
+
+        $.ajax({
+            url: '/AdminLigas/_LeaguesDetail_MainDataEdit_Cancel',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                $("#ldeMainData").html(data);
+                
+            }
+        });
+    }
+
+    function fnMostrarCoAdministradores() {
+        $("#modalCoadministradoresLiga").modal({ backdrop: false });
+        fnGVLeagueCoAdmins_PerformCallback();
+    }
+
+    function fnGVLeagueCoAdmins_PerformCallback(s, e) {
+        if (typeof gvLeaguesCoadministrators.InCallback === "function") {
+            if (!gvLeaguesCoadministrators.InCallback())
+                gvLeaguesCoadministrators.PerformCallback();
+        }
+    }
+
+    function fnGVLeaguesCoadministrators_OnBeginCallback(s, e) {
+        e.customArgs['ligId'] = @{<text>@Model.ligId</text>};
+        e.customArgs['key'] = @{<text>"@Model.lreKey"</text>};
+    }
+
+    function fnGVLeaguesCoadministrators_OnEndCallback(s, e) {
+        if (s.cpPerformCallback) {
+            fnGVLeagueCoAdmins_PerformCallback();
+            delete s.cpPerformCallback;
+        }
+    }
+
+</script>

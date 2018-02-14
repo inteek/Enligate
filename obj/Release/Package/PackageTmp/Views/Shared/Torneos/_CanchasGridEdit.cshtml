@@ -1,0 +1,132 @@
+﻿@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+
+@{
+    var gvRequests = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvTorneosCanchas";
+        settings.CallbackRouteValues = new { Controller = "AdminTorneos", Action = "_CanchasGridEdit_Callback" };
+        /*settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "AdminTorneos", Action = "_CanchasGridEdit_AddNewPartial" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "AdminTorneos", Action = "_CanchasGridEdit_UpdatePartial" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "AdminTorneos", Action = "_CanchasGridEdit_Delete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;*/
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+
+        //Command Columns 
+        //settings.CommandColumn.Visible = true;
+        //settings.CommandColumn.Width = Unit.Pixel(200);
+        /*settings.CommandColumn.ShowNewButtonInHeader = true;
+        settings.CommandColumn.ShowEditButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ButtonType = GridCommandButtonRenderMode.Button;
+
+        settings.SettingsCommandButton.NewButton.Text = "Agregar Cancha";
+        settings.SettingsCommandButton.NewButton.Styles.Native = true;
+        settings.SettingsCommandButton.NewButton.Styles.Style.CssClass = "btn btn-default text-normal";
+        settings.SettingsCommandButton.NewButton.Styles.Style.Font.Size = FontUnit.Small;
+
+        settings.SettingsCommandButton.EditButton.Text = "Editar";
+        settings.SettingsCommandButton.EditButton.Styles.Native = true;
+        settings.SettingsCommandButton.EditButton.Styles.Style.CssClass = "btn btn-default text-normal";
+        settings.SettingsCommandButton.EditButton.Styles.Style.Font.Size = FontUnit.Small;
+
+        settings.SettingsCommandButton.DeleteButton.Text = "Eliminar";
+        settings.SettingsCommandButton.DeleteButton.Styles.Native = true;
+        settings.SettingsCommandButton.DeleteButton.Styles.Style.CssClass = "btn btn-danger mSpaceMlr5";
+        settings.SettingsCommandButton.DeleteButton.Styles.Style.Font.Size = FontUnit.Small;
+
+        settings.SettingsCommandButton.UpdateButton.Text = "Guardar";
+        settings.SettingsCommandButton.UpdateButton.Styles.Native = true;
+        settings.SettingsCommandButton.UpdateButton.Styles.Style.CssClass = "btn btn-default";
+        settings.SettingsCommandButton.UpdateButton.Styles.Style.Font.Size = FontUnit.Small;
+
+        settings.SettingsCommandButton.CancelButton.Text = "Cancelar";
+        settings.SettingsCommandButton.CancelButton.Styles.Native = true;
+        settings.SettingsCommandButton.CancelButton.Styles.Style.CssClass = "btn btn-cancel";
+        settings.SettingsCommandButton.CancelButton.Styles.Style.Font.Size = FontUnit.Small;
+        */
+
+        //Styles
+        settings.Styles.GroupPanel.CssClass = "gvGroupPanel";
+        settings.Styles.Header.CssClass = "gvHeader";
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.AlternatingRow.CssClass = "gvRowAlternative";   
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        settings.KeyFieldName = "lcatId";
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "EDITAR/ELIMINAR";
+            column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(string.Format("<button type = \"button\" class=\"btn btn-small btn-default mSpaceMlr5\" onclick=\"editarCancha(" + c.KeyValue + ")\"\">Editar</button>"));
+                ViewContext.Writer.Write(string.Format("<button type = \"button\" class=\"btn btn-small btn-danger mSpaceMlr5\" onclick=\"eliminarCancha(" + c.KeyValue + ")\"\">Eliminar</button>"));
+            });
+            
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "ligaNombre";
+            col.Caption = "LIGA";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "lcatNombre";
+            col.Caption = "CANCHA";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "lcatdomicilio";
+            col.Caption = "DIRECCION";
+            col.AdaptivePriority = 2;
+        });
+ 
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "lcatDescripcion";
+            col.Caption = "DESCRIPCION";
+            col.AdaptivePriority = 2;
+        });
+
+        //Paging
+        settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 5;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 400;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+
+        //Rows
+        settings.SettingsBehavior.AllowSelectByRowClick = false;
+
+        //Callbacks
+        //settings.ClientSideEvents.BeginCallback = "fnGVTorneosCanchas_OnBeginCallback";
+        //settings.ClientSideEvents.EndCallback = "fnGVTorneosCanchas_OnEndCallback";
+        //settings.CustomJSProperties = (s, e) =>
+        //{
+        //    if (ViewData["gvtCanchasCallback"] != null)
+        //    {
+        //        e.Properties["cpPerformCallback"] = ViewData["gvtCanchasCallback"].ToString();
+        //    }
+        //};
+    });
+
+    if (ViewData["EditError"] != null)
+    {
+        gvRequests.SetEditErrorText((string)ViewData["EditError"]);
+    }
+
+    gvRequests.Bind(Model).GetHtml();
+}

@@ -1,0 +1,314 @@
+﻿@using sw_EnligateWeb.Models;
+@model UserProfileViewModel
+
+@{
+    var targetId = "frmProfileUpdate_" + Model.profileNumber;
+    var generoTarget = "profileGenero_" + Model.profileNumber;
+    var profBirthday = "profBirthday_" + Model.profileNumber;
+    var form = "form" + Model.profileNumber;
+    var _profileSubmit = @"function submitOtrosProfileOnchange_" + Model.profileNumber + @"";
+
+
+    var ddlDia = sw_EnligateWeb.Engine.Global_Functions.getEnumerableDaysNumber().Select(n => new SelectListItem { Value = n, Text = n }).ToList();
+    var ddlMes = sw_EnligateWeb.Engine.Global_Functions.getEnumerableMonthsNumbers().Select(n => new SelectListItem { Value = n, Text = n }).ToList();
+    var ddlYear = sw_EnligateWeb.Engine.Global_Functions.getEnumerableYearsNumbers().Select(n => new SelectListItem { Value = n, Text = n }).ToList();
+
+    ddlDia.Insert(0, new SelectListItem { Value = "", Text = "Día" });
+    ddlMes.Insert(0, new SelectListItem { Value = "", Text = "Mes" });
+    ddlYear.Insert(0, new SelectListItem { Value = "", Text = "Año" });
+
+    ViewBag.ddlDia = ddlDia;
+    ViewBag.ddlMes = ddlMes;
+    ViewBag.ddlYear = ddlYear;
+
+    ViewBag.imgURL = "/Content/Images/general/noPhoto.jpg";
+    if (Model.imgURL != null)
+    {
+        ViewBag.imgURL = "/" + Model.imgURL.Replace(Server.MapPath("~"), "").Replace("\\", "/");
+    }
+
+}
+
+<!-- Content -->
+<div class="row mSpaceMb20">
+    <div class="col-xs-12 paddingLRZero">
+        <div class="mProfileImageContainer">
+            <form>
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.usuUsername)
+                @Html.TextBoxFor(m => m.jsGetModelFunctionName, new { @class = "hidden", @Value = "_profileImageGetModel" })
+
+                <div class="mProfileUploadFileContainer">
+                    <img id="usuImgURL_@Model.profileNumber" class="mUploadFileImage" data-rel="profileImage_@Model.profileNumber" src="@ViewBag.imgURL" />
+
+                   
+                </div>
+
+            </form>
+        </div>
+
+        <div class="mProfileInfoContainer">
+            
+            @using (Ajax.BeginForm("_Profile", "Admin", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = targetId, OnComplete = "showMessages();" }, new { id = form }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.usuUsername)
+                @Html.TextBoxFor(m => m.jsGetModelFunctionName, new { @class = "hidden", @Value = "_profileGetModel" })
+
+                <div class="col-sm-12 mSpaceMb5 paddingLRZero">
+                    @Html.TextBoxFor(m => m.usuNombreCompleto, new { @class = "titlePlaceholder width100", placeholder = "Nombre y apellidos", onchange = "$('#_profileBtnSubmit_" + Model.profileNumber + "').click();" })
+                </div>
+
+                <div class="col-sm-12 mSpaceMb5 paddingLRZero">
+                    Genero
+                    <button type="button" class="mSwitchBtns mSwitchBtnsLeft" data-val="F" data-relclass="@generoTarget">F</button>
+                    <button type="button" class="mSwitchBtns mSwitchBtnsRight" data-val="M" data-relclass="@generoTarget">M</button>
+                    @Html.HiddenFor(m => m.usuGenero, new { data_relClass = generoTarget, data_defaultVal = "F", onchange = "$('#_profileBtnSubmit_" + Model.profileNumber + "').click();" })
+                </div>
+
+                <div class="col-sm-12 mSpaceMb5 paddingLRZero">
+                    Fecha de nacimiento
+                    <div class="mDisplayInlineBlock">
+                        @Html.DropDownList("ddlDia", (List<SelectListItem>)ViewBag.ddlDia, new { @class = "mSwitchDate", data_relClass = profBirthday, data_type = "dd", style = "width:60px;" })
+                        @Html.DropDownList("ddlMes", (List<SelectListItem>)ViewBag.ddlMes, new { @class = "mSwitchDate", data_relClass = profBirthday, data_type = "MM", style = "width:60px;" })
+                        @Html.DropDownList("ddlAño", (List<SelectListItem>)ViewBag.ddlYear, new { @class = "mSwitchDate", data_relClass = profBirthday, data_type = "yyyy", style = "width:60px;" })
+                        @Html.HiddenFor(m => m.usuFechaNacimiento, new { data_relClass = profBirthday, onchange = "$('#_profileBtnSubmit_" + Model.profileNumber + "').click();" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 mSpaceMb5">
+                        @Html.TextBoxFor(m => m.usuPais, new { @class = "width100", placeholder = "Pais donde reside", onchange = "$('#_profileBtnSubmit_" + Model.profileNumber + "').click();" })
+                    </div>
+                    <div class="col-xs-12 col-sm-4 mSpaceMb5">
+                        @Html.TextBoxFor(m => m.usuEstado, new { @class = "width100", placeholder = "Estado donde reside", onchange = "$('#_profileBtnSubmit_" + Model.profileNumber + "').click();" })
+                    </div>
+                    <div class="col-xs-12 col-sm-4 mSpaceMb5">
+                        @Html.TextBoxFor(m => m.usuCiudad, new { @class = "width100", placeholder = "Ciudad donde reside", onchange = "$('#_profileBtnSubmit_" + Model.profileNumber + "').click();" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-lg-7 mSpaceMb5">
+                        @Html.TextBoxFor(m => m.usuCP, new { @class = "width100 cpValue", placeholder = "Codigo Postal", onchange = "$('#_profileBtnSubmit_" + Model.profileNumber + "').click();", onkeypress = "return onlyNumbers(event,this);" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-lg-7 mSpaceMb5">
+                        @Html.TextBoxFor(m => m.usuTelefono, new { @class = "width100", placeholder = "Celular", onchange = "$('#_profileBtnSubmit_" + Model.profileNumber + "').click();", onkeypress = "return onlyNumbers(event,this);" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 col-lg-7 mSpaceMb5">
+                        @Html.TextBoxFor(m => m.usuCorreo, new { @class = "width100", placeholder = "Correo de contacto", onchange = "$('#_profileBtnSubmit_" + Model.profileNumber + "').click();" })
+                        
+                    </div>
+                    <div class="col-sm-6 col-lg-5 mSpaceMb5" >
+                        <button class="btn btn-danger pull-left mSpaceMlr35" onclick="delete_profile('@Model.user_id')">Desvincular Cuenta</button>
+                    </div>
+                </div>
+
+
+                <button id="_profileBtnSubmit_@Model.profileNumber" type="submit" style="display:none;"></button>
+
+                <script type="text/javascript">
+                    /*
+                    function submitProfileImage() {
+                        var inputLoadImage = $("#usuImgURLFile_Model.profileNumber").attr("data-LoadImg");
+                        var formUpload = $('#formProfileImageUpload_Model.profileNumber');
+
+                        if (window.FormData !== undefined) {
+                            var form = formUpload[0];
+                            var data = new FormData(form);
+
+                            $.ajax({
+                                url: '/Admin/_ProfileImage',
+                                type: "POST",
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: data,
+                                success: function (data) {
+                                    $("#frmProfileImageUpdate_Model.profileNumber").html(data);
+                                },
+                                complete: function (jqXHR, textStatus) {
+                                    showMessages();
+                                },
+                                error: function (xhr, status, p3, p4) {
+                                    var err = "Error " + " " + status + " " + p3 + " " + p4;
+                                    if (xhr.responseText && xhr.responseText[0] == "{")
+                                        err = JSON.parse(xhr.responseText).Message;
+                                    console.log(err);
+                                }
+                            });
+                        } else {
+                            alert("This browser doesn't support HTML5 file uploads!");
+                        }
+                    }
+
+                    function _profileImageGetModel(strJson) {
+                        var model = jQuery.parseJSON(strJson);
+
+                        try {
+                            jQuery.each(model["modelStateErrors"], function (key, val) {
+                                if (val.length > 0) {
+                                    if (key.toString() == 'sw_EnligateWeb.Models.HelperClasses.constClass.error') {
+                                        $("#usuImgURL_Model.profileNumber").attr("src", model["imgURL"]);
+                                    }
+                                }
+                            });
+
+                            if (errorMsg != "") {
+                                var spanMsg = $("span.field-validation-error").first();
+                                spanMsg.html(errorMsg);
+                            }
+                        }
+                        catch (err) {
+                            //document.getElementById("demo").innerHTML = err.message;
+                        }
+                    }
+                    
+             
+                           function _profileGetModel(strJson) {
+                               var model = jQuery.parseJSON(strJson);
+
+                               try {
+                                   var errorMsg = "";
+                                   jQuery.each(model["modelStateErrors"], function (key, val) {
+                                       if (val.length > 0) {
+                                           if (key.toString() != 'sw_EnligateWeb.Models.HelperClasses.constClass.error' &&
+                                              key.toString() != 'sw_EnligateWeb.Models.HelperClasses.constClass.info' &&
+                                              key.toString() != 'sw_EnligateWeb.Models.HelperClasses.constClass.success') {
+                                               errorMsg += " " + val.join(". ");
+                                               var keyId = "#" + key + "";
+                                               var inputElement = $(keyId);
+                                               if (inputElement != undefined && inputElement != null) {
+                                                   inputElement.val(model[key]);
+                                               }
+                                           }
+                                       }
+                                   });
+
+                                   if (errorMsg != "") {
+                                       var spanMsg = $("span.field-validation-error").first();
+                                       spanMsg.html(errorMsg);
+                                   }
+                               }
+                               catch (err) {
+                                   //document.getElementById("demo").innerHTML = err.message;
+                               }
+                    }*/
+                </script>
+
+                <fieldset id="frmProfileUpdate_@Model.profileNumber"></fieldset>
+            }
+        </div>
+        <!--
+        <div class="row divButtonsPerfil">
+            <div class="col-md-7 col-md-offset-2">
+                <button class="btn btn-default mSpaceMlr35" data-toggle="modal" data-target="#modalChangePassword">Cambiar Contraseña</button>                
+            </div>
+        </div>
+            -->
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+            </div>            
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modalChangePassword" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyChangePassword">
+                <div class="container-fluid" style="min-height:150px;">
+
+                    <div class="col-md-11 pull-right">
+                        <h2 class="mTitle2 mSpacePlr20">Cambiar Contraseña</h2>
+                        <form class="form-horizontal" id="formChangePassword">
+                            <fieldset>
+                                <!-- Form Name -->
+                                <!-- Password input-->
+                                <div class="form-group">
+                                    <label class="col-sm-12 col-md-5  control-label" for="passNew">Nueva Contraseña</label>
+                                    <div class="col-sm-12 col-md-6">
+                                        <input id="passNew" name="passNew" type="password" placeholder="" class="form-control input-md" required="">
+
+                                    </div>
+                                </div>
+                                <!-- Password input-->
+                                <div class="form-group">
+                                    <label class="col-sm-12 col-md-5  control-label" for="passRepeat">Repetir Contraseña</label>
+                                    <div class="col-sm-12 col-md-6">
+                                        <input id="passRepeat" name="passRepeat" type="password" placeholder="" class="form-control input-md" required="">
+
+                                    </div>
+                                </div>
+                                <!-- Button (Double) -->
+                                <div class="form-group">
+                                    <label class="col-sm-12 col-md-5  control-label" for="cambiar"></label>
+                                    <div class="col-sm-12 col-md-6">
+                                        <button type="submit" id="cambiar" name="cambiar" class="btn btn-default">Cambiar</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>
+<script>
+    $(function () {
+
+        $("#formChangePassword").submit(function (event) {
+            var $form = $(this);
+
+            // Previene hacer submit más de una vez
+            //$form.find("button").prop("disabled", true);
+
+            changePassword();
+
+            // Previene que la información de la forma sea enviada al servidor
+            return false;
+        });
+    });
+    function delete_profile(user_Id){
+        if (confirm('Esta seguro?')) {
+            $.ajax({
+                url: '/Admin/delete_profile',
+                type: "POST",
+                cache: false,
+                dataType: "json",
+                data: "userId="+user_Id,
+                success: function (data) {
+                    messengeSuccess(data);
+                    updatePerfilPartial();
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                   
+                }
+            });
+        };
+    };
+    function validatePassword(newPass,repPass) {
+        if (newPass == repPass) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+</script>

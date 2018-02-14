@@ -1,0 +1,124 @@
+﻿
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+
+@{
+    var gvRequests = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvTorneosArbitros";
+        settings.CallbackRouteValues = new { Controller = "AdminTorneos", Action = "_ArbitrosGridEdit_Callback" };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+        //Styles
+        settings.Styles.GroupPanel.CssClass = "gvGroupPanel";
+        settings.Styles.Header.CssClass = "gvHeader";
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.AlternatingRow.CssClass = "gvRowAlternative";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        settings.KeyFieldName = "arbId";
+
+
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "arbCorreo";
+            col.Caption = "Correo";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "arbNombre";
+            col.Caption = "Nombre";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "ligNombre";
+            col.Caption = "Liga";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "estado";
+            col.Caption = "Estado";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.SetDataItemTemplateContent(c =>
+            {
+                var correo1 = DataBinder.Eval(c.DataItem, "arbCorreo");
+                var arbId = DataBinder.Eval(c.DataItem, "arbId");
+                var arbNombre = DataBinder.Eval(c.DataItem, "arbNombre");
+                var ligId = DataBinder.Eval(c.DataItem, "ligId");
+                var estado = DataBinder.Eval(c.DataItem, "estado").ToString();
+                string btnConfirmado = @"<button type='button' class='btn btn-default ' onclick='fnEditDeleteArbitro_RowDblClick(&#39;{0}&#39;,&#39;{1}&#39;,&#39;{2}&#39;);'>
+                                                Editar
+                                            </button>
+                                        <button type='button' class='btn btn-danger ' onclick='fn_EliminarArbitro(&#39;{0}&#39;,&#39;{1}&#39;);'>
+                                                ELIMINAR
+                                            </button>";
+                string btnRechazo = @"<button type='button' class='btn btn-default  ' onclick='fnArbitro_VolverInvitar(&#39;{0}&#39;,&#39;{1}&#39;,&#39;{2}&#39;);'>
+                                                Invitar
+                                            </button>
+                                            <button type='button' class='btn btn-danger  ' onclick='fn_EliminarArbitro(&#39;{0}&#39;,&#39;{1}&#39;);'>
+                                                Eliminar
+                                            </button>";
+                string btnPendiente = @"<button type='button' class='btn btn-default  ' onclick='fnArbitro_VolverInvitar(&#39;{0}&#39;,&#39;{1}&#39;,&#39;{2}&#39;);'>
+                                                Invitar
+                                            </button>
+                                            <button type='button' class='btn btn-danger  ' onclick='fn_EliminarArbitro(&#39;{0}&#39;,&#39;{1}&#39;);'>
+                                                Eliminar
+                                            </button>";
+                var icono1 = "";
+                if (estado == "Aceptado")
+                {
+                    icono1 = string.Format(btnConfirmado, correo1,arbId,arbNombre);
+                }
+                else if (estado == "Rechazado")
+                {
+                    icono1 = string.Format(btnRechazo, correo1, arbId,ligId);
+                }
+                else if (estado == "Pendiente")
+                {
+                    icono1 = string.Format(btnPendiente, correo1, arbId,ligId);
+                }
+
+                ViewContext.Writer.Write("<div class='paddingLRZero'>" +
+                            "<span>" + icono1 + "</span>" +
+                        "</div>");
+
+                // ViewContext.Writer.Write(string.Format("<button type = \"button\" class=\"btn btn-large btn-danger pull-right\" onclick=\"_PartidosDelete(" + c.KeyValue + ")\"\"><span class=\"glyphicon glyphicon-remove\" ></span>Borrar</span></button>"));
+            });
+        });
+        //Paging
+        settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 5;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 200;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+
+        //Rows
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        //Callbacks
+        settings.ClientSideEvents.BeginCallback = "fnGVArbitroTorneo_OnBeginCallback";
+        //settings.ClientSideEvents.RowDblClick = "fnEditDeleteArbitro_RowDblClick";
+        //settings.ClientSideEvents.RowClick = "fnIndexGVIndex_RowClick";
+    });
+
+    if (ViewData["EditError"] != null)
+    {
+        gvRequests.SetEditErrorText((string)ViewData["EditError"]);
+    }
+
+    gvRequests.Bind(Model).GetHtml();
+}

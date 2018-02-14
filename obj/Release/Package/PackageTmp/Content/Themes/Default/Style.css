@@ -1,0 +1,528 @@
+﻿body{
+    background-color: #f2f3f5;
+}
+
+.mColorNegro{
+    color: #000 !important;
+}
+
+.mColorGrisObscuro{
+    color: #666 !important;
+}
+
+.mColorAqua{
+    color: #7ecbd3 !important;
+}
+
+.mColorAzulMarino{
+    color:#0b395c !important;
+}
+
+.mColorBlanco{
+    color:#fff !important;
+}
+
+.mColorRojo{
+    color:#a00 !important;
+}
+
+.m-navbar-homeDashboard{
+    background-color: #7ecbd3;
+}
+
+.m-navbar-homeDashboard a{
+    color: #fff;
+}
+
+.homeDashboard{
+    background-color: #7ecbd3;
+}
+
+.navbar-link .navbar-toggle {
+    border-color: #fff;
+}
+
+.navbar-link .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.homeDashboardContent{
+    color: #fff;
+}
+
+.homeDashboardContent a{
+    color: #fff;
+}
+
+.navbar-nav li .btnLink{
+    color: #fff;
+}
+
+.navbar-nav a:hover,
+.navbar-nav a:focus{
+    background-color: transparent !important;
+}
+
+.homeDashboardBtnDescubre {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.navbar-nav > li > .dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.homeDashboard_imgAllSports{
+    /*background-color: rgba(126, 203, 211, 0.9);*/
+}
+
+.homeDashboardControls{
+    color:#000;
+}
+
+.homeGrid{
+    background-color:transparent;
+}
+
+.homeGridBox {
+    background-color: #f9f8fb;
+}
+
+.hgTrophyComments,
+.hgTrophyComments a,
+.hgTrophyComments button{
+    color: black !important;
+}
+
+.hgRowTitle,
+.hgRowTitle a {
+    color: #0b395c !important;
+}
+
+.m-TorneoGridInfo2,
+.hgRowZone,
+.hgRowZone a{
+    color: #0b395c !important;
+}
+
+.hgRowLocation a{
+    color: #24abae !important;
+}
+
+.hgRowInscription,
+.hgRowInscription a{
+    color: #0b395c !important;
+}
+
+.hgRowSeeMore,
+.hgRowSeeMore a{
+    color: #24abae !important;
+}
+
+.hgRowFilterTitle,
+.hgRowFilterTitle a {
+    border-color: #0b395c !important;
+    color: #0b395c !important;
+}
+
+.hgRowFilter,
+.hgRowFilter a {
+    color: #0b395c !important;
+}
+
+.hgRowFilter.active,
+.hgRowFilter a.active {
+    color: #0b395c !important;
+}
+
+.mlLabels {
+    color: #0b395c;
+}
+
+.mlMember,
+.mlRegister{
+    border-color: #0b395c;
+}
+
+.m-btnLoginNetworks {
+    color:#fff;
+}
+
+.m-btnLoginNetworks:hover,
+.m-btnLoginNetworks:active,
+.m-btnLoginNetworks:focus {
+    color:#ccc;
+}
+
+.m-btnFacebook{
+    background-color:#306ead;
+}
+
+.m-btnGoogle{
+    background-color:#df4b31;
+}
+
+.mlSocialNetworks{
+    border-color: #0b395c;
+}
+
+/*-----Sports background------*/
+.Futbol{
+    background-color: #1bb6b6 !important;
+}
+
+.FutbolBody{
+    background-color: #bde5e1 !important;
+}
+
+.Voleibol{
+    background-color: #f6a590 !important;
+}
+
+.VoleibolBody{
+    background-color: #efd2ce !important;
+}
+
+.Beisbol{
+    background-color: #cad401 !important;
+}
+
+.BeisbolBody{
+    background-color: #dddab1 !important;
+}
+
+.FutbolAmericano{
+    background-color: #f49600 !important;
+}
+
+.FutbolAmericanoBody{
+    background-color: #f4d3a6 !important;
+}
+
+.Basquetbol{
+    background-color: #ec5c73 !important;
+}
+
+.BasquetbolBody{
+    background-color: #e5d1d7 !important;
+}
+
+.Corredores{
+    background-color: #f6ca18 !important;
+}
+
+.CorredoresBody{
+    background-color: #ecdfa8 !important;
+}
+
+.m-hdc-GallerySpace-Sport{
+    color: #ede1ae;
+}
+
+.m-hdcg-Default-Color1{
+}
+
+.m-hdcg-Default-Color2{
+    background-color: #eb970e;
+}
+
+.m-hdc-DescubreModalTitle1{
+    color: #f39200;
+}
+
+.m-hdc-DescubreModalTitle2{
+    color: #073f65;
+}
+
+.m-hdc-DescubreModalText{
+    color: #f5a72a;  
+}
+
+.m-hdc-DescubreModalFooter{
+    color: #073f65;    
+}
+
+.m-hdc-DescubreModalFooter a{
+    color: #7ecbd3;
+}
+
+.mTitle1,
+.mTitle2,
+.mTitle4,
+.mTitle5 {
+    color: #0b395c;
+}
+
+.mTitle3 {
+    color: #f39200;
+}
+
+.mSubTitle1{
+    color: #0b395c;
+}
+
+.mSubTitle2{
+    color: #0b395c;
+}
+
+.mSubTitle3 {
+    color: #777;
+}
+
+.mLink1,
+.mLink2{
+    color: #24abae !important;
+}
+
+.mLink3,
+.mLink4{
+    color: #000;
+}
+
+.mLink5{
+    color: #02345b;
+}
+
+.mLink6{
+    color: #02345b !important;
+}
+
+.mContent1{
+    color: #333;
+}
+
+.mContent2{
+    color:#000;
+}
+
+.mContent3{
+    color: #333;
+}
+
+.mContent4{
+    color:#000;
+}
+
+.btn-default{
+    background-color:#033d63;
+    color:#fff;
+}
+
+.btn-default:focus,
+.btn-default:hover{
+    color:#fff;
+}
+
+.btn-info{
+    background-color:#333;
+    color:#fff;
+}
+
+.btn-link{
+    color:#24abae;
+}
+
+.btn-link:hover{
+    color:#24abae;
+}
+
+.btn-transparent{
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.btnsMenuAdminDiv {
+    color: #033d63;
+}
+
+    .btnsMenuAdminDiv:hover {
+        color: #e6e6e6;
+    }
+
+    .btnsMenuAdminDiv:focus {
+        color: #333 !important;
+    }
+
+    .btnsMenuAdminDiv button {
+        background-color: #666;
+    }
+
+    .btnsMenuAdminDiv.current button {
+        background-color: #033d63;
+    }
+
+    .btnsMenuAdminDiv.current button:hover {
+        background-color: #e6e6e6;
+    }
+
+.mAdminContent{
+    background-color:#fff; 
+    border:2px solid #333;
+}
+
+.btnsSubMenuAdminDiv li button,
+.btnsSubMenuAdminDiv li a{
+    color:#033d63 !important;
+}
+
+*::-webkit-input-placeholder{
+    color: #333;
+    opacity: 1 !important
+}
+*:-moz-placeholder{
+    color: #333;
+    opacity: 1 !important
+}
+*::-moz-placeholder{
+    color: #333;
+    opacity: 1 !important
+}
+*:-ms-input-placeholder{
+    color: #333;
+    opacity: 1 !important
+}
+
+.titlePlaceholder::-webkit-input-placeholder {
+    color: #00375d !important;
+}
+.titlePlaceholder:-moz-placeholder {
+    color: #00375d !important;
+}
+.titlePlaceholder::-moz-placeholder {
+    color: #00375d !important;
+}
+.titlePlaceholder:-ms-input-placeholder{
+    color: #00375d !important;
+}
+
+input.titlePlaceholder,
+input.titlePlaceholder2{
+    color: #00375d !important;
+}
+
+.mSwitchBtns{
+    border-color: #808080; 
+    color:#00375d;
+    background-color:#fff;
+}
+
+.mSwitchBtns.swActive{
+    color:#fff;
+    background-color:#7ecbd3;
+}
+
+.mUploadFileIconContainer{
+    color:#7ecbd3; 
+}
+
+/*table,
+table tr,
+table td{
+    border-color: #888 !important;
+}
+
+table tr.tblTitle{
+    background-color: #7ecbd3;
+}
+
+table tr.tblHeader{
+    background-color: #eee;
+}
+
+table tr.tblBody:nth-child(odd){
+    background-color:#fff;
+}
+
+table tr.tblBody:nth-child(even){
+    background-color:#eee;
+}*/
+
+.mContactoLeft{
+    background-color: #dbebed;
+}
+
+.mContactoRight{
+    color: #000;
+    background-color: #ccd6dd;
+}
+
+.mContactoRight div p span{
+    color:#00375d;
+}
+
+.ui-accordion-header-active{
+    color: #00375d;
+    background: #eff4f9 !important;
+    border-color: #aaa;
+}
+
+.ui-accordion-header{
+    color: #00375d;
+    background: #ccd5dd;
+    border-color: #aaa;
+}
+
+.gvGroupPanel{
+    border-color: #ccc !important;
+    background-color: #fff;
+    color: #505050;   
+}
+
+.gvDetailRow{
+    background-color:#fafefe;
+}
+
+.gvHeader{
+    background-color:#7ecbd3;
+}
+
+.gvHeader table tr td{
+    color: #00375d;
+}
+
+.gvRow{
+    background-color:#fff;
+}
+
+.gvRowAlternative{
+    background-color:#eee;
+}
+
+.gvRowSelected{
+    background-color:#00375d;
+    color:#fff;
+}
+
+.mFormFilterContainer {
+    background-color: #f5f5f5;
+    border-color: #e3e3e3;
+}
+
+.badge{
+    background-color: #ed1248;
+}
+
+.dashboardBadgeTitles{
+    border-color: #ccc;
+    color: #0b395c;
+}
+
+.divEditGlyphicon {
+    color: #666;
+}
+
+@media (min-width: 1200px) {
+
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+@media (max-width: 767px) {
+    .navbar-collapse.collapse,
+    .navbar-collapse.collapsing {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}
+
+

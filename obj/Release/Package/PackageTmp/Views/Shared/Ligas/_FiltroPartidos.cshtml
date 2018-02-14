@@ -1,0 +1,22 @@
+﻿@using sw_EnligateWeb.Models;
+@model PartidosViewModel
+
+<div class="col-xs-12 col-sm-4 col-md-4 mSpaceMb5">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+            <span class="input-group-addon m-lbl">Liga:</span>
+            @Html.DropDownListFor(m => m.ligId, (List<SelectListItem>)Model.ddlLigas, null, new { @class = "width100", onchange = "fnPartidos_ChangeLiga(this);" })
+        </div>
+        @Html.ValidationMessageFor(m => m.ligId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-4 col-md-4 mSpaceMb5">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+            <span class="input-group-addon m-lbl">Torneo:</span>
+            @Html.DropDownListFor(m => m.torId, (List<SelectListItem>)Model.ddlTorneos, null, new { @class = "width100", onchange = "fnPartidos_ChangeTorneo(this);" })
+        </div>
+        @Html.ValidationMessageFor(m => m.torId, "", new { @class = "text-danger" })
+    </div>
+</div>

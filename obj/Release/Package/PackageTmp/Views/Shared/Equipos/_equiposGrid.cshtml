@@ -1,0 +1,102 @@
+﻿@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@using sw_EnligateWeb.Models.HelperClasses;
+@{
+    var esCoaching = ViewBag.EsCoaching;
+}
+
+@{
+    var gvRequests = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvEquiposGrid";
+        settings.CallbackRouteValues = new { Controller = "AdminEquipos", Action = "_Equipos_Grid_Callback" };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+
+        //Styles
+        settings.Styles.GroupPanel.CssClass = "gvGroupPanel";
+        settings.Styles.Header.CssClass = "gvHeader";
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.AlternatingRow.CssClass = "gvRowAlternative";
+        settings.Styles.SelectedRow.CssClass = "gvRowSelected";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+        settings.Styles.Row.Cursor = "pointer";
+        //Columns
+        settings.KeyFieldName = "equId";
+        settings.KeyFieldName = "torId";
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "equNombreEquipo";
+            col.Caption = "NOMBRE";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "tblTorneos.torNombreTorneo";
+            col.Caption = "TORNEO";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "equFechaCreacionUTC";
+            col.Caption = "FECHA CREACION";
+        });
+
+        if (true)
+        {
+
+        }
+
+        settings.Columns.Add(col =>
+        {
+            col.Caption = "Eliminar";
+            col.SetDataItemTemplateContent(c =>
+            {
+                var equId = DataBinder.Eval(c.DataItem, "equId");
+                ViewContext.Writer.Write(string.Format("<button type = \"button\" class=\"btn btn-large btn-danger\" onclick=\"_EquipoDelete(" + equId + ")\"\"><span class=\"glyphicon glyphicon-remove\" ></span></span></button>"));
+            });
+            col.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+            col.CellStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+
+            col.Visible = true;
+
+            if (ViewData["deleteTeam"] != null)
+            {
+                if (!(Boolean)ViewData["deleteTeam"])
+                {
+                    col.Visible = false;
+                }
+
+            }
+        });
+
+        //Paging
+        // settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 10;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 200;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+
+        //Rows
+        //  settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        //Callbacks
+        settings.ClientSideEvents.BeginCallback = "gvEquiposGrid_BeginCallback";
+        settings.ClientSideEvents.RowDblClick = "fnEquipoDetails_RowDblClick";
+    });
+
+    if (ViewData["EditError"] != null)
+    {
+        gvRequests.SetEditErrorText((string)ViewData["EditError"]);
+    }
+
+    gvRequests.Bind(Model).GetHtml();
+
+    }

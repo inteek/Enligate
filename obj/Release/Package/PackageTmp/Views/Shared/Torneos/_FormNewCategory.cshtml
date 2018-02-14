@@ -1,0 +1,99 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model CategoriaViewModel
+
+<div class="col-xs-12 col-sm-12 col-md-12 mSpaceMb5">
+    <div class="row mSpaceMb5 mSpaceMt5">
+        <div class="col-xs-6">
+            <div class="marginForm">
+                <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                    <span class="input-group-addon m-lbl">Liga:</span>
+                    @Html.DropDownListFor(m => m.ligId, (List<SelectListItem>)Model.ddlLigas, null, new { @class = "width100"})
+                </div>
+                @Html.ValidationMessageFor(m => m.ligId, "", new { @class = "text-danger", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="marginForm">
+                <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                    <span class="input-group-addon m-lbl">Categoria:</span>
+                    @Html.TextBoxFor(m => m.lctNombre, new { @class = "mInputGroup width100" })
+                </div>
+                @Html.ValidationMessageFor(m => m.lctNombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row mSpaceMb5 mSpaceMt5">
+        <div class="col-xs-6">
+            <div class="marginForm">
+                <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                    <span class="input-group-addon m-lbl">Deporte:</span>
+                    @Html.DropDownListFor(m => m.depNombre, (List<SelectListItem>)Model.ddlDeporte, null, new { @class = "width100" })
+                </div>
+                @Html.ValidationMessageFor(m => m.depNombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="marginForm">
+                <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                    <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                        <span class="input-group-addon m-lbl">Tipo Torneo:</span>
+                        @Html.DropDownListFor(m => m.ttoId, (List<SelectListItem>)Model.ddlCategorias, null, new { @class = "width100" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.ttoId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mSpaceMb5 mSpaceMt5">        
+        <div class="col-xs-12 col-md-6">
+            <div class="marginForm">
+                <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                    <span class="input-group-addon m-lbl">Edad Minima:</span>
+                    @Html.DevExpress().SpinEdit(
+                        settings =>
+                        {
+                            settings.Name = "lctEdadMin";
+                            settings.Properties.MinValue = 1;
+                            settings.Properties.MaxValue = 99;
+                        }
+                    ).GetHtml()
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="marginForm">
+                <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                    <span class="input-group-addon m-lbl">Edad Maxima:</span>
+                    @Html.DevExpress().SpinEdit(
+                        settings =>
+                        {
+                            settings.Name = "lctEdadMax";
+                            settings.Properties.MinValue = 1;
+                            settings.Properties.MaxValue = 99;
+                        }
+                    ).GetHtml()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mSpaceMb5 mSpaceMt5">
+        <div class="col-xs-12 col-md-6">
+            <div class="marginForm">
+                <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                    <span class="input-group-addon m-lbl">Descripcion:</span>
+                    @Html.TextBoxFor(m => m.lctDescripcion, new { @class = "mInputGroup width100" })
+                </div>
+                @Html.ValidationMessageFor(m => m.lctDescripcion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row mSpaceMb5 mSpaceMt5">
+        <div class="col-xs-12">
+            <button type="submit" class="btn btn-default pull-right">Nuevo</button>
+        </div>
+    </div>
+</div>

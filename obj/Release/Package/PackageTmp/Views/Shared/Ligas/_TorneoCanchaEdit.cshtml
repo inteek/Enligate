@@ -1,0 +1,334 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model TorneoCanchasViewModel
+@{
+    string divMapId = "mapGoogle";
+}
+<form id="frmLdeMainDataEdit">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.lcatId)
+
+    <div id="formCanchaInfo" class='col-xs-12 col-sm-12 col-md-9'>
+        <div class="col-xs-12 col-sm-12 col-md-12 mSpaceMb5">
+            <div class="col-xs-6">
+                <div class="marginForm">
+                    <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                        <span class="input-group-addon m-lbl">Liga:</span>
+                        @Html.DropDownListFor(m => m.ligId, (List<SelectListItem>)Model.ddlLigas, null, new { @class = "width100" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.ligId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="col-xs-12 mSpaceMb5 paddingLRZero">
+            <b>Datos</b>
+        </div>
+        <div class="form-inline">
+            <div class="form-group col-xs-12 col-sm-6 ">
+                <div class="col-sm-12 col-md-4">
+                    <span class="mLabelGroup">Nombre:</span> <br class="hidden-xs hidden-lg" />
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    @Html.TextBoxFor(m => m.lcatNombre, new { @class = "mInputGroup width100" })
+                    @Html.ValidationMessageFor(m => m.lcatNombre, "", new { @class = "text-danger" })
+                </div>               
+            </div>
+        </div>
+        <div class="form-inline">
+            <div class="form-group col-xs-12 col-sm-6 ">
+                <div class="col-sm-12 col-md-4">
+                    <span class="mLabelGroup">Descripcion:</span> <br class="hidden-xs hidden-lg" />                    
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    @Html.TextBoxFor(m => m.lcatDescripcion, new { @class = "mInputGroup width100" })
+                    @Html.ValidationMessageFor(m => m.lcatDescripcion, "", new { @class = "text-danger" })
+                </div>
+
+                </div>
+        </div>
+        <div class="col-xs-12 mSpaceMb5 paddingLRZero">
+            <b>Direccion</b>
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group col-xs-12 col-sm-6 ">
+                <div class="col-sm-12 col-md-4">
+                    <span class="mLabelGroup">Domicilio:</span> <br class="hidden-xs hidden-lg" />                   
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    @Html.TextBoxFor(m => m.lcatdomicilio, new { @class = "mInputGroup width100" })
+                    @Html.ValidationMessageFor(m => m.lcatdomicilio, "", new { @class = "text-danger" })
+                </div>
+           </div>
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group col-xs-12 col-sm-6 ">
+                <div class="col-sm-12 col-md-4">
+                    <span class="mLabelGroup">No.:</span> <br class="hidden-xs hidden-lg" />
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    @Html.TextBoxFor(m => m.lcatNumExtInt, new { @class = "mInputGroup width100" })
+                    @Html.ValidationMessageFor(m => m.lcatNumExtInt, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group col-xs-12 col-sm-6 ">
+                <div class="col-sm-12 col-md-4">
+                    <span class="mLabelGroup">Colonia:</span> <br class="hidden-xs hidden-lg" />
+                </div>
+
+                <div class="col-sm-12 col-md-8">
+                    @Html.TextBoxFor(m => m.lcatColonia, new { @class = "mInputGroup width100" })
+                    @Html.ValidationMessageFor(m => m.lcatColonia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group col-xs-12 col-sm-6  ">
+                <div class="col-sm-12 col-md-4">
+                    <span class="mLabelGroup">Municipio:</span> <br class="hidden-xs hidden-lg" />
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    @Html.TextBoxFor(m => m.lcatMunicipio, new { @class = "mInputGroup width100" })
+                    @Html.ValidationMessageFor(m => m.lcatMunicipio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group col-xs-12 col-sm-6 ">
+                <div class="col-sm-12 col-md-4">
+                    <span class="mLabelGroup">Estado:</span> <br class="hidden-xs hidden-lg" />
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    @Html.TextBoxFor(m => m.lcatEstado, new { @class = "mInputGroup width100" })
+                    @Html.ValidationMessageFor(m => m.lcatEstado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group col-xs-12 col-sm-6 ">
+                <div class="col-sm-12 col-md-4">
+                    <span class="mLabelGroup">C.P.:</span> <br class="hidden-xs hidden-lg" />
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    @Html.TextBoxFor(m => m.lcatCodigoPostal, new { @class = "mInputGroup width100" })
+                    @Html.ValidationMessageFor(m => m.lcatCodigoPostal, "", new { @class = "text-danger", onkeypress = "return onlyNumbers(event,this);" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-md-3 mSpaceMb20 ldeMap">
+        <div id="ldeMainMap" class="col-xs-12" style="height:200px;">
+            @{ViewBag.gMapId = "";}
+            @Html.Partial("Torneos/_Canchas_map")
+        </div>
+        <!--<div class="col-xs-12">
+            <a href="#" class="mLink5" onclick="fnMostrarMapa()">
+                VER MAPA
+            </a>
+        </div>-->
+    </div>
+    <div class="col-xs-12 text-right">
+        <button type="button" class="btn btn-cancel" onclick="fnCancelCancha();">
+            Cancelar
+        </button>
+        <button type="button" class="btn btn-default" onclick="fnGuardarCancha();">
+            
+            @{
+                if(Model.edit)
+                {
+                    <span>Guardar</span>
+                }
+                else
+                {
+                    <span>Crear</span>
+                }
+            }
+        </button>
+       
+
+        
+
+    </div>
+
+    <div class="hidden m-messageHide">
+        @Html.Partial("_ModalState_Errors")
+    </div>
+
+</form>
+<script>
+
+    $(document).ready(function () {
+       
+        $("#lcatdomicilio").blur(function () {
+            relocationMapMark();
+        });
+        $("#lcatdomicilio").blur(function () {
+            relocationMapMark()
+        });
+        $("#lcatColonia").blur(function () {
+            relocationMapMark()
+        });
+        $("#lcatMunicipio").blur(function () {
+            relocationMapMark()
+        });
+        $("#lcatEstado").blur(function () {
+            relocationMapMark()
+        });
+        $("#lcatCodigoPostal").blur(function () {
+            relocationMapMark()
+        });
+
+    });
+
+    function fnGuardarCancha() {
+        var domicilio = $("#lcatdomicilio").val();
+        var num = $("#lcatNumExtInt").val();
+        var lcatNombre = $("#lcatNombre").val();
+        var lcatDescripcion = $("#lcatDescripcion").val();
+        var colonia = $("#lcatColonia").val();
+        var mun = $("#lcatMunicipio").val();
+        var est = $("#lcatEstado").val();
+        var cp = $("#lcatCodigoPostal").val();
+        var lat = $("#lcatLatitud").val();
+        var lng = $("#lcatLongitud").val();
+        var ligId = $("#formCanchaInfo #ligId").val();
+
+        if (domicilio != "") {
+            if(num != ""){
+                if(lcatNombre != ""){
+                    if(lcatDescripcion != ""){
+                        if(colonia != ""){
+                            if(mun != ""){
+                                if(est != ""){
+                                    //if(cp != ""){
+                                        var dataForm = "ligId=" + ligId + "&lcatNombre=" + lcatNombre + "&lcatDescripcion=" + lcatDescripcion + "&lcatdomicilio=" + domicilio + "&lcatNumExtInt=" + num + "&lcatColonia=" + colonia + "&lcatMunicipio=" + mun + "&lcatEstado=" + est + "&lcatCodigoPostal=" + cp + "&lcatLatitud=" + lat + "&lcatLongitud=" + lng + "";
+
+                                        //var edit = Model.edit;
+                                        var lcatId = $("#lcatId").val();
+                                        if (lcatId > 0) {
+                                            dataForm = dataForm + "&lcatId=" + lcatId + "&edit=true";
+                                        }
+                                        console.log(dataForm)
+
+                                        $.ajax({
+                                            url: "/AdminTorneos/_Canchas_AddNewPartial",
+                                            type: "POST",
+                                            cache: false,
+                                            data: dataForm,
+                                            success: function (data) {
+                                                showGrid();
+                                                fnGVTorneosCanchas_PerformCallback();
+                                            },
+                                            complete: function (jqXHR, textStatus) {
+                                                showMessages();
+                                            }
+                                        });
+                                    //} else {
+                                      //  msgError("Favor de Agregar el CP");
+                                    //}
+                                } else {
+                                    msgError("Favor de Agregar el Estado");
+                                }
+                            } else {
+                                msgError("Favor de Agregar el Municipio");
+                            }
+                        } else {
+                            msgError("Favor de Agregar el Colonia");
+                        }
+                    } else {
+                        msgError("Favor de Agregar el Descripcion");
+                    }
+                } else {
+                    msgError("Favor de Agregar el Nombre");
+                }
+            } else {
+                msgError("Favor de Agregar el No.");
+            }
+        } else {
+            msgError("Favor de Agregar el Domicilio");
+        }
+
+    };
+    function msgError(data) {
+        var msg = '<div id="modal_error" class="alert alert-danger alert-dismissible" role="alert">';
+        msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+        msg += '<span aria-hidden="true">&times;</span></button>' + data + '</div>';
+
+        $(".m-messageHide").html(msg);
+
+        showMessages();
+    }
+    function getAddress(){
+        var dom = $("#lcatdomicilio").val();
+        var no = $("#lcatNumExtInt").val();
+        var col = $("#lcatColonia").val();
+        var mun = $("#lcatMunicipio").val();
+        var est = $("#lcatEstado").val();
+        var cp = $("#lcatCodigoPostal").val();
+
+        var address = dom + " " + no + ",Col." + col + ". " + mun + ","+cp+" "+ est ;
+
+        return address;
+        console.log(address);
+    };
+
+    function relocationMapMark() {
+        var map;
+        var markers = [];
+
+        var mapDiv = document.getElementById('@divMapId');
+        map = new google.maps.Map(mapDiv, {
+            center: new google.maps.LatLng(19.425153718960143, -99.1351318359375), //Cd. de México
+            zoom: 7,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: false,
+            streetViewControl: false
+        });
+
+        var address = getAddress();
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({
+            'address': address
+        },
+        function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                result = results[0].geometry.location;
+                map.setCenter(result);
+                map.setZoom(15);
+                addMarker(result);
+
+                $(".ligLatitud").val(result.lat());
+                $(".ligLongitud").val(result.lng());
+            }
+        });
+        function addMarker(location) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+            clearMarkers();
+            markers.push(marker);
+        }
+        function setMarkers(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+
+        function clearMarkers() {
+            setMarkers(null);
+            markers = [];
+        }
+    }
+</script>

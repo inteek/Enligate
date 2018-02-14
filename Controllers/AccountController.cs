@@ -671,7 +671,7 @@ namespace sw_EnligateWeb.Controllers
             if (sign && ReturnUrl != "")
             {
                 ViewBag.jsScript = @"function jsRedirect_ConfirmEmail" + rand + @"(){
-                                        document.location.replace('" + ReturnUrl + "');" +
+                                        document.location.replace('" + Url.Action("Index", "Home") + "');" +
                                @"}
                                    setTimeout(jsRedirect_ConfirmEmail" + rand + ",2500);";
             }

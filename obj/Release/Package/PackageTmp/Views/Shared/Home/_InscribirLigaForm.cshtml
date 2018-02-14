@@ -1,0 +1,767 @@
+﻿    @using sw_EnligateWeb.Models;
+@model LeagueRegisterViewModel
+
+@{
+    var ddlDia = sw_EnligateWeb.Engine.Global_Functions.getEnumerableDaysNumber().Select(n => new SelectListItem { Value = n, Text = n }).ToList();
+    var ddlMes = sw_EnligateWeb.Engine.Global_Functions.getEnumerableMonthsNumbers().Select(n => new SelectListItem { Value = n, Text = n }).ToList();
+    var ddlYear = sw_EnligateWeb.Engine.Global_Functions.getEnumerableYearsNumbers().Select(n => new SelectListItem { Value = n, Text = n }).ToList();
+
+    ddlDia.Insert(0, new SelectListItem { Value = "", Text = "Día" });
+    ddlMes.Insert(0, new SelectListItem { Value = "", Text = "Mes" });
+    ddlYear.Insert(0, new SelectListItem { Value = "", Text = "Año" });
+
+    ViewBag.ddlDia = ddlDia;
+    ViewBag.ddlMes = ddlMes;
+    ViewBag.ddlYear = ddlYear;
+
+    string noPhotoUrl = "/Content/Images/general/noPhoto.jpg";
+    ViewBag.imgURL = noPhotoUrl;
+    if (Model.lreUserProfile.imgURL != null)
+    {
+        ViewBag.imgURL = "/" + Model.lreUserProfile.imgURL.Replace(Server.MapPath("~"), "").Replace("\\", "/");
+    }
+    ViewBag.lreImgUrl = noPhotoUrl;
+    if (Model.lreImgUrl != null)
+    {
+        ViewBag.lreImgUrl = "/" + Model.lreImgUrl.Replace(Server.MapPath("~"), "").Replace("\\", "/");
+    }
+}
+
+@{
+    if(Model.lreAddingLeague)
+    { 
+        <div class="clearfix mSpaceMb20 mSpaceMt30">
+            <div class="row">
+                <div class="mTitle1">REGISTRATE Y ARMA TU LIGA TOTALMENTE GRATIS</div>
+                <p class="mContent2 text-justify" style="margin-left:20px;">
+                    Usa la plataforma enligate totalmente gratis. Crea ligas, torneos, partidos, carreras y mucho más.<br />
+                    Que esperas para administrar tu liga de la forma más sencilla y sin ningún costo.<br />
+                    También puedes cobrar con distintas formas de pago por medio de la plataforma ENLIGATE pagando una comisión minima <a href="#modalVerDetalles" data-toggle="modal" data-target="#modalVerDetalles" > VER DETALLES </a>
+
+                </p>
+            </div>
+        </div>
+    }
+}
+
+<form class="frmAddLeagueRequest">
+    @{
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.lreUserProfile.usuUsername)
+        @Html.HiddenFor(m => m.lreUserProfile.imgURL)
+        @Html.HiddenFor(m => m.lreImgUrl)
+        @Html.HiddenFor(m => m.lreLigaLatitud, new { @class = "lreLigaLatitud" })
+        @Html.HiddenFor(m => m.lreLigaLongitud, new { @class = "lreLigaLongitud" })
+
+        <!-- Content -->
+        <!-- ------------- Perfil -------------- -->
+        <div class="clearfix mSpaceMb20">
+            <div class="row">
+                <div class="mTitle1">Datos Admin. de la Liga:</div>
+
+                <div class="col-xs-12 paddingLRZero">
+                    <div class="mProfileImageContainer">
+                        <div class="mProfileUploadFileContainer">
+                            <img id="usuImgURL" class="mUploadFileImage" data-rel="profileImage" src="@ViewBag.imgURL" />
+
+                            <div class="mUploadFileIconContainer">
+                                <span class="mUploadFileIcon glyphicon glyphicon-camera" data-rel="profileImage"></span>
+                            </div>
+                        </div>
+
+                        <input name="usuFileImage" type='file' id="usuImgURLFile" accept=".jpg,.jpeg,.png" class="mUploadFile" data-rel="profileImage" data-loadimg="true" />
+                        <button type="submit" data-rel="profileImage" class="mUploadFile">Guardar</button>
+                    </div>
+                    <div class="mProfileInfoContainer">
+
+                        <div class="col-sm-12 mSpaceMb5 paddingLRZero">
+                            @Html.TextBoxFor(m => m.lreUserProfile.usuNombreCompleto, new { @class = "titlePlaceholder width100", placeholder = "Nombre y apellidos",onkeyup = "validateName(this);" })
+                            @Html.ValidationMessageFor(m => m.lreUserProfile.usuNombreCompleto, "", new { @class = "text-danger" })
+                            <label class="infoUser"></label>
+                        </div>
+
+                        <div class="col-sm-12 mSpaceMb5 paddingLRZero">
+                            Genero
+                            <button type="button" class="mSwitchBtns mSwitchBtnsLeft" data-val="F" data-relclass="profileGenero" title="Femenino">F</button>
+                            <button type="button" class="mSwitchBtns mSwitchBtnsRight" data-val="M" data-relclass="profileGenero" title="Masculino">M</button>
+                            @Html.HiddenFor(m => m.lreUserProfile.usuGenero, new { data_relclass = "profileGenero", data_defaultVal = "F" })
+                        </div>
+
+                        <div class="row mSpaceMb5">
+                            <div class="col-sm-12 ">
+                                Fecha de nacimiento
+                                <div class="mDisplayInlineBlock">
+                                    @Html.DropDownList("ddlDia", (List<SelectListItem>)ViewBag.ddlDia, new { @class = "mSwitchDate", data_relclass = "profBirthday", data_type = "dd", style = "width:60px;" })
+                                    @Html.DropDownList("ddlMes", (List<SelectListItem>)ViewBag.ddlMes, new { @class = "mSwitchDate", data_relclass = "profBirthday", data_type = "MM", style = "width:60px;" })
+                                    @Html.DropDownList("ddlAño", (List<SelectListItem>)ViewBag.ddlYear, new { @class = "mSwitchDate", data_relclass = "profBirthday", data_type = "yyyy", style = "width:60px;" })
+                                    @Html.HiddenFor(m => m.lreUserProfile.usuFechaNacimiento, new { data_relclass = "profBirthday", })
+                                </div>
+                            </div>
+                            <div class="col-sm-12 mSpacePt0">
+                                @Html.ValidationMessageFor(m => m.lreUserProfile.usuFechaNacimiento, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-7 mSpaceMb5">
+                                @Html.TextBoxFor(m => m.lreUserProfile.usuCiudad, new { @class = "width100", placeholder = "Ciudad donde reside" })
+                                @Html.ValidationMessageFor(m => m.lreUserProfile.usuCiudad, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-7 mSpaceMb5">
+                                @Html.TextBoxFor(m => m.lreUserProfile.usuTelefono, new { @class = "width100", placeholder = "Celular" })
+                                @Html.ValidationMessageFor(m => m.lreUserProfile.usuTelefono, "", new { @class = "text-danger", onkeypress = "return onlyNumbers(event,this);" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-7 mSpaceMb5">
+                                @Html.TextBoxFor(m => m.lreUserProfile.usuCorreo, new { @class = "width100", placeholder = "Correo de contacto" })
+                                @Html.ValidationMessageFor(m => m.lreUserProfile.usuCorreo, "", new { @class = "text-danger" })
+                            </div>
+
+                            @*
+                            @if (Model.lreAllowAddAdmins)
+                            {
+                                <div class="col-sm-6 col-lg-5 mSpaceMb5 paddingLRZero mCoAdmin">
+                                    <a href="#" class="mLink5" data-toggle="modal" data-target="#modalAgregarCoAdministrador">
+                                        agregar co-administrador
+                                    </a>
+                                </div>
+                            }
+                            *@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ------------- Categoria -------------- -->
+        <div class="clearfix mSpaceMb30">
+            <div class="row">
+                <span class="mTitle1">Quiero Registrar:</span>
+                @Html.DropDownListFor(m => m.lreTipoLiga,
+                              Model.lreDdlTiposLiga.Select(c => new SelectListItem { Text = c.lcaId.ToUpper(), Value = c.lcaId }),
+                                       new { @class = "lreLigaCategoria", style = "width:120px;" })
+            </div>
+            <!--
+            <div class="row" id="divLreCategoriaDesc">
+                Model.lreDdlTiposLiga.Where(c => c.lcaId == Model.lreTipoLiga).FirstOrDefault().lcaDescripcion
+            </div>
+                -->
+        </div>
+        <!-- ------------- Forma de pago -------------- -->
+        <!-- ------------- Periodicidad de Pago
+        <div id="pvAddLeagueFormPayment">
+            Html.Partial("Home/_InscribirLigaFormPayment")
+        </div>
+        -------------- -->
+        <!-- ------------- Datos fiscales -------------- -->
+        <div class="clearfix mSpaceMb30">
+            <div class="row mTitle1">Datos fiscales:</div>
+            <div class="row mSpaceMt20">
+
+                <div class="form-inline">
+                    <div class="form-group col-xs-12 col-sm-4 col-md-5 mSpaceMb0">
+                        <span class="mLabelGroup">RFC:</span> <br class="visible-sm" />
+                        @Html.TextBoxFor(m => m.lreTaxData.tdaRFC, new { @class = "mInputGroup" })
+                        @Html.ValidationMessageFor(m => m.lreTaxData.tdaRFC, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="form-group col-xs-12 col-sm-8 col-md-7 mSpaceMb0">
+                        <span class="mLabelGroup">Razón Social:</span> <br class="visible-sm" />
+                        @Html.TextBoxFor(m => m.lreTaxData.tdaRazonSocial, new { @class = "mInputGroup" })
+                        @Html.ValidationMessageFor(m => m.lreTaxData.tdaRazonSocial, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="form-group col-xs-12 col-sm-9 col-md-5 mSpaceMb0">
+                        <span class="mLabelGroup">Domicilio:</span> <br class="visible-sm" />
+                        @Html.TextBoxFor(m => m.lreTaxData.tdaDomicilio, new { @class = "mInputGroup lreTD_Domicilio" })
+                        @Html.ValidationMessageFor(m => m.lreTaxData.tdaDomicilio, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="form-group col-xs-12 col-sm-3 col-md-3 mSpaceMb0">
+                        <span class="mLabelGroup">No.:</span> <br class="visible-sm" />
+                        @Html.TextBoxFor(m => m.lreTaxData.tdaNumeroExtInt, new { @class = "mInputGroup lreTD_NumeroExtInt" })
+                        @Html.ValidationMessageFor(m => m.lreTaxData.tdaNumeroExtInt, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 mSpaceMb0">
+                        <span class="mLabelGroup mSpacePb10">Colonia:</span> <br class="visible-sm" />
+                        @Html.TextBoxFor(m => m.lreTaxData.tdaColonia, new { @class = "mInputGroup lreTD_Colonia" })
+                        @Html.ValidationMessageFor(m => m.lreTaxData.tdaColonia, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-5 mSpaceMb0">
+                        <span class="mLabelGroup mSpacePb10">Municipio:</span> <br class="visible-sm" />
+                        @Html.TextBoxFor(m => m.lreTaxData.tdaMunicipio, new { @class = "mInputGroup lreTD_Municipio" })
+                        @Html.ValidationMessageFor(m => m.lreTaxData.tdaMunicipio, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="form-group col-xs-12 col-sm-8 col-md-4 mSpaceMb0">
+                        <span class="mLabelGroup mSpacePb10">Estado:</span> <br class="visible-sm" />
+                        @Html.TextBoxFor(m => m.lreTaxData.tdaEstado, new { @class = "mInputGroup lreTD_Estado" })
+                        @Html.ValidationMessageFor(m => m.lreTaxData.tdaEstado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="form-group col-xs-12 col-sm-4 col-md-3 mSpaceMb0">
+                        <span class="mLabelGroup mSpacePb10">C.P.:</span> <br class="visible-sm" />
+                        @Html.TextBoxFor(m => m.lreTaxData.tdaCodigoPostal, new { @class = "mInputGroup lreTD_CodigoPostal" })
+                        @Html.ValidationMessageFor(m => m.lreTaxData.tdaCodigoPostal, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ------------- Datos de la liga -------------- -->
+        <div class="clearfix mSpaceMb30">
+            <div class="row mTitle1">Datos de la Liga:</div>
+            <div class="row">
+                Esta información puede llenarla ahora o esperar hasta que su solicitud sea aprobada.
+                Esta información siempre sera editable y estará disponible en su perfil de usuario en ENLIGATE.
+            </div>
+            @if (Model.lreAddingLeague)
+            {
+                <div class="row text-right">
+                    <span class="mSubTitle3">Copiar domicilio fiscal</span>
+                    <button type="button" class="mSwitchBtns mSwitchBtnsLeft" data-val="COPIAR" data-relclass="lreCopiarDomicilioFiscal" onclick="fnLreCopiarDomicilioFiscal('COPIAR');">COPIAR</button>
+                    <button type="button" class="mSwitchBtns mSwitchBtnsRight" data-val="OTRO" data-relclass="lreCopiarDomicilioFiscal" onclick="fnLreCopiarDomicilioFiscal('OTRO');">OTRO</button>
+                    @Html.HiddenFor(m => m.lreCopiarDomicilioFiscal, new { data_relclass = "lreCopiarDomicilioFiscal", data_defaultVal = "OTRO" })
+                </div>
+            }
+            <div class="row mSpaceMt10">
+                <div class="col-xs-12 paddingLRZero">
+                    <div class="mProfileImageContainer">
+                        <div class="mProfileUploadFileContainer">
+                            <img id="lreImgUrl" class="mUploadFileImage" data-rel="leagueImage" src="@ViewBag.lreImgUrl" />
+
+                            <div class="mUploadFileIconContainer">
+                                <span class="mUploadFileIcon glyphicon glyphicon-camera" data-rel="leagueImage"></span>
+                            </div>
+                        </div>
+
+                        <input id="lreImgUrlFile" name="lreImgUrlFile" type='file' accept=".jpg,.jpeg,.png" class="mUploadFile" data-rel="leagueImage" data-loadimg="true" />
+                        <button type="submit" data-rel="leagueImage" class="mUploadFile">Guardar</button>
+                    </div>
+                    <div class="mLeagueInfoContainer">
+                        <div class="col-xs-12 mSpaceMb5 paddingLRZero">
+                            @Html.TextBoxFor(m => m.lreNombreLiga, new { @class = "titlePlaceholder titlePlaceholder2 width100", placeholder = "Nombre Liga" })
+                            @Html.ValidationMessageFor(m => m.lreNombreLiga, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-xs-12 mSpaceMb5 paddingLRZero">
+                            <b>Domicilio comercial</b>
+                        </div>
+
+                        <div class="form-inline">
+                            <div class="form-group col-xs-12 col-sm-8 mSpaceMb0">
+                                <span class="mLabelGroup">Calle:</span> <br class="hidden-xs hidden-lg" />
+                                @Html.TextBoxFor(m => m.lreBusinessAddress.badDomicilio, new { @class = "mInputGroup lreBA_Domicilio", onchange = "fnGetGeolocationByAddress();" })
+                                @Html.ValidationMessageFor(m => m.lreBusinessAddress.badDomicilio, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-inline">
+                            <div class="form-group col-xs-12 col-sm-4 mSpaceMb0">
+                                <span class="mLabelGroup">No.:</span> <br class="hidden-xs hidden-lg" />
+                                @Html.TextBoxFor(m => m.lreBusinessAddress.badNumeroExtInt, new { @class = "mInputGroup lreBA_NumeroExtInt", onchange = "fnGetGeolocationByAddress();" })
+                                @Html.ValidationMessageFor(m => m.lreBusinessAddress.badNumeroExtInt, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-inline">
+                            <div class="form-group col-xs-12 col-sm-7 col-lg-6 mSpaceMb0">
+                                <span class="mLabelGroup">Colonia:</span> <br class="hidden-xs hidden-lg" />
+                                @Html.TextBoxFor(m => m.lreBusinessAddress.badColonia, new { @class = "mInputGroup lreBA_Colonia", onchange = "fnGetGeolocationByAddress();" })
+                                @Html.ValidationMessageFor(m => m.lreBusinessAddress.badColonia, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-inline">
+                            <div class="form-group col-xs-12 col-sm-5 col-lg-6 mSpaceMb0">
+                                <span class="mLabelGroup">Municipio:</span> <br class="hidden-xs hidden-lg" />
+                                @Html.TextBoxFor(m => m.lreBusinessAddress.badMunicipio, new { @class = "mInputGroup lreBA_Municipio", onchange = "fnGetGeolocationByAddress();" })
+                                @Html.ValidationMessageFor(m => m.lreBusinessAddress.badMunicipio, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-inline">
+                            <div class="form-group col-xs-12 col-sm-7 mSpaceMb0">
+                                <span class="mLabelGroup">Estado:</span> <br class="hidden-xs hidden-lg" />
+                                @Html.TextBoxFor(m => m.lreBusinessAddress.badEstado, new { @class = "mInputGroup lreBA_Estado", onchange = "fnGetGeolocationByAddress();" })
+                                @Html.ValidationMessageFor(m => m.lreBusinessAddress.badEstado, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-inline">
+                            <div class="form-group col-xs-12 col-sm-5 mSpaceMb0">
+                                <span class="mLabelGroup">C.P.:</span> <br class="hidden-xs hidden-lg" />
+                                @Html.TextBoxFor(m => m.lreBusinessAddress.badCodigoPostal, new { @class = "mInputGroup lreBA_CodigoPostal", onchange="fnGetGeolocationByAddress();" })
+                                @Html.ValidationMessageFor(m => m.lreBusinessAddress.badCodigoPostal, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-7 col-lg-8 mSpaceMt10 mSpaceMb5 paddingLRZero">
+                            @Html.TextBoxFor(m => m.lreCorreoContacto, new { @class = "width100", placeholder = "E-mail" })
+                            @Html.ValidationMessageFor(m => m.lreCorreoContacto, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-xs-12 col-sm-5 col-lg-4 mSpaceMt10 mSpaceMb10 mLreTelefonoContacto">
+                            @Html.TextBoxFor(m => m.lreTelefonoContacto, new { @class = "width100", placeholder = "Numero Celular" })
+                            @Html.ValidationMessageFor(m => m.lreTelefonoContacto, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 mSpaceMb5 paddingLRZero">
+                            @Html.TextAreaFor(m => m.lreDescripcion, new { @class = "width100", placeholder = "Descripción" })
+                            @Html.ValidationMessageFor(m => m.lreDescripcion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        if (Model.lreAddingLeague)
+        {
+        <!-- ------------- Submit button -------------- -->
+            <div class="clearfix text-right mSpaceMb20">
+                <button type="button" class="btn btn-default" onclick="submitAddLeagueForm()">
+                    Mandar solicitud
+                </button>
+            </div>
+        }
+
+        @*
+            if (Model.lreAllowAddAdmins)
+            {
+                <!-- ------------- Modal Agregar Co-administrador -------------- -->
+                <div class="modal fade" id="modalAgregarCoAdministrador" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body modalBodyLogin">
+                                <div class="container-fluid text-center" style="min-height:150px;">
+                                    <div class="mTitle1">Agregar Co-Administrador</div>
+                                    <fieldset id="fsLeagueCoAdministratorsViewModel">
+                                        @Html.Partial("_InscribirLigaFormCoAdmin", Model)
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        *@
+    }
+</form>
+
+<!-- ------------- Mensaje de solicitud guardada y en revisión -------------- -->
+<div class="modal fade" id="modalSolicitudMessage" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyLogin">
+                <div class="container-fluid text-center" style="min-height:150px;">
+                    <div class="mTitle1 text-left">EN ESPERA</div>
+
+                    <div class="col-md-11">
+                        <br />
+                        <p class="text-justify">
+                            Su solicitud para abrir una liga esta siendo revisanda
+                            por nuestro equipo. En cuanto haya sido aprobada nuestro
+                            equipo se pondrá en contacto con usted, para informarle los siguientes pasos.
+                        </p>
+                        <br />
+                        <p class="text-justify">
+                            Gracias por su confianza.
+                        </p>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <br />
+                        <p class="text-right">
+                            <a href="@Url.Action("Index","Home")" class="mLink2">REGRESAR A HOME</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalVerDetalles" class="modal fade" >
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyLogin">
+                <div class="container-fluid text-center" style="min-height:150px;">
+                    <div class="mTitle1 text-left">Detalles</div>
+
+                    <div class="col-md-11">
+                        <br />
+                        <ul class="text-justify">
+                            <li>
+                                El costo de la plataforma es totalmente gratis si no se cobra por medio de ella, es decir, si el torneo es gratis o si la liga cobra directamente en la liga.
+                            </li>
+                            <li>
+                                En caso de cobrar desde la plataforma, se cobrara una comisión mínima, que varia dependiendo del tipo de forma de pago que escoja el cliente al momento de pagar. El administrador de liga puede escoger que formas de pago aceptar.
+                                <ul>
+                                    <li>
+                                        TARJETA DE CREDITO: 2.5%
+                                    </li>
+                                    <li>
+                                        DESDE TIENDA DEPARTAMENTAL: 4%
+                                    </li>
+                                    <li>
+                                        TRANSFERENCIA: 0%
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Los pagos de los clientes los recibirá enligate y cada semana se realizará una transferencia a la liga con los pagos que se hayan recibido en esa semana menos el % de la comisión. Los detalles de los pagos los podrás consultar  desde su portal en la sección “PAGOS”.
+                            </li>
+                            <li>
+                                A la liga se le enviara una factura del total de la comisión restada con concepto de “GASTOS DE ADMINISTRACION” por parte de enligate
+                            </li>
+                        </ul>
+                     
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>
+
+<!-- ------------- Javascript functions -------------- -->
+<script type="text/javascript">
+
+    function fnTipoLigaOnChange(ddl) {
+        fnPaymentsChange("tipoLiga", ddl.value, "", "");
+    }
+
+    function fnFormaPagoOnChange(value) {
+        fnPaymentsChange("formaPago", $("#lreTipoLiga").val(), value, "");
+    }
+
+    function fnPeriodicidadOnChange(value) {
+        fnPaymentsChange("periodicidadPago", $("#lreTipoLiga").val(), $("#lreFormaPago").val(), value);
+    }
+
+    function fnPaymentsChange(campoNombre, tipoLiga, formaPago, periodicidadPago) {
+        var formData = "campoNombre=" + campoNombre + "&lreTipoLiga=" + tipoLiga + "&lreFormaPago=" + formaPago + "&lrePeriodicidadPago=" + periodicidadPago;
+
+        $.ajax({
+            url: '/Home/_InscribirLigaFormPayment',
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+                $("#pvAddLeagueFormPayment").html(data)
+            }
+        });
+    }
+
+    var domicilio = $(".lreBA_Domicilio").val();
+    var numeroExtInt = $(".lreBA_NumeroExtInt").val();
+    var colonia = $(".lreBA_Colonia").val();
+    var municipio = $(".lreBA_Municipio").val();
+    var estado = $(".lreBA_Estado").val();
+    var codigoPostal = $(".lreBA_CodigoPostal").val();
+    function fnLreCopiarDomicilioFiscal(value) {
+        if (value == "COPIAR") {
+            domicilio = $(".lreBA_Domicilio").val();
+            numeroExtInt = $(".lreBA_NumeroExtInt").val();
+            colonia = $(".lreBA_Colonia").val();
+            municipio = $(".lreBA_Municipio").val();
+            estado = $(".lreBA_Estado").val();
+            codigoPostal = $(".lreBA_CodigoPostal").val();
+
+            $(".lreBA_Domicilio").val($(".lreTD_Domicilio").val());
+            $(".lreBA_NumeroExtInt").val($(".lreTD_NumeroExtInt").val());
+            $(".lreBA_Colonia").val($(".lreTD_Colonia").val());
+            $(".lreBA_Municipio").val($(".lreTD_Municipio").val());
+            $(".lreBA_Estado").val($(".lreTD_Estado").val());
+            $(".lreBA_CodigoPostal").val($(".lreTD_CodigoPostal").val());
+        }
+        else {
+            $(".lreBA_Domicilio").val(domicilio);
+            $(".lreBA_NumeroExtInt").val(numeroExtInt);
+            $(".lreBA_Colonia").val(colonia);
+            $(".lreBA_Municipio").val(municipio);
+            $(".lreBA_Estado").val(estado);
+            $(".lreBA_CodigoPostal").val(codigoPostal);
+        }
+
+        fnGetGeolocationByAddress();
+    }
+
+    function formInline(maxWidth) {
+        var divC = $(".mLeagueInfoContainer");
+        if ($(window).width() > 750) {
+            divC.width(divC.parent().width() - 200 - 40);
+        }
+
+        $(".form-inline").each(function (index, element) {
+            var divFormGroup = $(this).children("div.form-group").first();
+            var label = divFormGroup.children(".mLabelGroup").first();
+            var input = divFormGroup.children(".mInputGroup").first();
+
+            var br = divFormGroup.children("br:visible").first();
+            var padding = 15;
+            if (br.length == 0) {
+                if (maxWidth <= $(window).width()) {
+                    var inputSize = divFormGroup.width() - label.width() - padding;
+                    if (inputSize > 0) {
+                        input.width(inputSize);
+                    }
+                }
+                if (divFormGroup.hasClass("mSpaceMb0")) {
+                    divFormGroup.removeClass("mSpaceMb0");
+                    divFormGroup.addClass("mSpaceMb5");
+                }
+            }
+            else {
+                if (maxWidth <= $(window).width()) {
+                    var inputSize = divFormGroup.width() - padding;
+                    if (inputSize > 0) {
+                        input.width(inputSize);
+                    }
+                }
+                if (divFormGroup.hasClass("mSpaceMb5")) {
+                    divFormGroup.removeClass("mSpaceMb5");
+                    divFormGroup.addClass("mSpaceMb0");
+                }
+            }
+        });
+    }
+
+    function closeWindowEach() {
+        $("input[type=text]").each(function (index, Element) {
+            closeWindowEachOnChange(this);
+        });
+        $("input[type=file]").each(function (index, Element) {
+            closeWindowEachOnChange(this);
+        });
+        $("textarea").each(function (index, Element) {
+            closeWindowEachOnChange(this);
+        });
+    }
+
+    function closeWindowEachOnChange(element) {
+        $(element).on("change", function () {
+            dontCloseWindow("No has terminado de llenar la solicitud.");
+        });
+    }
+
+    function submitAddLeagueForm() {
+        var ligNombre = $("#lreNombreLiga").val();
+        if (ligNombre != "") {
+
+            $.ajax({
+                url: '/AdminLigas/VerifySuscribeLeague',
+                type: "POST",
+                cache: false,
+                data: "ligName=" + ligNombre,
+                success: function (data) {
+                    if (data.booSuccess) {
+                        var form = $(".frmAddLeagueRequest");
+                        form.submit(function (event) {
+                            //disable the default form submission
+                            event.preventDefault();
+                            //grab all form data
+                            var formData = new FormData($(this)[0]);
+
+                            $.ajax({
+                                url: '/Home/AddLeague',
+                                type: 'POST',
+                                data: formData,
+                                async: false,
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                success: function (data) {
+                                    $("#frmAddLeagueRequest").html(data)
+                                },
+                                complete: function (jqXHR, textStatus) {
+                                    showMessages();
+                                },
+                                error: function (xhr, status, p3, p4) {
+                                    alert("Hubo un error, intenta nuevamente");
+                                }
+                            });
+                            return false;
+                        });
+                        formFilled = false;
+                        form.submit();
+                    } else if (!data.booSuccess) {
+                        $(".m-messageHide").html(data.strPartialViewString)
+                    } else if (!data.booHasErrMessagePartialView) {
+                        $(".m-messageHide").html(data.strPartialViewString)
+                    }
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                },
+                error: function (xhr, status, p3, p4) {
+                    alert("Hubo un error ...");
+                }
+            });
+
+            
+        } else {
+            alert("Agregar Nombre de la Liga.")
+        }
+        
+
+    }
+
+    function fnGetGeolocationByAddress() {
+        try{
+            //Cd. de México
+            var lat = 19.425153718960143;
+            var long = -99.1351318359375;
+
+            var domicilio = "";
+            if ($(".lreBA_Domicilio").val().trim() != "")
+                domicilio += $(".lreBA_Domicilio").val().trim() + " ";
+            if ($(".lreBA_NumeroExtInt").val().trim() != "")
+                domicilio += $(".lreBA_NumeroExtInt").val().trim() + ", ";
+            if ($(".lreBA_Colonia").val().trim() != "")
+                domicilio += "Col. " + $(".lreBA_Colonia").val().trim() + " ";
+            if ($(".lreBA_Municipio").val().trim() != "")
+                domicilio += $(".lreBA_Municipio").val().trim() + ", ";
+            if ($(".lreBA_Estado").val().trim() != "")
+                domicilio += $(".lreBA_Estado").val().trim() + ", ";
+            if ($(".lreBA_CodigoPostal").val().trim() != "")
+                domicilio += "C.P. " + $(".lreBA_CodigoPostal").val().trim();
+            domicilio = domicilio.trim();
+            //alert("Domicilio: " + domicilio);
+
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({
+                'address': domicilio
+            },
+            function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    result = results[0].geometry.location;
+                    lat = result.lat();
+                    long = result.lng();
+                }
+                $(".lreLigaLatitud").val(lat);
+                $(".lreLigaLongitud").val(long);
+            });
+        }
+        catch (err) {
+
+        }
+    }
+       
+    function submit_frmAddLeagueCoAdmin() {
+        $.ajax({
+            url: '/Home/_AddLeagueCoAdmin',
+            type: "POST",
+            cache: false,
+            //contentType: false,
+            //processData: false,
+            data: $("#fsLeagueCoAdministratorsViewModel").serialize(),
+            success: function (data) {
+                $("#fsLeagueCoAdministratorsViewModel").html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            },
+            error: function (xhr, status, p3, p4) {
+                alert("Hubo un error, intenta nuevamente");
+            }
+        });
+    }
+
+    function submit_frmAddLeagueCoAdminDel(email) {
+        var dataSer = $("#fsLeagueCoAdministratorsViewModel").serialize() + "&lcaEmailDel=" + email;
+
+        $.ajax({
+            url: '/Home/_AddLeagueCoAdminDelete',
+            type: "POST",
+            cache: false,
+            //contentType: false,
+            //processData: false,
+            data: dataSer,
+            success: function (data) {
+                $("#fsLeagueCoAdministratorsViewModel").html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            },
+            error: function (xhr, status, p3, p4) {
+                alert("Hubo un error, intenta nuevamente");
+            }
+        });
+    }
+
+    function fnDisableAllForm() {
+        $(".frmAddLeagueRequest input").attr("disabled", "true");
+        $(".frmAddLeagueRequest select").attr("disabled", "true");
+        $(".frmAddLeagueRequest textarea").attr("disabled", "true");
+        $(".frmAddLeagueRequest button").attr("disabled", "true");
+        $(".frmAddLeagueRequest span.mUploadFileIcon").hide();
+    }
+
+    $(document).ready(function () {
+        Enligate_onPageLoad();
+        var maxWidthResize = 975;
+        formInline(maxWidthResize);
+        $(window).on('resize', function () {
+            formInline(maxWidthResize);
+        });
+
+        @{
+            if(Model.lreLeagueSaved){
+                <text>
+                    $("#modalSolicitudMessage").modal("show");
+                </text>
+            }
+            
+            if (Model.lreAddingLeague == true){
+                <text>
+                    closeWindowEach();
+                </text>
+            }
+            else{
+                <text>
+                    fnDisableAllForm();
+                </text>
+            }
+        }        
+    });
+</script>

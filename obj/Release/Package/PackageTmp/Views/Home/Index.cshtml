@@ -1,0 +1,507 @@
+﻿@using sw_EnligateWeb.Models;
+@model MainPageViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    ViewBag.Title = "Enligate";
+    var idD = ViewBag.id;
+}
+
+<script type="text/javascript">
+
+    var GVLigasBusqueda_Filtro = 0;
+    var GVLigasBusqueda_Reverse = false;
+            var GVLigasBusqueda_Latitud = 0;
+            var GVLigasBusqueda_Longitud = 0;
+            var GVLigasBusqueda_showMessage = false;
+
+            function fnGVLigasBusqueda_GetLocalizacion() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(fnGVLigasBusqueda_MostrarPosicion);
+                }
+            }
+
+            function fnGVLigasBusqueda_MostrarPosicion(position) {
+                GVLigasBusqueda_Latitud = position.coords.latitude
+                GVLigasBusqueda_Longitud = position.coords.longitude;
+        $("#hgRowFilterDistancia").removeClass("hidden");
+                console.log("Distancia : " + GVLigasBusqueda_Latitud)
+                $("#hgRowFilterDistancia").click();
+            }
+
+            function fnGVLigasBusqueda_CambiarFiltro(filtro, btn) {
+        $("button.hgRowFilter.active").removeClass("active");
+                var btnId = "#" + btn.id;
+                var boton = $(btnId).addClass("active");
+
+                if (GVLigasBusqueda_Filtro == filtro)
+                    GVLigasBusqueda_Reverse = !GVLigasBusqueda_Reverse;
+                else
+                    GVLigasBusqueda_Reverse = false;
+
+                GVLigasBusqueda_Filtro = filtro;
+                fnGVLigasBusqueda_PerformCallback();
+            }
+
+            function fnGVLigasBusqueda_PerformCallback(s, e) {
+                if (typeof gvLigasBusqueda.InCallback === "function") {
+
+                    gvLigasBusqueda.PerformCallback();
+
+                    //if (!gvLigasBusqueda.InCallback()) {
+                    //}
+                }
+            }
+
+            function fnGVLigasBusqueda_OnBeginCallback(s, e) {
+                var indDeporte = $(".indDeporte").val();
+                var indTipoTorneo = $(".indTipoTorneo").val();
+                var indCiudad = $(".indCiudad").val();
+                //alert("Deporte: " + indDeporte + "      TipoTorneo: " + indTipoTorneo + "    Ciudad: " + indCiudad);
+                e.customArgs['deporte'] = indDeporte;
+                e.customArgs['tipoTorneo'] = indTipoTorneo;
+                e.customArgs['ciudad'] = indCiudad;
+                e.customArgs['filtro'] = GVLigasBusqueda_Filtro;
+                e.customArgs['reverse'] = GVLigasBusqueda_Reverse;
+                e.customArgs['latitud'] = GVLigasBusqueda_Latitud;
+                e.customArgs['longitud'] = GVLigasBusqueda_Longitud;
+                e.customArgs['showMessage'] = GVLigasBusqueda_showMessage;
+            }
+
+            function fnGVLigasBusqueda_OnEndCallback(s, e) {
+                initializeRating();
+                if (s.cpModelError) {
+            $(".m-messageHide").html(s.cpModelError);
+                    delete s.cpModelError;
+                    showMessages();
+                }
+                GVLigasBusqueda_showMessage = true;
+            }
+
+            function ddlDeportes_OnChange(ddl) {
+        $(".indDeporte").val(ddl.value);
+        $(".indDeporte2").val(ddl.value);
+                fnGVLigasBusqueda_PerformCallback();
+            }
+
+            function ddlTipoTorneos_OnChange(ddl) {
+        $(".indTipoTorneo").val(ddl.value);
+        $(".indTipoTorneo2").val(ddl.value);
+                fnGVLigasBusqueda_PerformCallback();
+            }
+
+            function ddlCiudades_OnChange(ddl) {
+        $(".indCiudad").val(ddl.value);
+        $(".indCiudad2").val(ddl.value);
+                fnGVLigasBusqueda_PerformCallback();
+            }
+
+            function fnMostrarUbicacion(ligId, ligToken) {
+        $("#modalMapaLiga").modal({ backdrop: false });
+                fnCargarMapa(ligId, ligToken);
+            }
+
+            function fnCargarMapa(ligId, ligToken) {
+                var dataForm = "Id=" + ligId
+        $.ajax({
+                    url: '/Home/_LeaguesMap_Modal',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                $("#modalMapaLigaPartialView").html(data);
+                    }
+                });
+            }
+
+            var gvTC_tipoGrid = 0;
+            var gvTC_ligId = 0;
+            var gvTC_tokenLiga = "";
+            var gvTC_torId = 0;
+            var gvTC_tokenTorneo = "";
+
+            function fnMostrarComentarios(ligId, ligToken) {
+                gvTC_ligId = ligId;
+                gvTC_tokenLiga = ligToken;
+                //alert("LigId: " + gvTC_ligId + "   Token: " + gvTC_tokenLiga);
+                fnGVTorneoComentario_PerformCallback();
+        $("#modalLigaComentarios").modal({ backdrop: false });
+            }
+
+            function fnGVTorneoComentario_PerformCallback(s, e) {
+                if (typeof gvTorneoComentarios.InCallback === "function") {
+                    gvTorneoComentarios.PerformCallback();
+                    //if (!gvLigasBusqueda.InCallback()) {
+                    //}
+                }
+            }
+
+            function fnGVTorneoComentarios_OnBeginCallback(s, e) {
+                e.customArgs['tipoGrid'] = gvTC_tipoGrid;
+                e.customArgs['ligId'] = gvTC_ligId;
+                e.customArgs['tokenLiga'] = gvTC_tokenLiga;
+                e.customArgs['torId'] = gvTC_torId;
+                e.customArgs['tokenTorneo'] = gvTC_tokenTorneo;
+            }
+</script>
+
+<!-- Logo and Balls-->
+@Html.Partial("_LogoBalls")
+
+<!-- Header Gallery content -->
+<div class="row">
+    <div class="col-sm-12 homeDashboard">
+        <div class="col-sm-offset-1 homeDashboardContent m-hdc-Gallery-Sports @((ViewBag.id == null || ViewBag.id=="") ? "m-hdc-Gallery-Default" : "m-hdc-Gallery-" + ((string)ViewBag.id).Replace(" ", ""))">
+            <div class="m-hdc-Gallery">
+                @{
+                    switch ((string)ViewBag.id)
+                    {
+                        case "Futbol":
+                        <p class="homeDashboardH1 m-hdc-GallerySpace-Sport">Football Soccer</p>
+                            break;
+                        case "Voleibol":
+                        <p class="homeDashboardH1 m-hdc-GallerySpace-Sport">Volley Ball</p>
+                            break;
+                        case "Beisbol":
+                        <p class="homeDashboardH1 m-hdc-GallerySpace-Sport">Baseball</p>
+                            break;
+                        case "Futbol Americano":
+                        <p class="homeDashboardH1 m-hdc-GallerySpace-Sport">Football Americano</p>
+                            break;
+                        case "Basquetbol":
+                        <p class="homeDashboardH1 m-hdc-GallerySpace-Sport">Basketball</p>
+                            break;
+                        case "Corredores":
+                        <p class="homeDashboardH1 m-hdc-GallerySpace-Sport">Corredores</p>
+                            break;
+                        default:
+                        <div class="m-hdcg-Default" data-cssColor="m-hdcg-Default-Color1">
+                            <p class="homeDashboardH1">¿Quieres inscribir a tu equipo?</p>
+                            <p class="homeDashboardH4">El único lugar donde puedes buscar las ligas y torneos que se juegan en tu ciudad.</p>
+                            <p class="homeDashboardH3">Comienza la búsqueda y Enligate inscribiendo a tu equipo.</p>
+                            <p><button class="homeDashboardBtnDescubre" data-toggle="modal" data-target="#modalDescubreEquipo">descubre cómo</button></p>
+                        </div>
+                        <div class="m-hdcg-Default" style="display:none;" data-cssColor="m-hdcg-Default-Color2">
+                            <p class="homeDashboardH1">¿Quieres armar tu propia liga?</p>
+                            <p class="homeDashboardH4">ENLIGATE te da el espacio para captar más equipos, mas jugadores, de una manera fácil y organizada.</p>
+                            <p><button class="homeDashboardBtnDescubre" data-toggle="modal" data-target="#modalDescubreLiga">descubre cómo</button></p>
+                            <br class="homeDashboardH3" />
+                        </div>
+                            break;
+                    }
+    }
+            </div>
+
+            <div id="homeDashboardControls" class="row text-left homeDashboardControls">
+                <div class="col-sm-offset-2 col-sm-4 col-lg-offset-2 col-lg-2">
+                    Deporte:<br />
+                    @Html.DropDownListFor(model => model.ddlDeportes, Model.ddlDeportes, new { @class = "width100 indDeporte", onchange = "ddlDeportes_OnChange(this);" })
+                </div>
+                <div class="col-sm-4 col-lg-2">
+                    Tipo de torneo:<br />
+                    @Html.DropDownListFor(model => model.ddlTipoTorneos, Model.ddlTipoTorneos.OrderBy(t => t.Value), new { @class = "width100 indTipoTorneo", onchange = "ddlTipoTorneos_OnChange(this);" })
+                </div>
+                <div class="col-sm-offset-2 col-sm-4 col-lg-offset-0 col-lg-2">
+                    Ciudad:<br />
+                    @Html.DropDownListFor(model => model.ddlCiudades, Model.ddlCiudades, new { @class = "width100 indCiudad", onchange = "ddlCiudades_OnChange(this);" })
+                </div>
+                <div class="col-sm-4 col-lg-2 hidden">
+                    Zona:<br />
+                    @Html.DropDownListFor(model => model.ddlZonas, Model.ddlZonas, new { @class = "width100" })
+                </div>
+                <div class="col-xs-12 col-sm-1">
+                    <br />
+                    <button type="button" class="btn btn-default hdControlsBtnXS" onclick="fnGVLigasBusqueda_PerformCallback()">
+                        Buscar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Grid content -->
+<div class="row">
+    <div class="col-sm-12 paddingLRZero homeGrid">
+        <div class="col-sm-3 col-md-2">
+            <div id="hgbHomeDashboardControls" class="row hidden-xs homeGridBox">
+                <div class="col-sm-12 paddingLRZero hgSearchTitle">
+                    Modifica tu búsqueda
+                </div>
+                <div class="col-sm-12 paddingLRZero hgSearchLbl">
+                    Deporte:<br />
+                    @Html.DropDownListFor(model => model.ddlDeportes, Model.ddlDeportes, new { @class = "width100 indDeporte2", onchange = "ddlDeportes_OnChange(this);" })
+                </div>
+                <div class="col-sm-12 paddingLRZero hgSearchLbl">
+                    Tipo de torneo:<br />
+                    @Html.DropDownListFor(model => model.ddlTipoTorneos, Model.ddlTipoTorneos, new { @class = "width100 indTipoTorneo2", onchange = "ddlTipoTorneos_OnChange(this);" })
+                </div>
+                <div class="col-sm-12 paddingLRZero hgSearchLbl">
+                    Ciudad:<br />
+                    @Html.DropDownListFor(model => model.ddlCiudades, Model.ddlCiudades, new { @class = "width100 indCiudad2", onchange = "ddlCiudades_OnChange(this);" })
+                </div>
+                <div class="col-sm-12 paddingLRZero hgSearchLbl hidden">
+                    Zona:<br />
+                    @Html.DropDownListFor(model => model.ddlZonas, Model.ddlZonas, new { @class = "width100" })
+                </div>
+                <div class="col-sm-12 paddingLRZero">
+                    <br />
+                    <button type="button" class="btn btn-default width100" onclick="fnGVLigasBusqueda_PerformCallback()">
+                        Buscar
+                    </button>
+                </div>
+            </div>
+
+            <!-- ------ Espacio para publicidad------
+            <div>
+
+            </div>
+            -->
+        </div>
+
+        <!-- ------ Resultados de búsqueda ------ -->
+        <div class="col-sm-6 col-md-8">
+            <div class="col-sm-12 homeGridBox">
+                <div class="col-sm-12 col-md-4 text-right hgRowFilterTitle">
+                    Ordenar por:
+                </div>
+                <div class="col-sm-12 col-md-8 text-left">
+                    <button id="hgRowFilterPopularidad" type="button" class="btn btn-link hgRowFilter active" onclick="fnGVLigasBusqueda_CambiarFiltro(0,this)">
+                        Popularidad
+                    </button>
+                    <button id="hgRowFilterCalificacion" type="button" class="btn btn-link hgRowFilter" onclick="fnGVLigasBusqueda_CambiarFiltro(1,this)">
+                        Calificación
+                    </button>
+                    <button id="hgRowFilterPrecio" type="button" class="btn btn-link hgRowFilter" onclick="fnGVLigasBusqueda_CambiarFiltro(2,this)">
+                        Precio
+                    </button>
+                    <button id="hgRowFilterDistancia" type="button" class="btn btn-link hgRowFilter hidden" onclick="fnGVLigasBusqueda_CambiarFiltro(3,this)">
+                        Distancia
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-xs-12 paddingLRZero mSpaceMt20">
+                @Html.Action("LigasBusquedasGrid", "AdminLigas")
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- "Descubre como" modals  -->
+<div class="modal fade" id="modalDescubreEquipo" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            @*<div class="modal-header">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>*@
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class="col-xs-12 col-md-offset-2 col-md-8 text-center m-hdc-DescubreModalText">
+                            <div class="row m-hdc-DescubreModalTitle1">
+                                ¿Quieres empezar a Jugar?
+                            </div>
+                            <div class="row m-hdc-DescubreModalTitle2">
+                                Paso 1
+                            </div>
+                            <div class="row">
+                                registrate en la comunidad ENLIGATE.
+                            </div>
+                            <div class="row m-hdc-DescubreModalTitle2">
+                                Paso 2
+                            </div>
+                            <div class="row">
+                                ¿cuál es tu deporte? selecciona tu deporte, tu ciudad y la zona.<br />
+                                Busca el torneo mas cercano, mas accesible y mejor para ti.
+                            </div>
+                            <div class="row m-hdc-DescubreModalTitle2">
+                                Paso 3
+                            </div>
+                            <div class="row">
+                                ¿encontraste el mejor torneo para ti? inscribe a tu equipo y
+                                empieza a prepararte para jugar tu primer partido!
+                            </div>
+                            <div class="row m-hdc-DescubreModalFooter">
+                                si aún tienes preguntas, @Html.ActionLink("escribenos", "Contact", "Home") o ve este link @Html.ActionLink("FAQ", "FAQs", "Home")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalDescubreLiga" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            @*<div class="modal-header">
+                    <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>*@
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class="col-xs-12 col-md-offset-2 col-md-8 text-center m-hdc-DescubreModalText">
+                            <div class="row m-hdc-DescubreModalTitle1">
+                                Para registrar tu propia liga, <br />
+                                solo debes seguir estos 4 fáciles pasos:
+                            </div>
+                            <div class="row m-hdc-DescubreModalTitle2">
+                                Paso 1
+                            </div>
+                            <div class="row">
+                                registrate en la comunidad ENLIGATE.
+                            </div>
+                            <div class="row m-hdc-DescubreModalTitle2">
+                                Paso 2
+                            </div>
+                            <div class="row">
+                                En el link ARMA LA LIGA selecciona si eres una escuela,<br />
+                                una empresa, un club o si quieres registrar un evento deportivo.
+                            </div>
+                            <div class="row m-hdc-DescubreModalTitle2">
+                                Paso 3
+                            </div>
+                            <div class="row">
+                                Sigue las instrucciones y llena el formulario de registro.
+                            </div>
+                            <div class="row m-hdc-DescubreModalTitle2">
+                                Paso 4
+                            </div>
+                            <div class="row">
+                                ENLIGATE se pondra en contacto contigo después de la revisión de
+                                tu registro. Una vez aprobada la solicitud, estás listo para empezar a
+                                armar torneos o invitar equipos a usar ENLIGATE.
+                            </div>
+                            <div class="row m-hdc-DescubreModalFooter">
+                                si aún tienes preguntas, @Html.ActionLink("escribenos", "Contact", "Home") o ve este link @Html.ActionLink("FAQ", "FAQs", "Home")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ------------- Modal Mapa Liga -------------- -->
+<div class="modal fade" id="modalMapaLiga" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div id="modalMapaLigaPartialView" class="container-fluid text-center mSpaceMb30">
+                    @*@Html.Partial("Home/_LeaguesMap_Modal")*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ------------- Modal Liga Comentarios -------------- -->
+<div class="modal fade" id="modalLigaComentarios" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="mTitle2">Comentarios de la liga</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid text-center mSpaceMb20">
+                    @Html.Action("TorneoComentariosGrid", "AdminTorneos")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>
+
+@section scripts{
+
+    @{
+        string googleSrc = System.Web.Configuration.WebConfigurationManager.AppSettings["GoogleMapsScript"];
+    }
+    <script src="@googleSrc" async defer></script>
+
+    <script type="text/javascript">
+        function changeDefaultGallery() {
+            $("div.m-hdcg-Default").toggle({
+                duration: 50,
+                complete: function () {
+                    var cssClass = $(this).attr('data-cssColor');
+                    if ($(this).css('display') == "none") {
+                        $("nav.m-navbar-homeDashboard").removeClass(cssClass);
+                        $("div.homeDashboard").removeClass(cssClass);
+                    }
+                    else
+                    {
+                        $("nav.m-navbar-homeDashboard").addClass(cssClass);
+                        $("div.homeDashboard").addClass(cssClass);
+                    }
+                }
+            });
+        }
+        function fnMostrarTorneo(ligId, deporte, tipoTorneo) {
+            location.href = "Home/Liga?id=" + ligId + "&deporte=" + deporte+"&tipoTorneo="+tipoTorneo;
+        }
+        function changeSportsCSS() {
+            @if(ViewBag.id != null)
+            {
+                <text>
+                var id = "@ViewBag.id".replace(" ", "");
+                if (id != null) {
+                    id = id.replace(" ", "");
+                    $("nav.m-navbar-homeDashboard").addClass(id);
+                    $("div.homeDashboard").addClass(id);
+                    $("body").addClass(id + "Body");
+                    $("div.homeGrid").addClass(id + "Body");
+
+                    $("#homeDashboardControls div").each(function (index) {
+                        switch (index) {
+                            case 0:
+                                $(this).addClass("hidden");
+                                break;
+                            case 1:
+                                $(this).addClass("col-sm-offset-4 col-lg-offset-3");
+                                break;
+                        }
+                    });
+                    $("#hgbHomeDashboardControls div").each(function (index) {
+                        switch (index) {
+                            case 1:
+                                $(this).addClass("hidden");
+                                break;
+                        }
+                    });
+                }
+            </text>
+            }
+            else
+            {
+            <text>
+                setInterval(function () { changeDefaultGallery() }, 5000);
+            </text>
+            }
+        }
+
+        $(document).ready(function () {
+            //changeSportsCSS();
+            fnGVLigasBusqueda_PerformCallback();
+            setTimeout(function () {
+                fnGVLigasBusqueda_GetLocalizacion();
+            }, 5000);
+
+        });
+</script>
+}

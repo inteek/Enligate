@@ -251,7 +251,7 @@ namespace sw_EnligateWeb.Controllers
         /// <param name="jugCorreoEliminar"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult _NuevoEdit_QuitarJugador(AgregarJugadorEquipoViewModel modelJugador, string jugCorreoEliminar, int torMaxJugadoresEquipo, int torId,int equId)
+        public bool  _NuevoEdit_QuitarJugador(AgregarJugadorEquipoViewModel modelJugador, string jugCorreoEliminar, int torMaxJugadoresEquipo, int torId,int equId)
         {
             bool noEncontrado = false;
 
@@ -288,7 +288,8 @@ namespace sw_EnligateWeb.Controllers
             model.equAdminLigaTorneos = true;
             model.torId = torId;
             model.equId = equId;
-            return PartialView("Jugadores/_JugadoresEquipo_Agregar", model);
+            //return PartialView("Jugadores/_JugadoresEquipo_Agregar", model);
+            return true;
         }
 
         /// <summary>
@@ -949,7 +950,7 @@ namespace sw_EnligateWeb.Controllers
                     //Guardar la imagen
                     foreach (string file in Request.Files)
                     {
-                        string filename = "", filenameDB="";
+                        string filename = "", filenameDB="", aux;
                         var fileContent = Request.Files[file];
                         if (fileContent != null && fileContent.ContentLength > 0)
                         {
@@ -963,8 +964,9 @@ namespace sw_EnligateWeb.Controllers
                             var extension = Path.GetExtension(fileContent.FileName);
                             if (constClass.imgLeaguesAllowedExtensions.Contains(extension.ToUpper()))
                             {
-                                filename = urlPath + "\\" + db.DateTimeMX().ToString("yyyyMMdd_hhmmss.fff") + extension;
-                                filenameDB = constClass.urlEquiposImagenes + "/" + db.DateTimeMX().ToString("yyyyMMdd_hhmmss.fff") + extension;
+                                aux = db.DateTimeMX().ToString("yyyyMMdd_hhmmss.fff") + extension;
+                                filename = urlPath + "\\" + aux;// db.DateTimeMX().ToString("yyyyMMdd_hhmmss.fff") + extension;
+                                filenameDB = constClass.urlEquiposImagenes + "/" + aux;//+db.DateTimeMX().ToString("yyyyMMdd_hhmmss.fff") + extension;
                                 filenameDB = filenameDB.Replace("~","");
                                 fileContent.SaveAs(filename);
                                 bool savedFile = System.IO.File.Exists(filename);

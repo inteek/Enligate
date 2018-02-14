@@ -1,0 +1,111 @@
+﻿@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+
+@{
+    var gvRequests = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvPartidosGrid";
+        settings.CallbackRouteValues = new { Controller = "AdminLigas", Action = "PartidosCallback" };
+        //settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "AdminTorneos", Action = "_PartidosGridEdit_UpdatePartial" };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+        //settings.SettingsBehavior.ConfirmDelete = true;
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+        //Styles
+        settings.Styles.GroupPanel.CssClass = "gvGroupPanel";
+        settings.Styles.Header.CssClass = "gvHeader";
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.AlternatingRow.CssClass = "gvRowAlternative";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        settings.KeyFieldName = "parId";
+
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "EDITAR/ELIMINAR";
+            column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(string.Format("<button type = \"button\" class=\"btn btn-small btn-default mSpaceMlr5\" onclick=\"_PartidosEdit(" + c.KeyValue+ ")\"\">Editar</button>"));
+                ViewContext.Writer.Write(string.Format("<button type = \"button\" class=\"btn btn-small btn-danger mSpaceMlr5\" onclick=\"_PartidosDelete(" + c.KeyValue + ")\"\">Eliminar</button>"));
+            });
+        });
+
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "ligNombre";
+            col.Caption = "LIGA";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "torNombre";
+            col.Caption = "TORNEOS";
+        });
+
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "equNombreEquipoUno";
+            col.Caption = "EQUIPO 1";
+
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "equNombreEquipoDos";
+            col.Caption = "EQUIPO 2";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "canNombre";
+            col.Caption = "CANCHA";
+
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "arbNombre";
+            col.Caption = "ARBITRO";
+
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "parFecha_Inicio";
+            col.Caption = "FECHA";
+            col.Width = Unit.Pixel(120);
+
+            col.ColumnType = MVCxGridViewColumnType.DateEdit;
+            var dateEditProperties = col.PropertiesEdit as DateEditProperties;
+            dateEditProperties.DisplayFormatString = "dd/MM/yyyy hh:mm tt";
+
+        });
+
+        //Paging
+        settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 5;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 200;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+
+        //Rows
+        settings.SettingsBehavior.AllowSelectByRowClick = false;
+
+        //Callbacks
+        settings.ClientSideEvents.BeginCallback = "fnGVPartidos_OnBeginCallback";
+    });
+
+    if (ViewData["EditError"] != null)
+    {
+        gvRequests.SetEditErrorText((string)ViewData["EditError"]);
+    }
+
+    gvRequests.Bind(Model).GetHtml();
+}

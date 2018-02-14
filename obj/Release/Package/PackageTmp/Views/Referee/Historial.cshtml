@@ -1,0 +1,31 @@
+﻿@using sw_EnligateWeb.Models;
+
+@{
+    ViewBag.Title = "Enligate";
+}
+
+<!-- Content -->
+<div id="REFEREE_Historial" class="row">
+    <div class="col-sm-12">
+
+        <div class="m-hdc-Gallery">
+
+            <h1>Historial</h1>
+
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Action("PartidosResultCallback", "AdminLigas")
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+}

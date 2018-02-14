@@ -1,0 +1,470 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model PartidosViewModel
+
+@{
+    string equImgUno = Model.imgUno;
+    string equImgDos = Model.imgDos;
+    if (equImgUno == null)
+    {
+        equImgUno = Url.Content("~/Content/Images/general/noPhoto.jpg");
+    }
+    if (equImgDos == null)
+    {
+        equImgDos = Url.Content("~/Content/Images/general/noPhoto.jpg");
+    }
+    string address_Cancha = Model.canchaDireccion.ToString();
+}
+<style>
+    .width150px{
+        width:150px;
+    }
+</style>
+<div id="newMatchForm" class="col-xs-12 col-md-12 col-lg-12 mSpaceMt20 mSpaceMb20" style="margin-top:0">
+    <form id="frmNuevoPartido">
+        @Html.AntiForgeryToken()
+        @Html.Hidden("parId", Model.parId)
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div id="_divTorneoNuevoFiltros" class="col-xs-12 col-xs-offset-0 mSpaceMb20">
+               
+                <div class="row mSpaceMtb5">
+
+                    <div class="col-xs-12 col-sm-6 col-md-6 mSpaceMb5">
+                        <div class="marginForm">
+                            <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                <span class="input-group-addon m-lbl"><strong>Liga:</strong></span>
+                                @Model.ligNombre
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-6 mSpaceMb5">
+                        <div class="marginForm">
+                            <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                <span class="input-group-addon m-lbl"><strong>Torneo:</strong></span>
+                                @Model.torNombre
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mSpaceMtb5">
+                    <div id="ldeMainMap" class="col-xs-12 col-sm-6 col-md-6 mSpaceMb5" style="height:200px;">
+                        @{ViewBag.gMapId = "";}
+                        @Html.Partial("Ligas/_CalendarioCanchaMaps")      
+                        @{
+                            var directionUrl = "";
+                            if (Model.lat != null || Model.lat.ToString() != "" && Model.lng != null || Model.lng.ToString() != "")
+                            {
+                                directionUrl = "http://www.google.com/maps/place/"+Model.lat.ToString()+","+Model.lng.ToString();
+                            }
+                            else
+                            {
+                                directionUrl = "http://maps.google.com/?q="+@Model.canchaDireccion;
+                            }
+                        }
+                        <a class="pull-right" href="@directionUrl" target="_blank">VER MAPA GRANDE</a>
+                        
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 mSpaceMb5">
+                        <div class="marginForm">
+                            <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                <p>
+                                    <strong>Canchas: </strong>@Model.canNombre
+                                </p>
+                                <p>
+                                    <strong>Direccion: </strong>
+                                    <em>@Model.canchaDireccion.ToString()</em>
+                                </p>
+                                <p>
+                                    <strong>
+                                        Arbitro:
+                                    </strong>
+                                    @Model.arbNombre
+                                </p>
+                                <p>
+                                    <strong>
+                                        Inicio:
+                                    </strong>
+                                    @Model.parFecha_Inicio
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+                <div id="dataFormPartido">
+
+                    @if (Model.result == true)
+                    {
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-5 mSpaceMb5">
+                                <div class="marginForm">
+                                    <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                        <span class="input-group-addon m-lbl">Resultado:</span>
+                                        <h4>
+                                            <input type="number" id="resultUno" value="@Model.equResultadoUno" />                                            
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-2 text-center">
+                                <span>
+
+                                </span>
+                            </div>
+                            <div class="col-xs-12 col-sm-5 mSpaceMb5">
+                                <div class="marginForm">
+                                    <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                        <span class="input-group-addon m-lbl">Resultado:</span>
+                                        <h4>
+                                            <input type="number" id="resultDos" value="@Model.equResultadoDos" />                                                                                        
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-5 mSpaceMb5">
+                            <div class="marginForm">
+                                <div class="col-xs-12 col-sm-12 col-md-5">
+                                    <img id="equImgUno" class="img-thumbnail center-block" width="50" height="50" src="@equImgUno" />
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-7">
+                                    <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                       @Model.equNombreEquipoUno
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-2 text-center">
+                            <span>
+                                VS
+                            </span>
+                        </div>
+                                                   
+                        <div class="col-xs-12 col-sm-5 mSpaceMb5">
+                            <div class="marginForm">
+                                <div class="col-xs-12 col-sm-12 col-md-5">
+                                    <img id="equImgUno" class="img-thumbnail center-block" width="50" height="50" src="@equImgDos" />
+
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-7">
+                                    <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                        @Model.equNombreEquipoDos
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                       
+
+                    </div>
+                    <br />
+                    @if (Model.result == true)
+                    {
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 mSpaceMb5">
+                                <div class="marginForm">
+                                    <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+                                        <span class="input-group-addon m-lbl">Notas:</span>
+                                        @Html.TextBoxFor(m => m.parEstado, "", new { @class = "width100", @placeholder = "Notas" })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.parEstado, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-xs-12 mSpaceMb5 table-responsive">
+                                <div id="PlayerValuesTable"> 
+                                    <div class="row" id="divFatherCal" style="height:50px;">
+                                        <div class="col-md-6" style="display: flex; align-items: center;">
+                                            <span style="font-size:1.5em;margin-right:20px;">Resultados!</span>
+                                        </div>
+                                        
+                                        <div class="col-md-6 pull-right" style="display: flex; align-items: center;">
+                                            Agregar Resultado
+                                            <button type="button" id="btnAddPlayerValues" class="btn btn-link" onclick="addRows();">                                                
+                                                <span style="margin-left:20px" class="glyphicon glyphicon-plus"></span>
+                                            </button>
+                                        </div>                                        
+                                    </div>
+                                                
+                                    <div id="trValueData">
+                                        @{
+                                            if (!ViewBag.haveResults)
+                                            {
+                                                var data = new ResultadoPartido();
+                                                data.ddlJugUno = Model.ddlJugUno;
+                                                data.ddlJugDos = Model.ddlJugUno;
+                                                data.equNombreEquipoUno = Model.equNombreEquipoUno;
+                                                data.equNombreEquipoDos = Model.equNombreEquipoDos;
+                                                data.equIdUno = Model.equIdUno;
+                                                data.equIdDos = Model.equIdDos;
+                                                data.Id = Model.Id;
+                                                Html.RenderPartial("Referee/_EquipoJugadorSelect",data);
+                                            }
+                                            else
+                                            {
+                                                <text>
+                                                    <div id="data-match-container" >
+
+                                                    </div>
+
+                                                    <script>
+                                                        setTimeout(
+                                                            updatePerfilPartial()
+                                                        ,500);
+                                                        function updatePerfilPartial(){                                                            
+                                                            $.ajax({
+                                                                url: '/AdminLigas/_ResultadoByPartido',
+                                                                type: "POST",
+                                                                cache: false,
+                                                                data: "parId="+@Model.parId,
+                                                                dataType: "json",
+                                                                success: function (data) {
+                                                                    console.log(data);
+                                                                    $("#data-match-container").html("");
+                                                                    var max = data.length;
+                                                                    if (max>0) {
+                                                                        for (var i = 0; i < max; i++) {
+                                                                            $("#data-match-container").append(data[i]);
+                                                                        }                                                                       
+                                                                    }
+                                                                },
+                                                                complete: function (jqXHR, textStatus) {
+                                                                    showMessages();
+                                                                }, error: function () {
+                                                                    console.log("error");
+                                                                }
+                                                            });
+                                                        }
+                                                    </script>
+                                                </text>
+                                            }
+                                         }
+                                        @{}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    
+                    <div class="row">
+                        <div class="col-xs-12 text-right">
+                            @{
+                                if (Model.result == true)
+                                {
+                                    if (Model.parId != 0)
+                                    {
+                                        <button type="button" class="btn btn-default" onclick="sendData()">Guardar</button>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" class="btn btn-default" onclick="sendData()">Nuevo</button>
+                                    }
+                                    <button type="button" class="btn btn-cancel" data-dismiss="modal" id="btnCancelMatch">Cancelar</button>
+                                }
+                                else
+                                {
+                                    <button type="button" class="btn btn-cancel" data-dismiss="modal" id="btnCancelMatch">Cerrar</button>
+                                }
+
+                            }
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+
+    $(document).ready(function () {
+        $('#divFatherCal').children().height($('#divFatherCal').height());        
+    });
+    var resultUno = $("#resultUno");
+    var resultDos  = $("#resultDos");
+    var equipoUno = @Model.equIdUno;
+    var equipoDos = @Model.equIdDos;
+
+    function updateResultado(gol){
+
+        var scoreTotal1=0,scoreTotal2=0;
+        $("#PlayerValuesTable #trValueData")
+        .find(".row")
+        .each(function(v,k){
+            var team = $(k).find(".selectEquipos").val();
+            var score = $(k).find(".numbersOnly").val();
+
+            if(team==equipoUno)
+                scoreTotal1 += parseInt(score);
+            if(team==equipoDos)
+                scoreTotal2 += parseInt(score);
+        });
+        resultUno.val(String(scoreTotal1))
+        resultDos.val(String(scoreTotal2))
+
+        scoreTotal1=0;scoreTotal2=0;
+
+    }
+
+    function getNumRows() {
+        var rows = $("#PlayerValuesTable #trValueData .row").length;
+    };
+
+    function sendData(){
+        var data = getJsonFormat();
+        var url = "/Referee/updateDetailsEvent";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data,
+            success: function (data) {
+                var msg = '<div id="modal_error" class="alert alert-success alert-dismissible" role="alert">';
+                msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+                msg += '<span aria-hidden="true">&times;</span></button> '+ data +' </div>';
+                $(".m-messageHide").html(msg);
+                showMessages();
+                $("#eventosCalendario").modal("toggle");
+            },
+            error: function (data) {
+                alert("This user cannot be deleted");
+            }
+        });
+    }
+
+    function getJsonFormat(){
+        var team = [],jugId=[],score=[],asis=[],faltas=[],ama=[],roja=[],susp=[];
+        $('#PlayerValuesTable .selectEquipos').each(function () {
+            team.push(this.value);
+        });
+        $('#PlayerValuesTable .selectJugadores').each(function () {
+            jugId.push(this.value);
+        });
+        $('#PlayerValuesTable .goles').each(function () {
+            score.push(this.value);
+        });
+        $('#PlayerValuesTable .asistencias').each(function () {
+            asis.push(this.value);
+        });
+        $('#PlayerValuesTable .faltas').each(function () {
+            faltas.push(this.value);
+        });
+        $('#PlayerValuesTable .amarillas').each(function () {
+            ama.push(this.value);
+        });
+        $('#PlayerValuesTable .roja').each(function () {
+            roja.push(this.value);
+        });
+        $('#PlayerValuesTable .parSuspendido').each(function () {
+            susp.push(this.value);
+        });        
+        
+        var equResultadoUno = parseInt($("#resultUno").val());
+        var equResultadoDos = parseInt($("#resultDos").val());
+        return {
+            parId:@Model.parId,
+            torId:@Model.torId,
+            equipoUno:@Model.equIdUno,
+            equipoDos:@Model.equIdDos,
+            equResultadoUno: parseInt($("#resultUno").val()),
+            equResultadoDos: parseInt($("#resultDos").val()),
+            parEstado: $("#parEstado").val(),
+            team:team,
+            jugIds:jugId,
+            score:score,
+            asis:asis,
+            faltas:faltas,
+            ama:ama,
+            roja:roja,
+            susp:susp
+        }
+    };
+
+    function addRows() {
+        var idArray = [];
+        $('#PlayerValuesTable .selectEquipos').each(function () {
+            var Id = parseInt(this.id.replace(/[^0-9\.]/g, ''), 10);
+            idArray.push(Id);
+        });
+
+        var Id = idArray.pop();
+
+        if(Id==null)
+            Id=0;
+
+        var jugIdArray = [];
+
+        $('#PlayerValuesTable .selectJugadores').each(function () {
+            jugIdArray.push(this.value);
+        });
+
+        var data = { Id:Id,parId:@Model.parId,jugIds:jugIdArray}
+
+        $.ajax({
+            type: "POST",
+            url: "/Referee/addFormDataPlayer",
+            data: data,
+            success: function (data) {
+                var table = $('#PlayerValuesTable #trValueData');
+                var row = ('<div class="row">' + data + '</div>');
+                table.prepend(data);
+            },
+            error: function (data) {
+                alert("Error al agregar Row");
+            }
+        });
+    }
+    jQuery('.numbersOnly').keyup(function () {
+        this.value = this.value.replace(/[^0-9\.]/g, '');
+    });
+
+    function fnEquipoChange(equ,Id) {
+        //var Id = getNumRows();
+        var Id = $(equ).attr("id");
+        Id = parseInt(Id.replace(/[^0-9\.]/g, ''), 10);
+    
+        $.ajax({
+            type: "POST",
+            url: "/Referee/changeEquipo",
+            data: "torId="+@Model.torId+"&equId=" + $(equ).val()+"&Id="+Id,
+            success: function (data) {
+                var findTd = String("#tdJugador"+Id);
+                $("#PlayerValuesTable #trValueData").find(findTd).html(data);
+            },
+            error: function (data) {
+                alert("Error Al cambiar de Equipo");
+            }
+        });
+        console.log($(equ).val());
+    };
+
+    function removeRow(row,id) {
+        var partidoId = @Model.parId;
+        var valorEquipo = $("#equipoSelect"+id).val();
+        var valorJugador = $("#jugadoresSelect"+id).val();
+        var datos = {
+            idJugador: valorJugador,
+            idEquipo: valorEquipo,
+            idPartido: partidoId,
+        }
+        $.ajax({
+            type: "POST",
+            url: "/Referee/EliminarEstadistica",
+            data: datos,
+            success: function (data) {
+                $(row).parents('.row').first().remove();
+            },
+            error: function (data) {
+                alert(data.msg);
+            }
+        });
+    };
+</script>

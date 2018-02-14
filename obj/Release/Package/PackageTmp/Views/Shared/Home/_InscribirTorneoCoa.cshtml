@@ -1,0 +1,98 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model EquiposJugadoresViewModel
+
+@{ 
+    string equImg = Model.equImg;
+    if (equImg != null)
+    {
+        equImg = equImg.Replace("~", "");
+    }
+    else
+    {
+        equImg = Url.Content("~/Content/Images/general/noPhoto.jpg");
+    }
+          
+}
+
+<form id="frmEquipoNuevoEdit">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.equId)
+    @Html.HiddenFor(m => m.equImg)
+    @Html.HiddenFor(m => m.equAdminLigaTorneos)
+    @Html.HiddenFor(m => m.equEstatus)
+    @Html.HiddenFor(m => m.usuAgregarCoadmin)
+
+    <!-- Datos principales del equipo  -->
+    <div id="datosPrincipalEquipo" class="row">
+        
+        @{
+
+            if (ViewBag.ValEquipoExist != false)
+            {
+                if (Model.mostrarDatosEquipo)
+                {
+                    <div class="row">
+                        <div class="col-xs-12 mTitle1 mSpaceMb5">
+                            <span>Informacion del Equipo</span>
+                        </div>
+                    </div>
+    <!-- Imagen / Comentarios / Coadmins -->
+                    <div class='col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center mSpaceMb10'>
+                        <div class='col-xs-12 paddingLRZero'>
+                            <div class="mProfileUploadFileContainer">
+                                <img id="equImgURL" class="mUploadFileImage" data-rel="profileImage" src="@equImg" />
+
+                                <div class="mUploadFileIconContainer">
+                                    <span class="mUploadFileIcon glyphicon glyphicon-camera" data-rel="profileImage"></span>
+                                </div>
+                            </div>
+
+                            <br class="hidden-md hidden-lg" />
+
+                            <input id="equImgURLFile" name="usuFileImage" class="mUploadFile" type='file' accept=".jpg,.jpeg,.png" data-rel="profileImage" data-loadimg="true" />
+                            <button type="submit" data-rel="profileImage" class="mUploadFile">Guardar</button>
+                        </div>
+                    </div>
+                <!-- Datos -->
+                    <div id="_EquipoNuevoEdit_Datos" class='col-xs-12 col-sm-12 col-md-8 col-lg-9'>
+                        @{Html.RenderPartial("Equipos/_NuevoEdit_Datos", Model);}
+                    </div>
+
+                            }
+                <div class="col-xs-12 mTitle1">
+                    <span>Correo:</span>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+
+                    <div class="marginForm">
+                        <div class="input-group width100">
+                          <input type="text" class="width100" name="JugNombre" placeholder="Ingresa tu Correo" value="@ViewBag.UserName"/>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <br />
+                    <div class="marginForm">
+                        <button type="button" class="btn btn-default btnCrearEditarEquipo pull-right" onclick="pagosJugadores();">
+                            <span>Pagar !</span>
+                        </button>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <h1 style="text-align: center;">Sin Equipo Registrado para el Torneo: <strong> @Model.tblTorneo.torNombreTorneo.ToUpper() </strong></h1>
+            }
+        }
+    </div>
+
+</form>
+<script>
+    $(document).ready(function () {
+        $("#equCorreoAdministrador,#equNombre").prop("disabled", true);
+        $("input[name=concepto]").val("Jugador");
+        $("input[name=JugNombre]").focus();
+        $("input[name=JugNombre]").prop("readonly", true);
+    });
+</script>

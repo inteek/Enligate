@@ -1,0 +1,80 @@
+﻿<script>
+    $(document).ready(function () {
+        jsonInitialChart();
+    });
+
+    function jsonInitialChart() {
+        $.ajax({
+            url: '/AdminLigas/_ChartPieLeagueDefualt',
+            type: "POST",
+            cache: false,
+            success: function (data) {
+                initialChart(data)
+            }
+        });
+    }
+
+    function initialChart(jsonData) {
+        console.log(jsonData)
+        var torneos = jsonData.torneos;
+        var partidos = jsonData.partidos;
+        console.log(torneos.length + " torneo " + partidos.length + " partidos")
+        var liga = jsonData.liga;
+        var vPartido = true; var vTorneo = true;
+        if (torneos.length == 0) {
+            torneos = ["Torneo"];
+            vTorneo = false;
+        }
+        if (partidos.length == 0) {
+            partidos = [1];
+            vPartido = false;
+        }
+        if (liga.length == 0) {
+
+        }
+        
+
+        console.log(torneos + " ** " + partidos)
+        var rowData = { rows: [torneos,partidos]};
+        $("#spanNomLiga").text("Liga "+liga);
+        var chart = c3.generate({
+            data: {
+                rows: [
+                  torneos,
+                  partidos
+                ],
+                type:'pie'              
+            },
+            tooltip: {
+                format: {
+                    name: function (name, ratio, id, index) {
+                        var tooltip = "No.  Partidos";
+                        if (!vPartido)
+                            tooltip = "Sin Partidos";
+                        return tooltip;
+                                   
+                    },
+                    value: function (value, ratio, id) {
+                        var val = value;
+                        if (!vPartido)
+                            val = value - 1;
+                        return format(val);                                        
+                    }
+                }
+            },
+            pie: {
+                label: {
+                        format: function (value, ratio, id) {                        
+                            var val = value;
+                            if (!vPartido)
+                                val = value - 1;
+                            return val
+                        }                        
+                    }
+                }
+            
+        });
+    }
+    
+</script>
+<div id="chart"></div>

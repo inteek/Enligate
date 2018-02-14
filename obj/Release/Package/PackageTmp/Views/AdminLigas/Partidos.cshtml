@@ -1,0 +1,495 @@
+﻿@using sw_EnligateWeb.Models;
+@model PartidosViewModel
+<script>
+
+    $(document).ready(function () {
+            $("#dataFormPartido").css("display","none")
+            gvPartidosGrid_PerformCallback();
+           // $('#newMatchForm').hide();
+            $('#titleMatchDiv').text('Crear Partidos:');
+
+            $("#btnCancelMatch").on("click", function () {
+                
+                console.log("Cancel....");
+            });
+            switchButtons();
+        });
+    function nuevoPartido() {
+        var ligId = $("#_PartidoFiltro #ligId").val();
+        var torId = $("#_PartidoFiltro #torId").val()
+        $.ajax({
+            url: '/AdminLigas/_Partidos_Nuevo',
+            type: "POST",
+            cache: false,
+            data: "ligId="+ligId+"&torId="+torId,
+            success: function (data) {
+                //$("#_PartialNuevoEditPartido").empty();
+                $("._PartialNuevoEditPartido").html(data);
+                $(".switchHabilitar").hide();
+                $("#modalNuevoEditPartido").modal({ backdrop: 'static', keyboard: false });
+                $('#titleMatchDiv').text('Crear Partidos:');
+                mUploadFiles();
+                gvPartidosGrid_PerformCallback();
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    }
+        function gvPartidosGrid_PerformCallback(s, e) {
+            if (typeof gvPartidosGrid.InCallback === "function") {
+                if (!gvPartidosGrid.InCallback()) {
+                    gvPartidosGrid.PerformCallback();
+                }
+            }
+        }
+        function showNewMatch() {
+            $("#crearPartido").hide();
+            $('#dataFormPartido').show();
+            $('#PartidoGridView').hide();
+            $("#btnCancelMatch").on("click", function () {
+                closeNewMatch();
+                console.log("Cancel....");
+            });
+        }
+        function closeNewMatch() {
+            $("#crearPartido").show();
+            $('#PartidoGridView').show();
+            $('#dataFormPartido').hide();
+            
+        };
+        function cancelNewMatch() {
+            $('#titleMatch').text('Partidos:');
+            //$('#newMatchForm').hide();
+        }
+        function partidoNuevo_Submit() {
+            var dataForm = $("#modalNuevoEditPartido #frmNuevoPartido").serialize();
+
+            var fechainicio = $("#parFecha_Inicio").val();
+            $.ajax({
+                url: '/AdminTorneos/_Partidos_GuardarNuevo',
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    console.log("success!");
+                    $(".m-messageHide").html(data);
+                    $("#modalNuevoEditPartido").modal('toggle');
+                    gvPartidosGrid_PerformCallback();
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                },
+                error:function(){
+                    alert("Error!");
+                }
+            });
+
+        };    
+        function _PartidosEdit(id) {
+            $.ajax({
+                url: '/AdminLigas/_Partidos_Edit',
+                type: "POST",
+                cache: false,
+                data: "parId=" + id,
+                success: function (data) {
+                    $("._PartialNuevoEditPartido").empty();
+                    $("._PartialNuevoEditPartido").html(data);
+                    $(".switchHabilitar").show();
+                    $("#modalNuevoEditPartido").modal({ backdrop: 'static', keyboard: false });
+                    $('#titleMatchDiv').text('Editar Partido:');
+                    gvPartidosGrid_PerformCallback();
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+        function partidoEditar_Submit(id) {
+            var dataForm = $("#modalNuevoEditPartido #frmNuevoPartido").serialize();
+            var $form = $("#frmNuevoPartido");
+            var empty = $form.find("input").filter(function () {
+                return this.value === "";
+            });
+            $.ajax({
+                url: '/AdminTorneos/_PartidosGridEdit_UpdatePartial',
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    var validate = data;
+                    if (validate == "success") {
+                        var msg = "Se Guardo el Partido Correctamente !!";
+                        messengeSuccess(msg);
+                    } else {
+                        messengeError(validate);
+                    }
+                    $("#modalNuevoEditPartido").modal("toggle");
+                    gvPartidosGrid_PerformCallback();
+                },
+                error: function(){
+                    messengeError("Error en el proceso");
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+        function _PartidosDelete(id) {
+            
+            $.ajax({
+                url: '/AdminTorneos/_PartidosGridEdit_Delete',
+                type: "POST",
+                cache: false,
+                data: "parId=" + id,
+                success: function (data) {
+                    messengeSuccess("Partido Eliminado.");
+                    console.log("success!");
+                    gvPartidosGrid_PerformCallback();
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+
+        function fnPartidos_ChangeLiga(ddlLiga) {
+            var dataForm = "ligId=" + ddlLiga.value + "&datEquipo=" + false + "&datSinTorneos=" + false;
+            $.ajax({
+                url: '/AdminLigas/Partido_ChageLiga',
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    $("#_PartidoFiltro").html(data);
+                    $(".switchHabilitar").hide();
+                    var torId = $("#torId").val();
+                    gvPartidosGrid.PerformCallback();
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        };
+        
+        function fnPartidos_ChangeTorneo() {
+            gvPartidosGrid_PerformCallback();
+        }
+        
+        function fnEquipoNuevo_Filtros_ChangeTorneo(ddlTorneo) {
+            var ligId = $('#_PartidoFiltro #ligId').val();
+            $.ajax({
+                url: '/AdminLigas/GetEvents',
+                type: "POST",
+                cache: false,
+                data: "ligId=" + ligId + "&torId=" + ddlTorneo.value,
+                success: function (data) {
+                    console.log(data);
+                    gvPartidosGrid_PerformCallback();
+                    var torId = $("#torId").val();
+                    var lig = $('#ligId').val(); 
+                },
+                complete: function (jqXHR, textStatus) {
+                    //ModelState.AddModelError(constClass.success, "Se encontraron " + model.Count.ToString() + " resultados.");
+                    showMessages();
+                }
+            });
+        }
+
+        function fnPartidos_Filtros_ChangeLiga(liga) {
+            var ligId = $(liga).val();
+            $.ajax({
+                url: '/AdminLigas/_Change_Liga_Option',
+                type: "POST",
+                cache: false,
+                data: "ligId=" + ligId,
+                success: function (data) {
+                    console.log("success!");
+                    $("._PartialNuevoEditPartido").empty();
+                    $("._PartialNuevoEditPartido").html(data);
+                    $(".switchHabilitar").hide();
+                    
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+        function fnPartidos_Filtros_ChangeTorneo(torneo) {
+            var ligId = $('#_divTorneoNuevoFiltros #ligId').val();
+            var torId = $(torneo).val();
+            $.ajax({
+                url: '/AdminLigas/_Change_Torneo_Option',
+                type: "POST",
+                cache: false,
+                data: "ligId="+ligId+"&torId=" + torId,
+                success: function (data) {
+                    console.log("success!");
+                    $("._PartialNuevoEditPartido").empty();
+                    $("._PartialNuevoEditPartido").html(data);
+                    $(".switchHabilitar").hide();
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+        function fnPartidos_Filtros_ChangeEquipoUno(equIdUno) {
+            var ligId = $('#_divTorneoNuevoFiltros #ligId').val();
+            var torId = $('#_divTorneoNuevoFiltros #torId').val();
+            var equIdDos = $('#equIdDos').val();
+            $.ajax({
+                url: '/AdminLigas/_Change_Equipo_Option',
+                type: "POST",
+                cache: false,
+                data: "ligId="+ligId+"&torId=" + torId+"&equIdUno="+$(equIdUno).val()+"&equIdDos="+equIdDos,
+                success: function (data) {
+                    console.log("success!");
+                    $("._PartialNuevoEditPartido").empty();
+                    $("#modalNuevoEditPartido ._PartialNuevoEditPartido").html(data);
+                    $(".switchHabilitar").hide();
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+        function fnPartidos_Filtros_ChangeEquipoDos(equIdDos) {
+            var ligId = $('#_divTorneoNuevoFiltros #ligId').val();
+            var torId = $('#_divTorneoNuevoFiltros #torId').val();
+            var equIdUno = $('#_divTorneoNuevoFiltros #equIdUno').val();
+            $.ajax({
+                url: '/AdminLigas/_Change_Equipo_Option',
+                type: "POST",
+                cache: false,
+                data: "ligId=" + ligId + "&torId=" + torId +"&equIdUno="+ equIdUno +"&equIdDos=" + $(equIdDos).val(),
+                success: function (data) {
+                    console.log("success!");
+                    $("._PartialNuevoEditPartido").empty();
+                    $("#modalNuevoEditPartido ._PartialNuevoEditPartido").html(data);
+                    $(".switchHabilitar").hide();
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+        function fnGVPartidos_OnBeginCallback(s, e) {
+            e.customArgs['torId'] = $("#torId").val();
+        };
+        
+        function messengeError(getMsg) {
+
+            var msg = '<div id="modal_error" class="alert alert-danger alert-dismissible" role="alert">';
+            msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+            msg += '<span aria-hidden="true">&times;</span></button>' + getMsg + '</div>';
+
+            $(".m-messageHide").html(msg);
+
+            showMessages();
+        }
+
+        function messengeSuccess(getMsg) {
+
+            var msg = '<div id="confirmEmailForm_ModalStateErrors" class="alert alert-success alert-dismissible" role="alert">';
+            msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+            msg += getMsg + '</div>';
+
+            $(".m-messageHide").html(msg);
+
+            showMessages();
+        }
+</script>
+@{
+    Html.EnableUnobtrusiveJavaScript();
+}
+    <div id="ADMINISTRADORDELIGAS_Torneos" class="row">
+        <div id="ADMINISTRADORDELIGAS_Torneos_Partidos" class="col-sm-12"> 
+            <br />
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
+                    <div id="_PartidoFiltro">
+                        @{Html.RenderPartial("Ligas/_FiltroPartidos", Model);}
+                    </div>
+                    <button type="button" class="btn btn-default" onclick="nuevoPartido()" id="crearPartido">Crear Partido</button>
+                </div> 
+            </div>
+            <br />          
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
+                    <div id="PartidoGridView">
+                        @Html.Action("_Partidos_Grid", "AdminLigas")
+                    </div>
+                </div>
+            </div>
+            
+            <br/>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 text-right">
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+<div class="modal fade" id="modalNuevoEditPartido" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom:0px;">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyEventos" style="padding-top:0px;">
+                <div class="container-fluid" style="min-height:150px;">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-11">
+                        <div><h3 id="titleMatchDiv">Crear Partido</h3></div>
+                        <div class="_PartialNuevoEditPartido">
+                            @{Html.RenderPartial("Ligas/_Partidos_Filtros", Model);}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalNuevoCancha" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom:0px;">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBody" style="padding-top:0px;">
+                <div class="container-fluid" style="min-height:150px;">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-11">
+                        <div><h3>Cancha Nueva</h3></div>
+                        <div id="canchasNuevo" class="col-xs-12" style="display:none;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("_Arbitro_ShowModal","AdminLigas")
+<div class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>
+<script>
+
+    $(".edit-delete").hide();
+    function nuevoArbitro() {
+        var ligId = $("#_divTorneoNuevoFiltros #ligId").val();
+        var torId = $("#_divTorneoNuevoFiltros #torId").val();
+
+        /*
+        $.ajax({
+            url: '/AdminLigas/_Arbitro_AgregarModal',
+            type: "POST",
+            cache: false,
+            data: "ligId=" + ligId + "&torId=" + torId,
+            success: function (data) {
+                $("#FiltroLigasTorneos").html("");
+                $("#ArbitrosNuevo").modal({ backdrop: 'static', keyboard: false });
+                $("#btnNewArbitro").on("click", function () {
+
+                });
+
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+        */
+        var liga = $("#_divTorneoNuevoFiltros #ligId").find("option:selected").text();
+        var torneo = $("#_divTorneoNuevoFiltros #torId").find("option:selected").text();
+        var html = "";
+        html += ""
+        html += '<div class="col-xs-12 col-sm-6 col-md-6 mSpaceMb5">';
+        html+="<span>Liga:</span><strong>"+liga+"</strong>"
+        html+='</div>';
+
+        html+='<div class="col-xs-12 col-sm-6 col-md-6 mSpaceMb5">';
+        html += "<span>Torneo:</span><strong>" + torneo+ "</strong>"
+        html += '</div>';
+        html += '<input type="hidden" id="torId" value="' + torId + '">';
+        html += '<input type="hidden" id="ligId" value="' + ligId + '">';
+        $("#FiltroLigasTorneos").html("");
+        $("#FiltroLigasTorneos").html(html);
+        $("#ArbitrosNuevo").modal({ backdrop: 'static', keyboard: false });
+
+    };
+    function nuevoCancha() {
+        var ligId = $("#_divTorneoNuevoFiltros #ligId").val();
+        $.ajax({
+            url: "/AdminTorneos/canchasEditCallback",
+            type: "POST",
+            cache: false,
+            data:"ligId="+ligId,
+            success: function (data) {
+                $("#canchasNuevo").html(data);
+                $('.ldeMap').removeClass('col-md-3');
+                $('#formCanchaInfo').removeClass('col-md-9');
+                $("#modalNuevoCancha").modal({ backdrop: 'static', keyboard: false })
+                $("#canchasNuevo").show();
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    };
+    function fnCancelCancha(){
+        $("#modalNuevoCancha").modal("toggle");
+    };
+    function showGrid() {
+        var cancha = $("#canchaSelect");
+        var ligId = $("#_divTorneoNuevoFiltros #ligId").val();
+        $.ajax({
+            url: '/AdminLigas/_Canchas_Refresh',
+            type: "POST",
+            cache: false,
+            data: "ligId=" + ligId,
+            success: function (data) {
+                cancha.html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+                $("#modalNuevoCancha").modal("toggle");
+            }
+        });
+        console.log("cancha agregada!!");
+    }
+    function fnGVTorneosCanchas_PerformCallback() {
+        console.log("refresh cancha ...");
+    }
+    function refreshFiltro() {
+        var liga = $("#FiltroLigasTorneos #ligId").val();
+        var email = $("#formArbitro #arbCorreo").val();
+        $.ajax({
+            url: '/AdminLigas/_Arbitro_RefreshFiltro',
+            type: "POST",
+            cache: false,
+            data: "ligId=" + liga+"&arbCorreo="+email,
+            success: function (data) {
+                $("#arbitroFiltro").html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    }
+</script>
+
+@section scripts{
+    @{
+        string googleSrc = System.Web.Configuration.WebConfigurationManager.AppSettings["GoogleMapsScript"];
+    }
+    <script src="@googleSrc" async defer></script>
+}

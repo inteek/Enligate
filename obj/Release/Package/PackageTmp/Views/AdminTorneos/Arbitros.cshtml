@@ -1,0 +1,43 @@
+﻿@using sw_EnligateWeb.Models;
+@model ArbitrosViewModel
+@{
+    ViewBag.Title = "Enligate";
+}
+
+<!-- Content -->
+<div id="ADMINISTRADORDETORNEOS_Arbitros" class="row">
+    <div class="col-sm-12">
+        <div class="m-hdc-Gallery">
+            <h1>Arbitros</h1>
+            <div class="row">
+                <div id="gridArbitros" class="col-lg-12">
+                    @Html.Partial("Torneos/_Arbitros")
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-12 text-right">
+                        <button type="button" class="btn btn-default" onclick="nuevoArbitro();">Nuevo</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<!--MODAL EVENTS-->
+@Html.Partial("Ligas/_ArbitrosModal")
+
+<script>
+    function nuevoArbitro() {
+        $(".edit-delete").css('display', 'none');
+        $(".newArbitro").css('display', '');
+        $("#arbId").val("0");
+        $("#titutloArbitroModal").text("Invitar Nuevo Arbitro");
+        $("#ArbitrosNuevo #arbCorreo").val("");
+        $("#ArbitrosNuevo #arbNombre").val("");
+        $("#ArbitrosNuevo").modal();
+    }
+    function refreshFiltro() {
+        fnGVTorneosArbitros_PerformCallback();
+    }
+</script>

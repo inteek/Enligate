@@ -417,3 +417,9 @@
 ****** 18/01/2018 09:41:56 a. m. admin2@sone.mx ::1 Success
 ****** 18/01/2018 04:07:55 p. m. admin2@sone.mx ::1 Success
 ****** 18/01/2018 04:56:21 p. m. admin2@sone.mx ::1 Success
+****** 09/02/2018 09:00:03 a. m. alfredo.almazaarr@gmail.com ::1 Success
+****** 09/02/2018 10:25:10 a. m. alfredo.almazaarr@gmail.com ::1 Success
+****** 09/02/2018 10:29:04 a. m. alfredo.almazaarr@gmail.com ::1 Success
+****** 09/02/2018 10:45:06 a. m. ronny@sonetworks.no ::1 Success
+****** 09/02/2018 11:00:43 a. m. admin2@sone.mx ::1 Failure
+****** 09/02/2018 11:01:05 a. m. admin2@sone.mx ::1 Success

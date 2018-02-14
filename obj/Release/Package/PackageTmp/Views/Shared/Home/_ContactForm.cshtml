@@ -1,0 +1,28 @@
+﻿@using sw_EnligateWeb.Models;
+@model ContactViewModel
+
+
+@Html.AntiForgeryToken()
+
+<div class="col-xs-12 col-sm-offset-1 col-sm-10 mSpaceMb10">
+    @Html.TextBoxFor(m => m.conNombre, new { @class = "titlePlaceholder width100", placeholder = "Nombre" })
+    @Html.ValidationMessageFor(m => m.conNombre, "", new { @class = "text-danger" })
+</div>
+<div class="col-xs-12 col-sm-offset-1 col-sm-10 mSpaceMb10">
+    @Html.TextBoxFor(m => m.conEmail, new { @class = "titlePlaceholder width100", placeholder = "E-mail" })
+    @Html.ValidationMessageFor(m => m.conEmail, "", new { @class = "text-danger" })
+</div>
+<div class="col-xs-12 col-sm-offset-1 col-sm-10 mSpaceMb10">
+    @Html.TextAreaFor(m => m.conDescripcion, new { @class = "width100", placeholder = "Escribe tus comentarios o preguntas" })
+    @Html.ValidationMessageFor(m => m.conDescripcion, "", new { @class = "text-danger", rows = "4" })
+</div>
+<div class="col-xs-12 col-sm-offset-1 col-sm-10 text-right mSpaceMt10">
+    <button type="submit" class="btn btn-default">
+        MANDAR
+    </button>
+</div>
+
+<div class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>
+                    

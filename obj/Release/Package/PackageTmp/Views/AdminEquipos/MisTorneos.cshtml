@@ -1,0 +1,147 @@
+﻿
+@using sw_EnligateWeb.Models;
+
+@{
+    ViewBag.Title = "Dashboard";
+
+    var ddlFiltroEstatusTorneo = new List<SelectListItem>();
+    ddlFiltroEstatusTorneo.Add(new SelectListItem { Text = "TORNEOS ACTIVOS", Value = "0" });
+    ddlFiltroEstatusTorneo.Add(new SelectListItem { Text = "TORNEOS INACTIVOS", Value = "2" });
+    ddlFiltroEstatusTorneo.Add(new SelectListItem { Text = "TORNEOS FINALIZADOS", Value = "1" });
+
+}
+<script>
+    var torFiltro = 0;
+    var deporte = "";
+    $(document).ready(function () {
+        fnGVTorneos_PerformCallback();
+    });
+
+    function fnGVTorneos_PerformCallback(s, e) {
+        if (typeof gvTorneos.InCallback === "function") {
+            gvTorneos.PerformCallback();
+        }
+    }
+
+    function fnGVTorneos_OnBeginCallback(s, e) {
+        var estatus = $("#ddlFiltroEstatusTorneo");
+        e.customArgs['torFiltroEstatus'] = estatus.val();
+        e.customArgs['admin']=false;
+    }
+    function getEquipoCoaching(torId) {
+        $.ajax({
+            url: '/AdminEquipos/getTeamCoaching',
+            type: "POST",
+            cache: false,
+            data: "torId=" + torId,
+            success: function (data) {
+                console.log(data);  
+                $.each(data, function (index, value) {
+                    $("#teamsCoaching").append("<p>"+value+"</p>")
+                });
+            },
+            error: function () {
+                alert("Error");
+            }
+        });
+    }
+    function fnGVTorneos_Details(torId){
+        //alert("Estadisticas: "+torId);
+        $("#TorneoId").val(torId);
+        //$("#frmTorneoEst").submit();
+        $.ajax({
+            url: '/Admin/TorneoEstadisticas',
+            type: "POST",
+            cache: false,
+            data: "Id="+torId,
+            success: function (data) {
+                $("#divTorneoContainerGrid").hide();
+                $("#divTorneoEstadisticas").empty();
+                $("#divTorneoEstadisticas").append(data);
+                $("#divTorneosDetail").show();
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+                disableAllForm();
+                getEquipoCoaching(torId)
+            },
+            error: function (){
+                alert("Error");
+            }
+        });
+    }
+    function fnTorneosCloseDetail(){
+        $("#divTorneoContainerGrid").show();
+        //$("#divTorneoEstadisticas").append(data);
+        $("#divTorneosDetail").hide();
+    }
+
+    var gvTC_tipoGrid = 1;
+    var gvTC_ligId = 0;
+    var gvTC_tokenLiga = "";
+    var gvTC_torId = 0;
+    var gvTC_tokenTorneo = "";
+</script>
+<!-- Content -->
+<div id="ADMINISTRADORDEEQUIPO_Dashboard" class="row">
+    <div id="ADMINISTRADORDEEQUIPO_Dashboard_MisTorneos" class="col-sm-12">
+        <div id="divTorneoContainerGrid">
+            <h2>Torneos en los que Participo</h2>
+            <div class="col-xs-12 col-md-12 col-lg-12 ">
+                <div id="divTorneosGrid" class="col-xs-12">
+                    <div class="col-xs-12 paddingLZero mSpaceMb10">
+                        <table border="0" style="margin: auto; margin-right:0;">
+                            <tr>
+                                <td>
+                                    MOSTRAR
+                                    @Html.DropDownList("ddlFiltroEstatusTorneo", ddlFiltroEstatusTorneo, new { @class = "", onchange = "fnGVTorneos_PerformCallback();" })
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-xs-12 paddingLZero">
+                        @Html.Action("TorneosGrid", "AdminTorneos", new { tipoGrid = 0 })
+                    </div>
+
+                </div>
+                <form id="frmTorneoEst" action="@Url.Action("TorneoEstadisticas", "Admin")" method="get" style="display:none;">
+                    <input type="hidden" id="TorneoId" name="Id" />
+                </form>
+
+            </div>
+        </div>
+        <div id="divTorneosDetail" class="col-xs-12" style="display:none;">
+            <div class="col-xs-12">
+                <button type="button" class="btn btn-link mLink2" onclick="fnTorneosCloseDetail()">
+                    Regresar a la lista de torneos
+                </button>
+            </div>
+            <div class="col-xs-12">
+                <div class="col-xs-12">
+                    <div class="input-group m-input-groupLbl-XS width100">
+                        <span class="input-group-addon m-lbl" style="padding-left: 0 !important;">
+                            <label class="mTitle1">Equipos Coaching:</label>
+                        </span>
+                        <span style="font-size:2em;" id="teamsCoaching"> </span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div id="divTorneoEstadisticas" class="row mSpaceMt20">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".divTorneoNotify").hide();
+        });
+
+    </script>
+}
+
+

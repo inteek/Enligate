@@ -1,0 +1,175 @@
+﻿@using sw_EnligateWeb.Models;
+@model LeaguesActiveDetailViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    ViewBag.Title = "Liga";
+}
+
+<script type="text/javascript">
+
+    var ligId = @Model.ligLiga.ligId;
+    var ligKey = "@Model.ligLiga.ligCreator";
+    var torFiltro = 0;
+    var deporte = "@ViewBag.Deporte";
+    var tipoTorneo = @ViewBag.tipoTorneoFiltro;
+    $(document).ready(function () {
+        fnGVTorneos_PerformCallback();
+        @if (ViewBag.errorHomeLiga != null)
+        {
+            <text>
+                messengeInfo('@ViewBag.errorHomeLiga');
+            </text>
+        }        
+    });
+
+    function fnshowDetails(){
+        var divLiga=$("#ligaTorneoInfo");
+        var divTorneo = $("#torneoShowInfo");
+        divLiga.show();
+        divTorneo.hide();
+    }
+    function fnGVTorneos_PerformCallback(s, e) {
+        if (typeof gvTorneos.InCallback === "function") {
+            gvTorneos.PerformCallback();
+            //if (!gvTorneos.InCallback()){
+            //}
+        }
+    }
+   
+    function fnGVTorneos_OnBeginCallback(s, e) {
+        e.customArgs['ligId'] = ligId;
+        e.customArgs['ligKey'] = ligKey;
+        e.customArgs['torFiltroEstatus'] = torFiltro;
+        e.customArgs['deporte'] = deporte;
+        e.customArgs['tipoTorneo'] = tipoTorneo;
+    }
+
+    function fnGVTorneos_Equipos(Id, token){
+        $(".loginHidReturnUrl").val();
+        newTeam(Id);
+        /*
+        $.ajax({
+            url: '/AdminTorneos/VerifySuscribeTournament',
+            type: "POST",
+            cache: false,
+            data: "torId=" + Id,
+            success: function (data) {
+                console.log(data+" - ")
+                if (data.booSuccess) {
+                    newTeam(Id);
+                } else if (!data.booHasErrMessagePartialView) {
+                    $(".m-messageHide").html(data.strPartialViewString)
+                    setTimeout(function () {
+
+                        var returnUrl = "/Home/Liga?id=" + ligId + "&deporte=" + deporte + "&tipoTorneo=" + tipoTorneo;
+                        $(".loginHidReturnUrl").val(returnUrl);
+
+                        $("#modalLogin").modal();
+                    }, 3000);
+                } else {
+                    $(".m-messageHide").html(data.strPartialViewString)
+                }
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            },
+            error: function (xhr, status, p3, p4) {    
+            }
+        });
+        */
+
+    }
+    function fnGVTorneos_Details(Id, token){
+        location.href='/Home/TorneoDetails/'+Id;
+    }
+    function newTeam(torId){
+        location.href='/?Id=""&ReturnUrl=/Home/InscribirEquag?torId='+torId;
+        //location.href='/Home/InscribirEquag?torId='+torId;
+    };
+
+    function fnGVTorneos_Comentarios(Id, token) {
+        alert("Muestra los comentarios");
+    }
+
+    function fnGVTorneos_Estadisticas(Id, token) {
+        alert("Muestra las estadísticas");
+    }
+
+    function fnGVTorneos_Editar(Id, token) {
+    }
+    function gvEquiposGrid_PerformCallback(s, e) {
+        if (typeof gvEquiposGrid.InCallback === "function") {
+            if (!gvEquiposGrid.InCallback()) {
+                gvEquiposGrid.PerformCallback();
+            }
+        }
+    }
+
+</script>
+
+<!-- Logo and Balls-->
+@Html.Partial("_LogoBalls")
+
+<!-- Content -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-offset-1">
+
+            <div id="ligaTorneoInfo" class="col-xs-12 col-md-12 col-lg-12 mSpaceMt20 mSpaceMb20">
+                <div class="col-xs-12">
+                    <div id="divLeaguesDetailPartial" class="row mSpaceMt20">
+                        @Html.Partial("Ligas/_LeaguesDetail", Model)
+                    </div>
+                </div>
+
+                <!-- Grid de torneos de la liga -->
+                <form id="frmLigaPrincipalTorneoEdit" action="@Url.Action("torneos", "AdminLigas" )" method="post" style="display:none;">
+                    <input type="hidden" id="lpTorneoEditId" name="id" />
+                    <input type="hidden" id="lpTorneoEditToken" name="token" />
+                </form>
+                <div class="col-xs-12 mSpaceMb20 mSpaceMt20">
+                    <div class="hgRowTitle">
+                        TORNEOS DE LA LIGA
+                    </div>
+                    <div class="col-xs-12 paddingLZero">
+                        <div class="col-xs-12 paddingLZero">
+                            @Html.Action("TorneosGrid", "AdminTorneos", new { tipoGrid = 2 })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="torneoShowInfo" class="row" style="display:none;">
+                <div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-10">
+                    <div class="col-xs-12">
+                        <button type="button" class="btn btn-link mLink2" onclick="fnshowDetails()">
+                            Regresar a la lista de Torneos
+                        </button>
+                    </div>
+                    <div>
+                        <fieldset id="frmAddLeagueRequest">
+                            <div id="divTorneoShow" class="col-xs-12">
+
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section head{
+    <link href="~/Content/pgwslideshow.css" rel="stylesheet" />
+    <link href="~/Content/pgwslideshow_light.css" rel="stylesheet" />
+}
+
+@section scripts{
+    @{
+        string googleSrc = System.Web.Configuration.WebConfigurationManager.AppSettings["GoogleMapsScript"];
+    }
+
+    <script src="~/Scripts/pgwslideshow.js"></script>
+    <script src="@googleSrc" async defer></script>
+}

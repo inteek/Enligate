@@ -1,0 +1,819 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model TorneosViewModel
+
+@{
+    string img = Model.torImgUrl;
+    if (img != null)
+    {
+        img = "/" + img.Replace(Server.MapPath("~"), "").Replace("\\", "/");
+    }
+    else
+    {
+        img = Url.Content("~/Content/Images/general/noPhoto.jpg");
+    }
+
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+    string cssInterno = "";
+    string cssCoach = "";
+    if (Model.torId == 0)
+    {
+        cssInterno = "hidden";
+        cssCoach = "hidden";
+    } else if (Model.torTipo == constClass.torTipoCoaching)
+    {
+        cssInterno = "hidden";
+        cssCoach = "";
+    } else
+    {
+        cssInterno = "";
+        cssCoach = "hidden";
+    }
+    bool hasCoachingTeam = ViewBag.haveCoachingTeam;
+}
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        torneoNuevo_BeginForm();
+        $("#torPrecioTorneo").attr("readonly",true);
+        $("#torDiasParaPago").attr("readonly",true);
+
+        var private = "@Model.torPrivate.ToString()";
+
+        if (private == "False") {
+            $("#spanPrivate").html("Publico")
+        } else {
+            $("#spanPrivate").html("Privado")
+        }
+       
+    });
+
+    function torneoNuevo_BeginForm() {
+        switchButtons();
+
+        setTimeout(function(){
+            if (@Model.torId == 0) {
+                var btnTipo = $("button[data-relClass='torTipo']");
+                var btnPrivate = $("button[data-relClass='torPrivate']");
+                btnTipo.removeClass('swActive');
+                btnPrivate.removeClass('swActive');
+                $("#torTipo").val("");
+                $("#torPrivate").val("");
+                $("#spanPrivate").html("");
+                $('#divSwFather').children().height($('#divSwFather').height());
+            }else{
+                $(".swTipoTorneoDiv").hide();
+            }
+        },100);
+    }
+    function torneoNuevo_swHabilitado(input){
+        console.log(input)
+        var span = $("#spanHabilitado");
+        if (input.value == "True") {
+            span.removeClass("text-danger");
+            span.addClass("text-success");
+            span.text("Torneo Habilitado")
+        }
+        else {
+            span.addClass("text-danger");
+            span.removeClass("text-success");
+            span.text("Torneo Deshabilitado");
+        }
+    }
+
+    function torneoNuevo_swPrivate(input) {
+        console.log(input)
+        var span = $("#spanPrivate");
+        if (input.value == "True") {
+            span.removeClass("text-success");
+            span.addClass("text-success");
+            span.text("Privado")
+        }
+        else {
+            span.addClass("text-danger");
+            span.removeClass("text-danger");
+            span.text("Publico");
+        }
+
+    }
+
+    function torneoNuevo_swComentario(input){
+        console.log(input)
+        var span = $("#spanComentarios");
+        if (input.value == "True") {
+            span.removeClass("text-danger");
+            span.addClass("text-success");
+            span.text("Comentarios")
+        }
+        else {
+            span.addClass("text-danger");
+            span.removeClass("text-success");
+            span.text("Sin Comentarios");
+        }
+    }
+
+    function torneoNuevo_TipoTorneoOnChange(input) {
+        var dataForm = $("#frmTorneoNuevoEdit").serialize();
+        $.ajax({
+            url: '/AdminTorneos/_TorneoNuevoEdit_ChangeTipo',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                $("#_TorneoNuevoEdit_Datos").html(data.datosPartial);
+                if (input.value == "INTERNO")
+                    $("#_TorneoNuevoEdit_Estructura").html(data.estructuraPartial);
+                $("#_TorneoNuevoEdit_Contacto").html(data.contactoPartial);
+                $("#_TorneoNuevoEdit_Pagos").html(data.pagosPartial);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+
+        var spanInterno = $(".spanTorneoNuevoEdit_TipoInterno");
+        var spanCoach = $(".spanTorneoNuevoEdit_TipoCoaching");
+        if (input.value == "INTERNO") {
+            spanInterno.removeClass("hidden");
+            spanCoach.addClass("hidden");
+            $("#_TorneoNuevoEdit_Estructura").show();
+        }
+        else {
+            $("#_TorneoNuevoEdit_Estructura").hide();
+            spanInterno.addClass("hidden");
+            spanCoach.removeClass("hidden");
+        }
+    }
+
+    function torneoNuevo_LigaOnChange() {
+        var dataForm = $("#frmTorneoNuevoEdit").serialize();
+        $.ajax({
+            url: '/AdminTorneos/_TorneoNuevoEdit_ChangeLiga',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                $("#_TorneoNuevoEdit_Datos").html(data.datosPartial);
+                $("#_TorneoNuevoEdit_Estructura").html(data.estructuraPartial);
+                $("#_TorneoNuevoEdit_Contacto").html(data.contactoPartial);
+                $("#_TorneoNuevoEdit_Pagos").html(data.pagosPartial);
+                if ($("#lctId").select().val()==null) {
+                    console.log("change: null");
+                   // $("#btnTorneo").prop("disabled","true")
+                    var msg="Favor de Agregar una categoria";
+
+                    $(".field-validation-valid").each(function(){
+                        x = $(this).data('valmsg-for');
+                        if(x=="lctId")
+                            $(this).text(msg)
+                    });
+                }else{
+                    console.log("change: true");
+                    //$("#btnTorneo").prop("disabled","")
+                    var msg="Favor de Agregar una categoria";
+
+                    $(".field-validation-valid").each(function(){
+                        x = $(this).data('valmsg-for');
+                        if(x=="lctId")
+                            $(this).text()
+                    });
+                }
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    }
+
+    function torneoNuevo_LigaCategoriaOnChange() {
+        var dataForm = $("#frmTorneoNuevoEdit").serialize();
+        $.ajax({
+            url: '/AdminTorneos/_TorneoNuevoEdit_ChangeLigaCategoria',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                $("#_TorneoNuevoEdit_Datos").html(data.datosPartial);
+                $("#_TorneoNuevoEdit_Estructura").html(data.estructuraPartial);
+                $("#_TorneoNuevoEdit_Contacto").html(data.contactoPartial);
+                //$("#_TorneoNuevoEdit_Pagos").html(data.pagosPartial);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    }
+
+    function torneoNuevo_PagosPrecioOnChange() {
+        var dataForm = $("#frmTorneoNuevoEdit").serialize();
+        $.ajax({
+            url: '/AdminTorneos/_TorneoNuevoEdit_ChangePagoPrecio',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                $("#_TorneoNuevoEdit_Pagos").html(data.pagosPartial);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    }
+
+    function torneoNuevo_PagosTipoOnChange() {
+        var dataForm = $("#frmTorneoNuevoEdit").serialize();
+        $.ajax({
+            url: '/AdminTorneos/_TorneoNuevoEdit_ChangePagoTipo',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                $("#_TorneoNuevoEdit_Pagos").html(data.pagosPartial);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    }
+
+    $(".btn_submit_torneo").on('click',function(){
+
+
+    });
+
+    function torneoNuevo_Submit() {
+        //alert("click");
+//        messengeInfo("Espere a que los cambios sean guardados");
+       
+        if ($("#torNombreTorneo").val() != "") {
+             $.ajax({
+                 url: '/AdminTorneos/VerifyTournamentName',
+                type: "POST",
+                cache: false,
+                data: "torId=" + $("#torId").val() + "&ligId=" + $("#ligId").val() + "&torName=" + $("#torNombreTorneo").val(),
+                success: function (data) {
+                    if (data.booSuccess) {
+                        ValidityTournamentSubmit();
+                    } else if (!data.booSuccess) {
+                        $(".m-messageHide").html(data.strPartialViewString)
+                    } else if (!data.booHasErrMessagePartialView) {
+                        $(".m-messageHide").html(data.strPartialViewString)
+                    }
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                },
+                error: function (xhr, status, p3, p4) {
+                    alert("Hubo un error ...");
+                }
+            });
+        } else {
+            messengeInfo("Favor de Agrega un Nombre al Torneo");
+        }
+
+    }
+
+    function ValidityTournamentSubmit() {
+         function dateParse(dateS){
+            var parts = dateS.split("/");
+            return new Date(parts[2], parts[1] - 1, parts[0]);
+        }
+
+        function msgError(mensaje){
+            var msg = '<div id="modal_error" class="alert alert-danger alert-dismissible" role="alert">';
+            msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+            msg += '<span aria-hidden="true">&times;</span></button>' + mensaje + '</div>';
+
+            $(".m-messageHide").html(msg);
+
+            showMessages();
+        }
+        var ini = $("#torFechaInicio_I").val();
+        var fin = $("#torFechaTermino_I").val();
+        var limit = $("#torFechaLimiteInscripcion_I").val();
+
+        var i = dateParse(ini);
+        var f = dateParse(fin);
+        var l = dateParse(limit);
+
+        var torTipo = $("#torTipo").val();
+        var torPrivate = $("#torPrivate").val();
+
+
+        if(i>f){
+            var msgAux = "Menor";
+            var mensaje = "La Fecha de Termino en "+msgAux+" a Fecha de Inicio !";
+            msgError(mensaje);
+        } else if (l > f) {
+            msgError("La Fecha de Limite de Inscripcion No puede ser Mayor a La Fecha de Termino !");
+        } else if (torTipo == "") {
+            msgError("Favor De Seleccionar el Tipo De Torneo !");
+        } else if (torPrivate == "") {
+            msgError("Favor De Seleccionar si quiere el Torneo como Publico ó Privado !");
+        }
+        else{
+
+            var $form = $("#frmTorneoNuevoEdit");
+
+
+            $form.find(".spanError").remove();
+            var coaching = $("#torTipo").val();
+            console.log(coaching)
+            if (coaching == "INTERNO") {
+                $form
+                .find("input")
+                .each(function (v, k) {
+                    var input = $(k);
+                    if (input.val() == "") {
+                        var error = '<span class="bg-danger spanError">';
+                        error += 'Campo Requerido';
+                        error += '</span>';
+                        if (input.attr("name") == "torFechaLimiteInscripcion") {
+                            input.parent().parent().parent().parent().parent().parent().parent().append(error);
+                        }
+                        if (input.attr("id") == "torFechaTermino_I") {
+                            input.parent().parent().parent().parent().parent().parent().parent().append(error);
+                        } else if(input.attr("name") != "torNumeroJuegos" && input.attr("name") != "torFechaLimiteInscripcion" && input.attr("name") != "torFechaTermino" && input.attr("id") != "lreImgUrlFile"  && input.attr("id") != "torImgUrl") {
+                            input.parent().append(error);
+                        }
+                    }
+                });
+                var $form = $("#frmTorneoNuevoEdit");
+
+                var empty = $form.find("input").filter(function () {
+                    return this.value === "";
+                });
+
+                var array = [];
+                for (var i = 0; i < empty.length; i++) {
+                    if (empty[i].id !="lreImgUrlFile") {
+                        array.push(empty[i]);
+                    }
+                }
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i].id == "torNumeroJuegos") {
+                        array.splice(i,1);
+                    }
+                }
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i].id == "torImgUrl") {
+                        array.splice(i,1);
+                    }
+                }
+
+
+
+                console.log(array)
+                if (!array.length) {
+                    submitTorneoNuevoEdit($form)
+                }
+            }else{
+                var $form = $("#frmTorneoNuevoEdit");
+                var totalJugadores = $("#torMaxJugadoresEquipo");
+                var team = $("#teamName")
+                var valueTeam = "@hasCoachingTeam"=="True"?true:false;
+                console.log("team coaching 1"+valueTeam);
+                if (valueTeam && totalJugadores.val()!= "" && $("#torNombreTorneo").val() != "") {
+                    submitTorneoNuevoEdit($form)
+                    console.log("team coaching");
+                }else{
+                    if (totalJugadores.val()!= "" && $("#torNombreTorneo").val() != "" && team.val()!="") {
+                        submitTorneoNuevoEdit($form)
+                        console.log("team coaching 2");
+                    } else {
+                        var error = '<span class="bg-danger spanError">';
+                        error += 'Campo Requerido';
+                        error += '</span>';
+
+                        if(!valueTeam ) {
+                            if (team.val()=="") {
+                                msgError("Favor de Agregar un Equipo");
+                                team.parent().append(error);
+                                team.focus();
+                            }
+
+                        }
+
+                        if(totalJugadores.val() == "" ){
+                            totalJugadores.parent().append(error);
+                            totalJugadores.focus();
+                        }
+                        if ($("#torNombreTorneo").val() == "") {
+                            $("#torNombreTorneo").parent().append(error);
+                            $("#torNombreTorneo").focus();
+                        }
+                        if ($("#torFechaLimiteInscripcion_I").val() =="") {
+                            $("#torFechaLimiteInscripcion_I").parent().parent().parent().parent().parent().append(error);
+                            $("#torFechaLimiteInscripcion_I").focus();
+                        }
+
+                    }
+                }
+                console.log("coaching");
+            }
+
+            function submitTorneoNuevoEdit(form){
+                form.submit(function (event) {
+                    //disable the default form submission
+                    event.preventDefault();
+                    //grab all form data
+                    var formData = new FormData($(this)[0]);
+                    console.log(formData);
+                    $.ajax({
+
+                        url: "/AdminTorneos/_TorneoNuevoEdit_GuardarNuevo",
+                        type: 'POST',
+                        data: formData,
+                        async: false,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function (data) {
+                            $("#divTorneoNuevoEdit").html(data);
+                          //  alert("success")
+                        },
+                        complete: function (jqXHR, textStatus) {
+                            showMessages();
+                        },
+                        error: function (xhr, status, p3, p4) {
+                            alert("Hubo un error, intenta nuevamente");
+                        }
+                    });
+                    return false;
+                });
+                form.submit();
+            }
+        }
+    }
+
+    function fnMostrarCoAdministradores() {
+        $("#modalTorneoCoadministradores").modal({ backdrop: false });
+        fnGVTorneoCoadministradores_PerformCallback();
+    }
+
+    function fnGVTorneoCoadministradores_PerformCallback(s, e) {
+        if (typeof gvTorneoCoadministradores.InCallback === "function"){
+            if (!gvTorneoCoadministradores.InCallback())
+                gvTorneoCoadministradores.PerformCallback();
+        }
+    }
+
+    function fnGVTorneoCoadministradores_OnBeginCallback(s, e) {
+        e.customArgs['torId'] = @{<text>@Model.torId</text>};
+    }
+
+    /*function fnGVTorneoCoadministradores_OnEndCallback(s, e) {
+        if (s.cpPerformCallback) {
+            fnGVTorneoCoadministradores_PerformCallback();
+            delete s.cpPerformCallback;
+        }
+    }*/
+
+   
+
+</script>
+
+<form id="frmTorneoNuevoEdit">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.torId)
+    @Html.HiddenFor(m => m.torImgUrl)
+
+    <!-- Datos principales del torneo  -->
+    <div class="row">
+
+        <!-- Tipo del torneo -->
+        <div class="col-xs-12 col-sm-11 col-md-12 col-lg-12 mSpaceMt5 mSpaceMb5 paddingLRZero-XS">
+            <div class="marginForm">
+                <div id="divSwFather" class="row">
+                    <div class="swTipoTorneoDiv col-xs-12 col-md-9">
+                        <span class="" style="padding-left: 0 !important;">
+                            <label class="mTitle1">Tipo del Torneo:</label>
+                        </span>
+                        <button type="button" class="mSwitchBtns mSwitchBtnsLeft" data-val="@constClass.torTipoInterno" data-relclass="torTipo">
+                            @constClass.torTipoInterno
+                        </button>
+                        <button type="button" class="mSwitchBtns mSwitchBtnsRight" data-val="@constClass.torTipoCoaching" data-relclass="torTipo">
+                            @constClass.torTipoCoaching
+                        </button>
+                        
+
+                        @Html.HiddenFor(m => m.torTipo, new
+                           {
+                               data_relclass = "torTipo",
+                               data_defaultVal = Model.torTipo,
+                               onchange = "torneoNuevo_TipoTorneoOnChange(this)"
+                           })
+                    </div>
+                    
+                    
+                    <div class='col-xs-12 col-md-3 switchHabilitar' style="display: flex; align-items: center;">
+                            <button type="button" class="mSwitchBtns mSwitchBtnsLeft" data-val="True" data-relclass="torHabilitado" style="padding: 2px;">On</button>
+                            <button type="button" class="mSwitchBtns mSwitchBtnsRight" data-val="False" data-relclass="torHabilitado" style="padding: 2px;">Off</button>
+                            @Html.HiddenFor(m => m.torEstatus, new
+                            {
+                                data_relclass = "torHabilitado",
+                                data_defaultVal = Model.torEstatus.ToString(),
+                                onchange = "torneoNuevo_swHabilitado(this)"
+                            })
+                            <span id="spanHabilitado" class="text text-success" style="margin-left:20px;font-weight:bold;">Torneo Habilitado</span>
+                    </div>      
+                    
+                    
+                </div>
+                
+
+            </div>
+            
+        </div>
+        <div class="clearfix"></div>
+        <div class='col-xs-12 col-md-8 switchPrivate' style="display: flex; align-items: center;">
+            <button type="button" class="mSwitchBtns mSwitchBtnsLeft" data-val="False" data-relclass="torPrivate" style="width:100px;padding: 2px;">PUBLICO</button>
+            <button type="button" class="mSwitchBtns mSwitchBtnsRight" data-val="True" data-relclass="torPrivate" style="width:100px;padding: 2px;">PRIVADO</button>
+            @Html.HiddenFor(m => m.torPrivate, new
+               {
+                   data_relclass = "torPrivate",
+                   data_defaultVal = Model.torPrivate.ToString(),
+                   onchange = "torneoNuevo_swPrivate(this)"
+               })
+            <span id="spanPrivate" class="text text-success" style="margin-left:20px;font-weight:bold;">Publico</span>
+        </div>
+
+        <div class='col-xs-12 col-md-4 mSpaceMb20'>
+            <div class=''>
+               
+                <div class="text-right pull-right" id="divButtonGuardarEditarTorneo">
+                    <button type="button" id="btnTorneo" class="btn btn-default btn_submit_torneo" onclick="torneoNuevo_Submit();">
+                        @{
+                            if (Model.torId > 0)
+                            {
+                                // Actualizacion del torneo
+                                <span>Guardar</span>
+                            }
+                            else
+                            {
+                                <span>Crear torneo</span>
+                            }
+                        }
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+        <span class="spanTorneoNuevoEdit_TipoInterno @cssInterno">Descripcion del tipo de torneo interno</span>
+        <span class="spanTorneoNuevoEdit_TipoCoaching @cssCoach">Descripcion del tipo de torneo coaching</span>
+        <!-- Datos del torneo -->
+        <div class="col-xs-12">
+            <span class="mTitle1 mSpaceMb5">Datos del Torneo:</span><span style="margin-left:20px;font-size:1.5em;font-weight: 200;" class="text text-success">Oferta de lanzamiento, gratis 3 meses!</span>
+        </div>
+        <!-- Imagen / Comentarios / Coadmins -->
+        <div class='col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center mSpaceMb10'>
+            <div class='col-xs-12 paddingLRZero'>
+                <div class="mProfileUploadFileContainer">
+                    <img id="lreImgUrl" class="mUploadFileImage" data-rel="leagueImage" src="@img" />
+
+                    <div class="mUploadFileIconContainer">
+                        <span class="mUploadFileIcon glyphicon glyphicon-camera" data-rel="leagueImage"></span>
+                    </div>
+                </div>
+
+                <input id="lreImgUrlFile" name="lreImgUrlFile" type='file' accept=".jpg,.jpeg,.png" class="mUploadFile" data-rel="leagueImage" data-loadimg="true" />
+                <button type="submit" data-rel="leagueImage" class="mUploadFile">Guardar</button>
+            </div>
+
+            <div class='col-xs-12 col-xs-push-0 col-sm-6 col-sm-push-6 col-md-12 col-md-push-0 m-TorneosComentariosOnOff paddingLRZero mSpaceMt10 text-right-XS text-right-SM'>
+                <div class='col-xs-12 col-sm-12 paddingLRZero'>
+                    <button type="button" class="mSwitchBtns mSwitchBtnsLeft" data-val="True" data-relclass="torComentarios" style="padding: 2px;">On</button>
+                    <button type="button" class="mSwitchBtns mSwitchBtnsRight" data-val="False" data-relclass="torComentarios" style="padding: 2px;">Off</button>
+                    @Html.HiddenFor(m => m.torComentarios, new { data_relclass = "torComentarios", data_defaultVal = Model.torComentarios.ToString(),onchange= "torneoNuevo_swComentario(this)" })
+                    <span id="spanComentarios" class="text text-success" style="margin-left:20px;">Comentarios</span>
+                </div>
+            </div>
+
+            <div class='col-xs-12 col-xs-pull-0 col-sm-6 col-sm-pull-6 col-md-12 col-md-pull-0 m-TorneosAdministradores paddingLRZero text-right-XS text-left-SM'>
+                <div class='col-xs-12 col-sm-12 paddingLRZero'>
+                    <div class="col-xs-12 mSpaceMb5 paddingLRZero">
+                    @{
+                    if (Model.torId == 0)
+                    {
+                        <span class="spanTorneoNuevoEdit_TipoInterno @cssInterno">Agregar administrador</span>
+                        <span class="spanTorneoNuevoEdit_TipoCoaching @cssCoach">Agregar coach</span>
+                        <br /><span>Agregar CoAdmin,Una vez que el torneo sea creado </span>
+                        
+                    }
+                    else
+                    {
+                        <a href="#" class="mLink5" onclick="fnMostrarCoAdministradores()">
+                            <span class="spanTorneoNuevoEdit_TipoInterno @cssInterno" style="text-decoration:underline;" >editar Coadministrador</span>
+                            <span class="spanTorneoNuevoEdit_TipoCoaching @cssCoach" style="text-decoration:underline;">editar cocoach</span>
+                        </a>
+
+                        <!-- ------------- Modal Agregar Co-administrador -------------- -->
+                        <div class="modal fade" id="modalTorneoCoadministradores" tabindex="-1" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body modalBodyLogin">
+                                        <div class="container-fluid text-center mSpaceMb30">
+                                            <div class="mTitle1">Coadministradores del torneo</div>
+                                            <fieldset id="fsTorneoCoadministradoresViewModel" class="mSpaceMt20">
+                                                @Html.Action("Torneos_CoadminsGridEdit", "AdminTorneos")
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Datos -->
+        <div id="_TorneoNuevoEdit_Datos" class='col-xs-12 col-sm-12 col-md-8 col-lg-9'>
+            @{Html.RenderPartial("Torneos/_NuevoEdit_Datos", Model);}
+        </div>
+    </div>
+
+    <!-- Estructura del torneo-->
+    <div id="_TorneoNuevoEdit_Estructura" class="row">
+        @{Html.RenderPartial("Torneos/_NuevoEdit_Estructura", Model);}
+    </div>
+
+    <!-- Datos de contacto  -->
+    <div class="row">
+        <div class="col-xs-12 mTitle1 mSpaceMt30 mSpaceMb5">
+            Datos de Contacto:
+        </div>
+
+        <div id="_TorneoNuevoEdit_Contacto" class='col-sm-12 col-md-10 col-md-offset-1'>
+            @{Html.RenderPartial("Torneos/_NuevoEdit_Contacto", Model);}
+        </div>
+    </div>
+
+    <!-- Datos de pago  -->
+    <div class="row">
+        <div class="col-xs-12 mTitle1 mSpaceMt30 mSpaceMb5">
+            Datos de pago:
+        </div>
+
+        <div id="_TorneoNuevoEdit_Pagos" class='col-sm-12 col-md-10 col-lg-offset-1'>
+            @{Html.RenderPartial("Torneos/_NuevoEdit_Pagos", Model);}
+        </div>
+    </div>
+
+    <!-- Botones  -->
+    <div class="row">
+
+        <div class="col-xs-12 mSpaceMt20 mSpaceMb20 text-right" id="divButtonGuardarEditarTorneo">
+            <button type="button" id="btnTorneo" class="btn btn-default btn_submit_torneo" onclick="torneoNuevo_Submit();">
+                @{
+            if (Model.torId > 0)
+            {
+                // Actualizacion del torneo
+                <span>Guardar</span>
+            }
+            else
+            {
+                <span>Crear torneo</span>
+            }
+                }
+            </button>
+        </div>
+
+    </div>
+</form>
+
+<div class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>
+<script>
+    function disableAllForm(){        
+        $("#frmTorneoNuevoEdit input").attr("disabled", "true");
+        $("#frmTorneoNuevoEdit select").attr("disabled", "true");
+        $("#frmTorneoNuevoEdit textarea").attr("disabled", "true");
+        $("#frmTorneoNuevoEdit button").attr("disabled", "true");
+        $("#frmTorneoNuevoEdit span.mUploadFileIcon").hide();
+        $(".m-TorneosComentariosOnOff").hide();
+        $(".m-TorneosAdministradores").hide();
+        $(".switchHabilitar").hide();
+        //$("#frmTorneoNuevoEdit #btnTorneo").hide();
+            $("#frmTorneoNuevoEdit .btnCategoriaFiltros ").each(function(){
+                $(this).css("display","none")
+            })
+        
+            $("#frmTorneoNuevoEdit .dxeButton ").each(function(){
+                $(this).css("display","none")
+            });
+            var button ='<span class="mSpacePlr10"><button type="button" class="btn btn-default btn-defaultNormalHover" >';
+            button+='Inscripción:';
+            button+='</button></span>';
+            $("#frmTorneoNuevoEdit #divButtonGuardarEditarTorneo").text(button);
+        
+    }
+</script>
+<div class="modal fade" id="categoriaModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom:0">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" style="padding-top:0">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-10 pull-right">
+                            <div>
+                                <h3 style="margin-top:0">Categorias</h3>
+                            </div>
+                            <!-- Formulario nueva categoria -->
+                            <form id="formNuevaCategoria" action="#" method="post"></form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function nuevoCategoria() {
+        var ligId = $("#_TorneoNuevoEdit_Datos #ligId").val();
+        $.ajax({
+            url: '/AdminTorneos/CategoryForm',
+            type: "POST",
+            cache: false,
+            data: "ligId="+ligId,
+            success: function (data) {
+                $("#formNuevaCategoria").html(data);
+                $("#categoriaModal").modal();
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    };
+
+    $("#formNuevaCategoria").submit(function (event) {
+        event.preventDefault();
+
+        var Form = $("#formNuevaCategoria");
+
+        var categoria = Form.find("#lctNombre");
+        var descripcion = Form.find("#lctDescripcion");
+        var min = Form.find("#lctEdadMin_I");
+        var max = Form.find("#lctEdadMax_I");
+        if (categoria.val() != "") {
+            if(descripcion.val() != ""){
+                if (min.val() != "") {
+                    if (max.val() != "") {
+                        if ($("#depNombre").val() != "0") {
+                            if ($("#ttoId").val() != "0") {
+                                var dataForm = Form.serialize();
+                                $.ajax({
+                                    url: '/AdminTorneos/_CategoriasGridEdit_AddNewPartial',
+                                    type: "POST",
+                                    cache: false,
+                                    data: dataForm,
+                                    success: function (data) {
+                                        refreshCategoria();
+                                        $("#categoriaModal").modal("toggle");
+                                    },
+                                    complete: function (jqXHR, textStatus) {
+                                        showMessages();
+                                    }
+                                });
+                            } else {
+                                messengeInfo("Selecciona un Tipo de Torneo");
+                            }                           
+                        } else {
+                            messengeInfo("Selecciona un Deporte");
+                        }
+                    } else {
+                        max.focus();
+                        messengeInfo("Ingresa la edad Maxima permitida");
+                    }
+                } else {
+                    min.focus();
+                    messengeInfo("Ingresa la edad Minima permitida");
+                }
+            } else {
+                descripcion.focus();
+                messengeInfo("Ingresa la Descripcion");
+            }
+        } else {
+            categoria.focus();
+            messengeInfo("Ingresa la Categoria");
+        }
+    });
+</script>

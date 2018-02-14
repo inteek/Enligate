@@ -1,0 +1,50 @@
+﻿@using sw_EnligateWeb.Models;
+@model TablaGeneralTorneo
+@{if (Model != null)
+    {
+        <div class="row">
+            <table class="table" style="margin-bottom:0;">
+                <thead>
+                    <tr>
+                        <th class="text-center" colspan="5"><h3 style="margin-bottom:0; margin-top:0;">@ViewBag.TeamNameEst</h3></th>
+                    </tr>
+                </thead>
+       
+                        <tbody>
+                            <tr align="center" class="trHeader">
+                                <td><h4>Juegos Jugados</h4></td>
+                                <td><h4>Ganados</h4></td>
+                                <td><h4>Empatados</h4></td>
+                                <td><h4>Perdidos</h4></td>
+                                <td><h4>Restantes</h4></td>
+                            </tr>
+                            <tr align="center">
+                    
+                                <td><h3>@Model.parJugados</h3></td>
+                                <td><h3>@Model.parGanados</h3></td>
+                                <td><h3>@Model.parEmpatados</h3></td>
+                                <td><h3>@Model.parPerdidos</h3></td>
+                                <td><h3>@Model.partidosRest</h3></td>
+                 
+                            </tr>
+                        </tbody>
+        
+            </table>
+        </div>
+        <div class="row">
+            <div class="dashboardBadgeTitles">
+                Estadisticas - <span id="titleModalEst">@ViewBag.TeamNameEst</span>
+            </div>
+            @Html.Action("EquipoEstadisticas", "Home", new {torId = Model.torId, equId = Model.equId })
+        </div>
+        <div class="row">
+            <h3>Proximos Partidos</h3>
+            @Html.Action("PartidosViewCallback", "AdminLigas", new { torId = ViewBag.torId })
+        </div>
+    }
+    else
+    {
+        <h1>@ViewBag.TeamNameEst</h1>
+        <h3>Sin Datos</h3>
+    }
+}

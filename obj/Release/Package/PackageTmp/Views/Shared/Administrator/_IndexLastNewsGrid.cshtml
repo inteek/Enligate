@@ -1,0 +1,69 @@
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@using sw_EnligateWeb.Models.HelperClasses;
+
+@{
+    var gvRequests = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvIndexLastNews";
+        settings.CallbackRouteValues = new { Controller = "Administrator", Action = "_IndexLastNewsGrid" };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+        //Styles
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        
+        settings.Styles.SelectedRow.CssClass = "gvRowSelected";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        settings.KeyFieldName = "newId";
+        settings.SetDataRowTemplateContent(c =>
+        {
+            string img = DataBinder.Eval(c.DataItem, "newImageUrl") as string;
+
+            ViewContext.Writer.Write(
+                "<div class='well'>" +
+                    "<div class='container-fluid'>" +
+                        "<div class='row row-eq-height row-eq-height-alignCenter'>" +
+                            "<div class='col-xs-12 col-sm-4 col-md-3 col-lg-2 newsTblTemplateImage'>" + //col-xs-12 col-md-2 
+                                "<img src='" + ((img == null) ? "../Content/Images/general/noPhoto.jpg" : img) + "' alt='Image' />" +
+                            "</div>" +
+                            "<div class='col-xs-12 col-sm-8 col-md-6 col-lg-7 newsTblTemplateContent'>" + //col-xs-8 col-md-7 
+                                DataBinder.Eval(c.DataItem, "newContent") +
+                            "</div>" +
+                            "<div class='col-xs-12 col-sm-12 col-md-3 newsTblTemplateLink'>" + //col-xs-4 col-md-2 
+                                "<a href='" + DataBinder.Eval(c.DataItem, "newActionUrl") + "' class='mLink2'>" + DataBinder.Eval(c.DataItem, "newActionUrlContent") + "</a>" +
+                            "</div>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>"
+            );
+        });
+        
+        //Paging
+        settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 5;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 270;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        
+        //Rows
+        settings.Settings.ShowColumnHeaders = false;
+        settings.SettingsBehavior.AllowSelectByRowClick = false;
+    });
+   
+    if (ViewData["EditError"] != null){
+        gvRequests.SetEditErrorText((string)ViewData["EditError"]);
+    }
+    
+    gvRequests.Bind(Model).GetHtml();
+}

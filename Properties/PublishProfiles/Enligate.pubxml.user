@@ -1,0 +1,1954 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo es utilizado por el proceso de paquete/publicación de nuestro proyecto Web. Puede personalizar el comportamiento de este proceso
+editando este archivo MSBuild. Para conocer más acerca de esto, visite http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\inetpub\wwwroot\Enligate</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>01/04/2018 11:22:31</publishTime>
+    </File>
+    <File Include="bin/conekta.dll">
+      <publishTime>01/04/2018 11:09:55</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Dashboard.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:13:55</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Dashboard.v16.1.Web.resources.dll">
+      <publishTime>01/17/2018 12:13:56</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Data.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:57</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.DataAccess.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:12</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Map.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:27</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Office.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:28</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Pdf.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:28</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.PivotGrid.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:48</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Printing.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:29</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.RichEdit.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:50</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Sparkline.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:34</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Spreadsheet.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:57</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Utils.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:35</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:46</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Web.ASPxRichEdit.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:48</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Web.ASPxScheduler.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:49</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:49</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:35</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Web.ASPxTreeList.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:49</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Web.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:48</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Xpo.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:42</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraBars.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:43</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraCharts.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:43</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraEditors.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraGauges.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraGauges.v16.1.Presets.resources.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraGrid.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:47</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraLayout.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:47</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraPivotGrid.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:48</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraPrinting.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:49</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraReports.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:49</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraReports.v16.1.Web.resources.dll">
+      <publishTime>01/17/2018 12:14:50</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraScheduler.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:56</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraScheduler.v16.1.Reporting.resources.dll">
+      <publishTime>01/17/2018 12:14:55</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraScheduler.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:55</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraTreeList.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:58</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Charts.v16.1.Core.dll">
+      <publishTime>01/17/2018 12:14:43</publishTime>
+    </File>
+    <File Include="bin/DevExpress.CodeParser.v16.1.dll">
+      <publishTime>01/17/2018 12:13:53</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Dashboard.v16.1.Core.dll">
+      <publishTime>01/17/2018 12:13:56</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Dashboard.v16.1.Web.dll">
+      <publishTime>01/17/2018 12:13:56</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Dashboard.v16.1.Web.Mvc5.dll">
+      <publishTime>01/17/2018 12:13:56</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Data.v16.1.dll">
+      <publishTime>01/17/2018 12:13:57</publishTime>
+    </File>
+    <File Include="bin/DevExpress.DataAccess.v16.1.dll">
+      <publishTime>01/17/2018 12:14:13</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Map.v16.1.Core.dll">
+      <publishTime>01/17/2018 12:14:27</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Office.v16.1.Core.dll">
+      <publishTime>01/17/2018 12:14:28</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Pdf.v16.1.Core.dll">
+      <publishTime>01/17/2018 12:14:29</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Pdf.v16.1.Drawing.dll">
+      <publishTime>01/17/2018 12:14:29</publishTime>
+    </File>
+    <File Include="bin/DevExpress.PivotGrid.v16.1.Core.dll">
+      <publishTime>01/17/2018 12:14:48</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Printing.v16.1.Core.dll">
+      <publishTime>01/17/2018 12:14:29</publishTime>
+    </File>
+    <File Include="bin/DevExpress.RichEdit.v16.1.Core.dll">
+      <publishTime>01/17/2018 12:14:51</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Sparkline.v16.1.Core.dll">
+      <publishTime>01/17/2018 12:14:34</publishTime>
+    </File>
+    <File Include="bin/DevExpress.SpellChecker.v16.1.Core.dll">
+      <publishTime>01/17/2018 12:14:35</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Spreadsheet.v16.1.Core.dll">
+      <publishTime>01/17/2018 12:14:58</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Utils.v16.1.dll">
+      <publishTime>01/17/2018 12:14:36</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.ASPxGauges.v16.1.dll">
+      <publishTime>01/17/2018 12:13:46</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.ASPxHtmlEditor.v16.1.dll">
+      <publishTime>01/17/2018 12:13:46</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.ASPxPivotGrid.v16.1.dll">
+      <publishTime>01/17/2018 12:13:48</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.ASPxRichEdit.v16.1.dll">
+      <publishTime>01/17/2018 12:13:48</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.ASPxScheduler.v16.1.dll">
+      <publishTime>01/17/2018 12:13:49</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.ASPxSpellChecker.v16.1.dll">
+      <publishTime>01/17/2018 12:13:49</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.ASPxSpreadsheet.v16.1.dll">
+      <publishTime>01/17/2018 12:14:35</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.ASPxThemes.v16.1.dll">
+      <publishTime>01/17/2018 12:13:49</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.ASPxTreeList.v16.1.dll">
+      <publishTime>01/17/2018 12:13:52</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.Mvc5.v16.1.dll">
+      <publishTime>01/17/2018 12:14:28</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.Resources.v16.1.dll">
+      <publishTime>01/17/2018 12:14:38</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.v16.1.dll">
+      <publishTime>01/17/2018 12:13:48</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Xpo.v16.1.dll">
+      <publishTime>01/17/2018 12:14:42</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraBars.v16.1.dll">
+      <publishTime>01/17/2018 12:14:43</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraCharts.v16.1.dll">
+      <publishTime>01/17/2018 12:14:45</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraCharts.v16.1.Web.dll">
+      <publishTime>01/17/2018 12:13:46</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraEditors.v16.1.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraGauges.v16.1.Core.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraGauges.v16.1.Presets.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraGauges.v16.1.Win.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraGrid.v16.1.dll">
+      <publishTime>01/17/2018 12:14:47</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraLayout.v16.1.dll">
+      <publishTime>01/17/2018 12:14:47</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraMap.v16.1.dll">
+      <publishTime>01/17/2018 12:14:47</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraPivotGrid.v16.1.dll">
+      <publishTime>01/17/2018 12:14:48</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraPrinting.v16.1.dll">
+      <publishTime>01/17/2018 12:14:49</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraReports.v16.1.dll">
+      <publishTime>01/17/2018 12:14:49</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraReports.v16.1.Web.dll">
+      <publishTime>01/17/2018 12:14:50</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraScheduler.v16.1.Core.dll">
+      <publishTime>01/17/2018 12:14:56</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraScheduler.v16.1.dll">
+      <publishTime>01/17/2018 12:14:56</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraScheduler.v16.1.Reporting.dll">
+      <publishTime>01/17/2018 12:14:56</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraTreeList.v16.1.dll">
+      <publishTime>01/17/2018 12:14:58</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>01/04/2018 11:03:30</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>01/04/2018 11:03:21</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Dashboard.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:13:57</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Dashboard.v16.1.Web.resources.dll">
+      <publishTime>01/17/2018 12:13:57</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Data.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:58</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.DataAccess.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:13</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Map.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:27</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Office.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:28</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Pdf.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:29</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.PivotGrid.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:48</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Printing.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:29</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.RichEdit.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:51</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Sparkline.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:34</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Spreadsheet.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:58</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Utils.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:36</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:46</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Web.ASPxRichEdit.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:49</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Web.ASPxScheduler.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:49</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:49</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:35</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Web.ASPxTreeList.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:52</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Web.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:48</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Xpo.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:42</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraBars.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:43</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraCharts.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:45</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraEditors.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraGauges.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraGauges.v16.1.Presets.resources.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraGrid.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:47</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraLayout.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:47</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraPivotGrid.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:48</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraPrinting.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:49</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraReports.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:49</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraReports.v16.1.Web.resources.dll">
+      <publishTime>01/17/2018 12:14:50</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraScheduler.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:56</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraScheduler.v16.1.Reporting.resources.dll">
+      <publishTime>01/17/2018 12:14:56</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraScheduler.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:56</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraTreeList.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:58</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Dashboard.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:13:57</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Dashboard.v16.1.Web.resources.dll">
+      <publishTime>01/17/2018 12:13:57</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Data.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:58</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.DataAccess.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:13</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Map.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:27</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Office.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:28</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Pdf.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:29</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.PivotGrid.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:48</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Printing.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:29</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.RichEdit.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:51</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Sparkline.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:34</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Spreadsheet.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:58</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Utils.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:36</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:46</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Web.ASPxRichEdit.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:49</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Web.ASPxScheduler.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:49</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:49</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:35</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Web.ASPxTreeList.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:52</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Web.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:48</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Xpo.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:42</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraBars.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:43</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraCharts.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:45</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraEditors.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraGauges.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraGauges.v16.1.Presets.resources.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraGrid.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:47</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraLayout.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:47</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraPivotGrid.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:49</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraPrinting.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:49</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraReports.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:49</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraReports.v16.1.Web.resources.dll">
+      <publishTime>01/17/2018 12:14:50</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraScheduler.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:57</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraScheduler.v16.1.Reporting.resources.dll">
+      <publishTime>01/17/2018 12:14:56</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraScheduler.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:56</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraTreeList.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>01/04/2018 11:03:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>01/04/2018 11:03:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>01/04/2018 11:03:05</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CSharp.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>01/04/2018 11:25:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>01/04/2018 11:25:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>01/04/2018 11:25:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>01/04/2018 11:25:31</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
+      <publishTime>01/04/2018 11:25:40</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Google.dll">
+      <publishTime>01/04/2018 11:25:45</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
+      <publishTime>01/04/2018 11:25:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>01/04/2018 11:25:55</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
+      <publishTime>01/04/2018 11:26:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.VisualBasic.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/08/2013 15:15:08</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>01/04/2018 11:26:54</publishTime>
+    </File>
+    <File Include="bin/nunit.framework.dll">
+      <publishTime>01/04/2018 11:28:39</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>01/04/2018 11:02:18</publishTime>
+    </File>
+    <File Include="bin/RestSharp.dll">
+      <publishTime>01/04/2018 11:02:17</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Dashboard.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:13:57</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Dashboard.v16.1.Web.resources.dll">
+      <publishTime>01/17/2018 12:13:57</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Data.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:58</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.DataAccess.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:13</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Map.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:27</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Office.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:28</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Pdf.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:29</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.PivotGrid.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:48</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Printing.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:29</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.RichEdit.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:51</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Sparkline.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:34</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Spreadsheet.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:58</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Utils.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:36</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Web.ASPxHtmlEditor.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:46</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Web.ASPxRichEdit.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:49</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Web.ASPxScheduler.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:49</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Web.ASPxSpellChecker.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:49</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Web.ASPxSpreadsheet.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:35</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Web.ASPxTreeList.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:52</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Web.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:13:48</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Xpo.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:42</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraBars.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:43</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraCharts.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:45</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraEditors.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraGauges.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraGauges.v16.1.Presets.resources.dll">
+      <publishTime>01/17/2018 12:14:46</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraGrid.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:47</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraLayout.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:47</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraPivotGrid.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:49</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraPrinting.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:49</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraReports.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:49</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraReports.v16.1.Web.resources.dll">
+      <publishTime>01/17/2018 12:14:50</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraScheduler.v16.1.Core.resources.dll">
+      <publishTime>01/17/2018 12:14:57</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraScheduler.v16.1.Reporting.resources.dll">
+      <publishTime>01/17/2018 12:14:56</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraScheduler.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:56</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraTreeList.v16.1.resources.dll">
+      <publishTime>01/17/2018 12:14:59</publishTime>
+    </File>
+    <File Include="bin/sw_EnligateWeb.dll">
+      <publishTime>01/24/2018 15:08:33</publishTime>
+    </File>
+    <File Include="bin/System.ComponentModel.DataAnnotations.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Configuration.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Data.DataSetExtensions.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Data.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Drawing.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.EnterpriseServices.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.WebRequest.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Abstractions.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.ApplicationServices.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.DynamicData.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Entity.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Extensions.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>01/04/2018 11:01:19</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>01/04/2018 11:01:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>01/04/2018 11:01:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>01/04/2018 11:01:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Routing.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Services.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>01/04/2018 11:01:01</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>01/04/2018 11:00:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>01/04/2018 11:00:57</publishTime>
+    </File>
+    <File Include="bin/System.Xml.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/System.Xml.Linq.dll">
+      <publishTime>08/13/2013 01:19:06</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>01/04/2018 11:29:28</publishTime>
+    </File>
+    <File Include="ClassDiagram1.cd">
+      <publishTime>01/04/2018 11:00:00</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css">
+      <publishTime>01/04/2018 11:10:33</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css.map">
+      <publishTime>01/04/2018 11:10:33</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css">
+      <publishTime>01/04/2018 11:10:32</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css.map">
+      <publishTime>01/04/2018 11:10:31</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>01/04/2018 11:10:31</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css.map">
+      <publishTime>01/04/2018 11:10:30</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>01/04/2018 11:10:29</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css.map">
+      <publishTime>01/04/2018 11:10:29</publishTime>
+    </File>
+    <File Include="Content/c3.css">
+      <publishTime>01/04/2018 11:10:27</publishTime>
+    </File>
+    <File Include="Content/fullcalendar.min.css">
+      <publishTime>01/04/2018 11:10:27</publishTime>
+    </File>
+    <File Include="Content/fullcalendar.print.css">
+      <publishTime>01/04/2018 11:10:26</publishTime>
+    </File>
+    <File Include="Content/Images/balls/01soccer_blanco.png">
+      <publishTime>01/04/2018 11:10:46</publishTime>
+    </File>
+    <File Include="Content/Images/balls/01soccer_color.png">
+      <publishTime>01/04/2018 11:10:46</publishTime>
+    </File>
+    <File Include="Content/Images/balls/01soccer_negro.png">
+      <publishTime>01/04/2018 11:10:46</publishTime>
+    </File>
+    <File Include="Content/Images/balls/02football_blanco.png">
+      <publishTime>01/04/2018 11:10:45</publishTime>
+    </File>
+    <File Include="Content/Images/balls/02football_color.png">
+      <publishTime>01/04/2018 11:10:45</publishTime>
+    </File>
+    <File Include="Content/Images/balls/02football_negro.png">
+      <publishTime>01/04/2018 11:10:44</publishTime>
+    </File>
+    <File Include="Content/Images/balls/03basketball_blanco.png">
+      <publishTime>01/04/2018 11:10:44</publishTime>
+    </File>
+    <File Include="Content/Images/balls/03basketball_color.png">
+      <publishTime>01/04/2018 11:10:44</publishTime>
+    </File>
+    <File Include="Content/Images/balls/03basketball_negro.png">
+      <publishTime>01/04/2018 11:10:44</publishTime>
+    </File>
+    <File Include="Content/Images/balls/04baseball_blanco.png">
+      <publishTime>01/04/2018 11:10:43</publishTime>
+    </File>
+    <File Include="Content/Images/balls/04baseball_color.png">
+      <publishTime>01/04/2018 11:10:43</publishTime>
+    </File>
+    <File Include="Content/Images/balls/04baseball_negro.png">
+      <publishTime>01/04/2018 11:10:42</publishTime>
+    </File>
+    <File Include="Content/Images/balls/05volleyball_blanco.png">
+      <publishTime>01/04/2018 11:10:42</publishTime>
+    </File>
+    <File Include="Content/Images/balls/05volleyball_color.png">
+      <publishTime>01/04/2018 11:10:42</publishTime>
+    </File>
+    <File Include="Content/Images/balls/05volleyball_negro.png">
+      <publishTime>01/04/2018 11:10:42</publishTime>
+    </File>
+    <File Include="Content/Images/balls/06zapato_blanco.png">
+      <publishTime>01/04/2018 11:10:41</publishTime>
+    </File>
+    <File Include="Content/Images/balls/06zapato_color.png">
+      <publishTime>01/04/2018 11:10:41</publishTime>
+    </File>
+    <File Include="Content/Images/balls/06zapato_negro.png">
+      <publishTime>01/04/2018 11:10:40</publishTime>
+    </File>
+    <File Include="Content/Images/balls1.png">
+      <publishTime>01/04/2018 11:10:40</publishTime>
+    </File>
+    <File Include="Content/Images/balls2.png">
+      <publishTime>01/04/2018 11:10:39</publishTime>
+    </File>
+    <File Include="Content/Images/deportsblank.png">
+      <publishTime>01/04/2018 11:10:38</publishTime>
+    </File>
+    <File Include="Content/Images/general/buzon.png">
+      <publishTime>01/04/2018 11:10:52</publishTime>
+    </File>
+    <File Include="Content/Images/general/emailHeader.png">
+      <publishTime>01/04/2018 11:10:52</publishTime>
+    </File>
+    <File Include="Content/Images/general/Facebook-logo.png">
+      <publishTime>01/04/2018 11:10:51</publishTime>
+    </File>
+    <File Include="Content/Images/general/Instagram-logo.png">
+      <publishTime>01/04/2018 11:10:51</publishTime>
+    </File>
+    <File Include="Content/Images/general/loading.gif">
+      <publishTime>01/04/2018 11:10:51</publishTime>
+    </File>
+    <File Include="Content/Images/general/logo-xs.png">
+      <publishTime>01/04/2018 11:10:50</publishTime>
+    </File>
+    <File Include="Content/Images/general/logoFacebook.png">
+      <publishTime>01/04/2018 11:10:50</publishTime>
+    </File>
+    <File Include="Content/Images/general/logoGmail.png">
+      <publishTime>01/04/2018 11:10:49</publishTime>
+    </File>
+    <File Include="Content/Images/general/logoMd.png">
+      <publishTime>01/04/2018 11:10:49</publishTime>
+    </File>
+    <File Include="Content/Images/general/noPhoto.jpg">
+      <publishTime>01/04/2018 11:10:48</publishTime>
+    </File>
+    <File Include="Content/Images/general/Pinterest-logo.png">
+      <publishTime>01/04/2018 11:10:48</publishTime>
+    </File>
+    <File Include="Content/Images/general/stars.png">
+      <publishTime>01/04/2018 11:10:47</publishTime>
+    </File>
+    <File Include="Content/Images/general/Twitter-logo.png">
+      <publishTime>01/04/2018 11:10:47</publishTime>
+    </File>
+    <File Include="Content/Images/home/00_AllSports.png">
+      <publishTime>01/04/2018 11:11:00</publishTime>
+    </File>
+    <File Include="Content/Images/home/01_soccer.png">
+      <publishTime>01/04/2018 11:10:59</publishTime>
+    </File>
+    <File Include="Content/Images/home/02_Football.png">
+      <publishTime>01/04/2018 11:10:58</publishTime>
+    </File>
+    <File Include="Content/Images/home/03_Basquetball.png">
+      <publishTime>01/04/2018 11:10:58</publishTime>
+    </File>
+    <File Include="Content/Images/home/04_Baseball.png">
+      <publishTime>01/04/2018 11:10:57</publishTime>
+    </File>
+    <File Include="Content/Images/home/05_Volleyball.png">
+      <publishTime>01/04/2018 11:10:56</publishTime>
+    </File>
+    <File Include="Content/Images/home/06_Running.png">
+      <publishTime>01/04/2018 11:10:55</publishTime>
+    </File>
+    <File Include="Content/Images/home/Nosotros01.jpg">
+      <publishTime>01/04/2018 11:10:55</publishTime>
+    </File>
+    <File Include="Content/Images/home/Nosotros02.jpg">
+      <publishTime>01/04/2018 11:10:54</publishTime>
+    </File>
+    <File Include="Content/Images/home/Nosotros03.jpg">
+      <publishTime>01/04/2018 11:10:53</publishTime>
+    </File>
+    <File Include="Content/Images/individualStatistics.png">
+      <publishTime>01/04/2018 11:10:37</publishTime>
+    </File>
+    <File Include="Content/Images/jqueryUI/ui-icons_555555_256x240.png">
+      <publishTime>01/04/2018 11:11:01</publishTime>
+    </File>
+    <File Include="Content/Images/jqueryUI/ui-icons_777777_256x240.png">
+      <publishTime>01/04/2018 11:11:01</publishTime>
+    </File>
+    <File Include="Content/Images/jqueryUI/ui-icons_ffffff_256x240.png">
+      <publishTime>01/04/2018 11:11:00</publishTime>
+    </File>
+    <File Include="Content/Images/jugConfirmado.png">
+      <publishTime>01/04/2018 11:10:37</publishTime>
+    </File>
+    <File Include="Content/Images/jugPendiente.png">
+      <publishTime>01/04/2018 11:10:36</publishTime>
+    </File>
+    <File Include="Content/Images/jugRechazo.png">
+      <publishTime>01/04/2018 11:10:36</publishTime>
+    </File>
+    <File Include="Content/Images/payments/oxxo2.png">
+      <publishTime>01/04/2018 11:11:03</publishTime>
+    </File>
+    <File Include="Content/Images/payments/speifast.png">
+      <publishTime>01/04/2018 11:11:03</publishTime>
+    </File>
+    <File Include="Content/Images/payments/visa_mastercard.png">
+      <publishTime>01/04/2018 11:11:02</publishTime>
+    </File>
+    <File Include="Content/Images/redcard.png">
+      <publishTime>01/04/2018 11:10:36</publishTime>
+    </File>
+    <File Include="Content/Images/star_favorito.png">
+      <publishTime>01/04/2018 11:10:35</publishTime>
+    </File>
+    <File Include="Content/Images/statistics.png">
+      <publishTime>01/04/2018 11:10:35</publishTime>
+    </File>
+    <File Include="Content/Images/tournaments/example.jpg">
+      <publishTime>01/04/2018 11:11:04</publishTime>
+    </File>
+    <File Include="Content/Images/tournaments/example2.jpg">
+      <publishTime>01/04/2018 11:11:04</publishTime>
+    </File>
+    <File Include="Content/Images/vs.png">
+      <publishTime>01/04/2018 11:10:34</publishTime>
+    </File>
+    <File Include="Content/Images/yellowcard.png">
+      <publishTime>01/04/2018 11:10:33</publishTime>
+    </File>
+    <File Include="Content/jquery-ui-accordion.css">
+      <publishTime>01/04/2018 11:10:26</publishTime>
+    </File>
+    <File Include="Content/pgwslideshow.css">
+      <publishTime>01/04/2018 11:10:26</publishTime>
+    </File>
+    <File Include="Content/pgwslideshow.min.css">
+      <publishTime>01/04/2018 11:10:25</publishTime>
+    </File>
+    <File Include="Content/pgwslideshow_light.css">
+      <publishTime>01/04/2018 11:10:25</publishTime>
+    </File>
+    <File Include="Content/pgwslideshow_light.min.css">
+      <publishTime>01/04/2018 11:10:24</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>01/04/2018 11:10:24</publishTime>
+    </File>
+    <File Include="Content/Themes/Default/Style.css">
+      <publishTime>01/04/2018 11:11:05</publishTime>
+    </File>
+    <File Include="Emails/AdminEquipoAvisoConfirmacion.html">
+      <publishTime>01/04/2018 11:11:27</publishTime>
+    </File>
+    <File Include="Emails/AdministradorTorneoEquipoDelete.html">
+      <publishTime>01/04/2018 11:11:27</publishTime>
+    </File>
+    <File Include="Emails/AdministradorTorneoEquipoInvitacion.html">
+      <publishTime>01/04/2018 11:11:27</publishTime>
+    </File>
+    <File Include="Emails/AgregarSubPerfil.html">
+      <publishTime>01/04/2018 11:11:26</publishTime>
+    </File>
+    <File Include="Emails/ArbitroAvisoConfirmacion.html">
+      <publishTime>01/04/2018 11:11:25</publishTime>
+    </File>
+    <File Include="Emails/ArbitroAvisoConfirmacionAdm.html">
+      <publishTime>01/04/2018 11:11:25</publishTime>
+    </File>
+    <File Include="Emails/ArbitroAvisoRechazarAdm.html">
+      <publishTime>01/04/2018 11:11:26</publishTime>
+    </File>
+    <File Include="Emails/ArbitroInvitacion.html">
+      <publishTime>01/04/2018 11:11:23</publishTime>
+    </File>
+    <File Include="Emails/ArbitroPartidoEliminado.html">
+      <publishTime>01/04/2018 11:11:23</publishTime>
+    </File>
+    <File Include="Emails/ArbitroPartidoInvitacion.html">
+      <publishTime>01/04/2018 11:11:23</publishTime>
+    </File>
+    <File Include="Emails/ArbitroTorneoEquipoAvisoRechazo.html">
+      <publishTime>01/04/2018 11:11:22</publishTime>
+    </File>
+    <File Include="Emails/AvisoEliminarJugador.html">
+      <publishTime>01/04/2018 11:11:22</publishTime>
+    </File>
+    <File Include="Emails/AvisoMarcadorPartido.html">
+      <publishTime>01/04/2018 11:11:21</publishTime>
+    </File>
+    <File Include="Emails/CoadminLigaAceptacion.html">
+      <publishTime>01/04/2018 11:11:21</publishTime>
+    </File>
+    <File Include="Emails/CoadminLigaAceptacionCount.html">
+      <publishTime>01/04/2018 11:11:21</publishTime>
+    </File>
+    <File Include="Emails/CoadminLigaRechazo.html">
+      <publishTime>01/04/2018 11:11:21</publishTime>
+    </File>
+    <File Include="Emails/ConfirmCoAdmin.html">
+      <publishTime>01/04/2018 11:11:20</publishTime>
+    </File>
+    <File Include="Emails/confirmEmailAccount.html">
+      <publishTime>01/04/2018 11:11:20</publishTime>
+    </File>
+    <File Include="Emails/contactPage.html">
+      <publishTime>01/04/2018 11:11:19</publishTime>
+    </File>
+    <File Include="Emails/EmailCoachPerfilAviso.html">
+      <publishTime>01/04/2018 11:11:19</publishTime>
+    </File>
+    <File Include="Emails/EquipoCoadminAceptacion.html">
+      <publishTime>01/04/2018 11:11:18</publishTime>
+    </File>
+    <File Include="Emails/EquipoCoadminConfirmacion.html">
+      <publishTime>01/04/2018 11:11:18</publishTime>
+    </File>
+    <File Include="Emails/EquipoCoadminRechazo.html">
+      <publishTime>01/04/2018 11:11:18</publishTime>
+    </File>
+    <File Include="Emails/EquipoConfirmCoAdmin.html">
+      <publishTime>01/04/2018 11:11:18</publishTime>
+    </File>
+    <File Include="Emails/NotificacionSolicitudLiga.html">
+      <publishTime>01/04/2018 11:11:17</publishTime>
+    </File>
+    <File Include="Emails/NuevoSubPerfil.html">
+      <publishTime>01/04/2018 11:11:17</publishTime>
+    </File>
+    <File Include="Emails/NuevoSubPerfilEnligate.html">
+      <publishTime>01/04/2018 11:11:16</publishTime>
+    </File>
+    <File Include="Emails/ParticipanteAvisoConfirmacion.html">
+      <publishTime>01/04/2018 11:11:16</publishTime>
+    </File>
+    <File Include="Emails/ParticipanteTorneoAvisoConfirmacion.html">
+      <publishTime>01/04/2018 11:11:16</publishTime>
+    </File>
+    <File Include="Emails/ParticipanteTorneoAvisoConfirmacionPerfil.html">
+      <publishTime>01/04/2018 11:11:15</publishTime>
+    </File>
+    <File Include="Emails/ParticipanteTorneoAvisoRechazo.html">
+      <publishTime>01/04/2018 11:11:15</publishTime>
+    </File>
+    <File Include="Emails/ParticipanteTorneoEquipoAvisoConfirmacion.html">
+      <publishTime>01/04/2018 11:11:15</publishTime>
+    </File>
+    <File Include="Emails/ParticipanteTorneoEquipoAvisoRechazo.html">
+      <publishTime>01/04/2018 11:11:14</publishTime>
+    </File>
+    <File Include="Emails/ParticipanteTorneoEquipoInvitacion.html">
+      <publishTime>01/04/2018 11:11:14</publishTime>
+    </File>
+    <File Include="Emails/ParticipanteTorneoInvitacion.html">
+      <publishTime>01/04/2018 11:11:13</publishTime>
+    </File>
+    <File Include="Emails/PasswordRecovery.html">
+      <publishTime>01/04/2018 11:11:13</publishTime>
+    </File>
+    <File Include="Emails/SolicitudLigaAceptacion.html">
+      <publishTime>01/04/2018 11:11:13</publishTime>
+    </File>
+    <File Include="Emails/SolicitudLigaRechazo.html">
+      <publishTime>01/04/2018 11:11:13</publishTime>
+    </File>
+    <File Include="Emails/TorneoCoadminAceptacion.html">
+      <publishTime>01/04/2018 11:11:12</publishTime>
+    </File>
+    <File Include="Emails/TorneoCoadminRechazo.html">
+      <publishTime>01/04/2018 11:11:12</publishTime>
+    </File>
+    <File Include="Emails/TorneoConfirmCoAdmin.html">
+      <publishTime>01/04/2018 11:11:11</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>01/04/2018 11:00:03</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>01/04/2018 11:11:32</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>01/04/2018 11:11:33</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>01/04/2018 11:11:31</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>01/04/2018 11:11:31</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>01/04/2018 11:11:30</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>01/04/2018 11:00:04</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>01/04/2018 11:00:05</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>01/04/2018 11:30:04</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>01/04/2018 11:30:04</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js.map">
+      <publishTime>01/04/2018 11:30:03</publishTime>
+    </File>
+    <File Include="Scripts/c3.min.js">
+      <publishTime>01/04/2018 11:30:03</publishTime>
+    </File>
+    <File Include="Scripts/Chat.js">
+      <publishTime>01/04/2018 11:30:01</publishTime>
+    </File>
+    <File Include="Scripts/cldr.js">
+      <publishTime>01/04/2018 11:30:01</publishTime>
+    </File>
+    <File Include="Scripts/cldr/event.js">
+      <publishTime>01/04/2018 11:30:06</publishTime>
+    </File>
+    <File Include="Scripts/cldr/supplemental.js">
+      <publishTime>01/04/2018 11:30:06</publishTime>
+    </File>
+    <File Include="Scripts/cldr/unresolved.js">
+      <publishTime>01/04/2018 11:30:05</publishTime>
+    </File>
+    <File Include="Scripts/d3.v3.min.js">
+      <publishTime>01/04/2018 11:29:59</publishTime>
+    </File>
+    <File Include="Scripts/emailValidator.js">
+      <publishTime>01/04/2018 11:29:55</publishTime>
+    </File>
+    <File Include="Scripts/fullcalendar.min.js">
+      <publishTime>01/04/2018 11:29:55</publishTime>
+    </File>
+    <File Include="Scripts/globalize.js">
+      <publishTime>01/04/2018 11:29:54</publishTime>
+    </File>
+    <File Include="Scripts/globalize/currency.js">
+      <publishTime>01/04/2018 11:30:10</publishTime>
+    </File>
+    <File Include="Scripts/globalize/date.js">
+      <publishTime>01/04/2018 11:30:10</publishTime>
+    </File>
+    <File Include="Scripts/globalize/message.js">
+      <publishTime>01/04/2018 11:30:09</publishTime>
+    </File>
+    <File Include="Scripts/globalize/number.js">
+      <publishTime>01/04/2018 11:30:08</publishTime>
+    </File>
+    <File Include="Scripts/globalize/plural.js">
+      <publishTime>01/04/2018 11:30:08</publishTime>
+    </File>
+    <File Include="Scripts/globalize/relative-time.js">
+      <publishTime>01/04/2018 11:30:07</publishTime>
+    </File>
+    <File Include="Scripts/globalize/unit.js">
+      <publishTime>01/04/2018 11:30:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery-2.2.0.js">
+      <publishTime>01/04/2018 11:29:53</publishTime>
+    </File>
+    <File Include="Scripts/jquery-2.2.0.min.js">
+      <publishTime>01/04/2018 11:29:51</publishTime>
+    </File>
+    <File Include="Scripts/jquery-2.2.0.min.map">
+      <publishTime>01/04/2018 11:29:51</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.js">
+      <publishTime>01/04/2018 11:29:46</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.min.js">
+      <publishTime>01/04/2018 11:29:44</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.min.map">
+      <publishTime>01/04/2018 11:29:43</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.slim.js">
+      <publishTime>01/04/2018 11:29:43</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.slim.min.js">
+      <publishTime>01/04/2018 11:29:42</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.slim.min.map">
+      <publishTime>01/04/2018 11:29:41</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-accordion.js">
+      <publishTime>01/04/2018 11:29:40</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.js">
+      <publishTime>01/04/2018 11:29:39</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.min.js">
+      <publishTime>01/04/2018 11:29:39</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>01/04/2018 11:29:38</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>01/04/2018 11:29:37</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>01/04/2018 11:29:37</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>01/04/2018 11:29:36</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>01/04/2018 11:29:35</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.8.3.js">
+      <publishTime>01/04/2018 11:29:35</publishTime>
+    </File>
+    <File Include="Scripts/moment.min.js">
+      <publishTime>01/04/2018 11:29:34</publishTime>
+    </File>
+    <File Include="Scripts/pgwslideshow.js">
+      <publishTime>01/04/2018 11:29:34</publishTime>
+    </File>
+    <File Include="Scripts/pgwslideshow.min.js">
+      <publishTime>01/04/2018 11:29:33</publishTime>
+    </File>
+    <File Include="Scripts/pgwslideshow.min.js.map">
+      <publishTime>01/04/2018 11:29:33</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>01/04/2018 11:29:32</publishTime>
+    </File>
+    <File Include="Scripts/respond.matchmedia.addListener.js">
+      <publishTime>01/04/2018 11:29:32</publishTime>
+    </File>
+    <File Include="Scripts/respond.matchmedia.addListener.min.js">
+      <publishTime>01/04/2018 11:29:32</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>01/04/2018 11:29:31</publishTime>
+    </File>
+    <File Include="Scripts/sw_EnligateWeb.js">
+      <publishTime>01/04/2018 11:29:31</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>01/04/2018 11:29:30</publishTime>
+    </File>
+    <File Include="Views/Account/Admin/Calendario.cshtml">
+      <publishTime>01/04/2018 11:30:25</publishTime>
+    </File>
+    <File Include="Views/Account/Admin/ChatEnligate.cshtml">
+      <publishTime>01/04/2018 11:30:25</publishTime>
+    </File>
+    <File Include="Views/Account/Admin/ChatHistory.cshtml">
+      <publishTime>01/04/2018 11:30:24</publishTime>
+    </File>
+    <File Include="Views/Account/Admin/Historial.cshtml">
+      <publishTime>01/04/2018 11:30:24</publishTime>
+    </File>
+    <File Include="Views/Account/Admin/Index.cshtml">
+      <publishTime>01/04/2018 11:30:23</publishTime>
+    </File>
+    <File Include="Views/Account/Admin/Lobby.cshtml">
+      <publishTime>01/04/2018 11:30:23</publishTime>
+    </File>
+    <File Include="Views/Account/Admin/MisEquipos.cshtml">
+      <publishTime>01/04/2018 11:30:22</publishTime>
+    </File>
+    <File Include="Views/Account/Admin/MisPagos.cshtml">
+      <publishTime>01/04/2018 11:30:23</publishTime>
+    </File>
+    <File Include="Views/Account/Admin/MisPerfiles.cshtml">
+      <publishTime>01/04/2018 11:30:22</publishTime>
+    </File>
+    <File Include="Views/Account/Admin/Perfil.cshtml">
+      <publishTime>01/04/2018 11:30:21</publishTime>
+    </File>
+    <File Include="Views/Account/Admin/Torneo.cshtml">
+      <publishTime>01/04/2018 11:30:21</publishTime>
+    </File>
+    <File Include="Views/Account/ConfirmEmail.cshtml">
+      <publishTime>01/04/2018 11:30:21</publishTime>
+    </File>
+    <File Include="Views/Account/ResetPasswordCode.cshtml">
+      <publishTime>01/04/2018 11:30:20</publishTime>
+    </File>
+    <File Include="Views/Account/SubPerfilConfirmar.cshtml">
+      <publishTime>01/04/2018 11:30:20</publishTime>
+    </File>
+    <File Include="Views/Admin/Calendario.cshtml">
+      <publishTime>01/04/2018 11:30:29</publishTime>
+    </File>
+    <File Include="Views/Admin/ChatEnligate.cshtml">
+      <publishTime>01/04/2018 11:30:29</publishTime>
+    </File>
+    <File Include="Views/Admin/ChatHistory.cshtml">
+      <publishTime>01/04/2018 11:30:28</publishTime>
+    </File>
+    <File Include="Views/Admin/Historial.cshtml">
+      <publishTime>01/04/2018 11:30:28</publishTime>
+    </File>
+    <File Include="Views/Admin/Index.cshtml">
+      <publishTime>01/04/2018 11:30:28</publishTime>
+    </File>
+    <File Include="Views/Admin/Lobby.cshtml">
+      <publishTime>01/04/2018 11:30:28</publishTime>
+    </File>
+    <File Include="Views/Admin/MisEquipos.cshtml">
+      <publishTime>01/04/2018 11:30:27</publishTime>
+    </File>
+    <File Include="Views/Admin/MisPagos.cshtml">
+      <publishTime>01/04/2018 11:30:27</publishTime>
+    </File>
+    <File Include="Views/Admin/MisPerfiles.cshtml">
+      <publishTime>01/04/2018 11:30:26</publishTime>
+    </File>
+    <File Include="Views/Admin/Perfil.cshtml">
+      <publishTime>01/04/2018 11:30:26</publishTime>
+    </File>
+    <File Include="Views/Admin/Torneo.cshtml">
+      <publishTime>01/04/2018 11:30:26</publishTime>
+    </File>
+    <File Include="Views/AdminEquipos/Calendario.cshtml">
+      <publishTime>01/04/2018 11:30:34</publishTime>
+    </File>
+    <File Include="Views/AdminEquipos/CoadminConfirmacion.cshtml">
+      <publishTime>01/04/2018 11:30:33</publishTime>
+    </File>
+    <File Include="Views/AdminEquipos/CoadminRechazo.cshtml">
+      <publishTime>01/04/2018 11:30:33</publishTime>
+    </File>
+    <File Include="Views/AdminEquipos/Historial.cshtml">
+      <publishTime>01/04/2018 11:30:32</publishTime>
+    </File>
+    <File Include="Views/AdminEquipos/Index.cshtml">
+      <publishTime>01/04/2018 11:30:32</publishTime>
+    </File>
+    <File Include="Views/AdminEquipos/MisEquipos.cshtml">
+      <publishTime>01/04/2018 11:30:31</publishTime>
+    </File>
+    <File Include="Views/AdminEquipos/MisPagos.cshtml">
+      <publishTime>01/04/2018 11:30:31</publishTime>
+    </File>
+    <File Include="Views/AdminEquipos/MisPerfiles.cshtml">
+      <publishTime>01/04/2018 11:30:31</publishTime>
+    </File>
+    <File Include="Views/AdminEquipos/MisTorneos.cshtml">
+      <publishTime>01/04/2018 11:30:30</publishTime>
+    </File>
+    <File Include="Views/AdminEquipos/Perfil.cshtml">
+      <publishTime>01/04/2018 11:30:30</publishTime>
+    </File>
+    <File Include="Views/Administrator/Advertising.cshtml">
+      <publishTime>01/04/2018 11:30:37</publishTime>
+    </File>
+    <File Include="Views/Administrator/Catalog.cshtml">
+      <publishTime>01/04/2018 11:30:37</publishTime>
+    </File>
+    <File Include="Views/Administrator/Client.cshtml">
+      <publishTime>01/04/2018 11:30:37</publishTime>
+    </File>
+    <File Include="Views/Administrator/Fees.cshtml">
+      <publishTime>01/04/2018 11:30:36</publishTime>
+    </File>
+    <File Include="Views/Administrator/FeesAdvertising.cshtml">
+      <publishTime>01/04/2018 11:30:36</publishTime>
+    </File>
+    <File Include="Views/Administrator/FeesPayments.cshtml">
+      <publishTime>01/04/2018 11:30:36</publishTime>
+    </File>
+    <File Include="Views/Administrator/Index.cshtml">
+      <publishTime>01/04/2018 11:30:35</publishTime>
+    </File>
+    <File Include="Views/Administrator/Leagues.cshtml">
+      <publishTime>01/04/2018 11:30:35</publishTime>
+    </File>
+    <File Include="Views/Administrator/Perfil.cshtml">
+      <publishTime>01/04/2018 11:30:34</publishTime>
+    </File>
+    <File Include="Views/Administrator/Requests.cshtml">
+      <publishTime>01/04/2018 11:30:34</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/AddLeague.cshtml">
+      <publishTime>01/04/2018 11:30:48</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/Arbitros.cshtml">
+      <publishTime>01/04/2018 11:30:47</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/Calendario.cshtml">
+      <publishTime>01/04/2018 11:30:47</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/CoadministrationConfirm.cshtml">
+      <publishTime>01/04/2018 11:30:46</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/CoadministrationReject.cshtml">
+      <publishTime>01/04/2018 11:30:46</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/EquipoDetails.cshtml">
+      <publishTime>01/04/2018 11:30:45</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/EquipoNuevo.cshtml">
+      <publishTime>01/04/2018 11:30:45</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/Estadisticas.cshtml">
+      <publishTime>01/04/2018 11:30:44</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/Index.cshtml">
+      <publishTime>01/04/2018 11:30:44</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/Leagues.cshtml">
+      <publishTime>01/04/2018 11:30:44</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/MainLeague.cshtml">
+      <publishTime>01/04/2018 11:30:44</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/MainLeagueError.cshtml">
+      <publishTime>01/04/2018 11:30:43</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/Pagos.cshtml">
+      <publishTime>01/04/2018 11:30:43</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/Pago_Result.cshtml">
+      <publishTime>01/04/2018 11:30:42</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/Partidos.cshtml">
+      <publishTime>01/04/2018 11:30:42</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/Perfil.cshtml">
+      <publishTime>01/04/2018 11:30:41</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/Status.cshtml">
+      <publishTime>01/04/2018 11:30:41</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/TorneoCanchas.cshtml">
+      <publishTime>01/04/2018 11:30:40</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/TorneoCategorias.cshtml">
+      <publishTime>01/04/2018 11:30:40</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/TorneoDetails.cshtml">
+      <publishTime>01/04/2018 11:30:39</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/TorneoEquipos.cshtml">
+      <publishTime>01/04/2018 11:30:39</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/TorneoNuevo.cshtml">
+      <publishTime>01/04/2018 11:30:38</publishTime>
+    </File>
+    <File Include="Views/AdminLigas/Torneos.cshtml">
+      <publishTime>01/04/2018 11:30:38</publishTime>
+    </File>
+    <File Include="Views/AdminTorneos/Arbitros.cshtml">
+      <publishTime>01/04/2018 11:30:53</publishTime>
+    </File>
+    <File Include="Views/AdminTorneos/Calendario.cshtml">
+      <publishTime>01/04/2018 11:30:53</publishTime>
+    </File>
+    <File Include="Views/AdminTorneos/CoadminConfirmacion.cshtml">
+      <publishTime>01/04/2018 11:30:52</publishTime>
+    </File>
+    <File Include="Views/AdminTorneos/CoadminError.cshtml">
+      <publishTime>01/04/2018 11:30:52</publishTime>
+    </File>
+    <File Include="Views/AdminTorneos/CoadminRechazo.cshtml">
+      <publishTime>01/04/2018 11:30:52</publishTime>
+    </File>
+    <File Include="Views/AdminTorneos/Index.cshtml">
+      <publishTime>01/04/2018 11:30:51</publishTime>
+    </File>
+    <File Include="Views/AdminTorneos/Pagos.cshtml">
+      <publishTime>01/04/2018 11:30:51</publishTime>
+    </File>
+    <File Include="Views/AdminTorneos/Perfil.cshtml">
+      <publishTime>01/04/2018 11:30:50</publishTime>
+    </File>
+    <File Include="Views/AdminTorneos/TorneoCanchas.cshtml">
+      <publishTime>01/04/2018 11:30:50</publishTime>
+    </File>
+    <File Include="Views/AdminTorneos/TorneoCategorias.cshtml">
+      <publishTime>01/04/2018 11:30:50</publishTime>
+    </File>
+    <File Include="Views/AdminTorneos/TorneoEquipos.cshtml">
+      <publishTime>01/04/2018 11:30:49</publishTime>
+    </File>
+    <File Include="Views/AdminTorneos/TorneoEstadisticas.cshtml">
+      <publishTime>01/04/2018 11:30:49</publishTime>
+    </File>
+    <File Include="Views/AdminTorneos/TorneoNuevo.cshtml">
+      <publishTime>01/04/2018 11:30:48</publishTime>
+    </File>
+    <File Include="Views/AdminTorneos/Torneos.cshtml">
+      <publishTime>01/04/2018 11:30:48</publishTime>
+    </File>
+    <File Include="Views/Home/AboutUs.cshtml">
+      <publishTime>01/04/2018 11:30:57</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>01/04/2018 11:30:57</publishTime>
+    </File>
+    <File Include="Views/Home/FAQs.cshtml">
+      <publishTime>01/04/2018 11:30:56</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>01/04/2018 11:30:57</publishTime>
+    </File>
+    <File Include="Views/Home/InscribirLiga.cshtml">
+      <publishTime>01/04/2018 11:30:56</publishTime>
+    </File>
+    <File Include="Views/Home/InscripcionTorneo.cshtml">
+      <publishTime>01/04/2018 11:30:56</publishTime>
+    </File>
+    <File Include="Views/Home/Liga.cshtml">
+      <publishTime>01/04/2018 11:30:55</publishTime>
+    </File>
+    <File Include="Views/Home/showTorneo.cshtml">
+      <publishTime>01/04/2018 11:30:55</publishTime>
+    </File>
+    <File Include="Views/Home/TorneoDetails.cshtml">
+      <publishTime>01/04/2018 11:30:54</publishTime>
+    </File>
+    <File Include="Views/Referee/Calendario.cshtml">
+      <publishTime>01/04/2018 11:31:00</publishTime>
+    </File>
+    <File Include="Views/Referee/Historial.cshtml">
+      <publishTime>01/04/2018 11:31:00</publishTime>
+    </File>
+    <File Include="Views/Referee/Index.cshtml">
+      <publishTime>01/04/2018 11:30:59</publishTime>
+    </File>
+    <File Include="Views/Referee/Ligas.cshtml">
+      <publishTime>01/04/2018 11:30:59</publishTime>
+    </File>
+    <File Include="Views/Referee/Perfil.cshtml">
+      <publishTime>01/04/2018 11:30:59</publishTime>
+    </File>
+    <File Include="Views/Referee/Torneos.cshtml">
+      <publishTime>01/04/2018 11:30:58</publishTime>
+    </File>
+    <File Include="Views/Shared/AccionesCorreos/_ParticipanteConfirmar.cshtml">
+      <publishTime>01/04/2018 11:31:06</publishTime>
+    </File>
+    <File Include="Views/Shared/AccionesCorreos/_ParticipanteRechazar.cshtml">
+      <publishTime>01/04/2018 11:31:05</publishTime>
+    </File>
+    <File Include="Views/Shared/Account/_ConfirmEmailForward.cshtml">
+      <publishTime>01/04/2018 11:31:08</publishTime>
+    </File>
+    <File Include="Views/Shared/Account/_Login.cshtml">
+      <publishTime>01/04/2018 11:31:08</publishTime>
+    </File>
+    <File Include="Views/Shared/Account/_LoginForm.cshtml">
+      <publishTime>01/04/2018 11:31:07</publishTime>
+    </File>
+    <File Include="Views/Shared/Account/_PasswordRecoveryForm.cshtml">
+      <publishTime>01/04/2018 11:31:07</publishTime>
+    </File>
+    <File Include="Views/Shared/Account/_RegisterForm.cshtml">
+      <publishTime>01/04/2018 11:31:07</publishTime>
+    </File>
+    <File Include="Views/Shared/Account/_ResetPasswordCodeForm.cshtml">
+      <publishTime>01/04/2018 11:31:06</publishTime>
+    </File>
+    <File Include="Views/Shared/Admin/_Avisos.cshtml">
+      <publishTime>01/04/2018 11:31:11</publishTime>
+    </File>
+    <File Include="Views/Shared/Admin/_Chat.cshtml">
+      <publishTime>01/04/2018 11:31:11</publishTime>
+    </File>
+    <File Include="Views/Shared/Admin/_CompleteProfile.cshtml">
+      <publishTime>01/04/2018 11:31:10</publishTime>
+    </File>
+    <File Include="Views/Shared/Admin/_Partidos_Player.cshtml">
+      <publishTime>01/04/2018 11:31:10</publishTime>
+    </File>
+    <File Include="Views/Shared/Admin/_Perfil.cshtml">
+      <publishTime>01/04/2018 11:31:10</publishTime>
+    </File>
+    <File Include="Views/Shared/Admin/_PerfilOtros.cshtml">
+      <publishTime>01/04/2018 11:31:09</publishTime>
+    </File>
+    <File Include="Views/Shared/Administrator/_ClientsGrid.cshtml">
+      <publishTime>01/04/2018 11:31:15</publishTime>
+    </File>
+    <File Include="Views/Shared/Administrator/_FeesForm.cshtml">
+      <publishTime>01/04/2018 11:31:15</publishTime>
+    </File>
+    <File Include="Views/Shared/Administrator/_FeesGrid.cshtml">
+      <publishTime>01/04/2018 11:31:14</publishTime>
+    </File>
+    <File Include="Views/Shared/Administrator/_IndexLastNewsGrid.cshtml">
+      <publishTime>01/04/2018 11:31:14</publishTime>
+    </File>
+    <File Include="Views/Shared/Administrator/_IndexLastPaymentsGrid.cshtml">
+      <publishTime>01/04/2018 11:31:14</publishTime>
+    </File>
+    <File Include="Views/Shared/Administrator/_IndexLastRequestsGrid.cshtml">
+      <publishTime>01/04/2018 11:31:13</publishTime>
+    </File>
+    <File Include="Views/Shared/Administrator/_IndexLastUsersTestingGrid.cshtml">
+      <publishTime>01/04/2018 11:31:13</publishTime>
+    </File>
+    <File Include="Views/Shared/Administrator/_LeaguesGrid.cshtml">
+      <publishTime>01/04/2018 11:31:12</publishTime>
+    </File>
+    <File Include="Views/Shared/Administrator/_RequestsDetail.cshtml">
+      <publishTime>01/04/2018 11:31:12</publishTime>
+    </File>
+    <File Include="Views/Shared/Administrator/_RequestsGrid.cshtml">
+      <publishTime>01/04/2018 11:31:12</publishTime>
+    </File>
+    <File Include="Views/Shared/Banwire/PagosGrid.cshtml">
+      <publishTime>01/04/2018 11:31:17</publishTime>
+    </File>
+    <File Include="Views/Shared/Banwire/_GridPagos.cshtml">
+      <publishTime>01/04/2018 11:31:17</publishTime>
+    </File>
+    <File Include="Views/Shared/Banwire/_GridPagosEquipo.cshtml">
+      <publishTime>01/04/2018 11:31:17</publishTime>
+    </File>
+    <File Include="Views/Shared/Banwire/_GridPagosTorneo.cshtml">
+      <publishTime>01/04/2018 11:31:17</publishTime>
+    </File>
+    <File Include="Views/Shared/Banwire/_MethodPayment.cshtml">
+      <publishTime>01/04/2018 11:31:16</publishTime>
+    </File>
+    <File Include="Views/Shared/Banwire/_VisaPayment.cshtml">
+      <publishTime>01/04/2018 11:31:16</publishTime>
+    </File>
+    <File Include="Views/Shared/Chart/_ChartPieIndex.cshtml">
+      <publishTime>01/04/2018 11:31:19</publishTime>
+    </File>
+    <File Include="Views/Shared/Chart/_ChartPieTorneoEstadisticas.cshtml">
+      <publishTime>01/04/2018 11:31:19</publishTime>
+    </File>
+    <File Include="Views/Shared/Equipos/_CoadminsGridEdit.cshtml">
+      <publishTime>01/04/2018 11:31:22</publishTime>
+    </File>
+    <File Include="Views/Shared/Equipos/_EquipoCoach.cshtml">
+      <publishTime>01/04/2018 11:31:21</publishTime>
+    </File>
+    <File Include="Views/Shared/Equipos/_equiposGrid.cshtml">
+      <publishTime>01/04/2018 11:31:21</publishTime>
+    </File>
+    <File Include="Views/Shared/Equipos/_equiposGrid_player.cshtml">
+      <publishTime>01/04/2018 11:31:20</publishTime>
+    </File>
+    <File Include="Views/Shared/Equipos/_NuevoEdit.cshtml">
+      <publishTime>01/04/2018 11:31:20</publishTime>
+    </File>
+    <File Include="Views/Shared/Equipos/_NuevoEdit_Datos.cshtml">
+      <publishTime>01/04/2018 11:31:20</publishTime>
+    </File>
+    <File Include="Views/Shared/Equipos/_NuevoEdit_Jugadores.cshtml">
+      <publishTime>01/04/2018 11:31:20</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>01/04/2018 11:31:05</publishTime>
+    </File>
+    <File Include="Views/Shared/Home/_ContactForm.cshtml">
+      <publishTime>01/04/2018 11:31:26</publishTime>
+    </File>
+    <File Include="Views/Shared/Home/_ContactSocialNetworking.cshtml">
+      <publishTime>01/04/2018 11:31:26</publishTime>
+    </File>
+    <File Include="Views/Shared/Home/_ErrorCode.cshtml">
+      <publishTime>01/04/2018 11:31:25</publishTime>
+    </File>
+    <File Include="Views/Shared/Home/_InscribirEquipoForm.cshtml">
+      <publishTime>01/04/2018 11:31:25</publishTime>
+    </File>
+    <File Include="Views/Shared/Home/_InscribirLigaForm.cshtml">
+      <publishTime>01/04/2018 11:31:24</publishTime>
+    </File>
+    <File Include="Views/Shared/Home/_InscribirLigaFormPayment.cshtml">
+      <publishTime>01/04/2018 11:31:24</publishTime>
+    </File>
+    <File Include="Views/Shared/Home/_InscribirTorneoCoa.cshtml">
+      <publishTime>01/04/2018 11:31:23</publishTime>
+    </File>
+    <File Include="Views/Shared/Home/_InscribirTorneoInt.cshtml">
+      <publishTime>01/04/2018 11:31:23</publishTime>
+    </File>
+    <File Include="Views/Shared/Home/_LeaguesMap_Modal.cshtml">
+      <publishTime>01/04/2018 11:31:23</publishTime>
+    </File>
+    <File Include="Views/Shared/Home/_TorneoDetails.cshtml">
+      <publishTime>01/04/2018 11:31:22</publishTime>
+    </File>
+    <File Include="Views/Shared/Jugadores/_JugadoresEquipo_Agregar.cshtml">
+      <publishTime>01/04/2018 11:31:28</publishTime>
+    </File>
+    <File Include="Views/Shared/Jugadores/_JugadoresEquipo_Grid.cshtml">
+      <publishTime>01/04/2018 11:31:28</publishTime>
+    </File>
+    <File Include="Views/Shared/Jugadores/_jugadoresGrid.cshtml">
+      <publishTime>01/04/2018 11:31:27</publishTime>
+    </File>
+    <File Include="Views/Shared/Jugadores/_JugadoresGridCallback.cshtml">
+      <publishTime>01/04/2018 11:31:27</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_ArbitroFiltro.cshtml">
+      <publishTime>01/04/2018 11:31:38</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_ArbitrosModal.cshtml">
+      <publishTime>01/04/2018 11:31:38</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_CalendarioCanchaMaps.cshtml">
+      <publishTime>01/04/2018 11:31:37</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_CalendarioNuevo_Filtros.cshtml">
+      <publishTime>01/04/2018 11:31:37</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_CanchasSelect.cshtml">
+      <publishTime>01/04/2018 11:31:37</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_EquipoNuevo_Filtros.cshtml">
+      <publishTime>01/04/2018 11:31:36</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_FiltroPartidos.cshtml">
+      <publishTime>01/04/2018 11:31:36</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_FlitrosLigaTorneo.cshtml">
+      <publishTime>01/04/2018 11:31:36</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_LeaguesDetail.cshtml">
+      <publishTime>01/04/2018 11:31:35</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_LeaguesDetail_CoadminsGrid.cshtml">
+      <publishTime>01/04/2018 11:31:35</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_LeaguesDetail_CoadminsGridEdit.cshtml">
+      <publishTime>01/04/2018 11:31:35</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_LeaguesDetail_MainData.cshtml">
+      <publishTime>01/04/2018 11:31:34</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_LeaguesDetail_MainDataEdit.cshtml">
+      <publishTime>01/04/2018 11:31:34</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_LeaguesDetail_Map.cshtml">
+      <publishTime>01/04/2018 11:31:33</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_LeaguesDetail_MapEdit.cshtml">
+      <publishTime>01/04/2018 11:31:33</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_LeaguesDetail_MapEdit_Modal.cshtml">
+      <publishTime>01/04/2018 11:31:33</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_LeaguesDetail_Multimedia.cshtml">
+      <publishTime>01/04/2018 11:31:32</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_LeaguesDetail_MultimediaEdit.cshtml">
+      <publishTime>01/04/2018 11:31:32</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_LeaguesDetail_MultimediaEditFileManager.cshtml">
+      <publishTime>01/04/2018 11:31:31</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_LeaguesGrid.cshtml">
+      <publishTime>01/04/2018 11:31:31</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_LeaguesGridView.cshtml">
+      <publishTime>01/04/2018 11:31:30</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_LigasBusquedasGrid.cshtml">
+      <publishTime>01/04/2018 11:31:31</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_NotificationGrid.cshtml">
+      <publishTime>01/04/2018 11:31:30</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_Partidos_Filtros.cshtml">
+      <publishTime>01/04/2018 11:31:30</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_Partidos_Refeere.cshtml">
+      <publishTime>01/19/2018 12:51:12</publishTime>
+    </File>
+    <File Include="Views/Shared/Ligas/_TorneoCanchaEdit.cshtml">
+      <publishTime>01/04/2018 11:31:29</publishTime>
+    </File>
+    <File Include="Views/Shared/Referee/_arbitroFiltroGrid.cshtml">
+      <publishTime>01/04/2018 11:31:41</publishTime>
+    </File>
+    <File Include="Views/Shared/Referee/_EquipoJugadorSelect.cshtml">
+      <publishTime>01/19/2018 11:20:48</publishTime>
+    </File>
+    <File Include="Views/Shared/Referee/_GridViewArbitrosAcepted.cshtml">
+      <publishTime>01/04/2018 11:31:40</publishTime>
+    </File>
+    <File Include="Views/Shared/Referee/_GridViewArbitrosRejected.cshtml">
+      <publishTime>01/04/2018 11:31:40</publishTime>
+    </File>
+    <File Include="Views/Shared/Referee/_JugadorSelect.cshtml">
+      <publishTime>01/04/2018 11:31:39</publishTime>
+    </File>
+    <File Include="Views/Shared/Referee/_rowDetailResult.cshtml">
+      <publishTime>01/04/2018 11:31:39</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_Arbitros.cshtml">
+      <publishTime>01/04/2018 11:31:52</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_ArbitrosGridEdit.cshtml">
+      <publishTime>01/04/2018 11:31:52</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_Canchas.cshtml">
+      <publishTime>01/04/2018 11:31:51</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_CanchasGridEdit.cshtml">
+      <publishTime>01/04/2018 11:31:52</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_Canchas_Map.cshtml">
+      <publishTime>01/04/2018 11:31:51</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_CategoriaFiltro.cshtml">
+      <publishTime>01/04/2018 11:31:51</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_Categorias.cshtml">
+      <publishTime>01/04/2018 11:31:50</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_CategoriasGridEdit.cshtml">
+      <publishTime>01/04/2018 11:31:50</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_CoadminsGridEdit.cshtml">
+      <publishTime>01/04/2018 11:31:49</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_EquipoEstadisticas.cshtml">
+      <publishTime>01/04/2018 11:31:49</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_FormNewCategory.cshtml">
+      <publishTime>01/04/2018 11:31:48</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_NuevoEdit.cshtml">
+      <publishTime>01/04/2018 11:31:49</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_NuevoEdit_Contacto.cshtml">
+      <publishTime>01/04/2018 11:31:48</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_NuevoEdit_Datos.cshtml">
+      <publishTime>01/04/2018 11:31:48</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_NuevoEdit_Estructura.cshtml">
+      <publishTime>01/04/2018 11:31:47</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_NuevoEdit_Pagos.cshtml">
+      <publishTime>01/04/2018 11:31:47</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_PartidosGrid.cshtml">
+      <publishTime>01/04/2018 11:31:46</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_PartidosResult.cshtml">
+      <publishTime>01/04/2018 11:31:46</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_PartidosView.cshtml">
+      <publishTime>01/04/2018 11:31:45</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_Partidos_Resultados.cshtml">
+      <publishTime>01/24/2018 15:03:25</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_Partidos_Show.cshtml">
+      <publishTime>01/04/2018 11:31:45</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_ResultadosFutbol.cshtml">
+      <publishTime>01/04/2018 11:31:44</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_TorneoComentariosGrid.cshtml">
+      <publishTime>01/04/2018 11:31:44</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_TorneoEstadisticas.cshtml">
+      <publishTime>01/04/2018 11:31:44</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_TorneoEstadisticasPartial.cshtml">
+      <publishTime>01/04/2018 11:31:43</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_TorneoEstGoleador.cshtml">
+      <publishTime>01/04/2018 11:31:43</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_TorneoEstPartido.cshtml">
+      <publishTime>01/04/2018 11:31:43</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_TorneoJugadorEst.cshtml">
+      <publishTime>01/24/2018 14:57:56</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_TorneosGrid.cshtml">
+      <publishTime>01/04/2018 11:31:42</publishTime>
+    </File>
+    <File Include="Views/Shared/Torneos/_TorneoTipoGrid.cshtml">
+      <publishTime>01/04/2018 11:31:42</publishTime>
+    </File>
+    <File Include="Views/Shared/_ChangeCurrentRol.cshtml">
+      <publishTime>01/04/2018 11:31:04</publishTime>
+    </File>
+    <File Include="Views/Shared/_JsonReturn_Errors.cshtml">
+      <publishTime>01/04/2018 11:31:04</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>01/04/2018 11:31:03</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutHome.cshtml">
+      <publishTime>01/04/2018 11:31:03</publishTime>
+    </File>
+    <File Include="Views/Shared/_LogoBalls.cshtml">
+      <publishTime>01/04/2018 11:31:02</publishTime>
+    </File>
+    <File Include="Views/Shared/_MenuView.cshtml">
+      <publishTime>01/04/2018 11:31:02</publishTime>
+    </File>
+    <File Include="Views/Shared/_ModalState_Errors.cshtml">
+      <publishTime>01/04/2018 11:31:01</publishTime>
+    </File>
+    <File Include="Views/Shared/_SubmenuView.cshtml">
+      <publishTime>01/04/2018 11:31:01</publishTime>
+    </File>
+    <File Include="Views/Shared/_UpdateProgressPanel.cshtml">
+      <publishTime>01/04/2018 11:31:01</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>01/04/2018 11:30:19</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>01/04/2018 11:30:19</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>01/24/2018 15:08:36</publishTime>
+    </File>
+    <File Include="_Logs/errors.txt">
+      <publishTime>01/17/2018 15:50:36</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

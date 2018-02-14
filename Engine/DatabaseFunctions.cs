@@ -270,8 +270,15 @@ namespace sw_EnligateWeb.Engine
         /// <returns></returns>
         public ApplicationUser getUserByUserName(string name)
         {
-            var data = dbApp.Users.Where(u => u.UserName.Equals(name));
-            return data.FirstOrDefault();
+            try
+            {
+                var data = dbApp.Users.Where(u => u.UserName.Equals(name));
+                return data.FirstOrDefault();
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
         public ApplicationUser getUserByUserEmail(string email)
         {
@@ -6382,6 +6389,20 @@ namespace sw_EnligateWeb.Engine
             catch(Exception)
             {
                 return false;
+            }
+        }
+
+        public List<string> ObtenerJugadoresEquipo(int idEquipo)
+        {
+            List<string> lista=null;
+            try
+            {
+                lista = dbApp.tblJugadorEquipos.Where(x => x.equId == idEquipo).Select(x=>x.jugCorrreo).ToList();
+                return lista;
+            }
+            catch(Exception)
+            {
+                return lista;
             }
         }
         /* public List<schemaDatosTarjeta> getDatosTarjeta(ApplicationUser userId)

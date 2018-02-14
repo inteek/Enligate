@@ -538,6 +538,7 @@
     <Content Include="Emails\ArbitroTorneoEquipoAvisoRechazo.html" />
     <Content Include="Emails\CoadminLigaAceptacionCount.html" />
     <Content Include="Emails\EmailCoachPerfilAviso.html" />
+    <Content Include="Emails\JugadorPartidoInvitacion.html" />
     <Content Include="Emails\NotificacionSolicitudLiga.html" />
     <Content Include="Emails\AvisoMarcadorPartido.html" />
     <Content Include="Emails\EquipoCoadminAceptacion.html" />
@@ -579,6 +580,7 @@
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\Enligate.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Content\fullcalendar.min.css" />
     <Content Include="Scripts\c3.min.js" />

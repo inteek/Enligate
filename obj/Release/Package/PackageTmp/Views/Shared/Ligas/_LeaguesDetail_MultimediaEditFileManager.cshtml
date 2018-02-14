@@ -1,0 +1,28 @@
+@model string
+
+@Html.DevExpress().FileManager(settings => {
+    settings.Name = "LeaguesDetail_MultimediaEdit";
+    settings.CallbackRouteValues = new { Controller = "AdminLigas", Action = "_LeaguesDetail_MultimediaEditCallback" };
+    
+    settings.SettingsEditing.AllowDownload = false;
+    settings.SettingsEditing.AllowRename = true;
+    settings.SettingsEditing.AllowDelete = true;
+    settings.SettingsFolders.Visible = false;
+    settings.SettingsToolbar.ShowPath = false;
+    settings.SettingsToolbar.ShowFilterBox = false;
+    settings.SettingsBreadcrumbs.Visible = false;
+    
+    settings.SettingsUpload.Enabled = true;
+    settings.SettingsUpload.UseAdvancedUploadMode = true;
+    settings.Settings.AllowedFileExtensions = new string[] { ".jpg", ".jpeg", ".png", ".bmp" };
+    settings.Settings.ThumbnailFolder = Model; 
+    settings.SettingsFileList.View = DevExpress.Web.FileListView.Thumbnails;
+
+    settings.ClientSideEvents.BeginCallback = "LeaguesDetail_MultimediaEdit_OnBeginCallback";
+    settings.ClientSideEvents.FilesUploading = @"function (s, e) {
+                                                    if (!LeaguesDetail_MultimediaEdit.InCallback()){
+                                                        LeaguesDetail_MultimediaEdit.PerformCallback('uploading');       
+                                                    }
+                                                }";
+    
+}).BindToFolder(Model).GetHtml()

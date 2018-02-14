@@ -1,0 +1,79 @@
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@using sw_EnligateWeb.Models.HelperClasses;
+
+@{
+    var gvRequests = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvLeaguesCoadministrators";
+        settings.CallbackRouteValues = new { Controller = "AdminLigas", Action = "_LeaguesDetail_CoadminsGrid" };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+        //Styles
+        settings.Styles.GroupPanel.CssClass = "gvGroupPanel";
+        settings.Styles.Header.CssClass = "gvHeader";
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.AlternatingRow.CssClass = "gvRowAlternative";        
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+
+        //Columns
+        settings.KeyFieldName = "lcaUserId";
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "lcaNombre";
+            col.Caption = "NOMBRE";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "lcaEmail";
+            col.Caption = "EMAIL";
+            col.AdaptivePriority = 2;
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Unbound";
+            col.Caption = "CONFIRMADO";
+            col.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            col.SetDataItemTemplateContent((c) =>
+            {
+                bool lcaConfirmado = (bool)DataBinder.Eval(c.DataItem, "lcaConfirmado");
+                Html.DevExpress().Label(l =>
+                {
+                    l.Name = "lblCosto_" + c.KeyValue;
+                    if (lcaConfirmado)
+                        l.Text = "SI";
+                    else
+                        l.Text = "NO";
+                }).GetHtml();
+            });
+        });
+        
+        //Paging
+        settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 5;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 200;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        
+        //Rows
+        settings.SettingsBehavior.AllowSelectByRowClick = false;
+
+        //Callbacks
+        settings.ClientSideEvents.BeginCallback = "fnGVLeaguesCoadministrators_OnBeginCallback";
+        //settings.ClientSideEvents.cell = "fnIndexGVRequests_RowDblClick";
+    });
+   
+    if (ViewData["EditError"] != null){
+        gvRequests.SetEditErrorText((string)ViewData["EditError"]);
+    }
+    
+    gvRequests.Bind(Model).GetHtml();
+}

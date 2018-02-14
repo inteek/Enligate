@@ -1,0 +1,19 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model ResultadoPartido
+
+@{     
+    var ddlJugadores = new List<SelectListItem>();
+    foreach (var item in Model.ddlJugUno)
+    {
+        ddlJugadores.Add(new SelectListItem { Text = item.jugCorrreo, Value = item.jugUserId });
+    }
+
+}
+<style>
+    .width150px {
+        width: 150px;
+    }
+</style>
+@Html.DropDownList("jugadoresSelect"+Model.Id, ddlJugadores, new { @class = "width100 selectJugadores form-control", style = "width: 150px;" })

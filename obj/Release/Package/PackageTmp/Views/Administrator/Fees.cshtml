@@ -1,0 +1,44 @@
+﻿@using sw_EnligateWeb.Models;
+
+@{
+    ViewBag.Title = "Tarifas";
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        fnFeesGVPerformCallback();
+    });
+
+    function fnFeesGVPerformCallback(s, e) {
+        if (typeof gvFeesGrid.InCallback === "function") {
+            //if (!gvFeesGrid.InCallback())
+            gvFeesGrid.PerformCallback();
+        }
+    }
+
+</script>
+
+<!-- Content -->
+<div id="ADMINISTRADOR_Pagos" class="row">
+    <div id="ADMINISTRADOR_Pagos_Tarifas" class="col-sm-12">
+
+        <div class="row">
+            <div class="col-xs-12 paddingLRZero">
+                <div class="col-xs-12">
+                    @Html.Partial("Administrator/_FeesForm", new TarifasViewModel())
+                </div>
+            </div>
+        </div>
+
+        <div class="row mSpaceMt20 mSpaceMb20">
+            <div class="col-xs-12">
+                <div class="col-xs-12">
+                    @Html.Action("FeesGrid")
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

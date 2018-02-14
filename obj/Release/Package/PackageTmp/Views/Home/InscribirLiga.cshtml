@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    ViewBag.Title = "Solicitud de Liga";
+    /*
+    
+    if(Request.HttpMethod == "GET")
+    {
+        using (Html.BeginForm("InscribirLiga", "Home", FormMethod.Get))
+        {
+            <input type="hidden" name="tipoLiga" value="@ViewBag.tipoLiga" />
+            <input id="btnRedirectPost" type="submit" class="hidden" />
+        }
+        <script type="text/javascript">
+            $("#btnRedirectPost").click();
+        </script>
+    }
+    else 
+    { */
+        <!-- Content -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-10">
+                    <div>
+                        <fieldset id="frmAddLeagueRequest">
+                            @Html.Partial("Home/_InscribirLigaForm")
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    //}
+}
+
+@section scripts{
+    @{
+        string googleSrc = System.Web.Configuration.WebConfigurationManager.AppSettings["GoogleMapsScript"];
+    }
+    <script src="@googleSrc" async defer></script>
+}

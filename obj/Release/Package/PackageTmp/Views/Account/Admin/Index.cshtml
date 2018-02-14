@@ -1,0 +1,68 @@
+﻿@using sw_EnligateWeb.Models;
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+<script>
+    $(document).ready(function () {
+        gvAvisosPerformCallback();
+    });
+
+    function gvAvisosPerformCallback(s, e) {
+        if (typeof gvAvisos.InCallback === "function") {
+            //if (!gvIndexLastRequests.InCallback())
+            gvAvisos.PerformCallback();
+        }
+    }
+
+</script>
+<!-- Content -->
+<div id="JUGADOR_Dashboard" class="row">
+    <div id="JUGADOR_Dashboard_Dashboard" class="col-sm-12">
+        <div class="m-hdc-Gallery">
+
+            <h1>Dashboard</h1>
+            <div class="col-xs-12 col-sm-6 col-lg-6 mSpaceMb20">
+                <div class="col-xs-12">
+                    <div class="col-xs-12 dashboardBadgeTitles">
+                        NOTIFICACION DE EQUIPOS <span class="badge" id="numNotification">@ViewBag.numAvisos</span>
+                        
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    @Html.Partial("Admin/_Avisos")
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-xs-12 ">
+                            PARTIDOS
+                        </div>
+                        <hr />
+                        @Html.Action("PartidosViewCallback", "AdminLigas")
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-xs-12 ">
+                            RESULTADOS
+                        </div>
+                        <hr />
+                        @Html.Action("PartidosResultCallback", "AdminLigas")
+                    </div>
+                </div>
+                <div class="row">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        
+    </script>
+}

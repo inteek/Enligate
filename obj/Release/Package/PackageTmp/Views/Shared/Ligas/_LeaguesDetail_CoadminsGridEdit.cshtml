@@ -1,0 +1,121 @@
+﻿@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@using sw_EnligateWeb.Models.HelperClasses;
+
+@{
+    var gvRequests = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvLeaguesCoadministrators";
+        settings.CallbackRouteValues = new { Controller = "AdminLigas", Action = "_LeaguesDetail_CoadminsGridEdit" };
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "AdminLigas", Action = "_LeaguesDetail_CoadminsGridEdit_AddNewPartial" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "AdminLigas", Action = "_LeaguesDetail_CoadminsGridEdit_Delete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+        
+        
+        //Command Columns 
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowNewButtonInHeader = true;
+        settings.CommandColumn.ButtonType = GridCommandButtonRenderMode.Button;
+
+        settings.SettingsCommandButton.NewButton.Text = "Agregar Coadmin";
+        settings.SettingsCommandButton.NewButton.Styles.Native = true;
+        settings.SettingsCommandButton.NewButton.Styles.Style.CssClass = "btn btn-default";
+        settings.SettingsCommandButton.NewButton.Styles.Style.Font.Size = FontUnit.Small;
+            
+        settings.SettingsCommandButton.DeleteButton.Text = "Eliminar";
+        settings.SettingsCommandButton.DeleteButton.Styles.Native = true;
+        settings.SettingsCommandButton.DeleteButton.Styles.Style.CssClass = "btn btn-danger";
+        settings.SettingsCommandButton.DeleteButton.Styles.Style.Font.Size = FontUnit.Small;
+        
+        settings.SettingsCommandButton.UpdateButton.Text = "Guardar";
+        settings.SettingsCommandButton.UpdateButton.Styles.Native = true;
+        settings.SettingsCommandButton.UpdateButton.Styles.Style.CssClass = "btn btn-default";
+        settings.SettingsCommandButton.UpdateButton.Styles.Style.Font.Size = FontUnit.Small;
+
+        settings.SettingsCommandButton.CancelButton.Text = "Cancelar";
+        settings.SettingsCommandButton.CancelButton.Styles.Native = true;
+        settings.SettingsCommandButton.CancelButton.Styles.Style.CssClass = "btn btn-cancel";
+        settings.SettingsCommandButton.CancelButton.Styles.Style.Font.Size = FontUnit.Small;
+                
+
+        //Styles
+        settings.Styles.GroupPanel.CssClass = "gvGroupPanel";
+        settings.Styles.Header.CssClass = "gvHeader";
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.AlternatingRow.CssClass = "gvRowAlternative";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+
+        //Columns
+        settings.KeyFieldName = "lcaUserId";
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "lcaNombre";
+            col.Caption = "NOMBRE";
+            col.EditFormSettings.Visible = DefaultBoolean.False;
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "lcaEmail";
+            col.Caption = "EMAIL";
+            col.AdaptivePriority = 2;
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Unbound";
+            col.Caption = "CONFIRMADO";
+            col.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            col.SetDataItemTemplateContent((c) =>
+            {
+                bool lcaConfirmado = (bool)DataBinder.Eval(c.DataItem, "lcaConfirmado");
+                Html.DevExpress().Label(l =>
+                {
+                    l.Name = "lblCosto_" + c.KeyValue;
+                    if (lcaConfirmado)
+                        l.Text = "SI";
+                    else
+                        l.Text = "NO";
+                }).GetHtml();
+            });
+            col.EditFormSettings.Visible = DefaultBoolean.False;
+        });
+
+        //Paging
+        settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 5;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 200;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+
+        //Rows
+        settings.SettingsBehavior.AllowSelectByRowClick = false;
+
+        //Callbacks
+        settings.ClientSideEvents.BeginCallback = "fnGVLeaguesCoadministrators_OnBeginCallback";
+        settings.ClientSideEvents.EndCallback = "fnGVLeaguesCoadministrators_OnEndCallback";
+        settings.CustomJSProperties = (s, e) =>
+        {
+            if (ViewData["EditResult"] != null)
+            {
+                e.Properties["cpPerformCallback"] = ViewData["EditResult"].ToString();
+            }
+        };
+    });
+
+    if (ViewData["EditError"] != null)
+    {
+        gvRequests.SetEditErrorText((string)ViewData["EditError"]);
+    }
+
+    gvRequests.Bind(Model).GetHtml();
+}

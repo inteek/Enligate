@@ -1,0 +1,42 @@
+﻿
+<div class="col-xs-12">
+    @using (Html.BeginForm())
+    {
+        @Html.Action("_LeaguesDetail_MultimediaEditCallback")
+    }
+</div>
+
+<div class="col-xs-12 text-right mSpaceMt10">
+    <button type="button" class="btn btn-cancel" onclick="fnOnEdit_ldeImagenesLiga_Cancel(@ViewBag.ligId, '@ViewBag.token')">
+        Regresar
+    </button>
+</div>
+
+
+
+<script type="text/javascript">
+
+    function fnOnEdit_ldeImagenesLiga_Cancel(id, token)
+    {
+        var dataForm = "Id=" + id + "&token=" + token;
+
+        $.ajax({
+            url: '/AdminLigas/_LeaguesDetail_MultimediaEdit_Cancel',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                $("#ldeImagenesLiga").empty();
+                $("#ldeImagenesLiga").html(data);
+            }
+        });
+    }
+
+    function LeaguesDetail_MultimediaEdit_OnBeginCallback(s, e) {
+        if(e.command == "CUSTOMCALLBACK")
+            e.customArgs['folder'] = "uploading";
+        e.customArgs['Id'] = @ViewBag.ligId ;
+        e.customArgs['token'] = "@ViewBag.token";
+    }
+
+</script>

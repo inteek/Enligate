@@ -1,0 +1,137 @@
+@using sw_EnligateWeb.Models;
+@using System.Web.UI.WebControls;
+
+@{
+    var gvLigaBusqueda = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvLigasBusqueda";
+        settings.CallbackRouteValues = new { Controller = "AdminLigas", Action = "_LigasBusquedasGrid_Callback" };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+        //Styles
+        settings.ControlStyle.BackColor = System.Drawing.Color.Transparent;
+        settings.Styles.Table.BackColor = System.Drawing.Color.Transparent;
+
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "homeGrid";
+        settings.Styles.SelectedRow.CssClass = "gvRowSelected";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.ControlStyle.Border.BorderStyle = BorderStyle.None;
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        settings.KeyFieldName = "ligId";
+        settings.SetDataRowTemplateContent(c =>
+        {
+            string deporte = ViewBag.deporteFiltro;
+            int tipoTorneo = ViewBag.tipoTorneoFiltro;
+            string ligCreadorId = DataBinder.Eval(c.DataItem, "ligCreadorId") as string;
+            DateTime ligFechaCreacionUTC = (DateTime)DataBinder.Eval(c.DataItem, "ligFechaCreacionUTC");
+
+            string img = DataBinder.Eval(c.DataItem, "ligImg") as string;
+            if (img != null)
+                img = "/" + img.Replace(Server.MapPath("~"), "").Replace("\\", "/");
+            else
+                img = Url.Content("~/Content/Images/general/noPhoto.jpg");
+            string ligNombre = DataBinder.Eval(c.DataItem, "ligNombre") as string;
+            string ligTipoLiga = DataBinder.Eval(c.DataItem, "ligTipoLiga") as string;
+            string ligDescripcion = DataBinder.Eval(c.DataItem, "ligDescripcion") as string;
+            decimal ligCalificacion = (decimal)DataBinder.Eval(c.DataItem, "ligCalificacion");
+            decimal ligPrecioDesde = (decimal)DataBinder.Eval(c.DataItem, "ligPrecioDesde");
+            string ligLatitud = DataBinder.Eval(c.DataItem, "ligLatitud") as string;
+            string ligLongitud = DataBinder.Eval(c.DataItem, "ligTipoLiga") as string;
+
+            ViewContext.Writer.Write(@"
+                <div class='row homeGridBox hgRowsTournaments' style='position:relative;'>
+                    <div class='col-xs-12 col-sm-12 col-md-3'>
+                        <div class='col-xs-12 col-sm-12 hgRowsImage'>
+                            <img src='" + img + "' alt='Torneo' />" + @"
+                        </div>
+                        <div class='col-xs-6 col-sm-6 col-md-12 col-lg-5 hgRowsTrophies'>
+                            <div>
+                                <span title='Calificacion: " + ligCalificacion.ToString() + @"' class='trophyRating' data-rating='" + ligCalificacion.ToString() + @"'></span>
+                            </div>
+                        </div>
+                        <div class='col-xs-6 col-sm-6 col-md-12 col-lg-7 hgTrophyComments'>
+                            <button type='button' class='btn btn-link' onclick='fnMostrarComentarios(" + c.KeyValue.ToString() + ",&#39;" + ligFechaCreacionUTC.ToString("ddMMyyyyHHmmssfff") + @"&#39;)'>
+                                Comentarios
+                            </button>
+                        </div>
+                    </div>
+                    <div class='col-xs-12 col-sm-12 col-md-9 paddingLRZero'>
+                        <div class='col-xs-12 right hgRowLocation text-right'>
+                            <button type='button' class='btn btn-link hgRowLocation' onclick='fnMostrarUbicacion(" + c.KeyValue.ToString() + ",&#39;" + ligCreadorId + @"&#39;)'>
+                                Ver Ubicacion
+                            </button>
+                        </div>
+                        <div class='col-xs-12 hgRowTitle'>
+                            <a  href='#' onclick='fnMostrarTorneo(" + c.KeyValue.ToString() + ",&#39;" + deporte + "&#39;," + tipoTorneo + @")'>
+                                " + ligNombre + @"
+                            </a>
+                        </div>
+                        <!--<div class='col-xs-12 hgRowZone'>
+                            Zona Norte
+                        </div>-->
+                        <div class='col-xs-12 hgRowDescription'>
+                            " + ligDescripcion + @" 
+                        </div>
+                        <div class='col-md-12 hidden-xs hidden-sm hgRowDescriptionSpace'>
+                            &nbsp;
+                        </div>
+                        <div class='col-xs-12 visible-xs visible-sm hgRowInscription text-right paddingLRZero'>
+                            Inscribete desde <span class='hgRowInscriptionPrice'>" + ligPrecioDesde.ToString("C") + @"</span><br />
+                            <span class='hgRowSeeMore'>
+                            <button type='button' class='btn btn-default' onclick='fnMostrarTorneo(" + c.KeyValue.ToString() + ",&#39;" + deporte + "&#39;," + tipoTorneo + @")'>
+                                Inscribirse
+                            </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class='hidden-xs hidden-sm hgRowInscription hgRowInscriptionMD'>
+                        Inscribete desde <span class='hgRowInscriptionPrice'>" + ligPrecioDesde.ToString("C") + @"</span>
+                        <span class='hgRowSeeMore'>
+                        <button type='button' class='btn btn-default btn-defaultNormalHover' onclick='fnMostrarTorneo(" + c.KeyValue.ToString() + ",&#39;" + deporte+ "&#39;," + tipoTorneo + @")'>
+                            Inscribirse
+                        </button>
+                        </span>
+                    </div>
+                </div>                
+            ");
+        });
+
+        //Paging
+        //settings.SettingsPager.PageSize = 5;
+        //settings.Settings.VerticalScrollableHeight = 600;
+        //settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        //settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+
+        //Rows
+        settings.Settings.ShowColumnHeaders = false;
+        settings.SettingsBehavior.AllowSelectByRowClick = false;
+
+        //Callbacks
+        settings.ClientSideEvents.EndCallback = "fnGVLigasBusqueda_OnEndCallback";
+        settings.ClientSideEvents.BeginCallback = "fnGVLigasBusqueda_OnBeginCallback";
+        settings.CustomJSProperties = (s, e) =>
+        {
+            System.Threading.Thread.Sleep(1000);
+            if (ViewData["lbgModelError"] != null)
+            {
+                e.Properties["cpModelError"] = ViewData["lbgModelError"].ToString();
+            }
+        };
+    });
+
+    if (ViewData["EditError"] != null){
+        gvLigaBusqueda.SetEditErrorText((string)ViewData["EditError"]);
+    }
+    gvLigaBusqueda.Bind(Model).GetHtml();
+}

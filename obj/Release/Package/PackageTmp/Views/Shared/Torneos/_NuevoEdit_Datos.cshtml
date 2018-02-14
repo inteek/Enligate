@@ -1,0 +1,215 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model TorneosViewModel
+
+@{
+    var torMaxJugadoresEquipoText = "jugadores por equipo";
+    if (!Model.torDeporteEnEquipo)
+    {
+        torMaxJugadoresEquipoText = "corredores";
+    }
+
+    var esCoach = (Model.torTipo == constClass.torTipoCoaching) ? true : false;
+}
+
+@Html.HiddenFor(m => m.torDeporteEnEquipo)
+
+<!-- Datos -->
+<div class="col-sm-12 col-md-10 col-lg-8 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+    <div class="marginForm">
+        <div class="input-group width100">
+            @Html.TextBoxFor(m => m.torNombreTorneo, new { @class = "titlePlaceholder titlePlaceholder2 width100", placeholder = "Nombre del torneo" })
+        </div>
+        @Html.ValidationMessageFor(m => m.torNombreTorneo, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="col-sm-12 col-md-10 col-lg-8 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS width100">
+            <span class="input-group-addon m-lbl">Liga:</span>
+            @Html.DropDownListFor(m => m.ligId, (List<SelectListItem>)Model.ddlLigas, new { @class = "width100", onchange = "torneoNuevo_LigaOnChange(this);" })
+        </div>
+        @Html.ValidationMessageFor(m => m.ligId, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div id="categoriaFiltro" class="col-sm-12 col-md-10 col-lg-8 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+    
+    @Html.Partial("Torneos/_CategoriaFiltro")
+
+</div>
+<div class="clearfix"></div>
+
+<div class="col-sm-12 col-md-6 col-lg-4 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS width100">
+            <span class="input-group-addon m-lbl">Fecha de inicio:</span>
+            @Html.DevExpress().DateEditFor(m => m.torFechaInicio, settings =>
+       {
+           settings.Properties.DisplayFormatString = constClass.formatDateOnly;
+           settings.Properties.MinDate = DateTime.Today;
+           settings.Width = Unit.Percentage(100);
+           settings.Properties.CalendarProperties.FirstDayOfWeek = System.Web.UI.WebControls.FirstDayOfWeek.Monday;
+       }).GetHtml()
+        </div>
+        @Html.ValidationMessageFor(m => m.torFechaInicio, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="col-sm-12 col-md-5 col-lg-4 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS width100">
+            <span class="input-group-addon m-lbl">Fecha de termino:</span>
+            @Html.DevExpress().DateEditFor(m => m.torFechaTermino, settings =>
+       {
+           settings.Properties.DisplayFormatString = constClass.formatDateOnly;
+           settings.Properties.MinDate = DateTime.Today;
+           settings.Properties.CalendarProperties.FirstDayOfWeek = System.Web.UI.WebControls.FirstDayOfWeek.Monday;
+           settings.Width = Unit.Percentage(100);
+       }).GetHtml()
+        </div>
+        @Html.ValidationMessageFor(m => m.torFechaTermino, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="col-sm-12 col-md-8 col-lg-6 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS width100">
+            <span class="input-group-addon m-lbl">Fecha limite de inscripción:</span>
+            @Html.DevExpress().DateEditFor(m => m.torFechaLimiteInscripcion, settings =>
+       {
+           settings.Properties.DisplayFormatString = constClass.formatDateOnly;
+           settings.Width = Unit.Percentage(100);
+           settings.Properties.CalendarProperties.FirstDayOfWeek = System.Web.UI.WebControls.FirstDayOfWeek.Monday;
+           settings.Properties.MinDate = DateTime.Now;
+       }).GetHtml()
+        </div>
+        @Html.ValidationMessageFor(m => m.torFechaLimiteInscripcion, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="clearfix"></div>
+
+
+        <div class="col-sm-12 col-md-8 col-lg-6 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+            <div class="marginForm">
+                <div class="input-group m-input-groupLbl-XS width100">
+                    <span class="input-group-addon m-lbl">Número de juegos:</span>
+                    @Html.TextBoxFor(m => m.torNumeroJuegos, new { @class = "width100", onkeypress = "return onlyNumbers(event,this);" })
+                </div>
+                @Html.ValidationMessageFor(m => m.torNumeroJuegos, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="clearfix"></div>
+@{
+    if (esCoach == false)
+    {
+        <div class="col-sm-12 col-md-8 col-lg-6 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+            <div class="marginForm">
+                <div class="input-group m-input-groupLbl-XS width100">
+                    <span class="input-group-addon m-lbl">Número de equipos:</span>
+                    @Html.TextBoxFor(m => m.torNumeroEquipos, new { @class = "width100", onkeypress = "return onlyNumbers(event,this);" })
+                </div>
+                @Html.ValidationMessageFor(m => m.torNumeroEquipos, "", new { @class = "text-danger" })
+            </div>
+        </div>
+            <div class="clearfix"></div>
+    }
+}
+<div class="col-sm-12 col-md-8 col-lg-6 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS width100">
+            <span class="input-group-addon m-lbl">@((esCoach == false) ? "Máximo de " + torMaxJugadoresEquipoText : "Numero total de jugadores") :</span>
+            @Html.TextBoxFor(m => m.torMaxJugadoresEquipo, new { @class = "width100", onkeypress = "return onlyNumbers(event,this);" })
+        </div>
+        @Html.ValidationMessageFor(m => m.torMaxJugadoresEquipo, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<!--if (Model.torDeporteEnEquipo && !esCoach) -->
+    <!--{-->
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+        <div class="marginForm">
+            <div class="input-group m-input-groupLbl-XS width100 mSpacePt5">
+                <span class="input-group-addon m-lbl">Puntos en juego:</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 mSpaceMb5 paddingLRZero-XS">
+        <div class="marginForm">
+            <div class="input-group width100">
+                <span class="input-group-addon m-lbl">Ganar:</span>
+                @Html.TextBoxFor(m => m.torPuntosGanar, new { @class = "width100", onkeypress = "return onlyNumbers(event,this);" })
+            </div>
+            @Html.ValidationMessageFor(m => m.torPuntosGanar, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 mSpaceMb5 paddingLRZero-XS paddingLRZero-MD">
+        <div class="marginForm">
+            <div class="input-group width100">
+                <span class="input-group-addon m-lbl">Empatar:</span>
+                @Html.TextBoxFor(m => m.torPuntosEmpatar, new { @class = "width100", onkeypress = "return onlyNumbers(event,this);" })
+            </div>
+            @Html.ValidationMessageFor(m => m.torPuntosEmpatar, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 mSpaceMb5 paddingLRZero-XS">
+        <div class="marginForm">
+            <div class="input-group width100">
+                <span class="input-group-addon m-lbl">Perder:</span>
+                @Html.TextBoxFor(m => m.torPuntosPerder, new { @class = "width100", onkeypress = "return onlyNumbers(event,this);" })
+            </div>
+            @Html.ValidationMessageFor(m => m.torPuntosPerder, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="clearfix"></div>
+@{
+    if (esCoach == true)
+    {
+
+        <div class="col-sm-12 col-md-8 col-lg-6 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+            <div class="marginForm">
+                <div class="input-group m-input-groupLbl-XS width100">
+                    <span class="input-group-addon m-lbl">Nombre de Equipo:</span>
+                    @Html.TextBox("teamName", null, new { @class = "width100"})  
+                </div>
+            </div>
+        </div>
+            <div class="clearfix"></div>
+    }
+}
+<!--}-->
+
+
+
+<script>
+    function refreshCategoria() {
+        var filtro = $("#categoriaFiltro");
+        var path = '/AdminTorneos/_CategoriaFiltro_Refresh';
+        var ligId = $("#ligId").val();
+        console.log(ligId);
+        $.ajax({
+            url: path,
+            type: "POST",
+            cache: false,
+            data: "ligId="+ligId,
+            success: function (data) {
+
+                filtro.html(data);
+                torneoNuevo_LigaCategoriaOnChange();
+                //location.reload();
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    }
+    $("#torFechaInicio_I").change(function (e) {
+        console.log("val: " + e.value);
+    });
+</script>

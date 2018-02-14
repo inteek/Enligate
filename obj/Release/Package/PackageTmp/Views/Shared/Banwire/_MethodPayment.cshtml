@@ -1,0 +1,34 @@
+﻿<div class="modal fade" id="modalMethodPyament" aria-hidden="false">
+    <div class="modal-dialog modal-sm" style="margin-bottom: 50px">
+        <div class="modal-content" id="main_dialog_content" style="display: block;">
+            <div class="modal-header">
+                <button type="button" class="close go-back" data-back-to="order_review" style="font-size: 14px" aria-hidden="true"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                <h4 class="modal-title">Método de pago</h4>
+                <p>¿Cómo deseas realizar tu pago?</p>
+            </div>
+            <div class="modal-body border" id="pg_payment_method">
+                <!--<p>Selecciona el método de pago con el cual deseas completar tu compra</p>-->
+                <div class="list-group" style="margin-bottom: 0">
+                    <a id="vm" href="#" class="payment-method list-group-item" style="position: relative">
+                        <img class="list-img" src="~/Content/Images/payments/visa_mastercard.png" style="width: 50px; max-width: 50px; max-height: none; top: 12px">
+                        <h5 class="list-group-item-heading with-img">Visa / Mastercard</h5>
+                        <p class="list-group-item-text with-img" style="min-height:36px;">Pago con tarjeta de débito o crédito</p>
+                    </a>
+                    
+                    <a data-method="oxxo" href="#" class="payment-method list-group-item" style="position: relative">
+                        <img class="list-img" src="~/Content/Images/payments/oxxo2.png" style="width: 50px; max-width: 50px; max-height: none">
+                        <h5 class="list-group-item-heading with-img">Tiendas OXXO</h5>
+                        <p class="list-group-item-text with-img">Pago en efectivo</p>
+                    </a>
+
+                    <a data-method="speifast" href="#" class="payment-method list-group-item" style="position: relative">
+                        <img class="list-img" src="~/Content/Images/payments/speifast.png" style="width: 50px; max-width: 50px; max-height: none; margin-top: 7px">
+                        <h5 class="list-group-item-heading with-img">SPEI FAST</h5>
+                        <p class="list-group-item-text with-img">Pago por transferencia interbancaria SPEI </p>
+                    </a>
+
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>

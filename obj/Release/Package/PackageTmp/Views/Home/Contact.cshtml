@@ -1,0 +1,44 @@
+﻿@using sw_EnligateWeb.Models;
+
+@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    ViewBag.Title = "Enligate";
+}
+
+<!-- Logo and Balls-->
+@Html.Partial("_LogoBalls")
+
+<!-- Content -->
+<div class="row">
+    <div class="col-xs-12 col-sm-offset-2 col-sm-9 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-7 mSpaceMt40">
+
+        <p class="mTitle5">
+            Contacto
+            <img src="../../Content/Images/general/buzon.png" alt="Buzon" class="hidden-xs" width="70" style="vertical-align:text-bottom;" />
+        </p>
+
+        <div class="row mSpaceMt20">
+            <table class="mContacto">
+                <tr>
+                    <td class="col-xs-12 col-sm-7 mContactoLeft">
+                        @using (Ajax.BeginForm("_ContactForm", "Home", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "frmContact", OnComplete = "showMessages();" }))
+                        {
+                            <fieldset id="frmContact">
+                                @Html.Partial("Home/_ContactForm", new ContactViewModel())
+                            </fieldset>
+                        }
+                    </td>
+                    <td class="col-sm-5 hidden-xs mContactoRight">
+                        @Html.Partial("Home/_ContactSocialNetworking")
+                    </td>
+                </tr>
+                
+            </table>
+        </div>
+        <div class="row visible-xs">
+            <div class="col-xs-12 mContactoRight">
+                @Html.Partial("Home/_ContactSocialNetworking")
+            </div>
+        </div>
+    </div>
+</div>

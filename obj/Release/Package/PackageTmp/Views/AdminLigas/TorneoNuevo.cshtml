@@ -1,0 +1,25 @@
+﻿@using sw_EnligateWeb.Models;
+@{
+    ViewBag.Title = "Torneo Nuevo";
+}
+
+<!-- Content -->
+<div id="ADMINISTRADORDELIGAS_Torneos" class="row">
+    <div id="ADMINISTRADORDELIGAS_Torneos_CrearNuevoTorneo" class="col-sm-12">
+
+        <div class="col-xs-12 col-md-12 col-lg-12 mSpaceMt20 mSpaceMb20">
+            <div id="divTorneoNuevoEdit" class="col-xs-12"  >
+
+                @{
+                    int ligId = ViewBag.torneoNuevoLigId != null ? (int)ViewBag.torneoNuevoLigId : 0;
+                }
+
+                @Html.Action("_TorneoNuevo", "AdminTorneos", new { ligId = ligId })
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--Modal Detalles-->
+

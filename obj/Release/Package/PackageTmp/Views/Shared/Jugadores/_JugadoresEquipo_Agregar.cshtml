@@ -1,0 +1,233 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model EquiposJugadoresViewModel
+
+<script type="text/javascript">
+
+    var jeAdd_TorId = @Model.torId;
+    var jeAdd_EquId = @Model.equId;
+    var maxJug = @Model.torMaximoJugadoresEquipo;
+    var jugadores = "";
+    @for (int i = 0; i < Model.listJugadores.Count; i++)
+    {
+        var jug = Model.listJugadores[i];
+        <text>
+        if (jugadores != "")
+            jugadores += ";";
+        jugadores += "@jug.jugCorreo,@jug.jugNombre,@jug.jugUserId,@jug.jugEstatus,@jug.jugConfirmado,@jug.jugNuevo,@jug.jugCodConfirmacion";
+        </text>
+    }
+
+    function fnNuevoEdit_JugadoresBuscar(txtCorreo) {
+        console.log(txtCorreo);
+        if ($(txtCorreo).val() != "") {
+            if (validateEmailPlayer(txtCorreo)) {
+                var dataForm = "jugCorreo=" + $(txtCorreo).val();
+                $.ajax({
+                    url: '/AdminEquipos/_NuevoEdit_BuscarJugador',
+                    type: "POST",
+                    cache: false,
+                    data: dataForm,
+                    success: function (data) {
+                        var nombre = ""
+                        if (data.nombre != "") {
+                            nombre = data.nombre;
+                        } else {
+                            nombre = $(txtCorreo).val();
+                        }
+                        $("#jugNombre").val(nombre);
+                        $("#jugNombreSpan").text(nombre);
+                        $(".jugUserId").val(data.id);
+                    },
+                    complete: function (jqXHR, textStatus) {
+                        showMessages();
+                        return true;
+                    }, error: function () {
+
+                    }
+                });
+            }
+            
+        }
+        return true;
+    }
+
+    function fnNuevoEdit_JugadoresAgregar() {
+
+        var jugData = $("#frmNuevoEdit_JugadoresAgregar :input").serialize();
+        
+        var correo = $("#jugCorreo");
+       // if (correo != "") {
+            if (validateEmailPlayer(correo)) {
+                $.ajax({
+                    url: '/AdminTorneos/VerifyPlayerTournament',
+                    type: "POST",
+                    cache: false,
+                    data: jugData + "&torId=" + jeAdd_TorId,
+                    success: function (data) {
+                        if (data.booSuccess) {
+                            var dataForm = jugData + "&torMaxJugadoresEquipo=" + maxJug + "&torId=" + jeAdd_TorId + "&equId=" + jeAdd_EquId;
+                            $.ajax({
+                                url: '/AdminEquipos/_NuevoEdit_AgregarJugador',
+                                type: "POST",
+                                cache: false,
+                                data: dataForm,
+                                success: function (data) {
+
+                                    
+                                    if (data.save) {
+                                        if (jeAdd_EquId != 0) {
+                                            submit_equipo();
+                                            //  alert("editado "+jeAdd_EquId)
+                                        } else {
+                                            // alert("Nuevo "+jeAdd_EquId)
+                                        }
+                                    }
+                                    console.log("XD"+data);
+                                    $("#divNuevoEdit_JugadoresAgregar").html(data.html);
+                                },
+                                complete: function (jqXHR, textStatus) {
+                                    showMessages();                                    
+                                    fnGVJugadores_PerformCallback();
+                                }
+                            });
+                        } else {
+                            $(".m-messageHide").html(data.strPartialViewString)
+                        }
+                    },
+                    complete: function (jqXHR, textStatus) {
+                        showMessages();
+                    },
+                    error: function (xhr, status, p3, p4) {
+                        alert("Hubo un error ...");
+                    }
+                });
+            }
+        //}
+    }
+    function getEquipoId(){
+        return jeAdd_EquId;
+    }
+    function fnGVJugadores_PerformCallback(s, e) {
+        if (typeof gvJugadores.InCallback === "function"){
+           // if (!gvJugadores.InCallback())
+                gvJugadores.PerformCallback();
+        }
+
+    }
+
+    function fnGVJugadores_OnBeginCallback(s, e) {
+        e.customArgs['jugadores'] = jugadores;
+        e.customArgs['edit']="@Model.edit";
+    }
+    function validateEmailPlayer(el) {
+        if (validateEmail($(el).val())) {
+            console.log("OK");
+            return true;
+        } else {
+            console.log("Wrong");
+            $("#result_player").text("");
+            $("#result_player").text("Ingresar un Correo Electronico Valido");
+            $("#result_player").addClass("text text-danger")
+            $("#result_player").show();
+            $("#result_player").delay(5000).fadeOut('slow');
+            return false;
+        }              
+    }
+    function fnGVJugadores_OnEndCallback(s, e) {
+        switchButtons();
+    }
+
+    function fnGVJugadores_ManejarCuenta(correo) {
+        alert("Manejar cuenta de '" + correo + "'");
+    }
+
+    function fnGVJugadores_VolverInvitar(correo) {
+        var dataForm = "jugCorreo=" + correo + "&torId=" + jeAdd_TorId + "&equId=" + jeAdd_EquId;
+       // alert(dataForm);
+        $.ajax({
+            url: '/AdminEquipos/_NuevoEdit_InvitarJugador',
+            type: "POST",
+            cache: false,
+            data: dataForm,
+            success: function (data) {
+                $(".m-messageHide").html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+                fnGVJugadores_PerformCallback();
+            }
+        });
+    }
+
+    function fnGVJugadores_EliminarJugador(correo) {
+        if (confirm("¿Estas seguro que deseas eliminar a '" + correo + "'?"))
+        {
+            var dataForm = $("#frmNuevoEdit_JugadoresAgregar :input").serialize() + "&torMaxJugadoresEquipo=" + maxJug+ "&torId=" + jeAdd_TorId + "&equId=" + jeAdd_EquId;
+            dataForm += "&jugCorreoEliminar=" + correo;
+            $.ajax({
+                url: '/AdminEquipos/_NuevoEdit_QuitarJugador',
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    $("#divNuevoEdit_JugadoresAgregar").html(data);
+                    if (getEquipoId()!=0) {
+                        submit_equipo();
+                     //   alert("editado "+getEquipoId())
+                    }else{
+                       // alert("nuevo "+getEquipoId())
+                    }
+                    fnGVJugadores_PerformCallback();
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+    }
+</script>
+
+<div align="center" class="col-xs-12 col-sm-12 col-md-12" id="frmNuevoEdit_JugadoresAgregar">
+        @for (int i = 0; i < Model.listJugadores.Count; i++)
+        {
+            @Html.HiddenFor(m => m.listJugadores[i].jugCorreo)
+            @Html.HiddenFor(m => m.listJugadores[i].jugNombre)
+            @Html.HiddenFor(m => m.listJugadores[i].jugUserId)
+            @Html.HiddenFor(m => m.listJugadores[i].jugEstatus)
+            @Html.HiddenFor(m => m.listJugadores[i].jugConfirmado)
+            @Html.HiddenFor(m => m.listJugadores[i].jugNuevo)
+            @Html.HiddenFor(m => m.listJugadores[i].jugCodConfirmacion)
+        }
+
+        <div class="col-xs-4 mSpaceMt10 mSpaceMb5">
+            @Html.TextBoxFor(m => m.jugCorreo, new { @class = "width100", placeholder = "E-mail", onchange = "fnNuevoEdit_JugadoresBuscar(this);", onBlur="validateEmailPlayer(this);" ,onKeyPress = "return disableEnterKey(event);" })
+            @Html.ValidationMessageFor(m => m.jugCorreo, "", new { @class = "text-danger" })
+            <span id="result_player" class="text-danger"></span>
+        </div>
+
+        <div class="col-xs-4 mSpaceMt10 mSpaceMb10">
+            <label class="width100" id="jugNombreSpan">
+
+            </label>
+            <!--Html.TextBoxFor(m => m.jugNombre, new { class = "width100 jugNombre", placeholder = "Nombre", onKeyPress = "return disableEnterKey(event);" })-->
+            <!--Html.ValidationMessageFor(m => m.jugNombre, "", new { class = "text-danger" })-->
+        </div>
+        @Html.HiddenFor(m => m.jugNombre, new { @class = "jugNombre" })
+        @Html.HiddenFor(m => m.jugUserId, new { @class = "jugUserId" })
+
+        <div class="col-xs-4 mSpaceMt10 mSpaceMb10 text-right">
+            <button type="button" class="btn btn-default" onclick="fnNuevoEdit_JugadoresAgregar();">
+                <span>Agregar jugador</span>
+            </button>
+        </div>   
+</div>
+
+<div id="divNuevoEdit_JugadoresGrid" class='col-xs-12 mSpaceMt20'>
+    @Html.Action("EquipoJugadoresGrid", "AdminEquipos")
+</div>
+
+<div class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>

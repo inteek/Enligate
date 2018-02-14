@@ -1,0 +1,56 @@
+﻿@using sw_EnligateWeb.Models;
+
+@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    ViewBag.Title = "Enligate";
+}
+
+<!-- Content -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-offset-1">
+
+            @if (ViewBag.UsuarioNombre != null)
+            {
+                <div class="mTitle2 text-uppercase text-center mSpaceMt30 mSpaceMb30">
+                    Confirmación de coadministración
+                </div>
+
+                <div class="col-lg-offset-4 col-lg-4 col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-10 text-justify">
+                    <p>
+                        Hola @ViewBag.UsuarioNombre!
+                    </p>
+                    <p>
+                        Haz confirmado ser coadministrador del equipo <b>@ViewBag.EquipoNombre</b>.
+                    </p>
+                    <p>
+                        Inicia sesión y cambia al rol "COACH" para que empieces a administrar el equipo.
+                    </p>
+                </div>
+
+                <div class="col-lg-offset-4 col-lg-4 col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-10 mSpaceMt30">
+                    @Html.ActionLink("Continuar", "Index", "Home", null, new { @class = "btn btn-default width100" })
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            showMessages();
+        });
+
+        @if(ViewBag.jsScript != null)
+        {
+            <text>
+        @(new HtmlString(ViewBag.jsScript))
+        </text>
+        }
+    </script>
+}

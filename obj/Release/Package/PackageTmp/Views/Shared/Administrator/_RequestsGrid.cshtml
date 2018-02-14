@@ -1,0 +1,87 @@
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@using sw_EnligateWeb.Models.HelperClasses;
+
+@{
+    var gvRequests = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvRequests";
+        settings.CallbackRouteValues = new { Controller = "Administrator", Action = "_RequestsGrid"};
+        settings.KeyFieldName = "ligId";
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+        //Styles
+        settings.Styles.GroupPanel.CssClass = "gvGroupPanel";
+        settings.Styles.Header.CssClass = "gvHeader";
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.AlternatingRow.CssClass = "gvRowAlternative";
+        settings.Styles.SelectedRow.CssClass = "gvRowSelected";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        //settings.Columns.Add(col =>
+        //{
+        //    col.FieldName = "ligId";
+        //    col.Caption = "Id";
+        //});
+        settings.Columns.Add(col => { 
+            col.FieldName = "ligNombreLiga";
+            col.Caption = "NOMBRE LIGA";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "ligTipoLiga";
+            col.Caption = "TIPO LIGA";
+            col.AdaptivePriority = 1;
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "ligNombreCreador";
+            col.Caption = "NOMBRE DUEÑO";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "ligFechaRegistro";
+            col.Caption = "FECHA DE REGISTRO";
+            col.AdaptivePriority = 2;
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "ligFormaPago";
+            col.Caption = "FORMA PAGO";
+            col.AdaptivePriority = 1;
+        });
+        
+        //Endless Paging
+        settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 10;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 400;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        
+        //Rows
+        settings.Settings.ShowGroupPanel = true;
+        //settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+        
+        //Callbacks
+        settings.ClientSideEvents.BeginCallback = "fnGvRequest_OnBeginCallback";
+        settings.ClientSideEvents.RowDblClick = "fnGvRequest_RowDblClick";
+        settings.ClientSideEvents.RowClick = "fnGvRequest_RowClick";
+    });
+   
+    if (ViewData["EditError"] != null){
+        gvRequests.SetEditErrorText((string)ViewData["EditError"]);
+    }
+    
+    gvRequests.Bind(Model).GetHtml();
+}

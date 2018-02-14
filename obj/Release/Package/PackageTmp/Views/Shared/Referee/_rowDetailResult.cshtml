@@ -1,0 +1,105 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model ResultadoPartido
+@{
+    var ddlEquipos = new List<SelectListItem>();
+    var ddlJugadores = new List<SelectListItem>();
+    
+    if (Model.equNombreEquipoUno != "" && Model.equNombreEquipoUno != null)
+    {
+        ddlEquipos.Add(new SelectListItem { Text = Model.equNombreEquipoUno.ToUpper(), Value = Model.equIdUno.ToString() });
+        if (Model.equNombreEquipoDos != "" && Model.equNombreEquipoDos != null)
+        {
+            ddlEquipos.Add(new SelectListItem { Text = Model.equNombreEquipoDos.ToUpper(), Value = Model.equIdDos.ToString() });
+        }
+        ddlEquipos.First().Selected = true;
+        foreach (var item in Model.ddlJugUno)
+        {
+            ddlJugadores.Add(new SelectListItem { Text = item.jugNombre, Value = item.jugUserId });
+        }
+    }
+    else if (Model.equNombreEquipoDos != "" && Model.equNombreEquipoDos != null)
+    {
+        ddlEquipos.Add(new SelectListItem { Text = Model.equNombreEquipoDos.ToUpper(), Value = Model.equIdDos.ToString() });
+        foreach (var item in Model.ddlJugDos)
+        {
+            ddlJugadores.Add(new SelectListItem { Text = item.jugNombre, Value = item.jugUserId });
+        }
+    }
+
+    var Id = 0;
+    if (Model.Id > 0)
+    {
+        Id = Model.Id;
+    }
+    var classJug = "tdJugador" + Id;
+}
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="control-label" for="name">Equipo:</label>
+            @Html.DropDownList("equipoSelect" + Id, ddlEquipos, new { @class = "width100 selectEquipos form-control width150px", onchange = "fnEquipoChange(this," + Id + ");" })
+        </div>
+    </div>
+    <!-- Text input-->
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="control-label" for="email">Jugador</label>
+            <div id=@classJug>
+                @Html.DropDownList("jugadoresSelect" + Id, ddlJugadores, new { @class = "width100 selectJugadores form-control width150px" })
+            </div>
+        </div>
+    </div>
+    <!-- Text input-->
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="control-label" for="date">Goles:</label>
+            <input type="number" name="goles" class="numbersOnly goles form-control" size="2" value="@Model.goles" min="0" onchange="updateResultado(this)" style="width:60%;" />
+        </div>
+    </div>
+    <!-- Select Basic -->
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="control-label" for="time">Asistencias:</label>
+            <input type="text" name="asistencias" class="numbersOnly asistencias form-control" value="@Model.asistencias" min="0" style="width:60%;" />
+        </div>
+    </div>
+
+    <!-- Select Basic -->
+    <div class="col-md-2">
+        <div class="form-group">
+            <label class="control-label" for="appointmentfor">Faltas:</label>
+            <input type="text" name="faltas" class="numbersOnly  faltas form-control" value="@Model.faltas" min="0" style="width:60%;" />
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="control-label" for="appointmentfor">T. Amarillas:</label>
+            <input type="text" name="amarillas" class="numbersOnly amarillas form-control" value="@Model.amarillas" min="0" max="2" onchange="updateTarjetaAmarilla(this)" style="width:80%;" />
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="form-group">
+            <label class="control-label" for="appointmentfor">T. Rojas:</label>
+            <input type="text" name="roja" class="numbersOnly roja form-control" value="@Model.roja" min="0" max="1" style="width:70%;" />
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="control-label" for="appointmentfor">P. Suspendidos:</label>
+            <input type="text" name="parSuspendido" class="numbersOnly  parSuspendido form-control" value="@Model.parSuspendido" min="0" style="width:70%;" />
+        </div>
+    </div>
+
+    <!-- Button -->
+    <div class="col-md-2" style="display: flex; align-items: center;">
+        <div class="form-group text-center">
+            <label class="control-label" for="appointmentfor">Remover:</label><br />
+            <button type="button" class="btn btn-link " onclick="removeRow(this);" aria-label="Center Align"><span class="text-danger glyphicon glyphicon-minus delete"></span></button>
+        </div>
+    </div>
+</div>
+<hr />

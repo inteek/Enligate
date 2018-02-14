@@ -1,0 +1,66 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+
+<div>
+    @if (ViewData.ModelState[constClass.error] != null && ViewData.ModelState[constClass.error].Errors.Count > 0)
+    {
+        <div id="confirmEmailForm_ModalStateErrors" class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @*Errores:
+                <br />*@
+            @{
+        int count = 0;
+        foreach (var msg in ViewData.ModelState[constClass.error].Errors)
+        {
+            if (count > 0)
+            {
+                <br />
+            }
+            @Html.Raw(HttpUtility.HtmlDecode(msg.ErrorMessage))
+            count++;
+        }
+            }
+        </div>
+    }
+
+    @if (ViewData.ModelState[constClass.info] != null && ViewData.ModelState[constClass.info].Errors.Count > 0)
+    {
+        <div id="confirmEmailForm_ModalStateErrors" class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @*Info:
+                <br />*@
+            @{
+        int count = 0;
+        foreach (var msg in ViewData.ModelState[constClass.info].Errors)
+        {
+            if (count > 0)
+            {
+                <br />
+            }
+            @Html.Raw(HttpUtility.HtmlDecode(msg.ErrorMessage))
+            count++;
+        }
+            }
+        </div>
+    }
+
+    @if (ViewData.ModelState[constClass.success] != null && ViewData.ModelState[constClass.success].Errors.Count > 0)
+    {
+        <div id="confirmEmailForm_ModalStateErrors" class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @*Success:
+                <br />*@
+            @{
+        int count = 0;
+        foreach (var msg in ViewData.ModelState[constClass.success].Errors)
+        {
+            if (count > 0)
+            {
+                <br />
+            }
+            @Html.Raw(HttpUtility.HtmlDecode(msg.ErrorMessage))
+            count++;
+        }
+            }
+        </div>
+    }
+</div>

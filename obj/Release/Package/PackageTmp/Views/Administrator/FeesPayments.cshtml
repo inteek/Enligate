@@ -1,0 +1,141 @@
+﻿@using sw_EnligateWeb.Models;
+
+@{
+    ViewBag.Title = "Enligate";
+}
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+<!-- Content -->
+<div id="ADMINISTRADOR_Pagos" class="row">
+    <div id="ADMINISTRADOR_Pagos_Historial" class="col-sm-12">
+        <div class="m-hdc-Gallery">
+            <h1>
+                Historial
+            </h1>    
+            @Html.Partial("Banwire/_GridPagos")            
+        </div>
+    </div>
+</div>
+
+<!--Modal Detalles-->
+<div class="modal fade" id="detallesPagosModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body ">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-9 pull-right">
+                            <div class="col-xs-12">
+                                <h2>Detalles de Pago</h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Liga:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="nameLiga"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Transaccion:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="transaccion"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Usuaio:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="usuario"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Referencia:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="referencia"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Concepto Pago:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="concepto"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Metodo de Pago:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="metodo"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Fecha de Pago:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="fecha"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Total:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="total"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden m-messageHide">
+        @Html.Partial("_ModalState_Errors")
+    </div>
+
+</div>
+
+@section scripts{
+    <script>
+        function detallesPago(id) {
+            $.ajax({
+                url: "/AdminLigas/_DetallesPago",
+                type: "POST",
+                cache: false,
+                data: "ligId=" + id,
+                success: function (data) {
+                    var item = data[0];
+                    console.log(data);
+                    $("#nameLiga").text(item.ligNombre);
+                    $("#usuario").text(item.userNombre);
+                    $("#transaccion").text(item.IdTransaccion);
+                    $("#concepto").text(item.conceptoPago != null ? item.conceptoPago : "Pago de " + item.ligNombre);
+                    $("#metodo").text(item.metodoPago);
+                    $("#referencia").text(item.referencia);
+                    $("#fecha").text(item.fechaPago);
+                    $("#total").text("$ " + item.total / 100 + " MXN");
+                    $("#detallesPagosModal").modal();
+                   
+                },
+            })
+        };
+    </script>
+}

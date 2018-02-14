@@ -1,0 +1,582 @@
+﻿@using sw_EnligateWeb.Models;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title - Enligate</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Sonetworks" />
+    <meta name="description" content="" />
+
+    <link rel="icon" type="image/png" href="~/Content/Images/general/logo-xs.png">
+
+    @Styles.Render("~/Theme/Default")
+    @Styles.Render("~/Content/fullcalendarcss")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @RenderSection("head", required: false)
+
+    @Html.DevExpress().GetStyleSheets(
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.GridView }
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.PivotGrid },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.Chart },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.Report },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.TreeList },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.Spreadsheet },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.SpellChecker }
+    )
+
+    <style>
+        #notify,#bug-notify,#chat-notifÿ{
+            z-index:100;
+        }
+        #notify,#notice-title{            
+            top: 20%;    
+            background: #23527c;
+            color:white;            
+        }
+        #chat-notify,#chat-notice-title{
+            top: 50%;    
+            background: #23527c;
+            color:white;
+        }
+        #bug-notify,#bug-title{            
+            top: 70%;    
+            background: #23527c;
+            color:white;            
+        }
+        #notify,#bug-notify{
+            position: fixed;
+            width: 300px;
+            height: 150px;
+            right: -300px;
+            -webkit-transition: right 2s; /* For Safari 3.1 to 6.0 */
+            transition: right 1.5s;
+        }
+        #chat-notify{
+            position: fixed;
+            width: 300px;
+            height: 50px;
+            right: -300px;
+            -webkit-transition: right 2s; /* For Safari 3.1 to 6.0 */
+            transition: right 1.5s;
+        }
+        #notify:hover, #chat-notify:hover, #bug-notify:hover {
+            right: -10px;
+        }
+    
+         #bug-title,#notice-title{
+            position: absolute;
+            width: 50%;
+            height:30px;
+            top: 120px;
+            transform: rotate(270deg);
+            -webkit-transform: rotate(270deg);
+            -moz-transform: rotate(270deg);
+            -o-transform: rotate(270deg);
+            transform-origin: left bottom 0;           
+            padding-bottom:20px;
+        }
+        #chat-notice-title  {
+            height: 40px;
+            margin-left: 12px;
+            position: absolute;
+            text-align: center;
+            top: 10px;
+            transform: rotate(270deg);
+            transform-origin: left bottom 0;
+            width: 50px;
+        }
+        .bug-title{
+            display:inline-block;
+            width:100%;
+            height:30px;
+            text-align:center;
+        
+        }
+        .notice-title{
+            display:inline-block;
+            width:80%;
+            height:30px;
+            text-align:center;
+        }
+        .chat-notice-title{
+            display:inline-block;
+            width:80%;
+            height:30px;
+            margin-top: 5px;
+        }
+        .notice-count{
+            display:inline-block;
+            width:20%;
+            height:30px;
+            float:right;
+            transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            text-align:center;
+            background-color:red;
+            color:white;
+        }
+        .chat-notice-count{
+            display:inline-block;
+            width:20px;
+            height:30px;
+            float:right;
+            transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            text-align:center;
+            background-color:red;
+            color:white;
+        }
+        #bug-body,#notice-body, #chat-notice-body{
+            position:absolute;
+            padding-left:10px;
+        }
+        #bug-body p:hover,#notice-body p:hover,  #chat-notice-body p:hover{
+            cursor: pointer;
+        }
+
+    </style>
+  
+</head>
+<body class="wrapper">
+
+    @Html.DevExpress().GetScripts(
+        new Script { ExtensionSuite = ExtensionSuite.Editors },
+        new Script { ExtensionSuite = ExtensionSuite.HtmlEditor },
+        new Script { ExtensionSuite = ExtensionSuite.GridView }
+        //new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        //new Script { ExtensionSuite = ExtensionSuite.PivotGrid },
+        //new Script { ExtensionSuite = ExtensionSuite.Chart },
+        //new Script { ExtensionSuite = ExtensionSuite.Report },
+        //new Script { ExtensionSuite = ExtensionSuite.Scheduler },
+        //new Script { ExtensionSuite = ExtensionSuite.TreeList },
+        //new Script { ExtensionSuite = ExtensionSuite.RichEdit },
+        //new Script { ExtensionSuite = ExtensionSuite.Spreadsheet },
+        //new Script { ExtensionSuite = ExtensionSuite.SpellChecker }
+    )
+
+
+    <!-- --------------------- MESSAGE BOX ----------------------- -->
+    <div class="m-messageShow">
+        @*@Html.Partial("_ModalState_Errors")*@
+    </div>
+
+    @*<div class="hidden m-messageHide">
+            @Html.Partial("_ModalState_Errors")
+        </div>*@
+    <!-- --------------------- END MESSAGE BOX ----------------------- -->
+    <!-- ---------------------NAVIGATION MENU--------------------- -->
+    <nav class="navbar navbar-link  m-navbar-homeDashboard">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-Menu" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="visible-xs visible-sm" href='@Url.Action("Index", "Home", new { id = "" })'>
+                    <img src='~/Content/Images/general/logo-xs.png' logo-xs title="Enligate" class="hdLogoXS" />
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-Menu">
+
+                <div class="hdLogo">
+                    <a href='@Url.Action("Index", "Home", new { id = "" })' title="Logo" class="hidden-xs hidden-sm">
+                        <img src="~/Content/Images/general/logoMd.png" alt="Enligate_Logo" class="imgLogo" />
+                    </a>
+                </div>
+
+                <ul class="nav navbar-nav m-navbar-LoginMenu lineRight">
+                    <li>
+                        <a href='@Url.Action("Index", "Admin")' >
+                            @*<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>*@
+                            Hola @ViewBag.afa_usrName
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    @Html.Partial("_ChangeCurrentRol")
+                    <!--<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-target="ddMenu-InscribeLigas" aria-haspopup="true" aria-expanded="false">
+                            +Inscribe tu liga
+                        </a>
+                        <ul class="dropdown-menu" id="ddMenu-InscribeLigas">
+                            @{
+                                foreach (var lcaTipoLiga in (List<schemaLigaCategorias>)ViewBag.afa_LigaCategorias)
+                                {
+                                    <li>
+                                        <form action="@Url.Action("InscribirLiga","Home")" method="POST">
+                                            <input type="hidden" name="tipoLiga" value="@lcaTipoLiga.lcaId">
+                                            <button type="submit" class="btn btn-Link layoutBtnInscribeLiga">
+                                                @lcaTipoLiga.lcaCategoria
+                                            </button>
+                                        </form>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </li>-->
+                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-target="ddMenu-Other" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-cog glyphiconWheel"></span>
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-right" id="ddMenu-Other">
+                            <li>@Html.ActionLink("Nosotros", "AboutUs", "Home")</li>
+                            <li>@Html.ActionLink("FAQ", "FAQs", "Home")</li>
+                            <li>@Html.ActionLink("Salir", "LogOut", "Account")</li>
+                        </ul>
+                    </li>
+                </ul>
+                @RenderSection("ballsMenuXS", required: false)
+            </div>
+        </div>
+    </nav>
+    <!-- ---------------------END NAVIGATION MENU--------------------- -->
+
+    <div class="container-fluid mSpaceMt20 mSpaceMb20" style="z-index:50">
+        <div class="row mAdminWrapper">
+            <div class="col-xs-12 paddingLRZero">
+                <!-- --------------------- ADMIN MENU --------------------- -->
+                @Html.Partial("_MenuView", (List<MenusViewModel>)@ViewBag.afa_MenuRole)
+                <!-- --------------------- END ADMIN MENU --------------------- -->
+
+                <div class="mSpaceMt20 mAdminContent">
+                    <!-- --------------------- ADMIN SUBMENU --------------------- -->
+                    <div id="swEnligate_Submenu">
+                        @*@Html.Partial("_SubmenuView")*@
+                    </div>
+                    <!-- --------------------- END ADMIN SUBMENU --------------------- -->
+                    
+                    @RenderBody()
+                    <div id="notify" style="display:none;">
+                        <div id="notice-title">
+                            <span class="notice-title">Avisos</span>
+                            <span class="notice-count">0</span>
+                        </div>
+                        <div id="notice-body">
+                        </div>
+                    </div>
+                    <div id="chat-notify" style="z-index:100;">
+                        <div id="chat-notice-title">
+                            <span class="chat-notice-title">Chat</span>                            
+                        </div>
+                        <div id="chat-notice-body">
+                            <p style="margin-top:10px;">
+                                Inicia el Chat
+                                <a href="/Admin/ChatEnligate" class="btn btn-default" role="button" onClick="return popup(this, 'notes')">Iniciar</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div id="bug-notify">
+                        <div id="bug-title">
+                            <span class="bug-title">Reportar</span>
+                        </div>
+                        <div id="bug-body">
+                            <form action="#" id="bug-form" style="margin-top:5px;">
+                                <text>Reporta un evento/bug ...</text>
+                                <textarea name="reporteTxt" cols="40" rows="3" style="color:black;"></textarea>
+                                <span id='notifyReport'></span>
+                                <button type="button" onclick="sendReportBug()" class="btn btn-default">Enviar Reporte</button>
+                            </form>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalAccount" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                </div>
+                <div class="modal-body modalBodyAccount" style="padding-top:0">
+                    <div class="container-fluid" style="min-height:150px;">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-11">
+                            <div class="row mSpaceMt10">
+                                <div class="col-xs-12">
+                                    @using (Ajax.BeginForm("_ConfirmEmailForward", "Account", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "frmConfirmEmailForward", OnComplete = "showMessages();" }))
+                                    {
+                                        <fieldset id="frmConfirmEmailForward" class="text-center">
+                                            @Html.Partial("Account/_ConfirmEmailForward")
+                                        </fieldset>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@if (!(bool)ViewBag.afa_profileComplete)
+{
+    <text>
+    <div class="modal fade" id="modalProfile" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                </div>
+                <div class="modal-body modalBodyProfile" style="padding-top:0">
+                    <div class="container-fluid" style="min-height:150px;">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-11">
+                            <div>
+                                <div class="row mSpaceMt10">
+                                    <div class="col-xs-12">
+                                        @Html.Action("_CompleteProfile", "Admin")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </text>
+}
+        @Scripts.Render("~/bundles/fullcalendarjs")
+        @Scripts.Render("~/bundles/bootstrap")
+        @*
+            @Scripts.Render("~/bundles/jqueryAjax")
+            @Scripts.Render("~/bundles/jqueryval")
+        *@
+
+        @RenderSection("scripts", required: false)
+        <script src="~/Scripts/sw_EnligateWeb.js"></script>
+        <script src="~/Scripts/emailValidator.js"></script>
+        <script src="~/Scripts/c3.min.js"></script>
+        @*<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>*@
+        <script src="~/Scripts/d3.v3.min.js"></script>
+        @*@RenderPage("updateProgressPanel.cshtml")*@
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+            @if (Request.IsAuthenticated && ((bool)ViewBag.afa_RedirectToProfile))
+            {
+                <text>
+                ConfirmAccount();
+                // document.location.replace('Url.Action("Perfil", "Admin")');
+                </text>
+             }else
+             {
+                 if (!(bool)ViewBag.afa_profileComplete){
+                    <text>
+                    completeProfile();
+                    </text>
+                }
+             }
+
+                Enligate_onPageLoad();
+
+                updatePaymentsNotify();
+            });
+
+            function ConfirmAccount() {
+                $('#modalAccount').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                })
+            }
+            function completeProfile() {
+                $('#modalProfile').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            };
+            function updatePaymentsNotify() {
+                $.ajax({
+                    url: '/AdminLigas/_PaymentNotify',
+                    type: "POST",
+                    cache: false,
+                    success: function (data) {
+                        console.log(data)
+                        console.log(data.length)
+                        // console.log(data[1].conceptoNombre)
+                        var total = data.length;
+                        if (total <= 0) {
+                            $("#notify").css("display", "none");
+                        } else {
+                            $("#notify").css("display", "");
+                            var full = false;
+                            if (total >= 1) {
+                                max = 1;
+                                full = true;
+                            } else
+                                max = total
+                            $(".notice-count").html(total);
+                            $("#notice-body").append("<p><strong>Usted tiene pendiente un pago ...</strong></p>")
+                            for (var i = 0; i < max; i++) {
+                                $("#notice-body").append("<p><span>" + data[i].conceptoNombre + " " + data[i].total + "</p></span><button id='viewPayments' type='button' class='btn btn-primary btn-md'>Pagar</button>")
+                            }
+                            if (full == true) {
+                                $("#notice-body").append("<p><span class='text-rigth'><a href='" + data[0].path + "'>Ver mas ...</a></span></p>");
+                            }
+                            $("#notice-body #viewPayments").on("click", function () {
+                                location.href = data[0].path;
+                            });
+                        }
+
+                    },
+                    complete: function (jqXHR, textStatus) {
+                        showMessages();
+                    }
+
+                });
+            };
+
+            function popup(mylink, windowname) {
+                if (!window.focus) return true;
+                var href;
+                if (typeof (mylink) == 'string') href = mylink;
+                else href = mylink.href;
+                window.open(href, windowname, 'width=550,height=450,scrollbars=yes');
+                return false;
+            }
+
+            function webhook() {
+                var data = {
+                    "object": {
+                        "id": "587fbc13dba34d5630001335",
+                        "livemode": false,
+                        "created_at": 1484766227,
+                        "status": "paid",
+                        "currency": "MXN",
+                        "description": "Enligate",
+                        "reference_id": "9839_Enligate",
+                        "payment_method": {
+                            "expiry_date": "180217",
+                            "barcode": "38345678901234567890123456789012",
+                            "barcode_url": "https://s3.amazonaws.com/cash_payment_barcodes/sandbox_reference.png",
+                            "object": "cash_payment",
+                            "type": "oxxo",
+                            "expires_at": 1487376000
+                        },
+                        "details": {
+                            "name": "sergio martinez",
+                            "phone": "8123530738",
+                            "email": "admin2@sone.mx",
+                            "line_items": [
+                                {
+                                    "name": "Ronnyliga",
+                                    "description": "Pago de Liga",
+                                    "unit_price": 144000,
+                                    "quantity": 1,
+                                    "sku": "ligatest1qaz",
+                                    "category": "Liga"
+                                }
+                            ],
+                            "billing_address": {
+                                "street1": "a silva 121",
+                                "city": "Monterrey",
+                                "zip": "64421",
+                                "country": "Mexico"
+                            }
+                        },
+                        "object": "charge",
+                        "amount": 144000,
+                        "paid_at": 1484766257,
+                        "fee": 5846
+                    },
+                    "previous_attributes": {
+                        "status": "pending_payment"
+                    }
+                };
+                $.ajax({
+                    url: '/AdminLigas/webhook',
+                    type: "POST",
+                    cache: false,
+                    data: JSON.stringify(data),
+                    success: function (data) {
+                        console.log("success!: " + data);
+                    },
+                    complete: function (jqXHR, textStatus) {
+                        showMessages();
+                    }
+                });
+            }
+            function sendReportBug() {
+                var formData = $("#bug-form").serialize();
+                var report = $("#bug-form textarea[name='reporteTxt']");
+                if (report.val() != "") {
+                    $.ajax({
+                        url: '/AdminLigas/_SendReportBug',
+                        type: "POST",
+                        cache: false,
+                        data: "reporteTxt=" + report.val(),
+                        success: function (data) {
+                            $(".m-messageHide").html(data.strErrMessagePartialViewString)
+                        },
+                        complete: function (jqXHR, textStatus) {
+                            showMessages();
+                            report.val("");
+                            $("#notifyReport").text("");
+
+                            $("#notifyReport").fadeIn('slow');
+                            $("#notifyReport").text('Gracias por el reporte ..')
+
+                            $("#notifyReport").delay(5000).fadeOut('slow');
+                        }
+                    });
+                } else {
+                    alert("Reporte vacio");
+                    $("#bug-form textarea[name='reporteTxt']").focus();
+                }
+            }
+            function messengeError(getMsg) {
+
+                var msg = '<div id="modal_error" class="alert alert-danger alert-dismissible" role="alert">';
+                msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+                msg += '<span aria-hidden="true">&times;</span></button>' + getMsg + '</div>';
+
+                $(".m-messageHide").html(msg);
+
+                showMessages();
+            }
+
+            function messengeSuccess(getMsg) {
+
+                var msg = '<div id="confirmEmailForm_ModalStateErrors" class="alert alert-success alert-dismissible" role="alert">';
+                msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+                msg += getMsg + '</div>';
+
+                $(".m-messageHide").html(msg);
+
+                showMessages();
+            }
+            function messengeInfo(getMsg) {
+
+                var msg = '<div id="confirmEmailForm_ModalStateErrors" class="alert alert-info alert-dismissible" role="alert">';
+                msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+                msg += getMsg + '</div>';
+
+                $(".m-messageHide").html(msg);
+
+                showMessages();
+            }
+        </script>
+
+        @Html.Partial("_UpdateProgressPanel")
+
+</body>
+</html>

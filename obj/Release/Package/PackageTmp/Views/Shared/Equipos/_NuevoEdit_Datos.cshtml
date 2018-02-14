@@ -1,0 +1,242 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model EquiposJugadoresViewModel
+
+<!-- Datos -->
+@Html.HiddenFor(m => m.torId)
+@Html.HiddenFor(m => m.torKey)
+@Html.HiddenFor(m => m.torEquiposRegistrados)
+@Html.HiddenFor(m => m.torJugadoresRegistrados)
+@Html.HiddenFor(m => m.torMaximoEquipos)
+@Html.HiddenFor(m => m.torMaximoJugadoresEquipo)
+@Html.HiddenFor(m => m.mostrarDatosEquipo)
+
+@{
+    var esCoach = Model.tblTorneo.torEsCoaching;
+    var valCoadmin = (ViewBag.valCoAdmin == false) ? ViewBag.valCoAdmin : true;
+    if (Model.mostrarDatosEquipo)
+    {
+        <div class="col-sm-12 col-md-10 col-lg-8 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+            <div class="marginForm">
+                <div class="input-group width100">
+                    @Html.TextBoxFor(m => m.equNombre, new { @class = "titlePlaceholder titlePlaceholder2 width100", placeholder = "Nombre del equipo",  onKeyPress="return disableEnterKey(event);" })
+                </div>
+                @Html.ValidationMessageFor(m => m.equNombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    }
+}
+
+<div class="col-sm-12 col-md-10 col-lg-8 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS width100">
+            <span class="input-group-addon m-lbl">Liga:</span>
+            @Model.tblTorneo.tblLiga.ligNombreLiga.ToUpper()
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="col-sm-12 col-md-10 col-lg-8 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS width100">
+            <span class="input-group-addon m-lbl">Torneo:</span>
+            @Model.tblTorneo.torNombreTorneo.ToUpper()
+            
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+@if (esCoach)
+{
+    <div class="col-sm-12 col-md-10 col-lg-8 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+        <div class="marginForm">
+            <div class="input-group m-input-groupLbl-XS width100">
+                <span class="input-group-addon m-lbl">Administrador Torneo:</span>
+                @Model.tblTorneo.tblUserCreador.Email
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+}
+
+<div class="col-sm-12 col-md-10 col-lg-8 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS width100">
+            <span class="input-group-addon m-lbl">Categoria:</span>
+            @Model.tblTorneo.tblCategoriaTorneo.lctNombre.ToUpper()
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="col-sm-12 col-md-10 col-lg-8 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS width100">
+            <span class="input-group-addon m-lbl">Deporte:</span>
+            @Model.tblTorneo.tblCategoriaTorneo.depNombre.ToUpper()
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="col-sm-12 col-md-10 col-lg-8 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS width100">
+            <span class="input-group-addon m-lbl">Precio:</span>
+            @{ 
+                var precioTor = Model.tblTorneo.torPrecioTorneo;
+                if (precioTor == 0 || precioTor == null)
+                {
+                    <span>Gratis</span>
+                }else
+                {
+                    <text>
+                    $ @Model.tblTorneo.torPrecioTorneo
+                    </text>
+                }
+            }
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="col-sm-12 col-md-10 col-lg-8 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS width100">
+            
+            @if (Model.mostrarDatosEquipo)
+            {
+                if (Model.tblTorneo.torNumeroEquipos != null)
+                {
+                    <span class="input-group-addon m-lbl">Lugares restantes:</span>
+                    @(Model.tblTorneo.torNumeroEquipos - Model.torEquiposRegistrados)
+                }
+
+            }
+            else
+            {
+                @(Model.tblTorneo.torMaxJugadoresEquipo - Model.torJugadoresRegistrados)
+            }
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+@if (Model.mostrarDatosEquipo)
+{
+    <div class="col-sm-12 col-md-10 col-lg-8 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+        <div class="marginForm">
+            <div class="input-group m-input-groupLbl-XS width100">
+                <span class="input-group-addon m-lbl">Jugadores por equipo:</span>
+                @Model.tblTorneo.torMaxJugadoresEquipo
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+}
+
+@{
+    if (Model.mostrarDatosEquipo)
+    {
+        
+            if (Model.equAdminLigaTorneos)
+            {
+            <div class="col-sm-12 col-md-10 col-lg-8 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+                <div class="marginForm">
+                    <div class="input-group width100">
+                        <span class="input-group-addon m-lbl">Coach:</span>                        
+                        @Html.TextBoxFor(m => m.equCorreoAdministrador, new { @class = "titlePlaceholder width100", placeholder = "Correo del Coach", onblur= "valueEmailCoach(this);", onKeyPress = "return disableEnterKey(event);" })
+                    </div>
+                    <span id="result" class="text-danger"></span>
+                    @Html.ValidationMessageFor(m => m.equCorreoAdministrador, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            <div class="clearfix"></div>
+
+
+                if (valCoadmin)
+                {
+
+                    if (Model.equId == 0)
+                    {
+                    <div class="col-sm-12 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+                        Agregar CoAdministradores
+                        <small>(Una vez que el equipo sea creado)</small>
+                    </div>
+                }
+                else
+                {
+                    if (Model.usuAgregarCoadmin == true)
+                    {
+                        if (Model.tblTorneo.torEsCoaching)
+                        {
+                            <a href="#" class="mLink5" onclick="fnMostrarCoAdministradores()">
+                                <span class="spanTorneoNuevoEdit_TipoInterno" style="text-decoration:underline;">Administrar Coadministrador</span>
+                            </a>
+
+                        <!-- ------------- Modal Agregar Co-administrador -------------- -->
+                            <div class="modal fade" id="modalTorneoCoadministradores" tabindex="-1" role="dialog">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body modalBodyLogin">
+                                            <div class="container-fluid text-center mSpaceMb30">
+                                                <div class="mTitle1">Coadministradores del torneo</div>
+                                                <fieldset id="fsTorneoCoadministradoresViewModel" class="mSpaceMt20">
+                                                    @Html.Action("Torneos_CoadminsGridEdit", "AdminTorneos")
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script>
+                                function fnMostrarCoAdministradores() {
+                                    $("#modalTorneoCoadministradores").modal({ backdrop: false });
+                                    fnGVTorneoCoadministradores_PerformCallback();
+                                }
+
+                                function fnGVTorneoCoadministradores_PerformCallback(s, e) {
+                                    if (typeof gvTorneoCoadministradores.InCallback === "function"){
+                                        if (!gvTorneoCoadministradores.InCallback())
+                                            gvTorneoCoadministradores.PerformCallback();
+                                    }
+                                }
+
+                                function fnGVTorneoCoadministradores_OnBeginCallback(s, e) {
+                                    e.customArgs['torId'] = @Model.torId;
+                                }
+
+                                function fnGVTorneoCoadministradores_OnEndCallback(s, e) {
+                                    if (s.cpPerformCallback) {
+                                        fnGVTorneoCoadministradores_PerformCallback();
+                                        delete s.cpPerformCallback;
+                                    }
+                                }
+                            </script>
+                        }
+                        else
+                        {
+                            <div class="col-sm-12 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+                                <a href="#" class="mLink5" onclick="equipoMostrarCoAdministradores()">
+                                    <span>Agregar CoAdministrador</span>
+                                </a>
+                            </div>
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+

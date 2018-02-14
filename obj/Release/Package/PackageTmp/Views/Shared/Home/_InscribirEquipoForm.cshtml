@@ -1,0 +1,554 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model EquiposJugadoresViewModel
+
+
+
+@{
+    string equImg = Model.equImg;
+    if (equImg != null)
+    {
+        equImg = equImg.Replace("~", "");
+    }
+    else
+    {
+        equImg = Url.Content("~/Content/Images/general/noPhoto.jpg");
+    }
+    if (Model.torId != null && Model.torId > 0)
+    {
+        <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.5.0/js/conekta.js"></script>
+        <script type="text/javascript">
+
+            // Conekta Public Key
+            Conekta.setPublicKey('key_LFdNgy7DRxVxRms1DP5ZBnw'); //v3.2
+            //Conekta.setPublicKey('key_KJysdbf6PotS2ut2'); //v5+
+
+            // ...
+
+            $(function () {
+                $("#card-form").submit(function (event) {
+                    var $form = $(this);
+
+                    // Previene hacer submit más de una vez
+                    $form.find("button").prop("disabled", true);
+                    //Conekta.token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler);
+                    Conekta.Token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler); //v5+
+
+                    // Previene que la información de la forma sea enviada al servidor
+                    return false;
+                });
+            });
+
+            var conektaSuccessResponseHandler = function (token) {
+                var $form = $("#card-form");
+                $("input[name=email]").val($("input[name=JugNombre]").val());
+                /* Inserta el token_id en la forma para que se envíe al servidor */
+                var tokenId = $("<input type='hidden' name='conektaTokenId'>").val(token.id);
+                $form.append(tokenId);
+
+                /* and submit */
+                console.log("success" + token.id);
+
+                var data = $form.serialize();
+                console.log(data);
+                $.ajax({
+                    url: '/AdminLigas/Pago_Result',
+                    type: "POST",
+                    cache: false,
+                    data: data + "&token=" + token.id,
+                    success: function (dataGetPay) {
+                        if ($("#card-form input[name=concepto]").val()=="Jugador")
+                        {
+                            addNewPlayerCoaching(dataGetPay);
+                        }
+                        else
+                        {
+                            equipoNuevo_Submit(dataGetPay);
+                        }
+
+                        // console.log("success!: " + JSON.stringify(dataGetPay));
+                    },
+                    complete: function (jqXHR, textStatus) {
+                        $("#modal_error").text("error");
+                        showMessages();
+                    }
+                });
+
+                //      $form.get(0).submit()
+            };
+
+            var conektaErrorResponseHandler = function (response) {
+                console.log(response);
+                var $form = $("#card-form");
+                /* Muestra los errores en la forma */
+                var msg = '<div id="modal_error" class="alert alert-danger alert-dismissible" role="alert">';
+                msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+                msg += '<span aria-hidden="true">&times;</span></button>' + response.message_to_purchaser + '</div>';
+
+                $(".m-messageHide").html(msg);
+
+                showMessages();
+                // $form.find(".card-errors").text(response.message_to_purchaser);
+
+                $form.find("button").prop("disabled", false);
+            };
+
+            var SW = new BwGateway({
+                // Test mode, remove when going to production mode
+                sandbox: true,
+                // Nombre de usuario de Banwire
+                user: 'pruebasbw',
+                // Titulo de la entana
+                title: "Enligate",
+                // Referencia
+                reference: 'testref01',
+                // Concepto
+                concept: 'pago de prueba',
+                infoMsg: 'Gracias por su preferencia ...',
+                // Moneda
+                currency: 'MXN',
+                // Customer information
+
+                // notifyUrl: "https://test.banwire.com/sw_ex/response.php",
+                // Opciones de pago
+                paymentOptions: 'all', // visa,mastercard,amex,oxxo
+                // Mostrar o no pagina de resumen de compra
+                reviewOrder: true,
+                // Handler en caso de exito en el pago
+                successPage: '',
+                onSuccess: function (data) {
+                    console.log("Pago correcto");
+                    console.log(data);
+                },
+                // Pago pendiente OXXO
+                pendingPage: '',
+                onPending: function (data) {
+                    console.log(data);
+                    alert("El pago esta pendiente por ser efectuado");
+                },
+                // Pago challenge
+                challengePage: '',
+                onChallenge: function () {
+                    alert("Pago enviado a validaciones de seguridad");
+                },
+                // Handler en caso de error en el pago
+                errorPage: '',
+                onError: function (error) {
+                    console.log(error);
+                },
+                // Cuando cierra el popup sin completar el proceso
+                onCancel: function () {
+                    console.log("Se cancelo el proceso");
+                }
+            });
+        </script>
+        <script type="text/javascript">
+
+            var equId = @Model.equId;
+            var token = "@Model.torKey";
+            var equToken = "@Model.equCreadorEquipoId";
+
+            $(document).ready(function () {
+                equipoNuevo_BeginForm();
+                //  fnGVEquipoCoadministradores_PerformCallback();
+            });
+
+            function equipoNuevo_BeginForm() {
+                mUploadFiles();
+            }
+
+            function fnGVTorneos_Equipos(id) {
+
+                if ($("#card-form input[name=concepto]").val()=="Jugador") {
+                    $("#frmJugador").submit();
+                }else{
+                    $("#TorneoId").val(id)
+
+                    $("#frmTorneoEdit").submit();
+                }
+
+                //location.href = "/AdminLigas/TorneoDetails?Id="+id;
+            }
+
+            function equipoNuevo_Submit(dataPay) {
+                var form = $("#frmEquipoNuevoEdit");
+                form.submit(function (event) {
+                    //disable the default form submission
+
+                    // $(".btnCrearEditarEquipo").prop( "disabled", true );
+                    //grab all form data
+                    var formData = new FormData($(this)[0]);
+
+                    $.ajax({
+                        url: "/AdminEquipos/_EquipoJugadoresNuevoEdit_GuardarNuevo",
+                        type: 'POST',
+                        data: formData,
+                        async: false,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function (data) {
+                            $("#_divEquipoNuevoEdit").html(data);
+
+                            //$(".m-messageHide").html(msg);
+                            if (data.booSuccess)
+                            {
+                                dataPay.equId = data.equId;
+                                var json = JSON.stringify(dataPay);
+                                json = JSON.parse(json);
+                                console.log(json);
+                                var formData = "userId="+json.userId+"&status="+json.status+"&total="+json.total+"&conceptoId="+json.equId+"&referencia="+json.referencia+"&ip="+json.ip+"&metodo="+json.metodo+"&descripcion="+
+                                json.descripcion+"&concepto="+json.concepto+"&transaccionId="+json.transaccionId+"";
+                                console.log(formData);
+
+                                $.ajax({
+                                    url: "/AdminEquipos/_PayTeam",
+                                    type: 'POST',
+                                    dataType: "json",
+                                    data: formData,
+                                    success: function (data) {
+                                        $("#pagosModal").modal("toggle")
+                                        $("#modalCrearEquipo").modal();
+                                        //$(".m-messageHide").html(data.strPartialViewString)
+                                        setTimeout(function(){
+                                            fnGVTorneos_Equipos($("#torId").val());
+                                        }, 5000);
+                                    },
+                                    error: function (xhr, status, p3, p4) {
+                                        alert("Hubo un error, intenta nuevamente,");
+                                    }
+                                });
+                            }else{
+                                $(".m-messageHide").html(data.strPartialViewString)
+                            }
+                        },
+                        complete: function (jqXHR, textStatus) {
+                            showMessages();
+                        },
+                        error: function (xhr, status, p3, p4) {
+                            alert("Hubo un error, intenta nuevamente");
+                        }
+                    });
+                    return false;
+
+                });
+                form.submit();
+            }
+
+            function addNewPlayerCoaching(data){
+                var json = JSON.stringify(data);
+                json = JSON.parse(json);
+                $.ajax({
+                    url: "/AdminEquipos/_PayTeam",
+                    type: 'POST',
+                    dataType: "json",
+                    data: json,
+                    success: function (data) {
+                        if (data=="Success") {
+                            //   fnGVJugadores_VolverInvitar($("input[name=JugNombre]").val());
+                            $("#pagosModal").modal("toggle")
+                            $("#modalCrearEquipoJug").modal();
+                            //$(".m-messageHide").html(data.strPartialViewString)
+                            setTimeout(function(){
+                                fnGVTorneos_Equipos($("#card-form input[name=conceptoId]").val());
+                            }, 5000);
+                        }
+                    },
+                    error: function (xhr, status, p3, p4) {
+                        alert("Hubo un error, intenta nuevamente,");
+                    }
+                });
+            }
+            function fnGVJugadores_VolverInvitar(correo) {
+                var dataForm = "jugCorreo=" + correo + "&torId=" + @Model.torId + "&equId=" + @Model.equId;
+                $.ajax({
+                    url: '/AdminEquipos/_NuevoEdit_InvitarJugador',
+                    type: "POST",
+                    cache: false,
+                    data: dataForm,
+                    success: function (data) {
+                        console.log(data);
+                        //$(".m-messageHide").html(data);
+                        $("#pagosModal").modal("toggle")
+                        $("#modalCrearEquipo").modal();
+                        //$(".m-messageHide").html(data.strPartialViewString)
+                        setTimeout(function(){
+                            fnGVTorneos_Equipos($("#card-form input[name=conceptoId]").val());
+                        }, 5000);
+                    },
+                    complete: function (jqXHR, textStatus) {
+                        showMessages();
+                    }
+                });
+            }
+            function pagosJugadores(){
+                if ($("input[name=JugNombre]").val()!="") {
+                    if (@Model.tblTorneo.torPrecioTorneo>0) {
+                        var admin = $("#equCorreoAdministrador");
+                        var equNombre = $("#equNombre");
+                        $("#spanTotal").text("@Model.tblTorneo.torPrecioTorneo");
+                        $("#card-form input[name=item]").val(equNombre.val());
+                        $("input[name=email]").val("@Model.equCorreoAdministrador");
+                        $("input[name=nombre]").val("@ViewBag.afa_usrName");
+                        $("#card-form input[name=total]").val(@Model.tblTorneo.torPrecioTorneo);
+                        $("#card-form input[name=userId]").val("@Model.equCreadorEquipoId");
+                        $("#card-form input[name=conceptoId]").val("@Model.equId");
+                        $("#pagosModal").modal();
+                    }else if(@Model.tblTorneo.torPrecioTorneo == 0){
+                        messengeInfo("Gratis");
+                    }
+                }else{
+                    messengeInfo("Favor de ingresar un correo");
+                    $("input[name=JugNombre]").focus();
+                }
+            };
+
+            function pagosViewModal(){
+                var admin = $("#equCorreoAdministrador");
+                var equNombre = $("#equNombre");
+
+                if (admin.val() != "" && equNombre.val() != "") {
+                    if (@Model.tblTorneo.torPrecioTorneo>0) {
+                        var title = "@Model.tblTorneo.torNombreTorneo";
+                        $("#ligaTitle").text(title);
+                        $("#spanTotal").text("@Model.tblTorneo.torPrecioTorneo");
+                        $("input[name=total]").val(@Model.tblTorneo.torPrecioTorneo);
+                        //$("#card-form input[name=conceptoId]").val(@Model.tblTorneo.ligId);
+                        $("#card-form input[name=userId]").val("@Model.equCreadorEquipoId");
+                        $("input[name=nombre]").val("@ViewBag.afa_usrName");
+                        $("input[name=email]").val("@Model.equCorreoAdministrador");
+                        $("#card-form input[name=item]").val(equNombre.val());
+
+                        $("#pagosModal").modal();
+                    }else if(@Model.tblTorneo.torPrecioTorneo == 0){
+                        var form = $("#frmEquipoNuevoEdit");
+                        form.submit(function (event) {
+                            //disable the default form submission
+
+                            // $(".btnCrearEditarEquipo").prop( "disabled", true );
+                            //grab all form data
+                            fvar formData = new FormData($(this)[0]);
+                            
+                            $.ajax({
+                                url: "/AdminEquipos/_EquipoJugadoresNuevoEdit_GuardarNuevo",
+                                type: 'POST',
+                                data: formData,
+                                async: false,
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                success: function (data) {
+                                    $("#_divEquipoNuevoEdit").html(data);
+
+                                    //$(".m-messageHide").html(msg);
+                                    if (data.booSuccess)
+                                    {
+                                        $("#pagosModal").modal("toggle")
+                                        $("#modalCrearEquipo").modal();
+                                        //$(".m-messageHide").html(data.strPartialViewString)
+                                        setTimeout(function(){
+                                            fnGVTorneos_Equipos($("#torId").val());
+                                        }, 5000);
+                                    }else{
+                                        $(".m-messageHide").html(data.strPartialViewString)
+                                    }
+                                },
+                                complete: function (jqXHR, textStatus) {
+                                    showMessages();
+                                },
+                                error: function (xhr, status, p3, p4) {
+                                    alert("Hubo un error, intenta nuevamente");
+                                }
+                            });
+                            return false;
+
+                        });
+                        form.submit();
+                    }
+
+
+                }else if(admin.val() == ""){
+                    messengeInfo("Favor de Agregar su Correo");
+                    admin.focus();
+                }else if(equNombre.val() == ""){
+                    messengeInfo("Favor de Agregar un Nombre a el Equipo");
+                    equNombre.focus()
+                }
+
+            };
+        </script>
+
+        <form id="frmEquipoNuevoEdit">
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.equId)
+            @Html.HiddenFor(m => m.equImg)
+            @Html.HiddenFor(m => m.equAdminLigaTorneos)
+            @Html.HiddenFor(m => m.equEstatus)
+            @Html.HiddenFor(m => m.usuAgregarCoadmin)
+
+            <!-- Datos principales del equipo  -->
+            <div id="datosPrincipalEquipo" class="row">
+                <div class="row">
+
+                    <div class="col-xs-12 mTitle1 mSpaceMb5">
+
+                        @{
+                            
+                                <span>Ingresa tus Datos generales:</span>
+                                <button type="button" class="btn btn-default pull-right btnCrearEditarEquipo" onclick="pagosViewModal();">
+                                    @if (Model.equId > 0)
+                                    {
+                                        // Actualizacion del torneo
+                                        <span>Guardar</span>
+                                    }
+                                    else
+                                    {
+                                        if (Model.mostrarDatosEquipo)
+                                        {
+                                            <span>Crear equipo</span>
+                                        }
+                                        else
+                                        {
+                                            <span>Guardar participanes</span>
+                                        }
+                                    }
+                                </button>
+                            
+                        }
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+
+                @{
+                    if (Model.mostrarDatosEquipo)
+                    {
+                        <!-- Imagen / Comentarios / Coadmins -->
+                        <div class='col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center mSpaceMb10'>
+                            <div class='col-xs-12 paddingLRZero'>
+                                <div class="mProfileUploadFileContainer">
+                                    <img id="equImgURL" class="mUploadFileImage" data-rel="profileImage" src="@equImg" />
+
+                                    <div class="mUploadFileIconContainer">
+                                        <span class="mUploadFileIcon glyphicon glyphicon-camera" data-rel="profileImage"></span>
+                                    </div>
+                                </div>
+
+                                <br class="hidden-md hidden-lg" />
+
+                                <input id="equImgURLFile" name="usuFileImage" class="mUploadFile" type='file' accept=".jpg,.jpeg,.png" data-rel="profileImage" data-loadimg="true" />
+                                <button type="submit" data-rel="profileImage" class="mUploadFile">Guardar</button>
+                            </div>
+                        </div>
+                    }
+                <!-- Datos -->
+                    <div id="_EquipoNuevoEdit_Datos" class='col-xs-12 col-sm-12 col-md-8 col-lg-9'>
+                        @{Html.RenderPartial("Equipos/_NuevoEdit_Datos", Model);}
+                    </div>
+                }
+            </div>
+
+            @{ 
+                if (ViewBag.ValEquipoExist != false)
+                {
+                    <script>
+                        $(document).ready(function(){
+                            $("#equCorreoAdministrador,#equNombre").prop("disabled", true);
+                            $("input[name=concepto]").val("Jugador");
+                            $("input[name=JugNombre]").focus();
+                        });
+                    </script>
+                    <div class="col-xs-12 mTitle1">
+                        <span>Ingresa tu Correo:</span>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+
+                        <div class="marginForm">
+                            <div class="input-group width100">
+                                <input type="text" class="width100" name="JugNombre" placeholder="Ingresa tu Correo" />
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br />
+                        <div class="marginForm">
+                            <button type="button" class="btn btn-default btnCrearEditarEquipo pull-right" onclick="pagosJugadores();">
+                                <span>Pagar !</span>
+                            </button>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <h1>Sin Equipo Registrado para el Torneo @Model.tblTorneo.torNombreTorneo.ToUpper()</h1>
+                }
+
+            }
+            else
+            {
+                <!-- Datos jugadores -->
+                <div class="row mSpaceMt20">
+                    @*id="_EquipoNuevoEdit_Jugadores"*@
+
+                    <div class="col-xs-12 mTitle1">
+                        @{
+                            if (Model.mostrarDatosEquipo)
+                            {
+                                <span>Ingresa tus Jugadores:</span>
+                            }
+                            else
+                            {
+                                <span>Administra Jugadores:</span>
+                            }
+                        }
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div id="divNuevoEdit_JugadoresAgregar" class="col-xs-12 mSpaceMt10">
+                        @{Html.RenderPartial("Jugadores/_JugadoresEquipo_Agregar", Model);}
+                    </div>
+                </div>
+                            }
+            <!-- Botones  -->
+            <div class="row">
+                <div class="col-xs-12 mSpaceMt20 mSpaceMb20 text-right">
+                    @{
+                            <button type="button" class="btn btn-default btnCrearEditarEquipo" onclick="pagosViewModal();">
+
+                                @if (Model.equId > 0)
+                                {
+                                    // Actualizacion del torneo
+                                    <span>Guardar</span>
+                                }
+                                else
+                                {
+                                    if (Model.mostrarDatosEquipo)
+                                    {
+                                        <span>Crear equipo</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Guardar participanes</span>
+                                    }
+                                }
+                            </button>
+                       
+                    }
+                </div>
+
+            </div>
+        </form>
+        
+    }
+    else
+    {
+        <span>Debes seleccionar un torneo</span>
+    }
+                        <div class="hidden m-messageHide">
+                            @Html.Partial("_ModalState_Errors")
+                        </div>
+
+
+
+
+}

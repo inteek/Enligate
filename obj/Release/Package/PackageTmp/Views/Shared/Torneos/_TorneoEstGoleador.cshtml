@@ -1,0 +1,72 @@
+﻿@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+
+@{
+    var gvRequests = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvTorneoEstGoleador";
+       // settings.CallbackRouteValues = new { Controller = "Home", Action = "torEstGoleador" };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+        //Styles
+        settings.Styles.GroupPanel.CssClass = "gvGroupPanel";
+        settings.Styles.Header.CssClass = "gvHeader";
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.AlternatingRow.CssClass = "gvRowAlternative";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        settings.KeyFieldName = "jugId";
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "pos";
+            col.Caption = "POS.";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "jugNombre";
+            col.Caption = "JUGADOR";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "goles";
+            col.Caption = "# GOLES";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "equNombre";
+            col.Caption = "EQUIPO";
+        });
+
+        //Paging
+        settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 5;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 200;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+
+        //Rows
+        settings.SettingsBehavior.AllowSelectByRowClick = false;
+
+        //Callbacks
+        //settings.ClientSideEvents.BeginCallback = "fnGVPartidosView_OnBeginCallback";
+    });
+
+    if (ViewData["EditError"] != null)
+    {
+        gvRequests.SetEditErrorText((string)ViewData["EditError"]);
+    }
+
+    gvRequests.Bind(Model).GetHtml();
+}

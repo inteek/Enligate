@@ -1,0 +1,40 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model PartidosViewModel
+
+@{
+    var arbValue = Model.ddlArbitros.Count;
+
+
+}
+<div class="marginForm">
+    <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+        <span class="input-group-addon m-lbl">Arbitros:</span>
+        @{
+            if (arbValue > 0)
+            {
+                 @Html.DropDownListFor(m => m.arbId, (List<SelectListItem>)Model.ddlArbitros, null, new { @class = "width75" })
+                <button type="button" class="btn btn-link" onclick="enviarInvitacionArbitro();"><span class="glyphicon glyphicon-repeat"></span></button>
+                <button type="button" class="btn btn-link pull-right" onclick="nuevoArbitro();"><span class="glyphicon glyphicon-plus"></span></button>
+            }
+            else
+            {
+                <text>
+                    <span class="text-primary">Enviar Invitacion<button type="button" class="btn btn-link" onclick="enviarInvitacionArbitro();"><span class="glyphicon glyphicon-repeat"></span></button></span>            
+                    <span class="text-primary">Agregar Nuevo Arbitro <button type="button" class="btn btn-link" onclick="nuevoArbitro();"><span class="glyphicon glyphicon-plus"></span></button></span>                    
+        
+                </text>            
+            }
+        }
+    </div>
+    
+</div>
+
+
+<script>
+    if (@arbValue<=0) {
+        var path="Ligas/_ArbitrosModal";
+    }
+    
+</script>

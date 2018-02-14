@@ -1,0 +1,542 @@
+﻿@using sw_EnligateWeb.Models;
+@model PartidosViewModel
+@{
+    ViewBag.Title = "Enligate";
+}
+
+@{
+    var noPhoto = Url.Content("~/Content/Images/general/noPhoto.jpg");
+    var server = Server.MapPath("~");
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+    <script>
+
+        $(document).ready(function() {
+            calendar("/AdminLigas/GetEvents/");    
+            
+        });
+
+        function calendar(Controller) {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                firstDay: 1,
+                //defaultDate: '2016-08-22',
+                editable: true,
+                allDaySlot: false,
+                selectable: true,
+                eventLimit: true,
+                slotMinutes: 15,
+                events: function (start, end, timezone, callback) { // Defining the event source as a function
+                    
+                    console.log($("#Filter-Calendar #ligId").val() + " / " + $("#Filter-Calendar #torId").val());
+                    $.ajax({ // This is called every time the FC needs new events
+                        url: Controller,
+                        type: 'POST',
+                        data: {
+                            ligId: $("#Filter-Calendar #ligId").val(),
+                            torId: $("#Filter-Calendar #torId").val()
+                        },
+                        success: function (doc) {
+                            $('#calendar').fullCalendar('removeEvents');
+                            var events = [];
+                            console.log(doc);
+                            $.each(doc,function () {
+                                events.push({
+                                    title: $(this).attr('title'),
+                                    start: $(this).attr('start'), // will be parsed
+                                    color: $(this).attr('color'),
+                                    id: $(this).attr('id')
+                                });
+                            });
+                            console.log("Eventos..");
+                            console.log(events);
+                            callback(events);
+                        }
+                    });
+                },
+                eventClick: function (calEvent, jsEvent, view) {
+                    $('#divEventos').empty();
+                    $('#parId').val(calEvent.id);
+                    UpdateEvent(calEvent.id);
+                },
+                dayClick: function (date, jsEvent, view) {
+                        var myDate = new Date();
+                        //How many days to add from today?
+                        var daysToAdd = 1;
+                        date_aux = new Date(date)
+                        date_aux.setDate(date_aux.getDate() + 1)
+                        date_aux.setHours(23, 59, 59);
+                        myDate.setDate(myDate.getDate());
+                        //alert("day click: " + date_aux + " / day now: " + myDate + " / " + (date_aux < myDate));
+
+                        if (date_aux < myDate) {
+                            //TRUE Clicked date smaller than today + daysToadd
+                            messengeError("Lo sentimos, no puede realizar ninguna accion en este dia");
+                        }
+                        else
+                        {
+                            //FLASE Clicked date larger than today + daysToadd
+                            //alert("Excellent choice! We can book today..");
+                            $('#divEventos').empty();
+                            var liga = $("#Filter-Calendar #ligId").val()
+                            var torneo = $("#Filter-Calendar #torId").val();
+                            
+                            $.ajax({
+                                url: '/AdminLigas/_EventoNuevo',
+                                type: "POST",
+                                cache: false,
+                                data: "date=" + moment(new Date(date_aux)).format('DD/MM/YYYY')+ "&ligId=" + liga + "&torId=" + torneo,
+                                success: function (data) {
+                                    $('#divEventos').html(data);
+                                    $('#titleMatch').text('Crear Partido:');
+                                    $('#eventosCalendario').modal();
+                                    console.log("success!");
+                                },
+                                complete: function (jqXHR, textStatus) {
+                                    showMessages();
+                                }
+                            });
+                        }
+                },
+                eventMouseover: function (data, event, view) {
+
+                    tooltip = '<div class="tooltiptopicevent" style="width:auto;height:auto;';
+                    if (data.Estatus == "Cancelado") {
+                        tooltip += 'background:#c0392b;';
+                    } else {
+                        tooltip += 'background:#337ab7;';
+                    }                    
+                    tooltip += 'position:absolute;z-index:10001;padding:10px 10px 10px 10px ;  line-height: 200%;color:white;">' + 'Evento ' + ': ' + data.title + '</br>' + 'Incio ' + ': ' + data.start.format("YYYY-MM-DD HH:MM") + '</br>' + data.Estatus + '</div>';
+
+                    $("body").append(tooltip);
+                    $(this).mouseover(function (e) {
+                        $(this).css('z-index', 10000);
+                        $('.tooltiptopicevent').fadeIn('500');
+                        $('.tooltiptopicevent').fadeTo('10', 1.9);
+                    }).mousemove(function (e) {
+                        $('.tooltiptopicevent').css('top', e.pageY + 10);
+                        $('.tooltiptopicevent').css('left', e.pageX + 20);
+                    });
+                    
+                },
+                eventMouseout: function (data, event, view) {
+                    $(this).css('z-index', 8);
+
+                    $('.tooltiptopicevent').remove();
+                }
+            });
+            
+        }
+        
+
+        function partidoNuevo_Submit() {
+            var form = $("#frmNuevoPartido");
+            form.submit(function (event) {
+                //disable the default form submission
+                event.preventDefault();
+                //grab all form data
+                var formData = new FormData($(this)[0]);
+                console.log(formData);
+                formData.append("addEvent",true)
+                $.ajax({
+                    url: '/AdminTorneos/_Partidos_GuardarNuevo',
+                    type: "POST",
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: formData ,
+                    success: function (data) {
+                        $(".m-messageHide").html(data);
+                        console.log("success!");
+                        $('#eventosCalendario').modal('toggle');
+                    },
+                    complete: function (jqXHR, textStatus) {
+                        showMessages();
+                        $('#calendar').fullCalendar('refetchEvents');
+                    },
+                    error: function (xhr, status, p3, p4) {
+                        messengeError("Hubo un error, intenta nuevamente");
+                        showMessages();
+                    }
+                });
+                return false;
+            });
+                form.submit();
+        };
+
+        function UpdateEvent(id) {
+            $.ajax({
+                url: '/AdminLigas/_Partidos_Edit',
+                type: "POST",
+                cache: false,
+                data: "parId=" + id + "&dep=false",
+                success: function (data) {
+                    $('#divEventos').empty();
+                    $('#divEventos').html(data);
+                    $('#titleMatch').text('Partidos:');
+                    $('#eventosCalendario').modal();
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                    setTimeout(function () {
+                        $('#calendar').fullCalendar('refetchEvents');
+                    },5000)
+                    
+                }
+            });
+        }
+        function partidoEditar_Submit(id)  {
+            var dataForm = $("#frmNuevoPartido").serialize();
+            $.ajax({
+                url: '/AdminTorneos/_PartidosGridEdit_UpdatePartial',
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    var validate = data;
+                    console.log(data)
+                    if (validate == "success") {
+                        var msg = "Se Guardo el Partido Correctamente !!";
+                        console.log(msg);
+                        messengeSuccess(msg);
+                    } else {
+                        console.log(validate);
+                        messengeError(validate);
+                    }
+                    $('#eventosCalendario').modal("toggle");
+                }
+            });
+        }
+        function enviarInvitacionArbitro() {
+            var dataForm = $("#frmNuevoPartido").serialize();
+            $.ajax({
+                url: '/AdminTorneos/_PartidosEnviarInvitacionArbitro',
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    var validate = data;
+                    console.log(data)
+                    if (validate == "success") {
+                        var msg = "Se Envio la invitacion";
+                        console.log(msg);
+                        messengeSuccess(msg);
+                    } else {
+                        console.log(validate);
+                        messengeError(validate);
+                    }
+                }
+            });
+        }
+
+        function messengeError(getMsg) {
+
+            var msg = '<div id="modal_error" class="alert alert-danger alert-dismissible" role="alert">';
+            msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+            msg += '<span aria-hidden="true">&times;</span></button>' + getMsg + '</div>';
+
+            $(".m-messageHide").html(msg);
+
+            showMessages();
+        }
+
+        function messengeSuccess(getMsg) {
+
+            var msg = '<div  class="alert alert-success alert-dismissible" role="alert">';
+            msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+            msg += getMsg + '</div>';
+
+            $(".m-messageHide").html(msg);
+
+            showMessages();
+        }
+
+        function fnPartidos_Filtros_ChangeLiga(liga) {
+            var ligId = $(liga).val();
+            var dataForm = $("#frmNuevoPartido").serialize()+"&dep=false";
+            $.ajax({
+                url: '/AdminLigas/_Change_Liga_Option',
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    console.log("success!");
+                    $("#divEventos").empty();
+                    $('#divEventos').html(data);
+                    $('#titleMatch').text('Partido:');
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+
+        function fnPartidos_Filtros_ChangeTorneo(torneo) {
+         var dataForm = $("#frmNuevoPartido").serialize() + "&dep=false";
+            $.ajax({
+                url: '/AdminLigas/_Change_Torneo_Option',
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    console.log("success!");
+                    $("#divEventos").empty();
+                    $('#divEventos').html(data);
+                    $('#titleMatch').text('Partido:');
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+        function fnPartidos_Filtros_ChangeEquipoUno(equIdUno) {
+             var dataForm = $("#frmNuevoPartido").serialize() + "&dep=false";
+            $.ajax({
+                url: '/AdminLigas/_Change_Equipo_Option',
+                type: "POST",
+                cache: false,
+                data: dataForm ,
+                success: function (data) {
+                    console.log("success!");
+
+                    $("#divEventos").empty();
+                    $('#divEventos').html(data);
+                    $('#titleMatch').text('Partido:');
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+        function fnPartidos_Filtros_ChangeEquipoDos(equIdDos) {
+            var dataForm = $("#frmNuevoPartido").serialize() + "&dep=false";
+
+            $.ajax({
+                url: '/AdminLigas/_Change_Equipo_Option',
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    console.log("success!");
+
+                    $("#divEventos").empty();
+                    $('#divEventos').html(data);
+                    $('#titleMatch').text('Partido:');
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+        function fnPartidos_filtros_ChangeDeportes(){
+            var dataForm = $("#frmNuevoPartido").serialize() + "&dep=false";
+            $.ajax({
+                url: '/AdminLigas/_Change_Deportes_Option',
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    console.log("success!");
+                    $("#divEventos").empty();
+                    $('#divEventos').html(data);
+                    $('#titleMatch').text('Partido:');
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+
+        //Filtros Calendario
+        function fnCalendar_ChangeLiga(ddlLiga) {
+           
+            var dataForm = "ligId=" + ddlLiga.value + "&datEquipo=" + false + "&datSinTorneos=" + false;
+            console.log(ddlLiga)
+            $.ajax({
+                url: '/AdminLigas/Calendario_ChangeLiga',
+                type: "POST",
+                cache: false,
+                data: dataForm,
+                success: function (data) {
+                    console.log(data)
+                    $("#Filter-Calendar").html(data);
+                    var torId = $("#torId").val();
+                    $('#calendar').fullCalendar('refetchEvents');
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+        function fnCalendar_ChangeTorneo(ddlTorneo) {
+            console.log(ddlTorneo)
+            $('#calendar').fullCalendar('refetchEvents');
+        }
+        
+    </script>
+
+
+<!-- Content -->
+<div id="ADMINISTRADORDELIGAS_Calendario" class="row">
+    <!--Search Dropdown Ligas/Torneo -->
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div id="Filter-Calendar">
+
+                @{Html.RenderPartial("Ligas/_CalendarioNuevo_Filtros", Model);}
+
+            </div>
+        </div>
+    </div>
+    <hr />
+    <!--Calendar-->
+    <div class="col-sm-10 col-sm-offset-1">
+        <div id='calendar'></div>
+    </div>
+    <br />
+</div>
+<div class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>
+
+<!--MODAL EVENTS-->
+<div class="modal fade" id="eventosCalendario" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBodyEventos">
+                <div class="container-fluid" style="min-height:150px;">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-11">
+                        <div id="divEventos"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalNuevoCancha" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom:0px;">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body modalBody" style="padding-top:0px;">
+                <div class="container-fluid" style="min-height:150px;">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-11">
+                        <div><h3>Cancha Nueva</h3></div>
+                        <div id="canchasNuevo" class="col-xs-12" style="display:none;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Action("_Arbitro_ShowModal", "AdminLigas")
+
+<script>
+    $(".edit-delete").hide();
+    function nuevoArbitro() {
+        var ligId = $("#_divTorneoNuevoFiltros #ligId").val();
+        var torId = $("#_divTorneoNuevoFiltros #torId").val();
+        $.ajax({
+            url: '/AdminLigas/_Arbitro_AgregarModal',
+            type: "POST",
+            cache: false,
+            data: "ligId=" + ligId + "&torId=" + torId,
+            success: function (data) {
+                $("#FiltroLigasTorneos").html(data);
+                $("#ArbitrosNuevo #arbCorreo").val("");
+                $("#ArbitrosNuevo #arbNombre").val("");
+                $("#ArbitrosNuevo").modal();
+                $("#btnNewArbitro").on("click", function () {
+
+                });
+
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    };
+    function refreshFiltro() {
+        var liga = $("#FiltroLigasTorneos #ligId").val();
+        var email = $("#formArbitro #arbCorreo").val();
+        $.ajax({
+            url: '/AdminLigas/_Arbitro_RefreshFiltro',
+            type: "POST",
+            cache: false,
+            data: "ligId=" + liga+"&arbCorreo="+email,
+            success: function (data) {
+                $("#arbitroFiltro").html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    }
+
+    function nuevoCancha() {
+        var ligId = $("#_divTorneoNuevoFiltros #ligId").val();
+        $.ajax({
+            url: "/AdminTorneos/canchasEditCallback",
+            type: "POST",
+            cache: false,
+            data: "ligId=" + ligId,
+            success: function (data) {
+                $("#canchasNuevo").html(data);
+                $('.ldeMap').removeClass('col-md-3');
+                $('#formCanchaInfo').removeClass('col-md-9');
+                $("#modalNuevoCancha").modal({ backdrop: 'static', keyboard: false })
+                $("#canchasNuevo").show();
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+            }
+        });
+    };
+    function fnCancelCancha() {
+        $("#modalNuevoCancha").modal("toggle");
+    };
+    function showGrid() {
+        var cancha = $("#canchaSelect");
+        var ligId = $("#_divTorneoNuevoFiltros #ligId").val();
+        $.ajax({
+            url: '/AdminLigas/_Canchas_Refresh',
+            type: "POST",
+            cache: false,
+            data: "ligId=" + ligId,
+            success: function (data) {
+                cancha.html(data);
+            },
+            complete: function (jqXHR, textStatus) {
+                showMessages();
+                $("#modalNuevoCancha").modal("toggle");
+            }
+        });
+        console.log("cancha agregada!!");
+    }
+</script>
+@section scripts{
+    @{
+        string googleSrc = System.Web.Configuration.WebConfigurationManager.AppSettings["GoogleMapsScript"];
+    }
+    <script src="@googleSrc" async defer></script>
+}

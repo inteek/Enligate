@@ -1,0 +1,78 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model TorneosViewModel
+
+<div class="col-xs-12 mSpaceMb5 paddingLRZero">
+    <b>Domicilio</b>
+</div>
+
+<div class="col-xs-12 col-sm-8 mSpaceMb5">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+            <span class="input-group-addon m-lbl">Calle:</span>
+            @Html.TextBoxFor(m => m.tblTorneoDireccion.ldcCalle, new { @class = "width100" })
+        </div>
+        @Html.ValidationMessageFor(m => m.tblTorneoDireccion.ldcCalle, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-4 mSpaceMb5">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+            <span class="input-group-addon m-lbl">No.:</span>
+            @Html.TextBoxFor(m => m.tblTorneoDireccion.ldcNumeroExtInt, new { @class = "width100" })
+        </div>
+        @Html.ValidationMessageFor(m => m.tblTorneoDireccion.ldcNumeroExtInt, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-7 col-lg-6 mSpaceMb5">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+            <span class="input-group-addon m-lbl">Colonia:</span>
+            @Html.TextBoxFor(m => m.tblTorneoDireccion.ldcColonia, new { @class = "width100" })
+        </div>
+        @Html.ValidationMessageFor(m => m.tblTorneoDireccion.ldcColonia, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-5 col-lg-6 mSpaceMb5">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+            <span class="input-group-addon m-lbl">Municipio:</span>
+            @Html.TextBoxFor(m => m.tblTorneoDireccion.ldcMunicipio, new { @class = "width100" })
+        </div>
+        @Html.ValidationMessageFor(m => m.tblTorneoDireccion.ldcMunicipio, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-7 mSpaceMb5">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+            <span class="input-group-addon m-lbl">Estado:</span>
+            @Html.TextBoxFor(m => m.tblTorneoDireccion.ldcEstado, new { @class = "width100" })
+        </div>
+        @Html.ValidationMessageFor(m => m.tblTorneoDireccion.ldcEstado, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-5 mSpaceMb5">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
+            <span class="input-group-addon m-lbl">C.P.:</span>
+            @Html.TextBoxFor(m => m.tblTorneoDireccion.ldcCodigoPostal, new { @class = "width100", onkeypress = "return onlyNumbers(event,this);" })
+        </div>
+        @Html.ValidationMessageFor(m => m.tblTorneoDireccion.ldcCodigoPostal, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-7 col-lg-8 mSpaceMt10 mSpaceMb5 paddingLRZero">
+    @Html.TextBoxFor(m => m.torCorreoContacto, new { @class = "width100", placeholder = "E-mail" })
+    @Html.ValidationMessageFor(m => m.torCorreoContacto, "", new { @class = "text-danger" })
+</div>
+
+<div class="col-xs-12 col-sm-5 col-lg-4 mSpaceMt10 mSpaceMb10 mLreTelefonoContacto">
+    @Html.TextBoxFor(m => m.torNumeroContacto, new { @class = "width100", placeholder = "Numero Celular" })
+    @Html.ValidationMessageFor(m => m.torNumeroContacto, "", new { @class = "text-danger", onkeypress = "return onlyNumbers(event,this);" })
+</div>

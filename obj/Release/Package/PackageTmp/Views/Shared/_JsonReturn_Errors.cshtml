@@ -1,0 +1,15 @@
+﻿@using sw_EnligateWeb.Models;
+@model JsonReturn_ErrorsViewModel
+
+<div class="hidden m-messageHide">
+    @Html.Partial("_ModalState_Errors")
+</div>
+
+@{
+    if(Model.jsScript != null)
+    { 
+        <text>@(new HtmlString(Model.jsScript))</text>
+    }
+}
+
+

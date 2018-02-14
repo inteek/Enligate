@@ -2115,6 +2115,12 @@ namespace sw_EnligateWeb.Controllers
         public ActionResult _Partidos_GuardarNuevo(PartidosViewModel model, string equImgDos, HttpPostedFileBase equImgURLFile, bool addEvent = false)
         {
             bool error = false;
+            int eq1,eq2;
+            eq1 = model.equIdUno;
+            eq2 = model.equIdDos;
+            List<string> Equipo1 = null;
+            List<string> Equipo2 = null;
+
             //if (!error)
             //    return RedirectToAction("_TorneoNuevoEditar", new { Id = 3, usrId = "c64a3d58-b751-4f82-855b-62823401ae69" });
 
@@ -2216,6 +2222,16 @@ namespace sw_EnligateWeb.Controllers
                     if (model.parId > 0)
                     {
                         string code = Global_Functions.getSha1(0, Global_Functions.generateCode());
+                        Equipo1 = db.ObtenerJugadoresEquipo(eq1);
+                        Equipo2 = db.ObtenerJugadoresEquipo(eq2);
+                        if(Equipo1.Count>0)
+                        {
+                            sendInvitationEmailJugadorByEvent(Equipo1,partido.ligId, model.parId, partido.equNombreEquipoUno,partido.parFecha_Inicio, code, torneo.torNombreTorneo);
+                        }
+                        if(Equipo2.Count>0)
+                        {
+                            sendInvitationEmailJugadorByEvent(Equipo2, partido.ligId, model.parId, partido.equNombreEquipoDos, partido.parFecha_Inicio, code, torneo.torNombreTorneo);
+                        }
                         if (model.arbId > 0)
                         {
                             var arbEmail = db.getArbitroById(partido.arbId).arbCorreo;
@@ -2864,6 +2880,46 @@ namespace sw_EnligateWeb.Controllers
             return correosEnviados;
         }
 
+        public bool sendInvitationEmailJugadorByEvent(List<string> correos, int ligId, int parId, string equipo, DateTime fecha, string codigo, string torName)
+        {
+            int cont = 0;
+            var liga = db.getLigaById(ligId);
+
+            //var correosEnviados = true;
+            schemaSiteConfigs siteConfig = db.getLastSiteConfRow();
+            if (siteConfig != null)
+            {
+                // Links del correo
+                var faqsUrl = Url.Action("FAQs", "Home", null, protocol: Request.Url.Scheme);
+                var homeUrl = Url.Action("", "", null, protocol: Request.Url.Scheme);
+                var fechaPartido = db.getPartidoById(parId).parFecha_Fin.ToLongDateString();
+
+                string body = Global_Functions.getBodyHTML("~/Emails/JugadorPartidoInvitacion.html");
+
+                body = body.Replace("<%= NombreTorneo %>", torName);
+                body = body.Replace("<%= NombreLiga %>", liga.ligNombreLiga);
+                body = body.Replace("<%= NombreEquipo %>", equipo);
+                body = body.Replace("<%= fechaPartido %>", fechaPartido);
+                body = body.Replace("<%= UrlFAQs %>", faqsUrl);
+                body = body.Replace("<%= UrlEnligate %>", homeUrl);
+
+                foreach(string correoIndividual in correos)
+                { 
+                    bool mailSended = Global_Functions.sendMail(correoIndividual,siteConfig.scoSenderDisplayEmailName, "Invitación a Partido", body,
+                                                         siteConfig.scoSenderEmail,
+                                                         Global_Functions.getDecryptPrivateKey(siteConfig.scoSenderEmailPassword, constClass.encryptionKey),
+                                                         siteConfig.scoSenderSMTPServer,
+                                                         siteConfig.scoSenderPort,
+                                                         null, "", "", true, "");
+                    if (mailSended)
+                        cont++;
+                }
+
+            }
+            if (cont == correos.Count())
+                return true;
+            return false;
+        }
 
         public bool sendDropEventEmailReferee(string arbCorreo, string arbNombre, int ligId, int parId, string equUno, string equDos, DateTime fecha, string codigo)
         {

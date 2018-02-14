@@ -1,0 +1,63 @@
+﻿@using sw_EnligateWeb.Models;
+@model int
+<script>
+    $(document).ready(function () {
+        jsonInitialChart();
+    });
+
+    function jsonInitialChart() {
+        $.ajax({
+            url: '/AdminTorneos/_ChartPieTorneoEstadisticas',
+            type: "POST",
+            cache: false,
+            data: "Id="+@Model,
+            success: function (data) {
+                initialChart(data)
+            }
+        });
+    }
+
+    function initialChart(jsonData) {
+        console.log(jsonData)
+      //  var rowData = rows: [jsonData.equipos,jsonData.goles];
+        $("#spanNomLiga").text("Torneo "+jsonData.torneo);
+        var chart = c3.generate({
+            data: {
+                rows: [
+                  jsonData.equipos,
+                  jsonData.goles
+                ],
+                type:'pie'
+                /*,
+                type: 'pie', names: {
+                    data1: 'Torneo 1',
+                    data2: 'Torneo 2',
+                    data3: 'Torneo 3'
+                }*/
+            }/*,
+            color: {
+                pattern: ['#d62728', '#ff9896', '#9467bd', '#c5b0d5', '#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5']
+            }*/,
+            tooltip: {
+                format: {
+                    name: function (name, ratio, id, index) { return "Goles"; },
+                    value: function (value, ratio, id) {
+                        //var format = d3.format(',');
+                        //return format(value);
+                        return "Goles" + value;
+                    }
+                    //            value: d3.format(',') // apply this format to both y and y2
+                }
+            },
+            pie: {
+                label: {
+                    format: function (value, ratio, id) {
+                        return d3.format('')(value);
+                    }
+                }
+            }
+        });
+    }
+
+</script>
+<div id="chart"></div>

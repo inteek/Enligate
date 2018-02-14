@@ -1,0 +1,491 @@
+﻿@using sw_EnligateWeb.Models;
+
+@{
+    ViewBag.Title = "Enligate";
+}
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        fnGVPagos_PerformCallback();
+    });
+
+    function fnGVPagos_PerformCallback(s, e) {
+        if (typeof gvPagos.InCallback === "function") {
+            if (!gvPagos.InCallback())
+                gvPagos.PerformCallback();
+        }
+    }
+
+</script>
+<!-- Content -->
+<div id="JUGADOR_Dashboard" class="row">
+    <div id="JUGADOR_Dashboard_MisPagos" class="col-sm-12">
+        <div class="m-hdc-Gallery">
+            <h1>Mis Pagos</h1>
+            @Html.Partial("Banwire/_GridPagosEquipo")
+        </div>
+    </div>
+</div>
+
+<!--Modal Pagos-->
+<div class="modal fade" id="pagosModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom: 0px">
+                <!--<img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />-->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" style="padding-top: 0px">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 pull-right">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <h3 style="margin-top:0; ">Pago: <strong><span id="ligaTitle"></span></strong> </h3>
+                                </div>
+                                <div class="col-xs-6">
+                                    <img src="~/Content/Images/formas_pago.png" alt="Logo" class="img-responsive" />
+                                </div>
+                            </div>
+                            <!-- CREDIT CARD FORM STARTS HERE -->
+                            <form action="@Url.Action("Pago_Result", "AdminLigas")" method="POST" id="card-form">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="cardNumber">Numero de Tarjeta:</label>
+                                            <div class="input-group">
+                                                <input maxlength="16" name="numTarjeta" class="form-control only-numbers" data-conekta="card[number]" placeholder="Numero de Tarjeta" required="" autofocus="" type="text">
+                                                <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="nombre">Nombre:</label>
+                                            <input class="form-control" name="nombre" data-conekta="card[name]" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <label for="cardExpiry" class="text-center"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                        <div class="col-xs-5 col-md-6">
+                                            <div class="form-group">
+                                                <input class="form-control only-numbers" name="mes" maxlength="2" size="2" data-conekta="card[exp_month]" placeholder="MM" required="" type="tel">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-5 col-md-6">
+                                            <div class="form-group">
+                                                <input class="form-control only-numbers" name="year" maxlength="2" size="2" data-conekta="card[exp_year]" placeholder="YY" autocomplete="cc-exp" required="" type="tel">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-xs-4 col-md-4">
+                                        <div class="form-group">
+                                            <label for="cardCVC">CV CODE</label>
+                                            <input class="form-control only-numbers" name="cvc" maxlength="3" data-conekta="card[cvc]" placeholder="CVC" required="" type="tel">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="email">E-mail:</label>
+                                            <input class="form-control" name="email" data-conekta="card[email]" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="tel">Telefono:</label>
+                                            <input class="form-control only-numbers" name="tel" data-conekta="card[tel]" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="street">Calle:</label>
+                                            <input class="form-control" name="street" data-conekta="card[address][street1]" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="colonia">Colonia:</label>
+                                            <input class="form-control" name="colonia" data-conekta="card[address][street2]" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="ciudad">Ciudad:</label>
+                                            <input class="form-control" name="ciudad" data-conekta="card[address][city]" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="estado">Estado:</label>
+                                            <input class="form-control" name="estado" data-conekta="card[address][state]" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="pais">Pais:</label>
+                                            <input class="form-control" name="pais" data-conekta="card[address][country]" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="cp">CP:</label>
+                                            <input class="form-control only-numbers" name="cp" data-conekta="card[address][zip]" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-info">
+                                    ¡Pagar ahora! <strong><span id="spanTotal"></span></strong>
+                                    <button class="btn btn-default pull-right" type="submit">Pagar</button><span class="card-errors"></span>
+                                </div>
+                                <br />
+                                <div class="row" style="display:none;">
+                                    <input type="hidden" name="total" />
+                                    <input type="hidden" name="conceptoId" />
+                                    <input type="hidden" name="userId" />
+                                    <input type="hidden" name="concepto" value="Jugador" />
+                                    <input type="hidden" name="item" />
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden m-messageHide">
+        @Html.Partial("_ModalState_Errors")
+    </div>
+
+</div>
+<!--Modal Detalles-->
+<div class="modal fade" id="detallesPagosModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom:0">
+                <img src="~/Content/Images/general/logoMd.png" alt="Logo" class="mlImgLogin" />
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" style="padding-top:0">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-9 pull-right">
+                            <div class="row" id="pagoExistoso">
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <h2 style="margin-top:0">Detalles de Pago</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Liga:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="nameLiga"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Transaccion:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="transaccion"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Referencia:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="referencia"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Concepto Pago:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="concepto"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Metodo de Pago:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="metodo"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <strong>Total:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <span id="total"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden m-messageHide">
+        @Html.Partial("_ModalState_Errors")
+    </div>
+
+</div>
+
+<script>
+    function detallesPago(id) {
+        $.ajax({
+            url: "/AdminEquipos/_DetallesPagoEquJug",
+            type: "POST",
+            cache: false,
+            data: "equId=" + id,
+            success: function (data) {
+                var item = data[0];
+                console.log(data);
+                $("#nameLiga").text(item.conceptoNombre);
+                $("#transaccion").text(item.IdTransaccion);
+                $("#concepto").text(item.conceptoPago != null ? item.conceptoPago : "Pago de Equipo " + item.conceptoNombre);
+                $("#metodo").text(item.metodoPago);
+                $("#referencia").text(item.referencia);
+                $("#total").text("$ " + item.total  + " MXN");
+                $("#detallesPagosModal").modal();
+            },
+        })
+    };
+</script>
+<script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.5.0/js/conekta.js"></script>
+<script type="text/javascript">
+
+        // Conekta Public Key
+        Conekta.setPublicKey('key_LFdNgy7DRxVxRms1DP5ZBnw'); //v3.2
+        //Conekta.setPublicKey('key_KJysdbf6PotS2ut2'); //v5+
+
+        // ...
+
+        $(function () {
+            $("#card-form").submit(function (event) {
+                var $form = $(this);
+
+                $form.find(".spanError").remove();
+                $form
+                .find("input")
+                .each(function (v, k) {
+                    var input = $(k);
+                    if (input.val() == "") {
+                        var error = '<span class="bg-danger spanError">';
+                        error += 'Campo Requerido';
+                        error += '</span>';
+                        if (input.attr("name") == "numTarjeta") {
+                            input.parent().parent().append(error);
+                        } else {
+                            input.parent().append(error);
+                        }
+                    }
+                });
+
+                var empty = $form.find("input").filter(function () {
+                    return this.value === "";
+                });
+
+                if (!empty.length) {
+                    // Previene hacer submit más de una vez
+                    $form.find("button").prop("disabled", true);
+                    //Conekta.token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler);
+                    Conekta.Token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler); //v5+
+                }
+                // Previene que la información de la forma sea enviada al servidor
+                return false;
+            });
+        });
+
+        var conektaSuccessResponseHandler = function (token) {
+            var $form = $("#card-form");
+
+            /* Inserta el token_id en la forma para que se envíe al servidor */
+            var tokenId = $("<input type='hidden' name='conektaTokenId'>").val(token.id);
+            $form.append(tokenId);
+
+            /* and submit */
+            console.log("success" + token.id);
+
+            var data = $form.serialize();
+            console.log(data);
+            $.ajax({
+                url: '/AdminLigas/Pago_Result',
+                type: "POST",
+                cache: false,
+                data: data + "&token=" + token.id,
+                success: function (data) {
+                    realizarPago(data);
+                    console.log("success!: " + data);
+                },
+                complete: function (jqXHR, textStatus) {
+                    $("#modal_error").text("error");
+                    showMessages();
+                }
+            });
+
+            //      $form.get(0).submit()
+        };
+
+        var conektaErrorResponseHandler = function (response) {
+            console.log(response);
+            var $form = $("#card-form");
+            /* Muestra los errores en la forma */
+            var msg = '<div id="modal_error" class="alert alert-danger alert-dismissible" role="alert">';
+            msg += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+            msg += '<span aria-hidden="true">&times;</span></button>' + response.message_to_purchaser + '</div>';
+
+            $(".m-messageHide").html(msg);
+
+            showMessages();
+            // $form.find(".card-errors").text(response.message_to_purchaser);
+
+            $form.find("button").prop("disabled", false);
+        };
+
+        var SW = new BwGateway({
+            // Test mode, remove when going to production mode
+            sandbox: true,
+            // Nombre de usuario de Banwire
+            user: 'pruebasbw',
+            // Titulo de la entana
+            title: "Enligate",
+            // Referencia
+            reference: 'testref01',
+            // Concepto
+            concept: 'pago de prueba',
+            infoMsg: 'Gracias por su preferencia ...',
+            // Moneda
+            currency: 'MXN',
+            // Customer information
+
+            // notifyUrl: "https://test.banwire.com/sw_ex/response.php",
+            // Opciones de pago
+            paymentOptions: 'all', // visa,mastercard,amex,oxxo
+            // Mostrar o no pagina de resumen de compra
+            reviewOrder: true,
+            // Handler en caso de exito en el pago
+            successPage: '',
+            onSuccess: function (data) {
+                console.log("Pago correcto");
+                console.log(data);
+            },
+            // Pago pendiente OXXO
+            pendingPage: '',
+            onPending: function (data) {
+                console.log(data);
+                alert("El pago esta pendiente por ser efectuado");
+            },
+            // Pago challenge
+            challengePage: '',
+            onChallenge: function () {
+                alert("Pago enviado a validaciones de seguridad");
+            },
+            // Handler en caso de error en el pago
+            errorPage: '',
+            onError: function (error) {
+                console.log(error);
+            },
+            // Cuando cierra el popup sin completar el proceso
+            onCancel: function () {
+                console.log("Se cancelo el proceso");
+            }
+        });
+
+        function realizarPago(data) {
+            var json = JSON.stringify(data);
+            json = JSON.parse(json);
+            $.ajax({
+                url: "/AdminEquipos/_PayTeam",
+                type: 'POST',
+                dataType: "json",
+                data: json,
+                success: function (data) {
+                    $("#pagosModal").modal("toggle");
+                    fnGVPagos_PerformCallback();
+                    if (data != "" && data > 0) {
+                        detallesPago(data);
+                        var success = '<div class="col-md-8">';
+                        success += '<h2 class="text-success">Pago Existoso !</h2>';
+                        success += '</div>';
+                        success += '<div class="col-md-4">';
+                        success += '<img src="/Content/Images/payments/success.png" alt="Success Payment" width="50%">';
+                        success += '</div>';
+                        $("#detallesPagosModal #pagoExistoso").append(success);
+                    }
+                    var $form = $("#card-form");
+                    $form.find("button").prop("disabled", false);
+                    updatePaymentsNotify();
+                },
+                error: function (xhr, status, p3, p4) {
+                    alert("Hubo un error, intenta nuevamente,");
+                }
+            });
+        }
+        $(document).ready(function () {
+            $(".only-numbers").keypress(function (e) {
+                var charCode = (e.which) ? e.which : e.keyCode;
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+            });
+        });
+
+        function pagar(equId) {
+            $.ajax({
+                url: '/AdminEquipos/_RealizarPago',
+                type: "POST",
+                cache: false,
+                data: "equId=" + equId,
+                success: function (data) {
+                    //console.log("success!");
+                    console.log(data);
+                    var items = data[0];
+                    $("#ligaTitle").text(items.equNombre);
+                    $("#spanTotal").text(items.total);
+                    $("input[name=total]").val(items.total);
+                    $("#card-form input[name=conceptoId]").val(items.equId);
+                    $("#card-form input[name=userId]").val(items.userId);
+                    $("#card-form input[name=item]").val(items.equNombre);
+                    $("input[name=nombre]").val(items.fname + " " + items.mname);
+                    $("input[name=email]").val(items.email);
+                    $("input[name=tel]").val(items.phone);
+                    $("input[name=street]").val(items.addr);
+                    $("input[name=colonia]").val(items.col);
+                    $("input[name=ciudad]").val(items.city);
+                    $("input[name=estado]").val(items.state);
+                    $("input[name=pais]").val(items.country);
+                    $("input[name=cp]").val(items.zip);
+
+                    $('#pagosModal').modal();
+                    //location.reload();
+                },
+                complete: function (jqXHR, textStatus) {
+                    showMessages();
+                }
+            });
+        }
+</script>

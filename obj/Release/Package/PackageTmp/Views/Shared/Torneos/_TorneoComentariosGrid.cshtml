@@ -1,0 +1,104 @@
+@using sw_EnligateWeb.Models;
+@using System.Web.UI.WebControls;
+
+@{
+    var gvRequestsTorneoComentarios = Html.DevExpress().GridView(settings =>
+    {
+        //General Settings
+        settings.Name = "gvTorneoComentarios";
+        settings.CallbackRouteValues = new { Controller = "AdminTorneos", Action = "_TorneoComentariosGrid_Callback" };
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = false;
+
+        //Styles
+        settings.Styles.FilterRow.CssClass = "gvHeader";
+        settings.Styles.Row.CssClass = "gvRow";
+        settings.Styles.SelectedRow.CssClass = "gvRowSelected";
+        settings.Styles.DetailRow.CssClass = "gvDetailRow";
+        settings.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+
+        //Columns
+        settings.KeyFieldName = "tcgvId";
+        settings.SetDataRowTemplateContent(c =>
+        {
+            int tcoId = (int)DataBinder.Eval(c.DataItem, "tcoId");
+            int torId = (int)DataBinder.Eval(c.DataItem, "torId");
+            string torNombre = DataBinder.Eval(c.DataItem, "torNombre") as string;
+            string equNombre = DataBinder.Eval(c.DataItem, "equNombre") as string;
+            string usuNombre = DataBinder.Eval(c.DataItem, "usuNombre") as string;
+            string tcoComentario = DataBinder.Eval(c.DataItem, "tcoComentario") as string;
+            decimal tcoCalificacion = (decimal)DataBinder.Eval(c.DataItem, "tcoCalificacion");
+            DateTime tcoFechaComentarioUTC = (DateTime)DataBinder.Eval(c.DataItem, "tcoFechaComentarioUTC");
+            bool tcoEstatus = (bool)DataBinder.Eval(c.DataItem, "tcoEstatus");
+            
+            ViewContext.Writer.Write(@"
+                    <div class='well' style='position:relative;'>
+                        <div class='container-fluid'>
+                            <div class='row' style='position:relative;'>
+
+                                <div class='col-xs-12 text-left visible-xs mSpaceMb20'>
+                                    <div>
+                                        <span class='trophyRating' data-rating='" + tcoCalificacion.ToString() + @"'></span>
+                                    </div>
+                                    <div>
+                                        <small><i>" + tcoFechaComentarioUTC.ToString("dd/MM/yyyy") + @"</i></small>
+                                    </div>
+                                </div>
+                                <div class='col-sm-9 text-left'>
+                                    " + torNombre + @"
+                                </div>
+                                <div class='col-sm-9 text-left'>
+                                    " + equNombre + @"
+                                </div>
+                                <div class='col-sm-9 text-left'>
+                                    <b>" + usuNombre + @"</b>
+                                </div>
+                                <div class='col-sm-12 text-left mSpaceMt20'>
+                                    " + tcoComentario + @"
+                                </div>
+
+                                <div style='position:absolute; top:0; right:0;' class='text-right hidden-xs'>
+                                    <div>
+                                        <span class='trophyRating' data-rating='" + tcoCalificacion.ToString() + @"'></span>
+                                    </div>
+                                    <div>
+                                        <small><i>" + tcoFechaComentarioUTC.ToString("dd/MM/yyyy") + @"</i></small>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+            ");
+        });
+               
+        //Paging
+        settings.SettingsPager.Mode = GridViewPagerMode.EndlessPaging;
+        settings.SettingsPager.PageSize = 5;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 300;
+
+        //Adaptivity - Responsive Design
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        
+        //Rows
+        settings.Settings.ShowColumnHeaders = false;
+        settings.SettingsBehavior.AllowSelectByRowClick = false;
+
+        //Callbacks
+        settings.ClientSideEvents.BeginCallback = "fnGVTorneoComentarios_OnBeginCallback";
+        settings.ClientSideEvents.EndCallback = @"function (s, e) {
+                                                      initializeRating();
+                                                  }";
+        
+    });
+   
+    if (ViewData["EditError"] != null){
+        gvRequestsTorneoComentarios.SetEditErrorText((string)ViewData["EditError"]);
+    }
+
+    gvRequestsTorneoComentarios.Bind(Model).GetHtml();
+}

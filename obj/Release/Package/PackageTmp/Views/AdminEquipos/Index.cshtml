@@ -1,0 +1,43 @@
+﻿@using sw_EnligateWeb.Models;
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+<script>
+      
+</script>
+<!-- Content -->
+<div id="ADMINISTRADORDEEQUIPO_Dashboard" class="row">
+    <div id="ADMINISTRADORDEEQUIPO_Dashboard_Dashboard" class="col-sm-12">
+        <div class="m-hdc-Gallery">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-xs-12 ">
+                        PARTIDOS
+                    </div>
+                    <hr />
+                    @Html.Action("PartidosViewCallback", "AdminLigas")
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-xs-12 ">
+                        RESULTADOS
+                    </div>
+                    <hr />
+                    @Html.Action("PartidosResultCallback", "AdminLigas")
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+}

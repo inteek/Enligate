@@ -1,0 +1,151 @@
+﻿@using sw_EnligateWeb.Models.HelperClasses;
+@using System.Web.UI.WebControls;
+@using sw_EnligateWeb.Models;
+@model TorneosViewModel
+
+
+<div class="col-xs-12 col-sm-7 col-md-6 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS ">
+            <span class="input-group-addon m-lbl">Precio del torneo:</span>
+            @{
+                if (Model.torLigaFormaPago == "COMISION")
+                {
+                    @Html.TextBoxFor(m => m.torPrecioTorneo,
+                            new
+                            {
+                                @class = "width100",
+                                onkeypress = "return onlyDecimals(event,this);",
+                                onchange = "torneoNuevo_PagosPrecioOnChange();"
+                            })
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.torPrecioTorneo,
+                            new
+                            {
+                                @class = "width100",
+                                onkeypress = "return onlyDecimals(event,this);",
+                            })        
+                }
+            }
+        </div>
+        @Html.ValidationMessageFor(m => m.torPrecioTorneo, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="col-xs-12 col-sm-7 col-md-6 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+    <div class="marginForm">
+        <div class="input-group m-input-groupLbl-XS ">
+            <span class="input-group-addon m-lbl">Días para pagar:</span>
+            @Html.TextBoxFor(m => m.torDiasParaPago, new { @class = "width100", onkeypress = "return onlyNumbers(event,this);" , value = 0})
+        </div>
+        @Html.ValidationMessageFor(m => m.torDiasParaPago, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="clearfix"></div>
+
+@{
+    @Html.HiddenFor(m => m.torLigaFormaPago)
+    if (Model.torLigaFormaPago == "COMISION")
+    {
+        <div class="col-xs-12 mSpaceMb0 paddingLRZero-XS paddingLRZero-SM">
+            <div class="marginForm">
+                <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM">
+                    <span class="input-group-addon m-lbl">Tipos de pago:</span>
+                    @{
+        foreach (var item in Model.listTarifasCfppTiposPago)
+        {
+            <label class="paddingLR10" style="font-weight:normal !important;">
+                @Html.RadioButtonFor(m => m.tcfpptpId, item.tcfpptpId,
+                                                            new
+                                                            {
+                                                                onchange = "torneoNuevo_PagosTipoOnChange();"
+                                                            })
+                <span class="">@item.ttpIdTipoPago</span>
+            </label>
+        }
+                    }
+                </div>
+                @Html.ValidationMessageFor(m => m.tcfpptpId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="col-xs-12 mSpaceMb10 paddingLRZero-XS paddingLRZero-SM">
+            @{
+        if (Model.tblTarifasCfppTiposPago != null && Model.tblTarifasCfppTiposPago.ttpIdTipoPago.ToUpper() == "ANTICIPO")
+        {
+            <span style="padding-left:6px;font-weight: bold; font-size: 0.8em">
+                El precio del anticipo se dará en base a la comisión estipulada y el resto del
+                pago se debe de realizar directo en la liga.
+            </span>
+        }
+        else if (Model.tblTarifasCfppTiposPago != null  && Model.tblTarifasCfppTiposPago.ttpIdTipoPago.ToUpper() == "TOTAL")
+        {
+            <span style="padding-left:6px;font-weight: bold; font-size: 0.8em">
+                El pago total se realizará en ENLIGATE, el cuál te cobrará la comisión mencionada y el resto
+                se te depositará el fin de semana posterior al pago.
+            </span>
+        }
+            }
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="col-xs-12 mSpaceMb5 paddingLRZero-XS paddingLRZero-SM">
+            <div class="marginForm">
+                <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM">
+                    <span class="input-group-addon m-lbl" style="vertical-align:top; padding-top:3px;">Metodos de pago:</span>
+                    @{
+                        for (int i = 0; i < Model.listTarifas.Count; i++)
+                        {
+                            //Realiza el descuento a las tarifas.
+                            if (Model.torLigaDescuento != 0)
+                            {
+                                decimal costo = Model.listTarifas[i].tarCosto;
+                                decimal importe = (costo * ((Model.torLigaDescuento!=null)?(decimal)Model.torLigaDescuento:0)) / 100;
+                                Model.listTarifas[i].tarCosto = costo + importe;
+                            }
+                            var metodoPago = Model.listTarifas[i].tmpIdMetodoPago;
+                            var costoEnligate = Model.listTarifas[i].tarCosto;
+                            if (costoEnligate < 0)
+                            {
+                                costoEnligate *= -1;
+                            }
+                            //    decimal importeDescuento = (((Model.torLigaDescuento != null) ? (decimal)Model.torLigaDescuento : 0) * costoEnligate) / 100;
+
+                            decimal precioTorneo = ((Model.torPrecioTorneo != null) ? (decimal)Model.torPrecioTorneo : 0);
+                            decimal importeDescuento = (precioTorneo*(costoEnligate / 100));
+                            decimal precioLiga =   precioTorneo-importeDescuento;
+
+                            var chbxLblText = string.Format(" {0} (Comisión ENLIGATE {1}% - {2}, Pago para la liga {3})",
+                                                    metodoPago, costoEnligate.ToString(), importeDescuento.ToString(constClass.formatMoney),
+                                                    precioLiga.ToString(constClass.formatMoney));
+                            var chbxAttr = (Model.tblTarifasCfppTiposPago != null && Model.tblTarifasCfppTiposPago.ttpIdTipoPago.ToUpper() == "ANTICIPO") ? new { disabled = "disabled" } : null;
+
+                        @Html.HiddenFor(m => m.listTarifas[i].tarId)
+                        @Html.HiddenFor(m => m.listTarifas[i].tarCosto)
+                        @Html.HiddenFor(m => m.listTarifas[i].tmpIdMetodoPago)
+                        @Html.CheckBoxFor(m => m.listTarifas[i].tarHabilitado, chbxAttr)
+                        @Html.LabelFor(m => m.listTarifas[i].tarHabilitado, chbxLblText, new { style = "font-weight:normal !important;" })
+                        <br />
+                                if (Model.tblTarifasCfppTiposPago != null && Model.tblTarifasCfppTiposPago.ttpIdTipoPago.ToUpper() == "ANTICIPO")
+                        {
+                        <script type="text/javascript">
+                            var chbx = $("#listTarifas_" + @i + "__tarHabilitado");
+                            if (chbx.val() == "true") {
+                                if (!chbx.prop('checked')) {
+                                    chbx.attr('checked', "checked");
+                                }
+                            }
+                        </script>
+                        }
+                    }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    }
+}
