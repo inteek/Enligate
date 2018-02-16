@@ -703,7 +703,7 @@ namespace sw_EnligateWeb.Models
         public DateRangePickerViewModel()
         {
             StartDate = new DateTime(2015,1,1);
-            EndDate = StartDate.AddMonths(1).AddDays(-1);
+            EndDate = DateTime.Today.AddMonths(1).AddDays(-1);
         }
 
         [Display(Name = "Start Date")]
