@@ -2194,6 +2194,9 @@ namespace sw_EnligateWeb.Controllers
                     }
                 }
 
+                schemaLigaCanchasTorneos cancha = new schemaLigaCanchasTorneos();
+                cancha = db.getCancha(model.canId);
+
                 partido.ligId = model.ligId;
                 partido.torId = model.torId;
                 partido.equIdUno = model.equIdUno;
@@ -2226,18 +2229,19 @@ namespace sw_EnligateWeb.Controllers
                         Equipo2 = db.ObtenerJugadoresEquipo(eq2);
                         if(Equipo1.Count>0)
                         {
-                            sendInvitationEmailJugadorByEvent(Equipo1,partido.ligId, model.parId, partido.equNombreEquipoUno,partido.parFecha_Inicio, code, torneo.torNombreTorneo);
+                            sendInvitationEmailJugadorByEvent(Equipo1, partido.ligId, model.parId, partido.equNombreEquipoUno, partido.parFecha_Inicio, code, torneo.torNombreTorneo, cancha);
                         }
                         if(Equipo2.Count>0)
                         {
-                            sendInvitationEmailJugadorByEvent(Equipo2, partido.ligId, model.parId, partido.equNombreEquipoDos, partido.parFecha_Inicio, code, torneo.torNombreTorneo);
+                            sendInvitationEmailJugadorByEvent(Equipo2, partido.ligId, model.parId, partido.equNombreEquipoDos, partido.parFecha_Inicio, code, torneo.torNombreTorneo, cancha);
                         }
                         if (model.arbId > 0)
                         {
                             var arbEmail = db.getArbitroById(partido.arbId).arbCorreo;
                             db.setArbitroPartido(partido.arbId, model.parId, code);
-                            sendInvitationEmailRefereeByEvent(arbEmail, partido.arbNombre, partido.ligId, model.parId, partido.equNombreEquipoUno, partido.equNombreEquipoDos, partido.parFecha_Inicio, code,torneo.torNombreTorneo);
+                            sendInvitationEmailRefereeByEvent(arbEmail, partido.arbNombre, partido.ligId, model.parId, partido.equNombreEquipoUno, partido.equNombreEquipoDos, partido.parFecha_Inicio, code,torneo.torNombreTorneo, cancha);
                         }
+                       //sendInvitationEmailRefereeByEvent("fredy_aa15@hotmail.com", partido.arbNombre, partido.ligId, model.parId, partido.equNombreEquipoUno, partido.equNombreEquipoDos, partido.parFecha_Inicio, code, torneo.torNombreTorneo, cancha);
                         //Se guardo el Partido
                         ModelState.Clear();
                         ModelState.AddModelError(constClass.success, "El Partido se creo exitosamente.");
@@ -2302,7 +2306,7 @@ namespace sw_EnligateWeb.Controllers
             {
                 result = "Favor de corregir los errores.";
             }
-
+            schemaLigaCanchasTorneos cancha = db.getCancha(item.canId);
             var team1 = db.getEquipoById(item.equIdUno);
 
             var team2 = db.getEquipoById(item.equIdDos);
@@ -2326,7 +2330,7 @@ namespace sw_EnligateWeb.Controllers
 
                     db.editArbitroPartido(partido.arbId, item.arbId, item.parId, code);
 
-                    sendInvitationEmailRefereeByEvent(arb_new, arb_new, partido.ligId, item.parId, partido.equNombreEquipoUno, partido.equNombreEquipoDos, partido.parFecha_Inicio, code,partido.tblTorneos.torNombreTorneo);
+                    sendInvitationEmailRefereeByEvent(arb_new, arb_new, partido.ligId, item.parId, partido.equNombreEquipoUno, partido.equNombreEquipoDos, partido.parFecha_Inicio, code,partido.tblTorneos.torNombreTorneo,cancha);
 
                     item.arbNombre = arb_new;
 
@@ -2348,12 +2352,13 @@ namespace sw_EnligateWeb.Controllers
         [HttpPost, ValidateInput(false)]
         public JsonResult _PartidosEnviarInvitacionArbitro(PartidosViewModel item)
         {
+            schemaLigaCanchasTorneos cancha = db.getCancha(item.canId);
             var result = "success";
             string code = Global_Functions.getSha1(0, Global_Functions.generateCode());
             var partido = db.getPartidoById(item.parId);
             var arb_new = db.getArbitroById(item.arbId).arbCorreo;
             db.editArbitroPartido(partido.arbId, item.arbId, item.parId, code);
-            if (!sendInvitationEmailRefereeByEvent(arb_new, arb_new, partido.ligId, item.parId, partido.equNombreEquipoUno, partido.equNombreEquipoDos, partido.parFecha_Inicio, code, partido.tblTorneos.torNombreTorneo))
+            if (!sendInvitationEmailRefereeByEvent(arb_new, arb_new, partido.ligId, item.parId, partido.equNombreEquipoUno, partido.equNombreEquipoDos, partido.parFecha_Inicio, code, partido.tblTorneos.torNombreTorneo,cancha))
                 result = "Wrong";
             return Json(result);
         }
@@ -2837,7 +2842,7 @@ namespace sw_EnligateWeb.Controllers
             return correosEnviados;
         }
 
-        public bool sendInvitationEmailRefereeByEvent(string arbCorreo, string arbNombre, int ligId, int parId, string equUno, string equDos, DateTime fecha, string codigo,string torName)
+        public bool sendInvitationEmailRefereeByEvent(string arbCorreo, string arbNombre, int ligId, int parId, string equUno, string equDos, DateTime fecha, string codigo,string torName, schemaLigaCanchasTorneos cancha)
         {
             var liga = db.getLigaById(ligId);
             
@@ -2851,15 +2856,18 @@ namespace sw_EnligateWeb.Controllers
                 var fechaPartido = db.getPartidoById(parId).parFecha_Fin.ToLongDateString();
                 // Links del correo
                 var confirmarUrl = Url.Action("ArbitroPartidoConfirmar", "Referee", new { email = arbCorreo, ligId = ligId, parId = parId, code = codigo }, protocol: Request.Url.Scheme);
-                var rechazarUrl = Url.Action("ArbitroPartidoRechazar", "Referee", new { email = arbCorreo, ligId = ligId, parId = parId, code = codigo }, protocol: Request.Url.Scheme);
+                var rechazarUrl = Url.Action("ArbitroPartidoRechazar", "Referee", new { email = arbCorreo, ligId = ligId, parId = parId, code = codigo}, protocol: Request.Url.Scheme);
 
                 string body = Global_Functions.getBodyHTML("~/Emails/ArbitroPartidoInvitacion.html");
+                string localizacion = cancha.lcatdomicilio + ", " + cancha.lcatNumExtInt + ", " + cancha.lcatColonia + ", " + cancha.lcatMunicipio+", " + cancha.lcatEstado;
 
                 body = body.Replace("<%= NombreTorneo %>", torName);
                 body = body.Replace("<%= NombreLiga %>", liga.ligNombreLiga);
                 body = body.Replace("<%= NombreEquipoUno %>", equUno);
                 body = body.Replace("<%= NombreEquipoDos %>", equDos);
                 body = body.Replace("<%= fechaPartido %>", fechaPartido);
+                body = body.Replace("<%=cancha%>", cancha.lcatNombre);
+                body = body.Replace("<%=localizacion%>", localizacion);
                 body = body.Replace("<%= UrlFAQs %>", faqsUrl);
                 body = body.Replace("<%= UrlEnligate %>", homeUrl);
 
@@ -2880,7 +2888,7 @@ namespace sw_EnligateWeb.Controllers
             return correosEnviados;
         }
 
-        public bool sendInvitationEmailJugadorByEvent(List<string> correos, int ligId, int parId, string equipo, DateTime fecha, string codigo, string torName)
+        public bool sendInvitationEmailJugadorByEvent(List<string> correos, int ligId, int parId, string equipo, DateTime fecha, string codigo, string torName, schemaLigaCanchasTorneos cancha)
         {
             int cont = 0;
             var liga = db.getLigaById(ligId);
@@ -2900,6 +2908,7 @@ namespace sw_EnligateWeb.Controllers
                 body = body.Replace("<%= NombreLiga %>", liga.ligNombreLiga);
                 body = body.Replace("<%= NombreEquipo %>", equipo);
                 body = body.Replace("<%= fechaPartido %>", fechaPartido);
+                body = body.Replace("<%= cancha%>", cancha.lcatNombre);
                 body = body.Replace("<%= UrlFAQs %>", faqsUrl);
                 body = body.Replace("<%= UrlEnligate %>", homeUrl);
 

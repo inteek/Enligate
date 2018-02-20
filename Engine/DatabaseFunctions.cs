@@ -5442,9 +5442,16 @@ namespace sw_EnligateWeb.Engine
         }
         public schemaArbitrosPartidos getArbitroPartidoByParId(int parId)
         {
-            return (from arbPar in dbApp.tblArbitrosPartidos
-                    where arbPar.parId == parId
-                    select arbPar).First();
+            try
+            {
+                return (from arbPar in dbApp.tblArbitrosPartidos
+                        where arbPar.parId == parId
+                        select arbPar).First();
+            }
+            catch(Exception)
+            {
+                return null;
+            }
         }
 
         public List<ArbitrosViewModel> getArbitroPartidoRechazado()
@@ -6404,6 +6411,13 @@ namespace sw_EnligateWeb.Engine
             {
                 return lista;
             }
+        }
+
+        public schemaLigaCanchasTorneos getCancha(int idCancha)
+        {
+            schemaLigaCanchasTorneos result = new schemaLigaCanchasTorneos();
+            result = dbApp.tblLigaCanchasTorneos.Where(x => x.lcatId == idCancha).FirstOrDefault();
+            return result;
         }
         /* public List<schemaDatosTarjeta> getDatosTarjeta(ApplicationUser userId)
          {

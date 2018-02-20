@@ -619,9 +619,9 @@ namespace sw_EnligateWeb.Controllers
             }
 
             var arbPar = db.getArbitroPartidoByParId(parId);
-            var arbId = db.getArbitroById(arbPar.arbId);
             if (arbPar != null)
             {
+                var arbId = db.getArbitroById(arbPar.arbId);
                 if (arbPar.arbCodigoConfirmacion == code)
                 {
                     if (db.setConfirmarArbitroPartido(arbId.arbId, parId))
@@ -705,9 +705,16 @@ namespace sw_EnligateWeb.Controllers
                         {
                             db.setArbitros_ConfirmarParticipacion(user.Id, user.Email, ligId);
                         }
-                        enviarEmailArbitroConfirmacion(email, liga.tblUserCreador.Email, liga.ligNombreLiga);
+                        enviarEmailArbitroPartido(email, liga.tblUserCreador.Email, liga.ligNombreLiga, parId, true);
                     }
                 }               
+            }
+            else
+            {
+                var liga = db.getLigaById(ligId);
+                enviarEmailArbitroPartido(email, liga.tblUserCreador.Email, liga.ligNombreLiga, parId, true);
+                //enviarEmailArbitroPartido(email, "fredy_aa15@hotmail.com", liga.ligNombreLiga, parId, true);
+
             }
             if (user != null)
             {
@@ -791,28 +798,47 @@ namespace sw_EnligateWeb.Controllers
             return false;
         }
 
-        public bool enviarEmailArbitroRechazar(string emailArb, string emailAdmLig, string liga,int parId)
+        public bool enviarEmailArbitroPartido(string emailArb, string emailAdmLig, string liga,int parId, bool participacion)
         {
             // Send an email with this link
             var faqsUrl = Url.Action("FAQs", "Home", null, protocol: Request.Url.Scheme);
             var homeUrl = Url.Action("", "", null, protocol: Request.Url.Scheme);
             var partido = db.getPartidoById(parId);
+            string status1, status2, status3;
             schemaSiteConfigs siteConfig = db.getLastSiteConfRow();
             if (siteConfig != null)
             {
+                //string emailTo = emailAdmLig;
+
                 string emailTo = emailAdmLig;
 
-                string body = Global_Functions.getBodyHTML("~/Emails/ArbitroAvisoRechazarAdm.html");
+                string body = Global_Functions.getBodyHTML("~/Emails/ArbitroAvisoPartidoAdm.html");
 
+                if(participacion)
+                {
+                    status1 = "Confirmacion";
+                    status2 = "aceptado";
+                    status3 = "Arbitro Acepta Partido";
+                }
+                else
+                {
+                    status1 = "Rechazo";
+                    status2 = "rechazado";
+                    status3 = "Arbitro Rechaza Partido";
+                }
+
+                body = body.Replace("<%= status1 %>", status1);
+                body = body.Replace("<%= status2 %>", status2);
                 body = body.Replace("<%= NombreJugador %>", emailArb);
                 body = body.Replace("<%= NombreLiga %>", liga);
                 body = body.Replace("<%= NombreTorneo %>", partido.tblTorneos.torNombreTorneo);
+                body = body.Replace("<%= fecha %>", partido.parFecha_Fin.ToString());
                 body = body.Replace("<%= NombreEquipoUno %>", partido.equNombreEquipoUno);
-                body = body.Replace("<%= NombreEquipoDos %>", partido.equNombreEquipoDos);                
+                body = body.Replace("<%= NombreEquipoDos %>", partido.equNombreEquipoDos);            
                 body = body.Replace("<%= UrlFAQs %>", faqsUrl);
                 body = body.Replace("<%= UrlEnligate %>", homeUrl);
 
-                bool mailSended = Global_Functions.sendMail(emailTo, siteConfig.scoSenderDisplayEmailName, "Arbitro Rechaza Partido", body,
+                bool mailSended = Global_Functions.sendMail(emailTo, siteConfig.scoSenderDisplayEmailName, status3, body,
                                                             siteConfig.scoSenderEmail,
                                                             Global_Functions.getDecryptPrivateKey(siteConfig.scoSenderEmailPassword, constClass.encryptionKey),
                                                             siteConfig.scoSenderSMTPServer,
@@ -830,10 +856,11 @@ namespace sw_EnligateWeb.Controllers
 
         public ActionResult ArbitroPartidoRechazar(string email, int ligId, int parId, string code)
         {
+
             var arbPar = db.getArbitroPartidoByParId(parId);
-            var arbId = arbPar.arbId;
             if (arbPar != null)
             {
+                var arbId = arbPar.arbId;
                 if (arbPar.arbCodigoConfirmacion == code)
                 {
                     var emailTo = db.getLigaById(ligId).tblUserCreador.Email;
@@ -842,7 +869,7 @@ namespace sw_EnligateWeb.Controllers
                     var coAdminLiga = db.getCoAdminLigasByLigIg(partido.ligId).ToList();
                     if (coAdminTorneo.Any())
                     {
-                        emailTo += ","+String.Join(",", coAdminTorneo.Select(s => s.tcaEmail).ToArray());
+                        emailTo += "," + String.Join(",", coAdminTorneo.Select(s => s.tcaEmail).ToArray());
                     }
                     if (coAdminLiga.Any())
                     {
@@ -850,11 +877,15 @@ namespace sw_EnligateWeb.Controllers
                     }
                     if (db.setRechazarArbitroPartido(arbId, parId))
                     {
-                        enviarEmailArbitroRechazar(email, emailTo, db.getLigaById(ligId).ligNombreLiga,parId);
+                        enviarEmailArbitroPartido(email, emailTo, db.getLigaById(ligId).ligNombreLiga, parId, false);
                         return View("AccionesCorreos/_ParticipanteRechazar");
                     }
                 }
             }
+            //else
+            //{
+            //    enviarEmailArbitroPartido(email, emailTo, "Liga prueba", parId, false);
+            //}
             return View("AccionesCorreos/_ParticipanteRechazar");
         }
         public ActionResult _ArbitrosGrid_Callback()

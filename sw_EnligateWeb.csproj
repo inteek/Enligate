@@ -529,7 +529,7 @@
     <Content Include="Emails\AdminEquipoAvisoConfirmacion.html" />
     <Content Include="Emails\AdministradorTorneoEquipoDelete.html" />
     <Content Include="Emails\AdministradorTorneoEquipoInvitacion.html" />
-    <Content Include="Emails\ArbitroAvisoRechazarAdm.html" />
+    <Content Include="Emails\ArbitroAvisoPartidoAdm.html" />
     <Content Include="Emails\ArbitroAvisoConfirmacionAdm.html" />
     <Content Include="Emails\ArbitroAvisoConfirmacion.html" />
     <Content Include="Emails\ArbitroInvitacion.html" />
