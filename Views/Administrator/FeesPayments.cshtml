@@ -124,15 +124,17 @@
                 success: function (data) {
                     var item = data[0];
                     console.log(data);
-                    $("#nameLiga").text(item.ligNombre);
-                    $("#usuario").text(item.userNombre);
-                    $("#transaccion").text(item.IdTransaccion);
-                    $("#concepto").text(item.conceptoPago != null ? item.conceptoPago : "Pago de " + item.ligNombre);
-                    $("#metodo").text(item.metodoPago);
-                    $("#referencia").text(item.referencia);
-                    $("#fecha").text(item.fechaPago);
-                    $("#total").text("$ " + item.total / 100 + " MXN");
-                    $("#detallesPagosModal").modal();
+                    if (data.count > 0) {
+                        $("#nameLiga").text(item.ligNombre);
+                        $("#usuario").text(item.userNombre);
+                        $("#transaccion").text(item.IdTransaccion);
+                        $("#concepto").text(item.conceptoPago != null ? item.conceptoPago : "Pago de " + item.ligNombre);
+                        $("#metodo").text(item.metodoPago);
+                        $("#referencia").text(item.referencia);
+                        $("#fecha").text(item.fechaPago);
+                        $("#total").text("$ " + item.total / 100 + " MXN");
+                        $("#detallesPagosModal").modal();
+                    }
                    
                 },
             })

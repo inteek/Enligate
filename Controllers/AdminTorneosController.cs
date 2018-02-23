@@ -1133,9 +1133,14 @@ namespace sw_EnligateWeb.Controllers
                                 }
                             }
                         }
+                        else if(model.lctId==0)
+                        {
+                            ModelState.AddModelError(constClass.error, "Favor de seleccionar una categoria");
+                            error = true;
+                        }
                         else
                         {
-                            ModelState.AddModelError(constClass.error, "Ocurrio un error guardando el torneo. Intenta nuevamente.");
+                           ModelState.AddModelError(constClass.error, "Ocurrio un error guardando el torneo. Intenta nuevamente.");
                             error = true;
                         }
                     }

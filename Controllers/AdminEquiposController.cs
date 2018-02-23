@@ -261,23 +261,26 @@ namespace sw_EnligateWeb.Controllers
             if (model.listJugadores.Count > 0 && jugCorreoEliminar != null)
             {
                 var jugador = modelJugador.listJugadores.Where(j => j.jugCorreo.Trim().ToLower() == jugCorreoEliminar.Trim().ToLower()).FirstOrDefault();
-                if (jugador != null)
-                {
-                    ModelState.Clear();
-                    jugador.jugEstatus = false;
-                    jugador.jugConfirmado= false;
-                    jugador.jugCodConfirmacion = true;
+                var equipo = db.getEquipoById(equId);
+                db.EliminarJugadorEquipo(jugCorreoEliminar, equId);
+                enviarEmailEliminarJugador(jugCorreoEliminar, equipo.equNombreEquipo);
+                //if (jugador != null)
+                //{
+                //    ModelState.Clear();
+                //    jugador.jugEstatus = false;
+                //    jugador.jugConfirmado= false;
+                //    jugador.jugCodConfirmacion = true;
 
-                    ModelState.AddModelError(constClass.success, "El participante se eliminara al guardar el equipo.");
-                    var equipo = db.getEquipoById(equId);
-                    if (equipo != null)
-                    {
-                        enviarEmailEliminarJugador(jugador.jugCorreo, equipo.equNombreEquipo);
-                    }
-                    
-                }
-                else
-                    noEncontrado = true;
+                //    ModelState.AddModelError(constClass.success, "El participante se eliminara al guardar el equipo.");
+                //    var equipo = db.getEquipoById(equId);
+                //    if (equipo != null)
+                //    {
+                //        enviarEmailEliminarJugador(jugador.jugCorreo, equipo.equNombreEquipo);
+                //    }
+
+                //}
+                //else
+                //    noEncontrado = true;
             }
             else
                 noEncontrado = true;

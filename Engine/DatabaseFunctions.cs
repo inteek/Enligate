@@ -5994,16 +5994,16 @@ namespace sw_EnligateWeb.Engine
                      }
                      ).ToList();
          }
-         public List<DetallePagoViewModel> getDetallesPagos(int ligId) {
-             var pagos = (from pag in dbApp.tblPagos
-                          join lig in dbApp.tblLigas on pag.conceptoId equals lig.ligId
-                          join detPag in dbApp.tblDetallesPago on pag.IdPago equals detPag.IdPago
-                          join user in dbApp.tblUsersProfiles on pag.userId equals user.userIdOwner
-                          where lig.ligId == ligId &&
-                             pag.IdTransaccion == detPag.IdTransaccion &&
-                             pag.concepto == "Liga"
-                          select new DetallePagoViewModel()
-                          {
+        public List<DetallePagoViewModel> getDetallesPagos(int ligId) {
+            var pagos = (from pag in dbApp.tblPagos
+                         join lig in dbApp.tblLigas on pag.conceptoId equals lig.ligId
+                         join detPag in dbApp.tblDetallesPago on pag.IdPago equals detPag.IdPago
+                         join user in dbApp.tblUsersProfiles on pag.userId equals user.userIdOwner
+                         where lig.ligId == ligId &&
+                            pag.IdTransaccion == detPag.IdTransaccion &&
+                            pag.concepto == "Liga"
+                         select new DetallePagoViewModel()
+                         {
                              IdPago = pag.IdPago,
                              conceptoPago = detPag.conceptoPago,
                              total = detPag.total,
@@ -6015,8 +6015,26 @@ namespace sw_EnligateWeb.Engine
                              concepto = lig.ligNombreLiga,
                              fechaPago = detPag.FechaCreacionUTC.ToString(),
                              userNombre = user.uprNombres + " " + user.uprApellidos
-                          }).ToList();
-             return pagos;
+                         }).ToList();
+            //var list = dbApp.tblPagos.GroupJoin(dbApp.tblLigas, tbPag => tbPag.conceptoId, tbL => tbL.ligId, (tbP, g) => new { tbP=tbP, g=g })/*.SelectMany(temp => temp.g.DefaultIfEmpty(), (temp, p) => { new {tbP = temp.tbP, p=p})*/
+            //                           .Join(dbApp.tblDetallesPago, j => j.tbP, tdp => tdp.IdPago, (j, tdp) => new { j, tdp })
+            //                           .Join(dbApp.tblUsersProfiles, x =>  u => u.userIdOwner, (x, u) => new { x, u })
+            //                           .Where(z => tbP.conceptoId == ligId && tbP.IdTransaccion == z.x.tdp.IdTransaccion && tbP.concepto == "Liga")
+            //                           .Select(ob => new DetallePagoViewModel
+            //                           {
+            //                               IdPago = tbP.IdPago,
+            //                               conceptoPago = ob.x.tdp.conceptoPago,
+            //                               total = ob.x.tdp.total,
+            //                               IdTransaccion = tbP.IdTransaccion,
+            //                               referencia = ob.x.tdp.referencia,
+            //                               metodoPago = ob.x.tdp.metodoPago,
+            //                               status = ob.x.tdp.metodoPago,
+            //                               ipAddress = ob.x.tdp.ipAddress,
+            //                               concepto = ob.x.j.ligNombreLiga,
+            //                               fechaPago = ob.x.tdp.FechaCreacionUTC.ToString(),
+            //                               userNombre = ob.u.uprNombres + " " + ob.u.uprApellidos
+            //                           })
+            return pagos;
          }
         public List<DetallePagoViewModel> getDetallesTorneo(int torId)
         {
@@ -6418,6 +6436,25 @@ namespace sw_EnligateWeb.Engine
             schemaLigaCanchasTorneos result = new schemaLigaCanchasTorneos();
             result = dbApp.tblLigaCanchasTorneos.Where(x => x.lcatId == idCancha).FirstOrDefault();
             return result;
+        }
+
+        public bool EliminarJugadorEquipo(string correo, int eqId)
+        {
+            try
+            {
+                var jugador = dbApp.tblJugadorEquipos.Where(x => x.jugCorrreo == correo && x.equId == eqId).FirstOrDefault();
+                jugador.jugEstatus = false;
+                jugador.jugConfirmado = false;
+                dbApp.SaveChanges();
+                return true;
+            }
+            catch(Exception)
+            {
+                return false;
+            }
+            //jugador.jugConfirmado = false;
+           // dbApp.tblJugadorEquipos.Remove(jugador)
+
         }
         /* public List<schemaDatosTarjeta> getDatosTarjeta(ApplicationUser userId)
          {
