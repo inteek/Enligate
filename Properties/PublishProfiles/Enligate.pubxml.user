@@ -6,7 +6,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\inetpub\wwwroot\Enligate</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\inetpub\wwwroot\Enligate2</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
@@ -658,7 +658,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/17/2018 12:14:59</publishTime>
     </File>
     <File Include="bin/sw_EnligateWeb.dll">
-      <publishTime>01/24/2018 15:08:33</publishTime>
+      <publishTime>02/26/2018 12:58:56</publishTime>
     </File>
     <File Include="bin/System.ComponentModel.DataAnnotations.dll">
       <publishTime>08/13/2013 01:19:06</publishTime>
@@ -999,6 +999,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Emails/ArbitroAvisoConfirmacionAdm.html">
       <publishTime>01/04/2018 11:11:25</publishTime>
     </File>
+    <File Include="Emails/ArbitroAvisoPartidoAdm.html">
+      <publishTime>02/16/2018 13:01:15</publishTime>
+    </File>
     <File Include="Emails/ArbitroAvisoRechazarAdm.html">
       <publishTime>01/04/2018 11:11:26</publishTime>
     </File>
@@ -1009,7 +1012,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/04/2018 11:11:23</publishTime>
     </File>
     <File Include="Emails/ArbitroPartidoInvitacion.html">
-      <publishTime>01/04/2018 11:11:23</publishTime>
+      <publishTime>02/19/2018 13:31:28</publishTime>
     </File>
     <File Include="Emails/ArbitroTorneoEquipoAvisoRechazo.html">
       <publishTime>01/04/2018 11:11:22</publishTime>
@@ -1052,6 +1055,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="Emails/EquipoConfirmCoAdmin.html">
       <publishTime>01/04/2018 11:11:18</publishTime>
+    </File>
+    <File Include="Emails/JugadorPartidoInvitacion.html">
+      <publishTime>02/16/2018 12:34:23</publishTime>
     </File>
     <File Include="Emails/NotificacionSolicitudLiga.html">
       <publishTime>01/04/2018 11:11:17</publishTime>
@@ -1294,7 +1300,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/04/2018 11:30:22</publishTime>
     </File>
     <File Include="Views/Account/Admin/MisPagos.cshtml">
-      <publishTime>01/04/2018 11:30:23</publishTime>
+      <publishTime>02/21/2018 11:40:35</publishTime>
     </File>
     <File Include="Views/Account/Admin/MisPerfiles.cshtml">
       <publishTime>01/04/2018 11:30:22</publishTime>
@@ -1306,7 +1312,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/04/2018 11:30:21</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
-      <publishTime>01/04/2018 11:30:21</publishTime>
+      <publishTime>02/26/2018 09:30:38</publishTime>
     </File>
     <File Include="Views/Account/ResetPasswordCode.cshtml">
       <publishTime>01/04/2018 11:30:20</publishTime>
@@ -1384,7 +1390,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/04/2018 11:30:37</publishTime>
     </File>
     <File Include="Views/Administrator/Client.cshtml">
-      <publishTime>01/04/2018 11:30:37</publishTime>
+      <publishTime>02/15/2018 18:15:03</publishTime>
     </File>
     <File Include="Views/Administrator/Fees.cshtml">
       <publishTime>01/04/2018 11:30:36</publishTime>
@@ -1393,10 +1399,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/04/2018 11:30:36</publishTime>
     </File>
     <File Include="Views/Administrator/FeesPayments.cshtml">
-      <publishTime>01/04/2018 11:30:36</publishTime>
+      <publishTime>02/21/2018 15:00:14</publishTime>
     </File>
     <File Include="Views/Administrator/Index.cshtml">
-      <publishTime>01/04/2018 11:30:35</publishTime>
+      <publishTime>02/21/2018 11:58:54</publishTime>
     </File>
     <File Include="Views/Administrator/Leagues.cshtml">
       <publishTime>01/04/2018 11:30:35</publishTime>
@@ -1444,7 +1450,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/04/2018 11:30:43</publishTime>
     </File>
     <File Include="Views/AdminLigas/Pagos.cshtml">
-      <publishTime>01/04/2018 11:30:43</publishTime>
+      <publishTime>02/21/2018 11:57:31</publishTime>
     </File>
     <File Include="Views/AdminLigas/Pago_Result.cshtml">
       <publishTime>01/04/2018 11:30:42</publishTime>
@@ -1594,13 +1600,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/04/2018 11:31:11</publishTime>
     </File>
     <File Include="Views/Shared/Admin/_CompleteProfile.cshtml">
-      <publishTime>01/04/2018 11:31:10</publishTime>
+      <publishTime>02/23/2018 09:41:53</publishTime>
     </File>
     <File Include="Views/Shared/Admin/_Partidos_Player.cshtml">
       <publishTime>01/04/2018 11:31:10</publishTime>
     </File>
     <File Include="Views/Shared/Admin/_Perfil.cshtml">
-      <publishTime>01/04/2018 11:31:10</publishTime>
+      <publishTime>02/15/2018 14:03:05</publishTime>
     </File>
     <File Include="Views/Shared/Admin/_PerfilOtros.cshtml">
       <publishTime>01/04/2018 11:31:09</publishTime>
@@ -1636,13 +1642,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/04/2018 11:31:12</publishTime>
     </File>
     <File Include="Views/Shared/Banwire/PagosGrid.cshtml">
-      <publishTime>01/04/2018 11:31:17</publishTime>
+      <publishTime>02/21/2018 12:15:10</publishTime>
     </File>
     <File Include="Views/Shared/Banwire/_GridPagos.cshtml">
       <publishTime>01/04/2018 11:31:17</publishTime>
     </File>
     <File Include="Views/Shared/Banwire/_GridPagosEquipo.cshtml">
-      <publishTime>01/04/2018 11:31:17</publishTime>
+      <publishTime>02/21/2018 12:08:23</publishTime>
     </File>
     <File Include="Views/Shared/Banwire/_GridPagosTorneo.cshtml">
       <publishTime>01/04/2018 11:31:17</publishTime>
@@ -1714,10 +1720,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/04/2018 11:31:22</publishTime>
     </File>
     <File Include="Views/Shared/Jugadores/_JugadoresEquipo_Agregar.cshtml">
-      <publishTime>01/04/2018 11:31:28</publishTime>
+      <publishTime>02/14/2018 12:54:42</publishTime>
     </File>
     <File Include="Views/Shared/Jugadores/_JugadoresEquipo_Grid.cshtml">
-      <publishTime>01/04/2018 11:31:28</publishTime>
+      <publishTime>02/14/2018 12:41:51</publishTime>
     </File>
     <File Include="Views/Shared/Jugadores/_jugadoresGrid.cshtml">
       <publishTime>01/04/2018 11:31:27</publishTime>
@@ -1738,7 +1744,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/04/2018 11:31:37</publishTime>
     </File>
     <File Include="Views/Shared/Ligas/_CanchasSelect.cshtml">
-      <publishTime>01/04/2018 11:31:37</publishTime>
+      <publishTime>02/19/2018 12:46:45</publishTime>
     </File>
     <File Include="Views/Shared/Ligas/_EquipoNuevo_Filtros.cshtml">
       <publishTime>01/04/2018 11:31:36</publishTime>
@@ -1795,7 +1801,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/04/2018 11:31:30</publishTime>
     </File>
     <File Include="Views/Shared/Ligas/_Partidos_Filtros.cshtml">
-      <publishTime>01/04/2018 11:31:30</publishTime>
+      <publishTime>02/14/2018 13:31:25</publishTime>
     </File>
     <File Include="Views/Shared/Ligas/_Partidos_Refeere.cshtml">
       <publishTime>01/19/2018 12:51:12</publishTime>
@@ -1855,7 +1861,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/04/2018 11:31:48</publishTime>
     </File>
     <File Include="Views/Shared/Torneos/_NuevoEdit.cshtml">
-      <publishTime>01/04/2018 11:31:49</publishTime>
+      <publishTime>02/21/2018 10:58:27</publishTime>
     </File>
     <File Include="Views/Shared/Torneos/_NuevoEdit_Contacto.cshtml">
       <publishTime>01/04/2018 11:31:48</publishTime>
@@ -1867,7 +1873,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/04/2018 11:31:47</publishTime>
     </File>
     <File Include="Views/Shared/Torneos/_NuevoEdit_Pagos.cshtml">
-      <publishTime>01/04/2018 11:31:47</publishTime>
+      <publishTime>02/15/2018 19:37:40</publishTime>
     </File>
     <File Include="Views/Shared/Torneos/_PartidosGrid.cshtml">
       <publishTime>01/04/2018 11:31:46</publishTime>
@@ -1912,7 +1918,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/04/2018 11:31:42</publishTime>
     </File>
     <File Include="Views/Shared/_ChangeCurrentRol.cshtml">
-      <publishTime>01/04/2018 11:31:04</publishTime>
+      <publishTime>02/23/2018 09:48:38</publishTime>
     </File>
     <File Include="Views/Shared/_JsonReturn_Errors.cshtml">
       <publishTime>01/04/2018 11:31:04</publishTime>
@@ -1948,7 +1954,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/24/2018 15:08:36</publishTime>
     </File>
     <File Include="_Logs/errors.txt">
-      <publishTime>01/17/2018 15:50:36</publishTime>
+      <publishTime>02/21/2018 11:04:44</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -11,6 +11,8 @@
     });
 
     function saveProfile() {
+        debugger
+        var nombre = $("#usuNombreCompleto")
         var genero = $("#usuGenero");
         var pais = $("#usuPais");
         var estado = $("#usuEstado");
@@ -20,7 +22,7 @@
         var ddlA_o= $("#ddlA_o")
         var cp = $("#usuCP");
         $(".spanError").remove();
-        if (genero.val() != "" && pais.val() != "0" && estado.val() != "0" && ciudad.val() != "0" && cp.val() != "" && ddlDia.val() != "" && ddlMes.val() !="" && ddlA_o.val() != "" ) {
+        if (genero.val() != "" && pais.val() != "0" && estado.val() != "0" && ciudad.val() != "0" && cp.val() != "" && ddlDia.val() != "" && ddlMes.val() !="" && ddlA_o.val() != ""&& nombre.val().trim()!="" ) {
 
             $('#modalProfile').modal("toggle");
 
@@ -54,6 +56,10 @@
             }
             if (cp.val() == "") {
                 cp.parent().append(error);
+            }
+            if (nombre.val() == "")
+            {
+                nombre.parent().append(error);
             }
 
             $(".spanError").delay(5000).fadeOut('slow');

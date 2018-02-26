@@ -1425,7 +1425,6 @@ C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.Migrat
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.csproj.GenerateResource.Cache
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.dll
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\Enligate\obj\Debug\sw_EnligateWeb.pdb
-C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\sw_EnligateWeb.dll.config
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\sw_EnligateWeb.dll
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\sw_EnligateWeb.pdb
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\Antlr3.Runtime.dll
@@ -1729,3 +1728,4 @@ C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.csproj.GenerateResource.Cache
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.dll
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\obj\Debug\sw_EnligateWeb.pdb
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\EnligateGitHub\bin\sw_EnligateWeb.dll.config

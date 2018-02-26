@@ -170,13 +170,15 @@
                 icono2 = string.Format(btnConfirmado, correo2);
             else if (!nuevo2 && !confirmado2)
                 icono2 = string.Format(btnRechazo, correo2);
-            
+
+            //string correo
+
 
             ViewContext.Writer.Write(@"
                 <div class='row row-eq-height mSpaceMt10'>");
 
             ViewContext.Writer.Write(@"
-                    <div class='well col-sm-12 col-md-6'>
+                    <div class='well col-sm-12 col-md-6' id='"+correo1+ @"'>
                         <div class='col-xs-12'>
                             <div class='col-xs-12 col-sm-12 col-md-4 paddingLRZero'>
                                 <div class='col-xs-12 col-sm-12 hgRowsImage'>
@@ -217,7 +219,7 @@
             if(jug2Show)
             {
                 ViewContext.Writer.Write(@"
-                    <div class='well col-sm-12 col-md-6'>
+                    <div class='well col-sm-12 col-md-6' id='" + correo2 +@"'>
                         <div class='col-xs-12'>
                             <div class='col-xs-12 col-sm-12 col-md-4 paddingLRZero'>
                                 <div class='col-xs-12 col-sm-12 hgRowsImage'>

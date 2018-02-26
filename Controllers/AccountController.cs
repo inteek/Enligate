@@ -641,7 +641,7 @@ namespace sw_EnligateWeb.Controllers
                 }
                 else if (usr.usuEmailValidationCode == null || usr.usuEmailValidationCode.Trim().ToLower() != code.Trim().ToLower())
                 {
-                    ModelState.AddModelError(constClass.error, "El codigo es incorrecto, favor de verificarlo. Redireccionando . . .");
+                    ModelState.AddModelError(constClass.info, "Tu cuenta ya fue activada anteriormente. Redireccionando . . .");
                     redirectHome = true;
                 }
                 else if (usr.usuEmailValidationCodeEndDateUtc == null || usr.usuEmailValidationCodeEndDateUtc < db.DateTimeMX())

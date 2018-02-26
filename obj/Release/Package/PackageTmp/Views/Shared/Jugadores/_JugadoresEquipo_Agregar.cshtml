@@ -162,6 +162,7 @@
     }
 
     function fnGVJugadores_EliminarJugador(correo) {
+        debugger
         if (confirm("¿Estas seguro que deseas eliminar a '" + correo + "'?"))
         {
             var dataForm = $("#frmNuevoEdit_JugadoresAgregar :input").serialize() + "&torMaxJugadoresEquipo=" + maxJug+ "&torId=" + jeAdd_TorId + "&equId=" + jeAdd_EquId;
@@ -172,19 +173,22 @@
                 cache: false,
                 data: dataForm,
                 success: function (data) {
-                    $("#divNuevoEdit_JugadoresAgregar").html(data);
+                    //$("#divNuevoEdit_JugadoresAgregar").html(data);
                     if (getEquipoId()!=0) {
                         submit_equipo();
                      //   alert("editado "+getEquipoId())
                     }else{
                        // alert("nuevo "+getEquipoId())
                     }
-                    fnGVJugadores_PerformCallback();
+                    //fnGVJugadores_PerformCallback();
+                    var remover = document.getElementById(correo);
+                    remover.remove()
                 },
                 complete: function (jqXHR, textStatus) {
                     showMessages();
                 }
             });
+
         }
     }
 </script>

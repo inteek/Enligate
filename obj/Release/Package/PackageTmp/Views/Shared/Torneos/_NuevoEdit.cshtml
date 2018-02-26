@@ -48,6 +48,12 @@
         } else {
             $("#spanPrivate").html("Privado")
         }
+
+        $("#tcfpptpId[value='4']").attr('checked', true);
+        torneoNuevo_PagosTipoOnChange();
+        $("#tcfpptpId[value='5']").hide();
+        $("#ANTICIPO").hide();
+
        
     });
 
@@ -235,6 +241,8 @@
             },
             complete: function (jqXHR, textStatus) {
                 showMessages();
+                $("#tcfpptpId[value='5']").hide();
+                $("#ANTICIPO").hide();
             }
         });
     }
@@ -566,9 +574,9 @@
         <span class="spanTorneoNuevoEdit_TipoInterno @cssInterno">Descripcion del tipo de torneo interno</span>
         <span class="spanTorneoNuevoEdit_TipoCoaching @cssCoach">Descripcion del tipo de torneo coaching</span>
         <!-- Datos del torneo -->
-        <div class="col-xs-12">
+        @*<div class="col-xs-12">
             <span class="mTitle1 mSpaceMb5">Datos del Torneo:</span><span style="margin-left:20px;font-size:1.5em;font-weight: 200;" class="text text-success">Oferta de lanzamiento, gratis 3 meses!</span>
-        </div>
+        </div>*@
         <!-- Imagen / Comentarios / Coadmins -->
         <div class='col-xs-12 col-sm-12 col-md-4 col-lg-3 text-center mSpaceMb10'>
             <div class='col-xs-12 paddingLRZero'>

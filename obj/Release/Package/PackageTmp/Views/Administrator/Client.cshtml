@@ -69,7 +69,7 @@
                                {
                                    settings.Name = "deReqEndDate";
                                    settings.Properties.DisplayFormatString = "dd/MM/yyyy";
-                                   settings.Date = DateTime.Today.AddDays(-7);
+                                   settings.Date = new DateTime(2015,1,1);
                                    settings.Properties.AllowNull = false;
                                    settings.Properties.ClientSideEvents.DateChanged = "fnCliGVPerformCallback";
                                    settings.Width = Unit.Pixel(100);
