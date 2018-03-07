@@ -2424,19 +2424,19 @@ namespace sw_EnligateWeb.Engine
             DateTime fechaActual = DateTime.Now.AddDays(-1);
 
             var torneos = (from tor in dbApp.tblTorneos
-                         join lig in dbApp.tblLigas on tor.ligId equals lig.ligId into torLig
-                         from lig in torLig.DefaultIfEmpty()
-                         where lig.ligEstatus == true
-                            && lig.ligAprobada == true
-                            && tor.torEstatus == true
-                            && tor.torAprobada == true
-                            && tor.torPrivate == false
-                            && (tor.torFechaTermino == null || tor.torFechaTermino > fechaActual)
-                         select tor)
+                           join lig in dbApp.tblLigas on tor.ligId equals lig.ligId into torLig
+                           from lig in torLig.DefaultIfEmpty()
+                           where lig.ligEstatus == true
+                              && lig.ligAprobada == true
+                              && tor.torEstatus == true
+                              && tor.torAprobada == true
+                              && tor.torPrivate == false
+                              && (tor.torFechaTermino == null || tor.torFechaTermino > fechaActual)
+                           select tor)
                          .Distinct()
                          .ToList();
 
-            if(depNombre != "")
+            if (depNombre != "")
                 torneos = (from tor in torneos
                            from lct in dbApp.tblLigaCategoriasTorneos.Where(c => c.lctId == tor.lctId)
                            where lct.depNombre.ToUpper() == depNombre.ToUpper()
@@ -5996,10 +5996,10 @@ namespace sw_EnligateWeb.Engine
          }
         public List<DetallePagoViewModel> getDetallesPagos(int ligId) {
             var pagos = (from pag in dbApp.tblPagos
-                         join lig in dbApp.tblLigas on pag.conceptoId equals lig.ligId
+                         //join lig in dbApp.tblLigas on pag.conceptoId equals lig.ligId
                          join detPag in dbApp.tblDetallesPago on pag.IdPago equals detPag.IdPago
                          join user in dbApp.tblUsersProfiles on pag.userId equals user.userIdOwner
-                         where lig.ligId == ligId &&
+                         where /*lig.ligId == ligId &&*/
                             pag.IdTransaccion == detPag.IdTransaccion &&
                             pag.concepto == "Liga"
                          select new DetallePagoViewModel()
@@ -6012,7 +6012,7 @@ namespace sw_EnligateWeb.Engine
                              metodoPago = detPag.metodoPago,
                              status = detPag.status,
                              ipAddress = detPag.ipAddress,
-                             concepto = lig.ligNombreLiga,
+                             concepto = " ",
                              fechaPago = detPag.FechaCreacionUTC.ToString(),
                              userNombre = user.uprNombres + " " + user.uprApellidos
                          }).ToList();

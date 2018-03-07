@@ -122,9 +122,10 @@
                 cache: false,
                 data: "ligId=" + id,
                 success: function (data) {
+                    debugger
                     var item = data[0];
                     console.log(data);
-                    if (data.count > 0) {
+                    if (data.length > 0) {
                         $("#nameLiga").text(item.ligNombre);
                         $("#usuario").text(item.userNombre);
                         $("#transaccion").text(item.IdTransaccion);

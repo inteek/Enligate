@@ -2246,7 +2246,8 @@ namespace sw_EnligateWeb.Controllers
                             db.setArbitroPartido(partido.arbId, model.parId, code);
                             sendInvitationEmailRefereeByEvent(arbEmail, partido.arbNombre, partido.ligId, model.parId, partido.equNombreEquipoUno, partido.equNombreEquipoDos, partido.parFecha_Inicio, code,torneo.torNombreTorneo, cancha);
                         }
-                       //sendInvitationEmailRefereeByEvent("fredy_aa15@hotmail.com", partido.arbNombre, partido.ligId, model.parId, partido.equNombreEquipoUno, partido.equNombreEquipoDos, partido.parFecha_Inicio, code, torneo.torNombreTorneo, cancha);
+                        else
+                            sendInvitationEmailRefereeByEvent(partido.arbNombre, partido.arbNombre, partido.ligId, model.parId, partido.equNombreEquipoUno, partido.equNombreEquipoDos, partido.parFecha_Inicio, code, torneo.torNombreTorneo, cancha);
                         //Se guardo el Partido
                         ModelState.Clear();
                         ModelState.AddModelError(constClass.success, "El Partido se creo exitosamente.");

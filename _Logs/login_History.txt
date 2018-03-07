@@ -445,3 +445,15 @@
 ****** 23/02/2018 09:21:04 a. m. admin2@sone.mx ::1 Success
 ****** 23/02/2018 09:50:19 a. m. admin2@sone.mx ::1 Success
 ****** 26/02/2018 12:29:20 p. m. admin2@sone.mx ::1 Success
+****** 28/02/2018 09:23:25 a. m. admin2@sone.mx ::1 Failure
+****** 28/02/2018 09:23:36 a. m. admin2@sone.mx ::1 Failure
+****** 28/02/2018 09:24:16 a. m. admin2@sone.mx ::1 Success
+****** 28/02/2018 10:25:06 a. m. admin2@sone.mx ::1 Success
+****** 01/03/2018 03:07:38 p. m. ronny@sonetworks.no ::1 Success
+****** 05/03/2018 12:30:09 p. m. admin2@sone.mx ::1 Success
+****** 07/03/2018 12:50:56 p. m. admin2@sone.mx ::1 Success
+****** 07/03/2018 01:51:25 p. m. admin2@sone.mx ::1 Success
+****** 07/03/2018 01:53:51 p. m. ronny@sonetworks.no ::1 Success
+****** 07/03/2018 02:28:41 p. m. admin2@sone.mx ::1 Success
+****** 07/03/2018 02:51:04 p. m. admin2@sone.mx ::1 Failure
+****** 07/03/2018 02:51:17 p. m. admin2@sone.mx ::1 Success
