@@ -919,5 +919,17 @@ namespace sw_EnligateWeb.Controllers
             return View();
         }
 
+        public int Obtener()
+        {
+            //int total = db.getClients().Where(l => l.roles.ToUpper() != "12d92a00-4392-4a0a-aca5-1a979a86fb8e".ToUpper()).Count();
+            int total = db.ObtenerUsers();
+            return total;
+        }
+
+        public int ObtenerSumas(string id)
+        {
+            int total = db.ObtenerClientes(id);
+            return total;
+        }
     }
 }

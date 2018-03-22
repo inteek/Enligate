@@ -1738,6 +1738,13 @@ namespace sw_EnligateWeb.Models
         public DateTime FechaCreacionUTC { get; set; }
     }
 
+    public class auxiliar
+    {
+        public schemaTorneos torneo;
+        public int? totalEquipos;
+        public int? espacios;
+    }
+
    /* [Table("tblDatosTarjeta")]
     public class schemaDatosTarjeta
     {

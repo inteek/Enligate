@@ -172,7 +172,7 @@
                                 <div class="marginForm">
                                     <div class="input-group m-input-groupLbl-XS m-input-groupLbl-SM width100">
                                         <span class="input-group-addon m-lbl">Notas:</span>
-                                        @Html.TextBoxFor(m => m.parEstado, "", new { @class = "width100", @placeholder = "Notas" })
+                                        @Html.TextBoxFor(m => m.parEstado, "", new { @class = "width100", @placeholder = "Notas", @id = "Notas"})
                                     </div>
                                     @Html.ValidationMessageFor(m => m.parEstado, "", new { @class = "text-danger" })
                                 </div>
@@ -320,6 +320,7 @@
     };
 
     function sendData(){
+        debugger
         var data = getJsonFormat();
         var url = "/Referee/updateDetailsEvent";
         $.ajax({
@@ -366,7 +367,6 @@
         $('#PlayerValuesTable .parSuspendido').each(function () {
             susp.push(this.value);
         });        
-        
         var equResultadoUno = parseInt($("#resultUno").val());
         var equResultadoDos = parseInt($("#resultDos").val());
         return {
@@ -384,7 +384,8 @@
             faltas:faltas,
             ama:ama,
             roja:roja,
-            susp:susp
+            susp:susp,
+            notas: $("#Notas").value()
         }
     };
 

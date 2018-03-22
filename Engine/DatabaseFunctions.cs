@@ -3135,7 +3135,9 @@ namespace sw_EnligateWeb.Engine
         public List<TorneosGridViewModel> getTorneosParaGridByLiga(int? ligId, string userIdCreadorLiga , ApplicationUser user, bool admin=true)
         {
             //Falta afinar los lugares disponibles del torneo.
+            var torneos2 = new List<schemaTorneos>();
             var torneos = new List<schemaTorneos>();
+            var aux = new List<schemaTorneos>();
             if (user!=null)
             {
                var roles = getRoles();
@@ -3156,11 +3158,37 @@ namespace sw_EnligateWeb.Engine
             {
                 if (admin)
                 {
-                    torneos = (from tor in dbApp.tblTorneos
+                    torneos2 = (from tor in dbApp.tblTorneos
                                where (tor.ligId == (int)ligId)
                                select tor)
                                .Distinct()
                                .ToList();
+
+                    //torneos = dbApp.tblTorneos.Where(x => x.ligId == ligId).ToList();
+                    List<auxiliar> lista = new List<Models.auxiliar>();
+                    
+                    int ocupados;
+                    if (torneos2.Count > 1)
+                    {
+                        foreach (var tor in torneos2)
+                        {
+                            var objeto = new auxiliar();
+                            objeto.torneo = tor;
+                            objeto.totalEquipos = (tor.torNumeroEquipos != null) ? tor.torNumeroEquipos : 0;
+                            ocupados = dbApp.tblEquipos.Where(x => x.torId == tor.torId).Count();
+                            objeto.espacios = objeto.totalEquipos- ocupados;
+                            lista.Add(objeto);
+                        }
+
+                        lista = lista.OrderByDescending(x => x.espacios).ToList();
+                        foreach (var tor in lista)
+                        {
+                            torneos.Add(tor.torneo);
+                        }
+                    }
+                    else
+                        torneos = torneos2;
+
                 }
                 else
                 {
@@ -3218,6 +3246,7 @@ namespace sw_EnligateWeb.Engine
         /// <returns></returns>
         public List<TorneosGridViewModel> getTorneosParaGridByUsuario(string userId)
         {
+            var torneos = new List<schemaTorneos>();
             var user = getUserById(userId);
             var rolActual = getRoles().Where(l => l.rolId.ToUpper() == user.usuRolActual.ToUpper()).FirstOrDefault();
             var torneosAll = new List<schemaTorneos>();
@@ -3225,10 +3254,37 @@ namespace sw_EnligateWeb.Engine
             {
                 var ligas = getLigaByUser(userId).Select(s => s.ligId).ToList();
                 //Falta afinar los lugares disponibles del torneo.
-                torneosAll = dbApp.tblTorneos.Where(l => ligas.Contains(l.ligId)).ToList();
+                //torneosAll = dbApp.tblTorneos.Where(l => ligas.Contains(l.ligId)).ToList();
+
+                var torneos2 = new List<schemaTorneos>();
+                torneos2 = dbApp.tblTorneos.Where(l => ligas.Contains(l.ligId)).ToList();
+
+                //torneos = dbApp.tblTorneos.Where(x => x.ligId == ligId).ToList();
+                List<auxiliar> lista = new List<auxiliar>();
+                int? ocupados;
+                if (torneos2.Count > 1)
+                {
+                    foreach (var tor in torneos2)
+                    {
+                        var objeto = new auxiliar();
+                        objeto.torneo = tor;
+                        objeto.totalEquipos = (tor.torNumeroEquipos != null) ? tor.torNumeroEquipos : 0;
+                        ocupados = (int)dbApp.tblEquipos.Where(x => x.torId == tor.torId).Count();
+                        objeto.espacios = objeto.totalEquipos - ocupados;
+                        lista.Add(objeto);
+                    }
+
+                    lista = lista.OrderByDescending(x => x.espacios).ToList();
+                    foreach (var tor in lista)
+                    {
+                        torneos.Add(tor.torneo);
+                    }
+                }
+                else
+                    torneos = torneos2;
             }            
                         
-            var torneos = torneosAll;
+            //var torneos = torneosAll;
 
             var torCoAdm = getTorneosByUser(userId);
 
@@ -4932,6 +4988,7 @@ namespace sw_EnligateWeb.Engine
                              equResultadoUno = par.equResultadoUno,
                              equResultadoDos = par.equResultadoDos,
                              parEstatus = par.parEstatus,
+                             parEstado = par.parEstado,
                              parCheck = par.parCheck
                          }).Distinct().ToList();
         }
@@ -4969,6 +5026,7 @@ namespace sw_EnligateWeb.Engine
                                 equResultadoUno = par.equResultadoUno,
                                 equResultadoDos = par.equResultadoDos,
                                 parEstatus = par.parEstatus,
+                                parEstado = par.parEstado,
                                 parCheck = par.parCheck
                             }).Distinct().ToList();
             return partidos;
@@ -6456,6 +6514,21 @@ namespace sw_EnligateWeb.Engine
            // dbApp.tblJugadorEquipos.Remove(jugador)
 
         }
+
+        public int ObtenerUsers()
+        {
+            int total = dbApp.Users.Where(x => x.Roles.Where(y => y.RoleId.ToUpper() == "12d92a00-4392-4a0a-aca5-1a979a86fb8e".ToUpper()).Count() == 0).Count();
+            return total;
+        }
+
+        public int ObtenerClientes(string id)
+        {
+            if (id == "1")
+                return dbApp.Users.Where(x => x.Roles.Where(y => y.RoleId.ToUpper() == "12d92a00-4392-4a0a-aca5-1a979a86fb8e".ToUpper()).Count() == 1).Count();
+            else
+                return dbApp.Users.Where(x => x.Roles.Where(y => y.RoleId.ToUpper() == id.ToUpper()).Count() == 1).Count();
+        }
+
         /* public List<schemaDatosTarjeta> getDatosTarjeta(ApplicationUser userId)
          {
              return (from dtar in dbApp.tblDatosTarjeta

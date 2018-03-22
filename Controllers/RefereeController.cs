@@ -564,12 +564,12 @@ namespace sw_EnligateWeb.Controllers
                     }
                 }
 
-                Global_Functions.sendMail(adminTorneo, siteConfig.scoSenderDisplayEmailName, "Aviso de partido", body,
-                                                            siteConfig.scoSenderEmail,
-                                                            Global_Functions.getDecryptPrivateKey(siteConfig.scoSenderEmailPassword, constClass.encryptionKey),
-                                                            siteConfig.scoSenderSMTPServer,
-                                                            siteConfig.scoSenderPort,
-                                                            null, "", "", true, "");
+                //Global_Functions.sendMail(adminTorneo, siteConfig.scoSenderDisplayEmailName, "Aviso de partido", body,
+                //                                            siteConfig.scoSenderEmail,
+                //                                            Global_Functions.getDecryptPrivateKey(siteConfig.scoSenderEmailPassword, constClass.encryptionKey),
+                //                                            siteConfig.scoSenderSMTPServer,
+                //                                            siteConfig.scoSenderPort,
+                //                                            null, "", "", true, "");
 
                 Global_Functions.sendMail(adminEquipo1.equAdminCorreo, siteConfig.scoSenderDisplayEmailName, "Aviso de partido", body,
                                                             siteConfig.scoSenderEmail,
@@ -587,14 +587,13 @@ namespace sw_EnligateWeb.Controllers
                                                             null, "", "", true, "");
                 }                
 
-                bool mailSended = Global_Functions.sendMail(admLiga, siteConfig.scoSenderDisplayEmailName, "Aviso de partido", body,
-                                                            siteConfig.scoSenderEmail,
-                                                            Global_Functions.getDecryptPrivateKey(siteConfig.scoSenderEmailPassword, constClass.encryptionKey),
-                                                            siteConfig.scoSenderSMTPServer,
-                                                            siteConfig.scoSenderPort,
-                                                            null, "", "", true, "");
-                if (mailSended)
-                    return true;
+                //bool mailSended = Global_Functions.sendMail(admLiga, siteConfig.scoSenderDisplayEmailName, "Aviso de partido", body,
+                //                                            siteConfig.scoSenderEmail,
+                //                                            Global_Functions.getDecryptPrivateKey(siteConfig.scoSenderEmailPassword, constClass.encryptionKey),
+                //                                            siteConfig.scoSenderSMTPServer,
+                //                                            siteConfig.scoSenderPort,
+                //                                            null, "", "", true, "");
+                return true;
             }
 
 

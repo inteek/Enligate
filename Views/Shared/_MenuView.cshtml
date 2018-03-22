@@ -7,7 +7,16 @@
         {
             <div class="col-sm-2 btnsMenuAdminDiv" data-menuId="@menu.menu.menId"> @*current*@
                 <div class="glyphicon glyphicon-triangle-bottom hidden-xs"></div>
-                <button class="btn btn-default width100" onclick="javascript:document.location.replace('@Url.Action(menu.menu.menAction, menu.menu.menController)');">@menu.menu.menNombre</button>
+                
+                @{if (@menu.menu.menId == "ADMINISTRADOR_Clientes")
+                    {
+                        <button class="btn btn-default width100" onclick="javascript:document.location.replace('@Url.Action(menu.menu.menAction, menu.menu.menController)');">@menu.menu.menNombre ( @Html.Action("Obtener") )</button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-default width100" onclick="javascript:document.location.replace('@Url.Action(menu.menu.menAction, menu.menu.menController)');">@menu.menu.menNombre </button>
+                    }
+                }
             </div>
         }
     }
