@@ -10,7 +10,7 @@
                 
                 @{if (@menu.menu.menId == "ADMINISTRADOR_Clientes")
                     {
-                        <button class="btn btn-default width100" onclick="javascript:document.location.replace('@Url.Action(menu.menu.menAction, menu.menu.menController)');">@menu.menu.menNombre (@Html.Action("Obtener"))</button>
+                        <button class="btn btn-default width100" onclick="javascript:document.location.replace('@Url.Action(menu.menu.menAction, menu.menu.menController)');">@menu.menu.menNombre ( @Html.Action("Obtener") )</button>
                     }
                     else
                     {

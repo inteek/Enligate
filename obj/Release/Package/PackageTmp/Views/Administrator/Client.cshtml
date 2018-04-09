@@ -29,7 +29,15 @@
 <!-- Content -->
 <div id="ADMINISTRADOR_Clientes" class="row">
     <div class="col-sm-11 mSpaceMlr35" >
-        <h1>Clientes</h1>
+        <h1>Clientes </h1> 
+        <h4>Total de Clientes <span class="label label-default" style="margin-right:20px"> @Html.Action("Obtener")</span>  
+            Admin-Enligate <span class="label label-default" style="margin-right:20px"> @Html.Action("ObtenerSumas", new { id = "1" })</span>  
+            Admin-Ligas <span class="label label-default" style="margin-right: 20px"> @Html.Action("ObtenerSumas", new { id = "3f144415-d3e8-4cda-ac4a-bcbace9cdd77" })</span>  
+            Admin-Torneos <span class="label label-default" style="margin-right:20px"> @Html.Action("ObtenerSumas", new { id = "3ce26eea-e23a-4df6-9199-967f7e1363a3" })</span>  
+            Coaches <span class="label label-default" style="margin-right:20px"> @Html.Action("ObtenerSumas", new { id = "e447254e-710f-445a-a4cf-b7e95776a780" })</span>  
+            Arbitros <span class="label label-default" style="margin-right:20px"> @Html.Action("ObtenerSumas", new { id = "f55cb242-8774-4fa2-93e7-5476f81f3376" })</span>  
+            Jugadores <span class="label label-default" style="margin-right:20px"> @Html.Action("ObtenerSumas", new { id = "f3f8c258-02eb-4b0b-8cfd-1635d39d69fd" })</span>  
+        </h4>
         <div class="row">
             <div class="col-md-12 filtros">
                 <!--
